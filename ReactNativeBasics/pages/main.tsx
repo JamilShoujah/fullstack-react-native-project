@@ -16,14 +16,16 @@ import {
   View,
 } from 'react-native';
 
-function Landing(): JSX.Element {
+function Landing({navigation}): JSX.Element {
   return (
     <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.centeredView}>
             <Text style={styles.fontView}>Welcome:</Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('Landing')}>
               <Text style={styles.buttonText}>Next Page</Text>
             </TouchableOpacity>
           </View>

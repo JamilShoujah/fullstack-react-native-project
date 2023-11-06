@@ -5,8 +5,7 @@
  * @format
  */
 
-import React, {useState} from 'react';
-// import {useNavigation} from '@react-navigation/native';
+import React, {useState, useEffect} from 'react';
 
 import {
   Pressable,
@@ -18,8 +17,12 @@ import {
   View,
 } from 'react-native';
 
-function Main(): JSX.Element {
+function Main({navigation}): JSX.Element {
   const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    console.log('Take a look at these diamonds wrong Its a life of squintin');
+  }, [counter]);
 
   const Increment = () => {
     setCounter(prevCount => prevCount + 1);
@@ -51,8 +54,7 @@ function Main(): JSX.Element {
             <View style={styles.buttonContainer2}>
               <Pressable
                 style={styles.button2}
-                // onPress={() => navigation.navigate('Home')}
-              >
+                onPress={() => navigation.navigate('Home')}>
                 <Text style={styles.buttonText}>Home</Text>
               </Pressable>
               <Pressable style={styles.button2}>
