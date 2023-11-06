@@ -17,11 +17,23 @@ import {
   View,
 } from 'react-native';
 
+function nextPage(counter: number) {
+  if (counter > 0) {
+    return (
+      <Pressable style={styles.button2}>
+        <Text style={styles.buttonText}>no page</Text>
+      </Pressable>
+    );
+  }
+}
+
 function Main({navigation}): JSX.Element {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    console.log('Take a look at these diamonds wrong Its a life of squintin');
+    console.log(
+      'One hundred eaters They wont fit in one SUV (nah) S-O-S, somebody rescue me',
+    );
   }, [counter]);
 
   const Increment = () => {
@@ -57,9 +69,7 @@ function Main({navigation}): JSX.Element {
                 onPress={() => navigation.navigate('Home')}>
                 <Text style={styles.buttonText}>Home</Text>
               </Pressable>
-              <Pressable style={styles.button2}>
-                <Text style={styles.buttonText}>Stats</Text>
-              </Pressable>
+              {nextPage(counter)}
             </View>
           </View>
         </View>
