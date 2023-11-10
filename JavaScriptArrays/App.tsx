@@ -6,12 +6,12 @@
  */
 import React from 'react';
 import {View} from 'react-native';
-import PopUp from './pages/popup';
+// import PopUp from './pages/popup';
 import ToDoList from './pages/todolist';
 function App(): JSX.Element {
   return (
     <View>
-      <PopUp />
+      {/* <PopUp /> */}
       <ToDoList />
     </View>
   );

@@ -8,28 +8,37 @@
 import React, {useState} from 'react';
 import {Modal, View, Text, TextInput} from 'react-native';
 import {
-  AddButtonComponent,
   CancelNewButtonComponent,
+  Edit_ButtonComponent,
 } from '../components/buttons';
 import {Item} from '../components/dataList';
-export interface PopUpProps {
+export interface EditPopUpProps {
   visible: boolean;
   onclose: () => void;
   arrayUpdate: (item: Item) => void;
+  title: string;
+  description: string;
+  id: number;
+  array: Item[];
 }
 
-export const PopUp: React.FC<PopUpProps> = ({visible, onclose, arrayUpdate}) => {
-  const [value1, onChangeText1] = useState('');
-  const [value2, onChangeText2] = useState('');
+export const EditPopUp: React.FC<EditPopUpProps> = ({
+  visible,
+  onclose,
+  title,
+  description,
+  id,
+  array,
+}) => {
+  const [value1, onChangeText1] = useState(title);
+  const [value2, onChangeText2] = useState(description);
 
-  function InputFieldValues() {
-    const newItem: Item = {
-      id: Date.now(),
-      title: value1,
-      description: value2,
-    };
-    arrayUpdate(newItem);
-    // dataArray.push(newItem);const { setItems } = useContext(ItemsContext);
+  function ValueChange() {
+    const foundObject = array.find(obj => obj.id === id);
+    console.log(id);
+    // console.log(foundObject);
+    foundObject.title = value1;
+    foundObject.description = value2;
   }
   return (
     <Modal transparent={true} visible={visible}>
@@ -65,7 +74,7 @@ export const PopUp: React.FC<PopUpProps> = ({visible, onclose, arrayUpdate}) => 
               fontSize: 30,
               margin: 10,
             }}>
-            New Task
+            Edit Task
           </Text>
 
           <TextInput
@@ -95,19 +104,16 @@ export const PopUp: React.FC<PopUpProps> = ({visible, onclose, arrayUpdate}) => 
             placeholder="Task Description"
           />
           <View style={{flexDirection: 'row'}}>
-            <AddButtonComponent
+            <Edit_ButtonComponent
               func={() => {
-                InputFieldValues();
+                //insert function
+                ValueChange();
                 onclose();
-                onChangeText1('');
-                onChangeText2('');
               }}
             />
             <CancelNewButtonComponent
               func={() => {
                 onclose();
-                onChangeText1('');
-                onChangeText2('');
               }}
             />
           </View>
