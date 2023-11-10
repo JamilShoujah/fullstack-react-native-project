@@ -35,10 +35,12 @@ export const EditPopUp: React.FC<EditPopUpProps> = ({
 
   function ValueChange() {
     const foundObject = array.find(obj => obj.id === id);
-    console.log(id);
+    // console.log(id);
     // console.log(foundObject);
-    foundObject.title = value1;
-    foundObject.description = value2;
+    if (foundObject) {
+      foundObject.title = value1;
+      foundObject.description = value2;
+    }
   }
   return (
     <Modal transparent={true} visible={visible}>
