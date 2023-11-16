@@ -8,7 +8,7 @@ export const CancelNewButtonComponent: React.FC<ModalButtonFunctionality> = ({
 }) => (
   <TouchableOpacity
     style={{
-      backgroundColor: 'redx',
+      backgroundColor: 'red',
       borderRadius: 10,
       padding: 10,
       margin: 5,

@@ -13,7 +13,7 @@ export const AddNewTaskPopUp: React.FC<AddNewItemModal> = ({
   changeTitleValue,
   descriptionValue,
   changeDescriptionValue,
-  addArrayItems
+  addArrayItems,
 }) => {
   return (
     <Modal transparent={true} visible={visible}>

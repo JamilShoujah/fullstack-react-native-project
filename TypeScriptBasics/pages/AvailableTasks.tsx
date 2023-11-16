@@ -10,7 +10,7 @@ import {useArrayStates} from '../data/UseStates/ArrayUseState';
 import {useDescriptionValue} from '../data/UseStates/DescriptionInputValueUseState';
 import {useModalVisibility} from '../data/UseStates/modalUseStates';
 import {useTitleValue} from '../data/UseStates/TitleInputValueUseState';
-import {TaskModal} from '../components/Modals/TaskModal';
+// import {TaskModal} from '../components/Modals/TaskModal';
 
 export const HomePage = () => {
   const {modalVisible, setModalVisibility} = useModalVisibility();
