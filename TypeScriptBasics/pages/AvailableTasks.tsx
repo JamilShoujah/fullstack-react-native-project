@@ -66,6 +66,10 @@ export const HomePage = () => {
         titleValue={task.title}
         descriptionValue={task.description}
         buttonName={'Start'}
+        deleteFunc={() => {
+          const updatedArray = arrayItems.filter(item => item.id !== task.id);
+          setArrayItems(updatedArray);
+        }}
       />
     </View>
   );

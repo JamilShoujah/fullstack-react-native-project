@@ -4,4 +4,5 @@ export interface TaskDetailsModal {
   titleValue: string;
   descriptionValue: string;
   buttonName: string;
+  delete: () => void;
 }

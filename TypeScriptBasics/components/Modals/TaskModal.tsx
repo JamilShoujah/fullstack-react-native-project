@@ -11,6 +11,7 @@ export const TaskModal: React.FC<TaskDetailsModal> = ({
   titleValue,
   descriptionValue,
   buttonName,
+  deleteFunc,
 }) => {
   return (
     <Modal transparent={true} visible={visible}>
@@ -62,12 +63,13 @@ export const TaskModal: React.FC<TaskDetailsModal> = ({
             <DeleteModalButton
               func={() => {
                 onclose();
+                deleteFunc();
               }}
             />
             <CustomModalButton
               func={function (): void {
-                console.log('function call test');
-                // implement the function call here
+                onclose();
+                // to implement change status
               }}
               name={buttonName}
             />
