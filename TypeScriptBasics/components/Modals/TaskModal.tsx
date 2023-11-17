@@ -2,6 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Modal, Text, View} from 'react-native';
 import {TaskDetailsModal} from '../../data/types/TaskDetailsModal';
+import {CloseModalButton} from '../Buttons/closeButton';
 import {DeleteModalButton} from '../Buttons/DeleteButton';
 import {CustomModalButton} from '../Buttons/TaskModalActionButton';
 
@@ -41,11 +42,13 @@ export const TaskModal: React.FC<TaskDetailsModal> = ({
             elevation: 5,
             width: '80%',
           }}>
+          <CloseModalButton func={onclose} />
           <Text
             style={{
               textAlign: 'center',
               fontWeight: 'bold',
               fontSize: 30,
+              marginTop: 30,
             }}>
             {titleValue}
           </Text>
