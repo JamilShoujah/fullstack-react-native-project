@@ -10,7 +10,8 @@ import {useArrayStates} from '../data/UseStates/ArrayUseState';
 import {useDescriptionValue} from '../data/UseStates/DescriptionInputValueUseState';
 import {useModalVisibility} from '../data/UseStates/modalUseStates';
 import {useTitleValue} from '../data/UseStates/TitleInputValueUseState';
-// import {TaskModal} from '../components/Modals/TaskModal';
+import {TaskModal} from '../components/Modals/TaskModal';
+import {useTaskModalVisibility} from '../data/UseStates/TaskModalUseState';
 
 export const HomePage = () => {
   const {modalVisible, setModalVisibility} = useModalVisibility();
@@ -18,12 +19,17 @@ export const HomePage = () => {
   const {titleInputValue, setTitleInputValue} = useTitleValue();
   const {descriptionInputValue, setDescriptionInputValue} =
     useDescriptionValue();
+  const {taskModalVisible, setTaskModalVisibility} = useTaskModalVisibility();
 
   return (
     <View style={{height: 650}}>
       <TopAppBar title={'Available Tasks'} />
       <ScrollView>
-        <DataArrayMap statusType={'complete'} array={arrayItems} />
+        <DataArrayMap
+          statusType={'complete'}
+          array={arrayItems}
+          setTaskModalVisible={setTaskModalVisibility}
+        />
       </ScrollView>
       <AddNewTask
         func={() => {
@@ -41,19 +47,18 @@ export const HomePage = () => {
         changeDescriptionValue={setDescriptionInputValue}
         addArrayItems={setArrayItems}
       />
-      {/* <TaskModal
-        visible={true}
+      <TaskModal
+        visible={taskModalVisible}
         onclose={() => {
-          // setModalVisibility(false);
-          //has to be changed
+          setTaskModalVisibility(false);
         }}
         titleValue={'Task Title'}
         // Be sure to change title
         descriptionValue={
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptates, distinctio eum sed ipsam architecto, delectus corporis obcaecati aliquam assumenda magnam expedita, ipsa commodi hic fugit illum. Voluptas, fuga repudiandae!'
         }
-        // Be sure to change description
-      /> */}
+        buttonName={'Start'} // Be sure to change description
+      />
     </View>
   );
 };

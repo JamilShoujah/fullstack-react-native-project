@@ -1,20 +1,23 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 import {TouchableOpacity, Text} from 'react-native';
-import {ModalButtonFunctionality} from '../../data/types/ModalButtonProps';
+import {ModalCustomButtonFunctionality} from '../../data/types/ModalCustomButton';
 
-export const DeleteModalButton: React.FC<ModalButtonFunctionality> = ({
+export const CustomModalButton: React.FC<ModalCustomButtonFunctionality> = ({
   func,
+  name,
 }) => (
   <TouchableOpacity
     style={{
-      backgroundColor: 'red',
+      backgroundColor: 'green',
       borderRadius: 10,
       padding: 10,
       margin: 5,
       alignContent: 'center',
     }}
     onPress={func}>
-    <Text style={{color: 'white', fontSize: 15, textAlign: 'center'}} />
+    <Text style={{color: 'white', fontSize: 15, textAlign: 'center'}}>
+      {name}
+    </Text>
   </TouchableOpacity>
 );

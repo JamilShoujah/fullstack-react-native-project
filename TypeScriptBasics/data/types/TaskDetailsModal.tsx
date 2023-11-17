@@ -3,4 +3,5 @@ export interface TaskDetailsModal {
   onclose: () => void;
   titleValue: string;
   descriptionValue: string;
+  buttonName: string;
 }

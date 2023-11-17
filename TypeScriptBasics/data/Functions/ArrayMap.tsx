@@ -3,7 +3,11 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 
 import {ArrayMapParam} from '../types/DataArrayMap';
-export const DataArrayMap: React.FC<ArrayMapParam> = ({statusType, array}) => {
+export const DataArrayMap: React.FC<ArrayMapParam> = ({
+  statusType,
+  array,
+  setTaskModalVisible,
+}) => {
   const myarray = array.filter(item => item.status === statusType);
 
   return (
@@ -11,21 +15,19 @@ export const DataArrayMap: React.FC<ArrayMapParam> = ({statusType, array}) => {
       {myarray.map(item => (
         <TouchableOpacity
           onPress={() => {
-            // add function here
-            //new use state la new Modal yalli hiyyi l task modal
-            // calls on it to be open
-            // contains the delete/inprogress Button
+            setTaskModalVisible(true);
           }}
           key={item.id}
           style={{
-            backgroundColor: 'green',
-            margin: 5,
+            backgroundColor: 'gainsboro',
+            marginTop: 10,
+            marginHorizontal: 10,
             padding: 10,
             borderRadius: 10,
           }}>
           <Text
             style={{
-              color: 'white',
+              color: 'black',
               fontSize: 20,
               fontWeight: '900',
             }}>
