@@ -71,7 +71,6 @@ export const TaskModal: React.FC<TaskDetailsModal> = ({
               func={function (): void {
                 onclose();
                 startFunc();
-                // to implement change status
               }}
               name={buttonName}
             />

@@ -14,7 +14,7 @@ import {useTaskModalVisibility} from '../data/UseStates/TaskModalUseState';
 import {Tasks} from '../data/types/Task';
 import {useData} from '../data/UseStates/DataUseState';
 import {StatusTypes} from '../data/types/statusTypes';
-export const HomePage = () => {
+export const AvailableTasksPage = () => {
   const {modalVisible, setModalVisibility} = useModalVisibility();
   const {arrayItems, setArrayItems} = useArrayStates();
   const {titleInputValue, setTitleInputValue} = useTitleValue();
@@ -37,7 +37,7 @@ export const HomePage = () => {
       <TopAppBar title={'Available Tasks'} />
       <ScrollView>
         <DataArrayMap
-          statusType={StatusTypes.InProgress}
+          statusType={StatusTypes.Available}
           array={arrayItems}
           setTaskModalVisible={setTaskModalVisibility}
           handleData={handleDataFromChild}
@@ -74,13 +74,10 @@ export const HomePage = () => {
         startFunc={() => {
           const updatedArray = arrayItems.map(item => {
             if (item.id === task.id) {
-              // Spread the original item and update the status
               return {...item, status: StatusTypes.InProgress};
             }
             return item;
           });
-          // task.status = StatusTypes.InProgress;
-          // console.log(task.status);
           setArrayItems(updatedArray);
         }}
       />

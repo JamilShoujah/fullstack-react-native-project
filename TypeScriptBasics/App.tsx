@@ -9,15 +9,15 @@
 // import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {SafeAreaView, ScrollView, View} from 'react-native';
-import {HomePage} from './pages/AvailableTasks';
+import {AvailableTasksPage} from './pages/AvailableTasks';
+// import {InProgressPage} from './pages/InProgressTask';
 // import {BottomAppBar} from './Bars/BottomBar';
-
 function App(): JSX.Element {
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={{flex: 1}}>
-          <HomePage />
+          <AvailableTasksPage />
         </View>
       </ScrollView>
     </SafeAreaView>
