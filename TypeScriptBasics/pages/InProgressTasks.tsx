@@ -1,19 +1,17 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {ScrollView, View} from 'react-native';
 import {DataArrayMap} from '../data/Functions/ArrayMap';
-// import {useArrayStates} from '../data/UseStates/ArrayUseState';
 import {useDescriptionValue} from '../data/UseStates/DescriptionInputValueUseState';
 import {useTaskModalVisibility} from '../data/UseStates/TaskModalUseState';
 import {Tasks} from '../data/types/Task';
 import {useData} from '../data/UseStates/DataUseState';
 import {StatusTypes} from '../data/types/statusTypes';
-import {NonAvailableTaskModal} from '../components/Modals/NonAvailableTaskModal';
+import {TaskModal} from '../components/Modals/TaskModal';
 import {PageInterFace} from '../data/types/mainPagesDisplay';
 export const InProgressTasksPage: React.FC<PageInterFace> = ({
   ArrayItems,
   SetArrayItems,
 }) => {
-  // const {arrayItems, setArrayItems} = useArrayStates();
   useDescriptionValue();
   const {taskModalVisible, setTaskModalVisibility} = useTaskModalVisibility();
   const {task, setTask} = useData();
@@ -37,7 +35,7 @@ export const InProgressTasksPage: React.FC<PageInterFace> = ({
           handleData={handleDataFromChild}
         />
       </ScrollView>
-      <NonAvailableTaskModal
+      <TaskModal
         visible={taskModalVisible}
         onclose={() => {
           setTaskModalVisibility(false);

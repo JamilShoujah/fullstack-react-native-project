@@ -6,15 +6,11 @@ import {useTaskModalVisibility} from '../data/UseStates/TaskModalUseState';
 import {Tasks} from '../data/types/Task';
 import {useData} from '../data/UseStates/DataUseState';
 import {StatusTypes} from '../data/types/statusTypes';
-import {NonAvailableTaskModal} from '../components/Modals/NonAvailableTaskModal';
 import {PageInterFace} from '../data/types/mainPagesDisplay';
-export const CompleteTasksPage: React.FC<PageInterFace> = ({
-  ArrayItems,
-  SetArrayItems,
-}) => {
+export const CompleteTasksPage: React.FC<PageInterFace> = ({ArrayItems}) => {
   useDescriptionValue();
-  const {taskModalVisible, setTaskModalVisibility} = useTaskModalVisibility();
-  const {task, setTask} = useData();
+  const {setTaskModalVisibility} = useTaskModalVisibility();
+  const {setTask} = useData();
   const handleDataFromChild = (data: Tasks) => {
     const childData: Tasks = {
       id: data.id,
@@ -35,34 +31,6 @@ export const CompleteTasksPage: React.FC<PageInterFace> = ({
           handleData={handleDataFromChild}
         />
       </ScrollView>
-      <NonAvailableTaskModal
-        visible={taskModalVisible}
-        onclose={() => {
-          setTaskModalVisibility(false);
-        }}
-        titleValue={task.title}
-        descriptionValue={task.description}
-        PromoteButtonName={'Complete'}
-        DemoteButtonName={'Go Back'}
-        PromoteButtonFunc={() => {
-          const updatedArray = ArrayItems.map(item => {
-            if (item.id === task.id) {
-              return {...item, status: StatusTypes.PendingApproval};
-            }
-            return item;
-          });
-          SetArrayItems(updatedArray);
-        }}
-        DemoteButtonFunc={function (): void {
-          const updatedArray = ArrayItems.map(item => {
-            if (item.id === task.id) {
-              return {...item, status: StatusTypes.Available};
-            }
-            return item;
-          });
-          SetArrayItems(updatedArray);
-        }}
-      />
     </View>
   );
 };

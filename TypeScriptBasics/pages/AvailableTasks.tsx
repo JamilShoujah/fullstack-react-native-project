@@ -68,18 +68,19 @@ export const AvailableTasksPage: React.FC<PageInterFace> = ({
         }}
         titleValue={task.title}
         descriptionValue={task.description}
-        buttonName={'Start'}
-        deleteFunc={() => {
-          const updatedArray = ArrayItems.filter(item => item.id !== task.id);
-          SetArrayItems(updatedArray);
-        }}
-        startFunc={() => {
+        PromoteButtonName={'Start'}
+        DemoteButtonName={'Delete'}
+        PromoteButtonFunc={() => {
           const updatedArray = ArrayItems.map(item => {
             if (item.id === task.id) {
               return {...item, status: StatusTypes.InProgress};
             }
             return item;
           });
+          SetArrayItems(updatedArray);
+        }}
+        DemoteButtonFunc={() => {
+          const updatedArray = ArrayItems.filter(item => item.id !== task.id);
           SetArrayItems(updatedArray);
         }}
       />

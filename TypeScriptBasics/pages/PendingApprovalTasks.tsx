@@ -42,15 +42,21 @@ export const PendingApprovalTasksPage: React.FC<PageInterFace> = ({
         }}
         titleValue={task.title}
         descriptionValue={task.description}
-        buttonName={'Approve'}
-        deleteFunc={() => {
-          const updatedArray = ArrayItems.filter(item => item.id !== task.id);
-          SetArrayItems(updatedArray);
-        }}
-        startFunc={() => {
+        PromoteButtonName={'Accept'}
+        DemoteButtonName={'Reject'}
+        PromoteButtonFunc={() => {
           const updatedArray = ArrayItems.map(item => {
             if (item.id === task.id) {
               return {...item, status: StatusTypes.Complete};
+            }
+            return item;
+          });
+          SetArrayItems(updatedArray);
+        }}
+        DemoteButtonFunc={() => {
+          const updatedArray = ArrayItems.map(item => {
+            if (item.id === task.id) {
+              return {...item, status: StatusTypes.Available};
             }
             return item;
           });

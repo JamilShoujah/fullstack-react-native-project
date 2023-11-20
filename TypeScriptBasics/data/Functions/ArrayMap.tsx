@@ -17,10 +17,6 @@ export const DataArrayMap: React.FC<ArrayMapParam> = ({
         <TouchableOpacity
           onPress={() => {
             setTaskModalVisible(true);
-            // console.log(item.description);
-            // console.log(item.title);
-            // console.log(item.status);
-            // console.log(item.id);
             handleData(item);
           }}
           key={item.id}
