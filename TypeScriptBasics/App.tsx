@@ -10,7 +10,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CompleteTasksPage} from './pages/CompleteTask';
 import {useArrayStates} from './data/UseStates/ArrayUseState';
-import {Tasks} from './data/types/Task';
 
 const Tab = createBottomTabNavigator();
 
@@ -80,13 +79,15 @@ function MyTabs() {
           />
         )}
       />
-      <Tab.Screen name="Complete" 
-      children={() => (
-        <CompleteTasksPage
-          ArrayItems={arrayItems}
-          SetArrayItems={setArrayItems}
-        />
-      )} />
+      <Tab.Screen
+        name="Complete"
+        children={() => (
+          <CompleteTasksPage
+            ArrayItems={arrayItems}
+            SetArrayItems={setArrayItems}
+          />
+        )}
+      />
     </Tab.Navigator>
   );
 }
