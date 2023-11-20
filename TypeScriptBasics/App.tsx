@@ -9,13 +9,25 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CompleteTasksPage} from './pages/CompleteTask';
+import {useArrayStates} from './data/UseStates/ArrayUseState';
+import {Tasks} from './data/types/Task';
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
+  const {arrayItems, setArrayItems} = useArrayStates();
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        headerStyle: {
+          backgroundColor: 'blue',
+          height: 70,
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontWeight: '900',
+          fontSize: 40,
+        },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
         tabBarLabelStyle: {fontSize: 12},
@@ -32,19 +44,53 @@ function MyTabs() {
             case 'Pending':
               iconName = focused ? 'list' : 'list-outline';
               break;
+            case 'Complete':
+              iconName = focused ? 'list' : 'list-outline';
+              break;
             default:
-              iconName = 'default-icon';
+              iconName = '';
           }
           return <Icon name={iconName} size={size} color={color} />;
         },
       })}>
-      <Tab.Screen name="Available" component={AvailableTasksPage} />
-      <Tab.Screen name="In Progress" component={InProgressTasksPage} />
-      <Tab.Screen name="Pending" component={PendingApprovalTasksPage} />
-      <Tab.Screen name="Complete" component={CompleteTasksPage} />
+      <Tab.Screen
+        name="Available"
+        children={() => (
+          <AvailableTasksPage
+            ArrayItems={arrayItems}
+            SetArrayItems={setArrayItems}
+          />
+        )}
+      />
+      <Tab.Screen
+        name="In Progress"
+        children={() => (
+          <InProgressTasksPage
+            ArrayItems={arrayItems}
+            SetArrayItems={setArrayItems}
+          />
+        )}
+      />
+      <Tab.Screen
+        name="Pending"
+        children={() => (
+          <PendingApprovalTasksPage
+            ArrayItems={arrayItems}
+            SetArrayItems={setArrayItems}
+          />
+        )}
+      />
+      <Tab.Screen name="Complete" 
+      children={() => (
+        <CompleteTasksPage
+          ArrayItems={arrayItems}
+          SetArrayItems={setArrayItems}
+        />
+      )} />
     </Tab.Navigator>
   );
 }
+
 function App(): JSX.Element {
   return (
     <NavigationContainer>

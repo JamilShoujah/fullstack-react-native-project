@@ -1,10 +1,9 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
 import {ScrollView, View} from 'react-native';
 import {DataArrayMap} from '../data/Functions/ArrayMap';
 import {AddNewTask} from '../components/Buttons/AddNewTaskButton';
 import {AddNewTaskPopUp} from '../components/Modals/addTaskModal';
-import {useArrayStates} from '../data/UseStates/ArrayUseState';
+// import {useArrayStates} from '../data/UseStates/ArrayUseState';
 import {useDescriptionValue} from '../data/UseStates/DescriptionInputValueUseState';
 import {useModalVisibility} from '../data/UseStates/modalUseStates';
 import {useTitleValue} from '../data/UseStates/TitleInputValueUseState';
@@ -13,9 +12,13 @@ import {useTaskModalVisibility} from '../data/UseStates/TaskModalUseState';
 import {Tasks} from '../data/types/Task';
 import {useData} from '../data/UseStates/DataUseState';
 import {StatusTypes} from '../data/types/statusTypes';
-export const AvailableTasksPage = () => {
+import {PageInterFace} from '../data/types/mainPagesDisplay';
+export const AvailableTasksPage: React.FC<PageInterFace> = ({
+  ArrayItems,
+  SetArrayItems,
+}) => {
   const {modalVisible, setModalVisibility} = useModalVisibility();
-  const {arrayItems, setArrayItems} = useArrayStates();
+  // const {arrayItems, setArrayItems} = useArrayStates();
   const {titleInputValue, setTitleInputValue} = useTitleValue();
   const {descriptionInputValue, setDescriptionInputValue} =
     useDescriptionValue();
@@ -36,7 +39,7 @@ export const AvailableTasksPage = () => {
       <ScrollView>
         <DataArrayMap
           statusType={StatusTypes.Available}
-          array={arrayItems}
+          array={ArrayItems}
           setTaskModalVisible={setTaskModalVisibility}
           handleData={handleDataFromChild}
         />
@@ -44,6 +47,7 @@ export const AvailableTasksPage = () => {
       <AddNewTask
         func={() => {
           setModalVisibility(true);
+          // console.log(ArrayItems);
         }}
       />
       <AddNewTaskPopUp
@@ -55,7 +59,7 @@ export const AvailableTasksPage = () => {
         changeTitleValue={setTitleInputValue}
         descriptionValue={descriptionInputValue}
         changeDescriptionValue={setDescriptionInputValue}
-        addArrayItems={setArrayItems}
+        addArrayItems={SetArrayItems}
       />
       <TaskModal
         visible={taskModalVisible}
@@ -66,17 +70,17 @@ export const AvailableTasksPage = () => {
         descriptionValue={task.description}
         buttonName={'Start'}
         deleteFunc={() => {
-          const updatedArray = arrayItems.filter(item => item.id !== task.id);
-          setArrayItems(updatedArray);
+          const updatedArray = ArrayItems.filter(item => item.id !== task.id);
+          SetArrayItems(updatedArray);
         }}
         startFunc={() => {
-          const updatedArray = arrayItems.map(item => {
+          const updatedArray = ArrayItems.map(item => {
             if (item.id === task.id) {
               return {...item, status: StatusTypes.InProgress};
             }
             return item;
           });
-          setArrayItems(updatedArray);
+          SetArrayItems(updatedArray);
         }}
       />
     </View>

@@ -2,7 +2,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Text, TouchableOpacity} from 'react-native';
 import {AddBewTaskButtonInt} from '../../data/types/AddNewTaskButton';
-// import {ModalVisibility} from '../../data/Functions/ModalVisibilty';
 
 export const AddNewTask: React.FC<AddBewTaskButtonInt> = ({func}) => {
   return (
@@ -12,7 +11,7 @@ export const AddNewTask: React.FC<AddBewTaskButtonInt> = ({func}) => {
       }}
       style={{
         position: 'absolute',
-        top: 470,
+        top: 450,
         backgroundColor: 'orange',
         padding: 10,
         borderRadius: 30,

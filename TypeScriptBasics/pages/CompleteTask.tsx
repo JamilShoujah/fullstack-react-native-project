@@ -1,17 +1,17 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
 import {ScrollView, View} from 'react-native';
 import {DataArrayMap} from '../data/Functions/ArrayMap';
-import {useArrayStates} from '../data/UseStates/ArrayUseState';
 import {useDescriptionValue} from '../data/UseStates/DescriptionInputValueUseState';
-// import {TaskModal} from '../components/Modals/TaskModal';
 import {useTaskModalVisibility} from '../data/UseStates/TaskModalUseState';
 import {Tasks} from '../data/types/Task';
 import {useData} from '../data/UseStates/DataUseState';
 import {StatusTypes} from '../data/types/statusTypes';
 import {NonAvailableTaskModal} from '../components/Modals/NonAvailableTaskModal';
-export const CompleteTasksPage = () => {
-  const {arrayItems, setArrayItems} = useArrayStates();
+import {PageInterFace} from '../data/types/mainPagesDisplay';
+export const CompleteTasksPage: React.FC<PageInterFace> = ({
+  ArrayItems,
+  SetArrayItems,
+}) => {
   useDescriptionValue();
   const {taskModalVisible, setTaskModalVisibility} = useTaskModalVisibility();
   const {task, setTask} = useData();
@@ -30,7 +30,7 @@ export const CompleteTasksPage = () => {
       <ScrollView>
         <DataArrayMap
           statusType={StatusTypes.Complete}
-          array={arrayItems}
+          array={ArrayItems}
           setTaskModalVisible={setTaskModalVisibility}
           handleData={handleDataFromChild}
         />
@@ -45,22 +45,22 @@ export const CompleteTasksPage = () => {
         PromoteButtonName={'Complete'}
         DemoteButtonName={'Go Back'}
         PromoteButtonFunc={() => {
-          const updatedArray = arrayItems.map(item => {
+          const updatedArray = ArrayItems.map(item => {
             if (item.id === task.id) {
               return {...item, status: StatusTypes.PendingApproval};
             }
             return item;
           });
-          setArrayItems(updatedArray);
+          SetArrayItems(updatedArray);
         }}
         DemoteButtonFunc={function (): void {
-          const updatedArray = arrayItems.map(item => {
+          const updatedArray = ArrayItems.map(item => {
             if (item.id === task.id) {
               return {...item, status: StatusTypes.Available};
             }
             return item;
           });
-          setArrayItems(updatedArray);
+          SetArrayItems(updatedArray);
         }}
       />
     </View>

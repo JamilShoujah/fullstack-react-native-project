@@ -9,8 +9,7 @@ export function InputFieldValues(
     id: Date.now(),
     title: titleValue,
     description: descriptionValue,
-    // status: StatusTypes.Available,
-    status: StatusTypes.Complete,
+    status: StatusTypes.Available,
   };
 
   addArrayItems(currentItems => [...currentItems, newItem]);
