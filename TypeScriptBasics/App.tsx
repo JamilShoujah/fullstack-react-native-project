@@ -8,6 +8,7 @@ import {PendingApprovalTasksPage} from './pages/PendingApprovalTasks';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import {CompleteTasksPage} from './pages/CompleteTask';
 import {useArrayStates} from './data/UseStates/ArrayUseState';
 
@@ -27,7 +28,7 @@ function MyTabs() {
           fontWeight: '900',
           fontSize: 40,
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: 'red',
         tabBarInactiveTintColor: 'gray',
         tabBarLabelStyle: {fontSize: 12},
         tabBarStyle: {backgroundColor: 'white'},
@@ -38,13 +39,13 @@ function MyTabs() {
               iconName = focused ? 'list' : 'list-outline';
               break;
             case 'In Progress':
-              iconName = focused ? 'list' : 'list-outline';
+              iconName = focused ? 'logo-playstation' : 'logo-playstation';
               break;
             case 'Pending':
-              iconName = focused ? 'list' : 'list-outline';
+              iconName = focused ? 'timer' : 'timer';
               break;
             case 'Complete':
-              iconName = focused ? 'list' : 'list-outline';
+              iconName = focused ? 'checkmark-circle' : 'checkmark-circle';
               break;
             default:
               iconName = '';
