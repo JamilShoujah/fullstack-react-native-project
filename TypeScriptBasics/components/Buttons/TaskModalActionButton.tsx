@@ -6,10 +6,11 @@ import {ModalCustomButtonFunctionality} from '../../data/types/ModalCustomButton
 export const CustomModalButton: React.FC<ModalCustomButtonFunctionality> = ({
   func,
   name,
+  color,
 }) => (
   <TouchableOpacity
     style={{
-      backgroundColor: 'green',
+      backgroundColor: color,
       borderRadius: 10,
       padding: 10,
       margin: 5,

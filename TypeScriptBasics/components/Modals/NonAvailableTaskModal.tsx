@@ -1,19 +1,21 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 import {Modal, Text, View} from 'react-native';
-import {TaskDetailsModal} from '../../data/types/TaskDetailsModal';
+import {CustomModalTypes} from '../../data/types/CustomModalTypes';
+
 import {CloseModalButton} from '../Buttons/closeButton';
-import {DeleteModalButton} from '../Buttons/DeleteButton';
+// import {DeleteModalButton} from '../Buttons/DeleteButton';
 import {CustomModalButton} from '../Buttons/TaskModalActionButton';
 
-export const TaskModal: React.FC<TaskDetailsModal> = ({
+export const NonAvailableTaskModal: React.FC<CustomModalTypes> = ({
   visible,
   onclose,
   titleValue,
   descriptionValue,
-  buttonName,
-  deleteFunc,
-  startFunc,
+  PromoteButtonName,
+  PromoteButtonFunc,
+  DemoteButtonName,
+  DemoteButtonFunc,
 }) => {
   return (
     <Modal transparent={true} visible={visible}>
@@ -64,18 +66,20 @@ export const TaskModal: React.FC<TaskDetailsModal> = ({
             {descriptionValue}
           </Text>
           <View style={{flexDirection: 'row'}}>
-            <DeleteModalButton
-              func={() => {
+            <CustomModalButton
+              func={function (): void {
                 onclose();
-                deleteFunc();
+                DemoteButtonFunc();
               }}
+              name={DemoteButtonName}
+              color={'red'}
             />
             <CustomModalButton
               func={function (): void {
                 onclose();
-                startFunc();
+                PromoteButtonFunc();
               }}
-              name={buttonName}
+              name={PromoteButtonName}
               color={'green'}
             />
           </View>

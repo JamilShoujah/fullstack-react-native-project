@@ -12,7 +12,7 @@ export const AddNewTask: React.FC<AddBewTaskButtonInt> = ({func}) => {
       }}
       style={{
         position: 'absolute',
-        bottom: 10,
+        top: 470,
         backgroundColor: 'orange',
         padding: 10,
         borderRadius: 30,
