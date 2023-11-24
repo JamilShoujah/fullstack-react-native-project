@@ -51,7 +51,7 @@ export const MarketItemDisplay: React.FC<MarketItemDisplayInterface> = ({
             </Text>
           )}
         </Observer>
-        <Text style={{color: 'red', fontWeight: '900'}}>
+        <Text style={{color: 'orangered', fontWeight: '900'}}>
           ${MarketItem.Price}
         </Text>
       </View>

@@ -32,8 +32,12 @@ export const ItemModal = observer(() => {
             elevation: 5,
             width: '80%',
           }}>
-          <TouchableOpacity style={{position: 'absolute', top: 10, right: 10}}>
-            <EntypoIcon name="cross" size={30} color="red" />
+          <TouchableOpacity
+            style={{position: 'absolute', top: 10, right: 10}}
+            onPress={() => {
+              ModalVisible.CloseModal();
+            }}>
+            <EntypoIcon name="cross" size={30} color="orangered" />
           </TouchableOpacity>
           <Text
             style={{
