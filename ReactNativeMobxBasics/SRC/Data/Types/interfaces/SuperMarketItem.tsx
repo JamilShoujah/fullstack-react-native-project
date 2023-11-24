@@ -1,4 +1,4 @@
-import {ItemCategory} from './ItemCategory';
+import {ItemCategory} from '../Enums/ItemCategory';
 
 export interface SuperMarketItem {
   Icon: string;
