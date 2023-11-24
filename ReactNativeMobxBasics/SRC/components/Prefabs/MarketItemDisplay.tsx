@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
+import {Observer} from 'mobx-react';
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
+// import {supermarketItemsStore} from '../../Data/Store/SuperMarketArrayStore';
 import {MarketItemDisplayInterface} from '../../Data/Types/interfaces/MarketItemDisplayInterface';
 
 export const MarketItemDisplay: React.FC<MarketItemDisplayInterface> = ({
@@ -9,8 +11,7 @@ export const MarketItemDisplay: React.FC<MarketItemDisplayInterface> = ({
   return (
     <TouchableOpacity
       onPress={() => {
-        // remove when done
-        // MarketItem.AvailableQuantity -= 1;
+        // supermarketItemsStore.UpdateQuantity(MarketItem.id);
         // console.log(MarketItem.AvailableQuantity);
       }}
       style={{
@@ -27,19 +28,28 @@ export const MarketItemDisplay: React.FC<MarketItemDisplayInterface> = ({
       }}>
       <Image
         source={{uri: MarketItem.Icon}}
-        style={{width: 100, height: 100, borderRadius: 10, borderWidth: 2}}
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: 10,
+          borderWidth: 2,
+          margin: 10,
+        }}
       />
       <View style={{flexDirection: 'row'}}>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 20,
-            flexWrap: 'wrap',
-            marginRight: 10,
-          }}>
-          {MarketItem.Name}
-        </Text>
-        <Text style={{color: 'red', fontSize: 20, fontWeight: '900'}}>
+        <Observer>
+          {() => (
+            <Text
+              style={{
+                color: 'black',
+                flexWrap: 'wrap',
+                marginRight: 10,
+              }}>
+              {MarketItem.Name}
+            </Text>
+          )}
+        </Observer>
+        <Text style={{color: 'red', fontWeight: '900'}}>
           ${MarketItem.Price}
         </Text>
       </View>
