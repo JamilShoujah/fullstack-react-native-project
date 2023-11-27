@@ -5,22 +5,75 @@ import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class SuperMarketArray {
   SuperMarketArrayItems: SuperMarketItem[] = SuperMarketItems;
+  CartArrayItems: SuperMarketItem[] = [];
+  DefaultQuantity: number = 0;
 
   constructor() {
     makeObservable(this, {
       SuperMarketArrayItems: observable,
+      CartArrayItems: observable,
       Count: computed,
-      UpdateQuantity: action,
+      AddItemToCart: action,
+      RemoveItemfromCart: action,
+      CancelPurchase: action,
+      AddToCart: action,
     });
   }
   get Count() {
     return this.SuperMarketArrayItems.length;
   }
 
-  UpdateQuantity(itemId: number) {
+  AddItemToCart(itemId: number) {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     if (item) {
-      item.AvailableQuantity -= 1;
+      this.DefaultQuantity = item.AvailableQuantity;
+      if (item.AvailableQuantity > 0) {
+        item.AvailableQuantity -= 1;
+        item.InCartQuantity += 1;
+      } else {
+        console.log('No more items');
+      }
+    }
+  }
+
+  RemoveItemfromCart(itemId: number) {
+    const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
+    if (item) {
+      if (item.InCartQuantity > 0) {
+        item.AvailableQuantity += 1;
+        item.InCartQuantity -= 1;
+      } else {
+        console.log('No items in cart');
+      }
+    }
+  }
+
+  // feeha bug that i cant figure out i will leave it till tomorrow
+  // bug => l incartquantity ma 3am tirja3 lal original quantity when i click cancel
+  CancelPurchase(itemId: number) {
+    const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
+    const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
+    if (item) {
+      item.AvailableQuantity = item.AvailableQuantity;
+      if (InCartItem) {
+        item.InCartQuantity = InCartItem.InCartQuantity;
+      }
+    }
+  }
+
+  AddToCart(itemId: number) {
+    const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
+    const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
+    if (item && item.InCartQuantity <= 0) {
+      const index = this.CartArrayItems.findIndex(item => item.id === itemId);
+      this.CartArrayItems.splice(index, 1);
+    }
+    if (item && item.InCartQuantity > 0) {
+      if (InCartItem) {
+        InCartItem.InCartQuantity = item.InCartQuantity;
+      } else {
+        this.CartArrayItems.push(item);
+      }
     }
   }
 }

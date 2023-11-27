@@ -1,7 +1,9 @@
 import {action, makeObservable, observable} from 'mobx';
+import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class ModalVisibilityClass {
   isOpen: boolean = false;
+  MarketItem!: SuperMarketItem;
 
   constructor() {
     makeObservable(this, {
@@ -11,7 +13,8 @@ class ModalVisibilityClass {
     });
   }
 
-  OpenModal() {
+  OpenModal(item: SuperMarketItem) {
+    this.MarketItem = item;
     this.isOpen = true;
   }
 

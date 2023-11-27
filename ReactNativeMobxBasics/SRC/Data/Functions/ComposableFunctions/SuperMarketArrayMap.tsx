@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
-import {ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import React from 'react';
 import {MarketItemDisplay} from '../../../components/Prefabs/MarketItemDisplay';
 import {MarketArrayItemMaInterface} from '../../Types/interfaces/MarketArrayMapInterface';
 import {SuperMarketItem} from '../../Types/interfaces/SuperMarketItem';
+import {ItemModal} from '../../../components/Modals/ItemModal';
 
 export const SuperMarketItemsMap: React.FC<MarketArrayItemMaInterface> = ({
   Category,
@@ -20,7 +21,10 @@ export const SuperMarketItemsMap: React.FC<MarketArrayItemMaInterface> = ({
         justifyContent: 'space-around',
       }}>
       {myarray.map(MItem => (
-        <MarketItemDisplay key={MItem.id} MarketItem={MItem} />
+        <View key={MItem.id} style={{width: '50%'}}>
+          <MarketItemDisplay MarketItem={MItem} />
+          <ItemModal />
+        </View>
       ))}
     </ScrollView>
   );

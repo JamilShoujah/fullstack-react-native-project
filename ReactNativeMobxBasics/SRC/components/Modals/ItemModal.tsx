@@ -1,13 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
 import React from 'react';
-import {Modal, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Modal, Text, View} from 'react-native';
 import {ModalVisible} from '../../Data/Store/ModalVisibileStore';
-import EntypoIcon from 'react-native-vector-icons/Entypo';
+import {ModalBottom} from '../Prefabs/ModalBottom';
+import {ModalBody} from '../Prefabs/ModalItemBody';
+import {CloseButton} from '../Prefabs/XButton';
 
 export const ItemModal = observer(() => {
   return (
-    <Modal transparent={true} visible={ModalVisible.isOpen}>
+    <Modal
+      transparent={true}
+      visible={ModalVisible.isOpen}
+      onRequestClose={() => ModalVisible.CloseModal}>
       <View
         style={{
           flex: 1,
@@ -32,22 +37,26 @@ export const ItemModal = observer(() => {
             elevation: 5,
             width: '80%',
           }}>
-          <TouchableOpacity
-            style={{position: 'absolute', top: 10, right: 10}}
-            onPress={() => {
-              ModalVisible.CloseModal();
-            }}>
-            <EntypoIcon name="cross" size={30} color="orangered" />
-          </TouchableOpacity>
+          <CloseButton />
+          <Image
+            source={{uri: ModalVisible.MarketItem?.Icon}}
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 10,
+              borderWidth: 2,
+              margin: 10,
+            }}
+          />
           <Text
             style={{
               textAlign: 'center',
               fontSize: 30,
             }}>
-            Hi
+            {ModalVisible.MarketItem?.Name}
           </Text>
-          {/* <View style={{flexDirection: 'row'}}>
-            </View> */}
+          <ModalBody />
+          <ModalBottom />
         </View>
       </View>
     </Modal>
