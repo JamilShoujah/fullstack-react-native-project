@@ -1,5 +1,5 @@
 import {SuperMarketItem} from './SuperMarketItem';
 
-export interface MarketArrayItemMaInterface {
+export interface MyCartArrayItemMaInterface {
   ItemsArray: SuperMarketItem[];
 }

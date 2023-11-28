@@ -8,5 +8,5 @@ export function totalPriceCalc(
     const discountAmount: number = total * (discount / 100);
     total -= discountAmount;
   }
-    return parseFloat(total.toFixed(2));
+  return parseFloat(total.toFixed(2));
 }
