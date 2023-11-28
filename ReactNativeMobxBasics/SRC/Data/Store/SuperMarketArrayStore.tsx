@@ -28,7 +28,6 @@ class SuperMarketArray {
     if (item) {
       this.DefaultQuantity = item.AvailableQuantity;
       if (item.AvailableQuantity > 0) {
-        item.AvailableQuantity -= 1;
         item.InCartQuantity += 1;
       } else {
         console.log('No more items');
@@ -40,7 +39,6 @@ class SuperMarketArray {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     if (item) {
       if (item.InCartQuantity > 0) {
-        item.AvailableQuantity += 1;
         item.InCartQuantity -= 1;
       } else {
         console.log('No items in cart');
@@ -48,8 +46,6 @@ class SuperMarketArray {
     }
   }
 
-  // feeha bug that i cant figure out i will leave it till tomorrow
-  // bug => l incartquantity ma 3am tirja3 lal original quantity when i click cancel
   CancelPurchase(itemId: number) {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
@@ -69,6 +65,8 @@ class SuperMarketArray {
       this.CartArrayItems.splice(index, 1);
     }
     if (item && item.InCartQuantity > 0) {
+      item.AvailableQuantity -= item.InCartQuantity;
+      item.InCartQuantity = 0;
       if (InCartItem) {
         InCartItem.InCartQuantity = item.InCartQuantity;
       } else {

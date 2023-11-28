@@ -67,7 +67,6 @@ export const ModalBottom = observer(() => {
         <TouchableOpacity
           onPress={() => {
             supermarketItemsStore.AddToCart(ModalVisible.MarketItem.id);
-            console.log(supermarketItemsStore.CartArrayItems);
             ModalVisible.CloseModal();
           }}
           style={{
