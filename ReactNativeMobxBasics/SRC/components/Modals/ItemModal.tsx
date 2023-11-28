@@ -1,10 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
 import React from 'react';
-import {Image, Modal, Text, View} from 'react-native';
+import {Modal, View} from 'react-native';
 import {ModalVisible} from '../../Data/Store/ModalVisibileStore';
 import {ModalBottom} from '../Prefabs/ModalBottom';
 import {ModalBody} from '../Prefabs/ModalItemBody';
+import {ModalTop} from '../Prefabs/ModalTop';
 import {CloseButton} from '../Prefabs/XButton';
 
 export const ItemModal = observer(() => {
@@ -38,23 +39,7 @@ export const ItemModal = observer(() => {
             width: '80%',
           }}>
           <CloseButton />
-          <Image
-            source={{uri: ModalVisible.MarketItem?.Icon}}
-            style={{
-              width: 100,
-              height: 100,
-              borderRadius: 10,
-              borderWidth: 2,
-              margin: 10,
-            }}
-          />
-          <Text
-            style={{
-              textAlign: 'center',
-              fontSize: 30,
-            }}>
-            {ModalVisible.MarketItem?.Name}
-          </Text>
+          <ModalTop />
           <ModalBody />
           <ModalBottom />
         </View>
