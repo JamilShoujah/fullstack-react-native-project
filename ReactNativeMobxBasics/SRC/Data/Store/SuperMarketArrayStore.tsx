@@ -6,8 +6,7 @@ import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 class SuperMarketArray {
   SuperMarketArrayItems: SuperMarketItem[] = SuperMarketItems;
   CartArrayItems: SuperMarketItem[] = [];
-  DefaultQuantity: number = 0;
-
+  count: number = 0;
   constructor() {
     makeObservable(this, {
       SuperMarketArrayItems: observable,
@@ -26,7 +25,6 @@ class SuperMarketArray {
   AddItemToCart(itemId: number) {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     if (item) {
-      this.DefaultQuantity = item.AvailableQuantity;
       if (item.AvailableQuantity > 0) {
         item.InCartQuantity += 1;
       } else {
@@ -40,6 +38,7 @@ class SuperMarketArray {
     if (item) {
       if (item.InCartQuantity > 0) {
         item.InCartQuantity -= 1;
+        this.count++;
       } else {
         console.log('No items in cart');
       }
@@ -50,7 +49,6 @@ class SuperMarketArray {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
     if (item) {
-      item.AvailableQuantity = item.AvailableQuantity;
       if (InCartItem) {
         item.InCartQuantity = InCartItem.InCartQuantity;
       }
@@ -60,16 +58,14 @@ class SuperMarketArray {
   AddToCart(itemId: number) {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
-    if (item && item.InCartQuantity <= 0) {
+    if (item && InCartItem && InCartItem.InCartQuantity <= 0) {
       const index = this.CartArrayItems.findIndex(item => item.id === itemId);
+      item.AvailableQuantity += this.count;
       this.CartArrayItems.splice(index, 1);
     }
     if (item && item.InCartQuantity > 0) {
       item.AvailableQuantity -= item.InCartQuantity;
-      item.InCartQuantity = 0;
-      if (InCartItem) {
-        InCartItem.InCartQuantity = item.InCartQuantity;
-      } else {
+      if (!InCartItem) {
         this.CartArrayItems.push(item);
       }
     }
