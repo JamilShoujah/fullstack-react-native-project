@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import {action, makeObservable, observable} from 'mobx';
+import {action, computed, makeObservable, observable} from 'mobx';
 import {SuperMarketItems} from '../Arrays/SuperMarketItems';
+import {CostArrayObject} from '../Types/interfaces/CostArrayObject';
 import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class SuperMarketArray {
@@ -9,6 +10,7 @@ class SuperMarketArray {
   ItemCounter: number = 0;
   count: number = 0;
   defaultvalue: number = 0;
+  costArray: CostArrayObject[] = [];
   constructor() {
     makeObservable(this, {
       SuperMarketArrayItems: observable,
@@ -18,6 +20,8 @@ class SuperMarketArray {
       RemoveItemfromCart: action,
       CancelPurchase: action,
       AddtoCart: action,
+      costArray: observable,
+      TotalCost: computed,
     });
   }
 
@@ -59,7 +63,7 @@ class SuperMarketArray {
 
   AddtoCart(itemId: number) {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
-    console.log('test');
+    const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
     if (this.CartArrayItems.length === 0) {
       if (item) {
         const newItem = item;
@@ -69,13 +73,29 @@ class SuperMarketArray {
         // console.log(this.CartArrayItems);
       }
     } else {
-      const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
-      if (InCartItem && item) {
-        InCartItem.InCartQuantity += this.ItemCounter;
-        item.AvailableQuantity -= this.ItemCounter;
+      if (item) {
+        if (InCartItem) {
+          InCartItem.InCartQuantity += this.ItemCounter;
+          item.AvailableQuantity -= this.ItemCounter;
+        }
+        if (!InCartItem) {
+          const newItem = item;
+          newItem.InCartQuantity = this.ItemCounter;
+          this.CartArrayItems.push(newItem);
+          item.AvailableQuantity -= this.ItemCounter;
+        }
       }
     }
     this.ItemCounter = 0;
+  }
+
+  get TotalCost() {
+    // console.log(this.costArray);
+    const total = this.costArray.reduce(
+      (accumulator, currentObject) => accumulator + currentObject.price,
+      0,
+    );
+    return total;
   }
 }
 

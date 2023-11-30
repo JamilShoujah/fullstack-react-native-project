@@ -26,24 +26,26 @@ export const TableItemBody: React.FC<TableItemBodyInterface> = observer(
           <Text>{MItem.Name}</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text style={{fontWeight: '900'}}>{InCartItem?.InCartQuantity}</Text>
+          <Text>{InCartItem?.InCartQuantity} itm</Text>
         </View>
         <View
           style={{
             width: '20%',
             alignItems: 'flex-end',
           }}>
-          <Text>{MItem.Price}</Text>
+          <Text>${MItem.Price}</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text>{MItem.DiscountPercentage}</Text>
+          <Text>{MItem.DiscountPercentage}%</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
           <Text>
+            $
             {totalPriceCalc(
               MItem.Price,
               MItem.InCartQuantity,
               MItem.DiscountPercentage,
+              MItem.id,
             )}
           </Text>
         </View>

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
 import {supermarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
@@ -11,6 +11,12 @@ export const HomePage = () => {
       <MyCartItemMapFunctions
         ItemsArray={supermarketItemsStore.CartArrayItems}
       />
+      <TouchableOpacity
+        onPress={() => {
+          console.log(supermarketItemsStore.TotalCost);
+        }}>
+        <Text>Press me</Text>
+      </TouchableOpacity>
     </View>
   );
 };
