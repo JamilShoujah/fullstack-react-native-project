@@ -33,7 +33,7 @@ export const ModalBottom = observer(() => {
 
         <View style={{backgroundColor: 'white', borderRadius: 10, margin: 10}}>
           <Text style={{fontSize: 35, padding: 10}}>
-            {ModalVisible.MarketItem.InCartQuantity}
+            {supermarketItemsStore.ItemCounter}
           </Text>
         </View>
         <TouchableOpacity
@@ -51,33 +51,17 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            supermarketItemsStore.CancelPurchase(ModalVisible.MarketItem.id);
-            ModalVisible.CloseModal();
-          }}
-          style={{
-            backgroundColor: 'red',
-            padding: 10,
-            borderRadius: 10,
-            width: '40%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{color: 'white'}}>Cancel</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            supermarketItemsStore.AddToCart(ModalVisible.MarketItem.id);
+            supermarketItemsStore.AddtoCart(ModalVisible.MarketItem.id);
             ModalVisible.CloseModal();
           }}
           style={{
             backgroundColor: 'green',
             padding: 10,
             borderRadius: 10,
-            width: '40%',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text style={{color: 'white'}}>Add 2 Cart</Text>
+          <Text style={{color: 'white'}}>Update Cart</Text>
         </TouchableOpacity>
       </View>
     </View>
