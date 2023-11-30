@@ -22,6 +22,7 @@ class SuperMarketArray {
       AddtoCart: action,
       costArray: observable,
       TotalCost: computed,
+      UpdateCostArray: action,
     });
   }
 
@@ -96,6 +97,15 @@ class SuperMarketArray {
       0,
     );
     return total;
+  }
+
+  UpdateCostArray(costObj: CostArrayObject) {
+    const CheckId = this.costArray.find(item => item.id === costObj.id);
+    if (CheckId) {
+      CheckId.price = costObj.price;
+    } else {
+      this.costArray.push(costObj);
+    }
   }
 }
 

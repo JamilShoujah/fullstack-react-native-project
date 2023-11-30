@@ -1,7 +1,5 @@
-// import {supermarketItemsStore} from '../../Store/SuperMarketArrayStore';
-
+import {supermarketItemsStore} from '../../Store/SuperMarketArrayStore';
 import {CostArrayObject} from '../../Types/interfaces/CostArrayObject';
-import {UpdateCostArray} from './UpdateCostArray';
 
 export function totalPriceCalc(
   price: number,
@@ -20,8 +18,6 @@ export function totalPriceCalc(
     id: id,
   };
 
-  // create a new function that takes the object and checks if id is in array
-
-  UpdateCostArray(costObject);
+  supermarketItemsStore.UpdateCostArray(costObject);
   return parseFloat(total.toFixed(2));
 }
