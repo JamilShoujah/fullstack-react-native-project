@@ -11,6 +11,7 @@ class SuperMarketArray {
   count: number = 0;
   defaultvalue: number = 0;
   costArray: CostArrayObject[] = [];
+  Money: number = 1000;
   constructor() {
     makeObservable(this, {
       SuperMarketArrayItems: observable,
@@ -23,6 +24,8 @@ class SuperMarketArray {
       costArray: observable,
       TotalCost: computed,
       UpdateCostArray: action,
+      Money: observable,
+      ConfirmPurchase: action,
     });
   }
 
@@ -101,6 +104,17 @@ class SuperMarketArray {
       CheckId.price = costObj.price;
     } else {
       this.costArray.push(costObj);
+    }
+  }
+
+  ConfirmPurchase(cost: number) {
+    if (cost < this.Money) {
+      console.log('purchase successful');
+      this.Money -= cost;
+      this.CartArrayItems = [];
+      this.costArray = [];
+    } else {
+      console.log('Insufficient Funds');
     }
   }
 }

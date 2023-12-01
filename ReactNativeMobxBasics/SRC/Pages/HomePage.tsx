@@ -5,32 +5,74 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
 import {supermarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 export const HomePage = observer(() => {
   return (
-    <View style={{alignItems: 'center', justifyContent: 'center', padding: 10}}>
-      <TableTopBar />
-      <MyCartItemMapFunctions
-        ItemsArray={supermarketItemsStore.CartArrayItems}
-      />
-      <View
-        style={{
-          right: 0,
-          backgroundColor: 'orangered',
-          width: '100%',
-          padding: 10,
-          margin: 10,
-        }}>
-        <Text style={{color: 'white', fontWeight: '900', fontSize: 30}}>
-          Total: ${supermarketItemsStore.TotalCost.toFixed(2)}
-          {/* Cannot update a component (`_c`) while rendering a different component (`_c`). To locate the bad setState() call inside `_c`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render */}
+    <>
+      <View style={{flexDirection: 'row-reverse'}}>
+        <Text
+          style={{
+            color: 'green',
+            fontWeight: '900',
+            fontSize: 20,
+            padding: 10,
+          }}>
+          $ {supermarketItemsStore.Money.toFixed(2)}
         </Text>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          console.log(supermarketItemsStore.CartArrayItems);
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingHorizontal: 10,
         }}>
-        <Text>Press me</Text>
-      </TouchableOpacity>
-    </View>
+        <TableTopBar />
+        <MyCartItemMapFunctions
+          ItemsArray={supermarketItemsStore.CartArrayItems}
+        />
+        <View
+          style={{
+            right: 0,
+            backgroundColor: 'orangered',
+            width: '100%',
+            paddingHorizontal: 10,
+            margin: 10,
+            flexDirection: 'row-reverse',
+          }}>
+          <Text
+            style={{
+              color: 'white',
+              fontWeight: '900',
+              fontSize: 30,
+            }}>
+            Total: ${supermarketItemsStore.TotalCost.toFixed(2)}
+            {/* Cannot update a component (`_c`) while rendering a different component (`_c`). To locate the bad setState() call inside `_c`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render */}
+          </Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            supermarketItemsStore.ConfirmPurchase(
+              supermarketItemsStore.TotalCost,
+            );
+          }}
+          style={{
+            borderStyle: 'solid',
+            borderWidth: 2,
+            padding: 10,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 10,
+          }}>
+          <Text style={{color: 'black', fontSize: 20}}>Checkout</Text>
+          <Icon
+            name="shopping-cart"
+            size={20}
+            color="black"
+            style={{marginHorizontal: 5}}
+          />
+        </TouchableOpacity>
+      </View>
+    </>
   );
 });
