@@ -12,6 +12,7 @@ class SuperMarketArray {
   defaultvalue: number = 0;
   costArray: CostArrayObject[] = [];
   Money: number = 1000;
+  total: number = 0;
   constructor() {
     makeObservable(this, {
       SuperMarketArrayItems: observable,
@@ -26,6 +27,8 @@ class SuperMarketArray {
       UpdateCostArray: action,
       Money: observable,
       ConfirmPurchase: action,
+      total: observable,
+      setTotalCost: action,
     });
   }
 
@@ -96,6 +99,10 @@ class SuperMarketArray {
       0,
     );
     return total;
+  }
+
+  setTotalCost() {
+    this.total = this.TotalCost;
   }
 
   UpdateCostArray(costObj: CostArrayObject) {

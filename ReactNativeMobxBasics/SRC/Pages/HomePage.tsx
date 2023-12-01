@@ -1,12 +1,24 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
 import {supermarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {autorun} from 'mobx';
 export const HomePage = observer(() => {
+  useEffect(() => {
+    const disposer = autorun(() => {
+      supermarketItemsStore.setTotalCost();
+      console.log('hello');
+    });
+
+    return () => {
+      disposer(); // Clean up the autorun when the component unmounts
+    };
+  }, [JSON.stringify(supermarketItemsStore.CartArrayItems)]);
   return (
     <>
       <View style={{flexDirection: 'row-reverse'}}>
@@ -45,7 +57,7 @@ export const HomePage = observer(() => {
               fontWeight: '900',
               fontSize: 30,
             }}>
-            Total: ${supermarketItemsStore.TotalCost.toFixed(2)}
+            Total: ${supermarketItemsStore.total.toFixed(2)}
             {/* Cannot update a component (`_c`) while rendering a different component (`_c`). To locate the bad setState() call inside `_c`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render */}
           </Text>
         </View>
