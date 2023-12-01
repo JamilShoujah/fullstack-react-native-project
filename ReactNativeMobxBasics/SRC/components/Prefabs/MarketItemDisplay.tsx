@@ -11,7 +11,6 @@ export const MarketItemDisplay: React.FC<MarketItemDisplayInterface> = ({
   return (
     <TouchableOpacity
       onPress={() => {
-        // supermarketItemsStore.UpdateQuantity(MarketItem.id);
         ModalVisible.OpenModal(MarketItem);
       }}
       style={{
