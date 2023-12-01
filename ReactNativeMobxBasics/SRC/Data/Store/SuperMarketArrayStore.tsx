@@ -30,7 +30,6 @@ class SuperMarketArray {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     if (item) {
       if (item.AvailableQuantity > 0) {
-        // item.InCartQuantity += 1;
         this.ItemCounter++;
       } else {
         console.log('No more items');
@@ -42,7 +41,6 @@ class SuperMarketArray {
     const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
     if (item) {
       if (item.InCartQuantity > 0) {
-        // item.InCartQuantity -= 1;
         this.ItemCounter--;
         this.count++;
       } else {
@@ -71,7 +69,6 @@ class SuperMarketArray {
         newItem.InCartQuantity = this.ItemCounter;
         this.CartArrayItems.push(newItem);
         item.AvailableQuantity -= this.ItemCounter;
-        // console.log(this.CartArrayItems);
       }
     } else {
       if (item) {
@@ -91,7 +88,6 @@ class SuperMarketArray {
   }
 
   get TotalCost() {
-    // console.log(this.costArray);
     const total = this.costArray.reduce(
       (accumulator, currentObject) => accumulator + currentObject.price,
       0,
