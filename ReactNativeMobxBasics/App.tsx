@@ -3,7 +3,6 @@ import React from 'react';
 import {SafeAreaView, View} from 'react-native';
 import {TabNavigation} from './SRC/Navigation/TabNavigation';
 import {NavigationContainer} from '@react-navigation/native';
-// import {HomePage} from './Pages/HomePage';
 function App() {
   return (
     <NavigationContainer>
