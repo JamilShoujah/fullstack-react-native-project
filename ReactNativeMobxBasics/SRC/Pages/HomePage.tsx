@@ -12,11 +12,10 @@ export const HomePage = observer(() => {
   useEffect(() => {
     const disposer = autorun(() => {
       supermarketItemsStore.setTotalCost();
-      console.log('hello');
     });
 
     return () => {
-      disposer(); // Clean up the autorun when the component unmounts
+      disposer();
     };
   }, [JSON.stringify(supermarketItemsStore.CartArrayItems)]);
   return (
@@ -58,7 +57,6 @@ export const HomePage = observer(() => {
               fontSize: 30,
             }}>
             Total: ${supermarketItemsStore.total.toFixed(2)}
-            {/* Cannot update a component (`_c`) while rendering a different component (`_c`). To locate the bad setState() call inside `_c`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render */}
           </Text>
         </View>
         <TouchableOpacity
