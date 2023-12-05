@@ -19,7 +19,7 @@ export const HomePage = observer(() => {
     };
   }, [JSON.stringify(supermarketItemsStore.CartArrayItems)]);
   return (
-    <>
+    <View style={{flex: 1}}>
       <View style={{flexDirection: 'row-reverse'}}>
         <Text
           style={{
@@ -83,6 +83,6 @@ export const HomePage = observer(() => {
           />
         </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 });
