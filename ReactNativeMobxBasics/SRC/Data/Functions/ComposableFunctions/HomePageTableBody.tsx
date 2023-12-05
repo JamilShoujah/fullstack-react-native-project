@@ -8,7 +8,7 @@ import {totalPriceCalc} from '../Standard Functions/PriceCalc';
 
 export const TableItemBody: React.FC<ITableItemBodyInterface> = observer(
   ({MItem}) => {
-    const InCartItem = supermarketItemsStore.CartArrayItems.find(
+    const InCartItem = supermarketItemsStore.cartArrayItems.find(
       item => item.id === MItem.id,
     );
 

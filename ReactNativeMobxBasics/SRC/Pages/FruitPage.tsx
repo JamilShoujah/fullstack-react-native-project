@@ -9,7 +9,7 @@ export const FruitPage = () => {
     <View>
       <SuperMarketItemsMap
         Category={ItemCategory.Fruit}
-        ItemsArray={supermarketItemsStore.SuperMarketArrayItems}
+        ItemsArray={supermarketItemsStore.superMarketArrayItems}
       />
     </View>
   );

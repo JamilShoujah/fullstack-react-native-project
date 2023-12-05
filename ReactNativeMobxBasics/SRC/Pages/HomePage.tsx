@@ -17,7 +17,7 @@ export const HomePage = observer(() => {
     return () => {
       disposer();
     };
-  }, [JSON.stringify(supermarketItemsStore.CartArrayItems)]);
+  }, [JSON.stringify(supermarketItemsStore.cartArrayItems)]);
   return (
     <View style={{flex: 1}}>
       <View style={{flexDirection: 'row-reverse'}}>
@@ -28,7 +28,7 @@ export const HomePage = observer(() => {
             fontSize: 20,
             padding: 10,
           }}>
-          $ {supermarketItemsStore.Money.toFixed(2)}
+          $ {supermarketItemsStore.getMoney.toFixed(2)}
         </Text>
       </View>
       <View
@@ -38,7 +38,7 @@ export const HomePage = observer(() => {
           paddingHorizontal: 10,
         }}>
         <TableTopBar />
-        {MyCartItemMapFunctions(supermarketItemsStore.CartArrayItems)}
+        {MyCartItemMapFunctions(supermarketItemsStore.cartArrayItems)}
         <View
           style={{
             right: 0,
@@ -54,7 +54,7 @@ export const HomePage = observer(() => {
               fontWeight: '900',
               fontSize: 30,
             }}>
-            Total: ${supermarketItemsStore.total.toFixed(2)}
+            Total: ${supermarketItemsStore.getTotal.toFixed(2)}
           </Text>
         </View>
         <TouchableOpacity

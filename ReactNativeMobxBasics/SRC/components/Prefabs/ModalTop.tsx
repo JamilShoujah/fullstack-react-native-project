@@ -7,7 +7,7 @@ export const ModalTop = () => {
   return (
     <View>
       <Image
-        source={{uri: ModalVisible.MarketItem?.Icon}}
+        source={{uri: ModalVisible.getMarketItem.Icon}}
         style={{
           width: 100,
           height: 100,
@@ -21,7 +21,7 @@ export const ModalTop = () => {
           textAlign: 'center',
           fontSize: 30,
         }}>
-        {ModalVisible.MarketItem?.Name}
+        {ModalVisible.getMarketItem.Name}
       </Text>
     </View>
   );

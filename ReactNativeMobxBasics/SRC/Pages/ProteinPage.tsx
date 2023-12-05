@@ -9,7 +9,7 @@ export const ProteinPage = () => {
     <View>
       <SuperMarketItemsMap
         Category={ItemCategory.Protein}
-        ItemsArray={supermarketItemsStore.SuperMarketArrayItems}
+        ItemsArray={supermarketItemsStore.superMarketArrayItems}
       />
     </View>
   );

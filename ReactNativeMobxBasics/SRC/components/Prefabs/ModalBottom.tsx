@@ -24,7 +24,7 @@ export const ModalBottom = observer(() => {
         <TouchableOpacity
           onPress={() => {
             supermarketItemsStore.RemoveItemfromCart(
-              ModalVisible.MarketItem.id,
+              ModalVisible.getMarketItem.id,
             );
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
@@ -33,12 +33,12 @@ export const ModalBottom = observer(() => {
 
         <View style={{backgroundColor: 'white', borderRadius: 10, margin: 10}}>
           <Text style={{fontSize: 35, padding: 10}}>
-            {supermarketItemsStore.ItemCounter}
+            {supermarketItemsStore.getItemCounter}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            supermarketItemsStore.AddItemToCart(ModalVisible.MarketItem.id);
+            supermarketItemsStore.AddItemToCart(ModalVisible.getMarketItem.id);
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
           <EntypoIcon name="plus" size={40} color="green" />
@@ -51,8 +51,8 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            supermarketItemsStore.AddtoCart(ModalVisible.MarketItem.id);
-            ModalVisible.CloseModal();
+            supermarketItemsStore.AddtoCart(ModalVisible.getMarketItem.id);
+            ModalVisible.closeModal();
           }}
           style={{
             backgroundColor: 'green',

@@ -1,10 +1,10 @@
-import {action, makeObservable, observable} from 'mobx';
+import {observable, runInAction} from 'mobx';
 import {ItemCategory} from '../Types/Enums/ItemCategory';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class ModalStore {
-  isOpen: boolean = false;
-  MarketItem: ISuperMarketItem = {
+  isOpen = observable.box(false);
+  marketItem = observable.box({
     Icon: '',
     Name: '',
     Price: 0,
@@ -13,24 +13,27 @@ class ModalStore {
     AvailableQuantity: 0,
     InCartQuantity: 0,
     DiscountPercentage: 0,
-  };
+  });
 
-  constructor() {
-    makeObservable(this, {
-      isOpen: observable,
-      MarketItem: observable,
-      OpenModal: action,
-      CloseModal: action,
+  get getIsOpen() {
+    return this.isOpen.get();
+  }
+
+  get getMarketItem() {
+    return this.marketItem.get();
+  }
+
+  openModal(item: ISuperMarketItem) {
+    runInAction(() => {
+      this.marketItem.set(item);
+      this.isOpen.set(true);
     });
   }
 
-  OpenModal(item: ISuperMarketItem) {
-    this.MarketItem = item;
-    this.isOpen = true;
-  }
-
-  CloseModal() {
-    this.isOpen = false;
+  closeModal() {
+    runInAction(() => {
+      this.isOpen.set(false);
+    });
   }
 }
 

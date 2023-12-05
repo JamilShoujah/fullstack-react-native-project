@@ -12,8 +12,8 @@ export const ItemModal = observer(() => {
   return (
     <Modal
       transparent={true}
-      visible={ModalVisible.isOpen}
-      onRequestClose={() => ModalVisible.CloseModal}>
+      visible={ModalVisible.getIsOpen}
+      onRequestClose={() => ModalVisible.closeModal}>
       <View
         style={{
           flex: 1,

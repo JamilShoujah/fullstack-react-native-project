@@ -1,96 +1,101 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import {action, computed, makeObservable, observable} from 'mobx';
+import {observable, runInAction} from 'mobx';
 import {SuperMarketItems} from '../Constants/SuperMarketItems';
 import {ICostArrayObject} from '../Types/interfaces/CostArrayObject';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class SuperMarketArray {
-  SuperMarketArrayItems: ISuperMarketItem[] = SuperMarketItems;
-  CartArrayItems: ISuperMarketItem[] = [];
-  ItemCounter: number = 0;
-  count: number = 0;
-  defaultvalue: number = 0;
-  costArray: ICostArrayObject[] = [];
-  Money: number = 1000;
-  total: number = 0;
-  constructor() {
-    makeObservable(this, {
-      SuperMarketArrayItems: observable,
-      CartArrayItems: observable,
-      ItemCounter: observable,
-      AddItemToCart: action,
-      RemoveItemfromCart: action,
-      CancelPurchase: action,
-      AddtoCart: action,
-      costArray: observable,
-      TotalCost: computed,
-      UpdateCostArray: action,
-      Money: observable,
-      ConfirmPurchase: action,
-      total: observable,
-      setTotalCost: action,
-    });
+  superMarketArrayItems = observable.array<ISuperMarketItem>(SuperMarketItems);
+  cartArrayItems = observable.array<ISuperMarketItem>([]);
+  costArray = observable.array<ICostArrayObject>([]);
+  itemCounter = observable.box(0);
+  count = observable.box(0);
+  defaultValue = observable.box(0);
+  total = observable.box(0);
+  money = observable.box(1000);
+  get getItemCounter() {
+    return this.itemCounter.get();
+  }
+  get getCount() {
+    return this.count.get();
+  }
+  get getDefaultValue() {
+    return this.defaultValue.get();
+  }
+  get getTotal() {
+    return this.total.get();
+  }
+  get getMoney() {
+    return this.money.get();
   }
 
   AddItemToCart(itemId: number) {
-    const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
-    if (item) {
-      if (item.AvailableQuantity > 0) {
-        this.ItemCounter++;
-      } else {
-        console.log('No more items');
+    runInAction(() => {
+      const item = this.superMarketArrayItems.find(item => item.id === itemId);
+      if (item) {
+        if (item.AvailableQuantity > 0) {
+          this.itemCounter.set(this.getItemCounter + 1);
+        } else {
+          console.log('No more items');
+        }
       }
-    }
+    });
   }
 
   RemoveItemfromCart(itemId: number) {
-    const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
-    if (item) {
-      if (item.InCartQuantity > 0) {
-        this.ItemCounter--;
-        this.count++;
-      } else {
-        console.log('No items in cart');
+    runInAction(() => {
+      const item = this.superMarketArrayItems.find(item => item.id === itemId);
+      if (item) {
+        if (item.InCartQuantity > 0) {
+          this.itemCounter.set(this.getItemCounter - 1);
+          this.count.set(this.getCount + 1);
+        } else {
+          console.log('No items in cart');
+        }
       }
-    }
+    });
   }
 
   CancelPurchase(itemId: number) {
-    const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
-    const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
-    if (item) {
-      this.ItemCounter = 0;
-      if (InCartItem) {
-        item.InCartQuantity = InCartItem.InCartQuantity;
+    runInAction(() => {
+      const item = this.superMarketArrayItems.find(item => item.id === itemId);
+      const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
+      if (item) {
+        this.itemCounter.set(0);
+        if (InCartItem) {
+          item.InCartQuantity = InCartItem.InCartQuantity;
+        }
       }
-    }
+    });
   }
 
   AddtoCart(itemId: number) {
-    const item = this.SuperMarketArrayItems.find(item => item.id === itemId);
-    const InCartItem = this.CartArrayItems.find(item => item.id === itemId);
-    if (this.CartArrayItems.length === 0) {
-      if (item) {
-        const newItem = item;
-        newItem.InCartQuantity = this.ItemCounter;
-        this.CartArrayItems.push(newItem);
-        item.AvailableQuantity -= this.ItemCounter;
-      }
-    } else {
-      if (item) {
-        if (InCartItem) {
-          InCartItem.InCartQuantity += this.ItemCounter;
-          item.AvailableQuantity -= this.ItemCounter;
-        }
-        if (!InCartItem) {
+    runInAction(() => {
+      const item = this.superMarketArrayItems.find(item => item.id === itemId);
+      const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
+      if (this.cartArrayItems.length === 0) {
+        if (item) {
           const newItem = item;
-          newItem.InCartQuantity = this.ItemCounter;
-          this.CartArrayItems.push(newItem);
-          item.AvailableQuantity -= this.ItemCounter;
+          newItem.InCartQuantity = this.getItemCounter;
+          this.cartArrayItems.push(newItem);
+          item.AvailableQuantity -= this.getItemCounter;
+        }
+      } else {
+        if (item) {
+          if (InCartItem) {
+            InCartItem.InCartQuantity += this.getItemCounter;
+            item.AvailableQuantity -= this.getItemCounter;
+          }
+          if (!InCartItem) {
+            const newItem = item;
+            newItem.InCartQuantity = this.getItemCounter;
+            this.cartArrayItems.push(newItem);
+            item.AvailableQuantity -= this.getItemCounter;
+          }
         }
       }
-    }
-    this.ItemCounter = 0;
+      this.itemCounter.set(0);
+    });
   }
 
   get TotalCost() {
@@ -102,27 +107,33 @@ class SuperMarketArray {
   }
 
   setTotalCost() {
-    this.total = this.TotalCost;
+    runInAction(() => {
+      this.total.set(this.TotalCost);
+    });
   }
 
   UpdateCostArray(costObj: ICostArrayObject) {
-    const CheckId = this.costArray.find(item => item.id === costObj.id);
-    if (CheckId) {
-      CheckId.price = costObj.price;
-    } else {
-      this.costArray.push(costObj);
-    }
+    runInAction(() => {
+      const CheckId = this.costArray.find(item => item.id === costObj.id);
+      if (CheckId) {
+        CheckId.price = costObj.price;
+      } else {
+        this.costArray.push(costObj);
+      }
+    });
   }
 
   ConfirmPurchase(cost: number) {
-    if (cost < this.Money) {
-      console.log('purchase successful');
-      this.Money -= cost;
-      this.CartArrayItems = [];
-      this.costArray = [];
-    } else {
-      console.log('Insufficient Funds');
-    }
+    runInAction(() => {
+      if (cost < this.getMoney) {
+        console.log('purchase successful');
+        this.money.set(this.getMoney - cost);
+        this.cartArrayItems.clear();
+        this.costArray.clear();
+      } else {
+        console.log('Insufficient Funds');
+      }
+    });
   }
 }
 

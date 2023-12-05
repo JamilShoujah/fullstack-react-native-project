@@ -10,8 +10,8 @@ export const CloseButton = () => {
     <TouchableOpacity
       style={{position: 'absolute', top: 10, right: 10}}
       onPress={() => {
-        ModalVisible.CloseModal();
-        supermarketItemsStore.CancelPurchase(ModalVisible.MarketItem.id);
+        ModalVisible.closeModal();
+        supermarketItemsStore.CancelPurchase(ModalVisible.getMarketItem.id);
       }}>
       <EntypoIcon name="cross" size={40} color="orangered" />
     </TouchableOpacity>
