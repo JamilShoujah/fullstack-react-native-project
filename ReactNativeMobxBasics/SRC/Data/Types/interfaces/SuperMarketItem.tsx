@@ -1,6 +1,6 @@
 import {ItemCategory} from '../Enums/ItemCategory';
 
-export interface SuperMarketItem {
+export interface ISuperMarketItem {
   Icon: string;
   Name: string;
   Price: number;

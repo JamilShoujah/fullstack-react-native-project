@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {action, computed, makeObservable, observable} from 'mobx';
 import {SuperMarketItems} from '../Constants/SuperMarketItems';
-import {CostArrayObject} from '../Types/interfaces/CostArrayObject';
-import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
+import {ICostArrayObject} from '../Types/interfaces/CostArrayObject';
+import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class SuperMarketArray {
-  SuperMarketArrayItems: SuperMarketItem[] = SuperMarketItems;
-  CartArrayItems: SuperMarketItem[] = [];
+  SuperMarketArrayItems: ISuperMarketItem[] = SuperMarketItems;
+  CartArrayItems: ISuperMarketItem[] = [];
   ItemCounter: number = 0;
   count: number = 0;
   defaultvalue: number = 0;
-  costArray: CostArrayObject[] = [];
+  costArray: ICostArrayObject[] = [];
   Money: number = 1000;
   total: number = 0;
   constructor() {
@@ -105,7 +105,7 @@ class SuperMarketArray {
     this.total = this.TotalCost;
   }
 
-  UpdateCostArray(costObj: CostArrayObject) {
+  UpdateCostArray(costObj: ICostArrayObject) {
     const CheckId = this.costArray.find(item => item.id === costObj.id);
     if (CheckId) {
       CheckId.price = costObj.price;

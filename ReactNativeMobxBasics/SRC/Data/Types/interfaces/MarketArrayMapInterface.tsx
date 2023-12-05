@@ -1,7 +1,7 @@
 import {ItemCategory} from '../Enums/ItemCategory';
-import {SuperMarketItem} from './SuperMarketItem';
+import {ISuperMarketItem} from './SuperMarketItem';
 
-export interface MarketArrayItemMaInterface {
+export interface IMarketArrayItemMaInterface {
   Category: ItemCategory;
-  ItemsArray: SuperMarketItem[];
+  ItemsArray: ISuperMarketItem[];
 }

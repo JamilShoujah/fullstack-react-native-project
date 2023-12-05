@@ -1,10 +1,10 @@
 import {action, makeObservable, observable} from 'mobx';
 import {ItemCategory} from '../Types/Enums/ItemCategory';
-import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
+import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class ModalVisibilityClass {
   isOpen: boolean = false;
-  MarketItem: SuperMarketItem = {
+  MarketItem: ISuperMarketItem = {
     Icon: '',
     Name: '',
     Price: 0,
@@ -24,7 +24,7 @@ class ModalVisibilityClass {
     });
   }
 
-  OpenModal(item: SuperMarketItem) {
+  OpenModal(item: ISuperMarketItem) {
     this.MarketItem = item;
     this.isOpen = true;
   }

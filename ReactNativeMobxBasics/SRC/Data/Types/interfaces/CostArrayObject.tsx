@@ -1,4 +1,4 @@
-export interface CostArrayObject {
+export interface ICostArrayObject {
   price: number;
   id: number;
 }

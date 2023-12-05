@@ -3,10 +3,10 @@
 import {observer} from 'mobx-react-lite';
 import {View, Text} from 'react-native';
 import {supermarketItemsStore} from '../../Store/SuperMarketArrayStore';
-import {TableItemBodyInterface} from '../../Types/interfaces/TableItemBodyInterface';
+import {ITableItemBodyInterface} from '../../Types/interfaces/TableItemBodyInterface';
 import {totalPriceCalc} from '../Standard Functions/PriceCalc';
 
-export const TableItemBody: React.FC<TableItemBodyInterface> = observer(
+export const TableItemBody: React.FC<ITableItemBodyInterface> = observer(
   ({MItem}) => {
     const InCartItem = supermarketItemsStore.CartArrayItems.find(
       item => item.id === MItem.id,

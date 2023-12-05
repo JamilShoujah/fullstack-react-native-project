@@ -1,3 +1,3 @@
-export interface MarketItemInterface {
+export interface IMarketItemInterface {
   MarketItemName: string;
 }

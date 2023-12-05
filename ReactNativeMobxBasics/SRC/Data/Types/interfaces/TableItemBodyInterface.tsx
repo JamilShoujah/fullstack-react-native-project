@@ -1,5 +1,5 @@
-import {SuperMarketItem} from './SuperMarketItem';
+import {ISuperMarketItem} from './SuperMarketItem';
 
-export interface TableItemBodyInterface {
-  MItem: SuperMarketItem;
+export interface ITableItemBodyInterface {
+  MItem: ISuperMarketItem;
 }
