@@ -3,9 +3,9 @@ import {Observer} from 'mobx-react';
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {ModalVisible} from '../../Data/Store/ModalVisibileStore';
-import {MarketItemDisplayInterface} from '../../Data/Types/interfaces/MarketItemDisplayInterface';
+import {IMarketItemDisplayInterface} from '../../Data/Types/interfaces/MarketItemDisplayInterface';
 
-export const MarketItemDisplay: React.FC<MarketItemDisplayInterface> = ({
+export const MarketItemDisplay: React.FC<IMarketItemDisplayInterface> = ({
   MarketItem,
 }) => {
   return (

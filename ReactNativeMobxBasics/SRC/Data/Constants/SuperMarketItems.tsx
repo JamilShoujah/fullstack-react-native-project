@@ -1,7 +1,7 @@
 import {ItemCategory} from '../Types/Enums/ItemCategory';
-import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
+import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
-export const SuperMarketItems: SuperMarketItem[] = [
+export const SuperMarketItems: ISuperMarketItem[] = [
   {
     Icon: 'https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600nw-1727544364.jpg',
     Name: 'Apple',

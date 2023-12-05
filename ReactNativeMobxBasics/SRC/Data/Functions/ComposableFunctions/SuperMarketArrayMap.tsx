@@ -2,15 +2,15 @@
 import {ScrollView, View} from 'react-native';
 import React from 'react';
 import {MarketItemDisplay} from '../../../components/Prefabs/MarketItemDisplay';
-import {MarketArrayItemMaInterface} from '../../Types/interfaces/MarketArrayMapInterface';
-import {SuperMarketItem} from '../../Types/interfaces/SuperMarketItem';
+import {IMarketArrayItemMaInterface} from '../../Types/interfaces/MarketArrayMapInterface';
+import {ISuperMarketItem} from '../../Types/interfaces/SuperMarketItem';
 import {ItemModal} from '../../../components/Modals/ItemModal';
 
-export const SuperMarketItemsMap: React.FC<MarketArrayItemMaInterface> = ({
+export const SuperMarketItemsMap: React.FC<IMarketArrayItemMaInterface> = ({
   Category,
   ItemsArray,
 }) => {
-  const myarray: SuperMarketItem[] = ItemsArray.filter(
+  const myarray: ISuperMarketItem[] = ItemsArray.filter(
     item => item.Category === Category,
   );
   return (

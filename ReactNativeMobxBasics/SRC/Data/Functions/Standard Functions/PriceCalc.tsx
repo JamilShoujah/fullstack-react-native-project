@@ -1,5 +1,5 @@
 import {supermarketItemsStore} from '../../Store/SuperMarketArrayStore';
-import {CostArrayObject} from '../../Types/interfaces/CostArrayObject';
+import {ICostArrayObject} from '../../Types/interfaces/CostArrayObject';
 
 export function totalPriceCalc(
   price: number,
@@ -13,7 +13,7 @@ export function totalPriceCalc(
     total -= discountAmount;
   }
 
-  const costObject: CostArrayObject = {
+  const costObject: ICostArrayObject = {
     price: total,
     id: id,
   };
