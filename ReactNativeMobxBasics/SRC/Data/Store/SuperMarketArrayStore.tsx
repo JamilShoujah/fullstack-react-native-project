@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {action, computed, makeObservable, observable} from 'mobx';
-import {SuperMarketItems} from '../Arrays/SuperMarketItems';
+import {SuperMarketItems} from '../Constants/SuperMarketItems';
 import {CostArrayObject} from '../Types/interfaces/CostArrayObject';
 import {SuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 

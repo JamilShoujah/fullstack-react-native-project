@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
+import {HOME_PAGE_TABLE_ENTRIES} from '../../Constants/HomePageTableBarEntries';
 import {View, Text} from 'react-native';
 export const TableTopBar = () => {
   return (
@@ -11,11 +12,11 @@ export const TableTopBar = () => {
         width: '100%',
         padding: 10,
       }}>
-      <Text style={{color: 'white', fontWeight: '900'}}>Product</Text>
-      <Text style={{color: 'white', fontWeight: '900'}}>Quantity</Text>
-      <Text style={{color: 'white', fontWeight: '900'}}>Price</Text>
-      <Text style={{color: 'white', fontWeight: '900'}}>Discount</Text>
-      <Text style={{color: 'white', fontWeight: '900'}}>Total</Text>
+      {HOME_PAGE_TABLE_ENTRIES.map(item => (
+        <Text key={item} style={{color: 'white', fontWeight: '900'}}>
+          {item}
+        </Text>
+      ))}
     </View>
   );
 };
