@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 import {View, Image, Text} from 'react-native';
-import {ModalVisible} from '../../Data/Store/ModalVisibileStore';
+import {ModalVisible} from '../../Data/Store/ModalStore';
 
 export const ModalTop = () => {
   return (

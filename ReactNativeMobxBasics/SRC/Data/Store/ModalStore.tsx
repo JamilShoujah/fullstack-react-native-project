@@ -2,7 +2,7 @@ import {action, makeObservable, observable} from 'mobx';
 import {ItemCategory} from '../Types/Enums/ItemCategory';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
-class ModalVisibilityClass {
+class ModalStore {
   isOpen: boolean = false;
   MarketItem: ISuperMarketItem = {
     Icon: '',
@@ -34,4 +34,4 @@ class ModalVisibilityClass {
   }
 }
 
-export const ModalVisible = new ModalVisibilityClass();
+export const ModalVisible = new ModalStore();
