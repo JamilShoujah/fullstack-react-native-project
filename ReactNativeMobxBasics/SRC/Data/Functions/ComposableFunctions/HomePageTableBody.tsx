@@ -12,6 +12,21 @@ export const TableItemBody: React.FC<TableItemBodyInterface> = observer(
       item => item.id === MItem.id,
     );
 
+    const {
+      Name: itemName,
+      Price: itemPrice,
+      DiscountPercentage: itemDiscountPercentage,
+    } = MItem;
+
+    const inCartQuantity = InCartItem?.InCartQuantity;
+
+    const totalPrice = totalPriceCalc(
+      MItem.Price,
+      MItem.InCartQuantity,
+      MItem.DiscountPercentage,
+      MItem.id,
+    );
+
     return (
       <View
         style={{
@@ -23,31 +38,23 @@ export const TableItemBody: React.FC<TableItemBodyInterface> = observer(
           alignItems: 'center',
         }}>
         <View style={{width: '20%'}}>
-          <Text>{MItem.Name}</Text>
+          <Text>{itemName}</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text>{InCartItem?.InCartQuantity} itm</Text>
+          <Text>{inCartQuantity} itm</Text>
         </View>
         <View
           style={{
             width: '20%',
             alignItems: 'flex-end',
           }}>
-          <Text>${MItem.Price}</Text>
+          <Text>${itemPrice}</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text>{MItem.DiscountPercentage}%</Text>
+          <Text>{itemDiscountPercentage}%</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text>
-            $
-            {totalPriceCalc(
-              MItem.Price,
-              MItem.InCartQuantity,
-              MItem.DiscountPercentage,
-              MItem.id,
-            )}
-          </Text>
+          <Text>${totalPrice}</Text>
         </View>
       </View>
     );
