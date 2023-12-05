@@ -38,9 +38,7 @@ export const HomePage = observer(() => {
           paddingHorizontal: 10,
         }}>
         <TableTopBar />
-        <MyCartItemMapFunctions
-          ItemsArray={supermarketItemsStore.CartArrayItems}
-        />
+        {MyCartItemMapFunctions(supermarketItemsStore.CartArrayItems)}
         <View
           style={{
             right: 0,
