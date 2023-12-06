@@ -9,15 +9,15 @@ export function totalPriceCalc(
 ): number {
   let total: number = price * quantity;
   if (discount !== 0) {
-    const discountAmount: number = total * (discount / 100);
-    total -= discountAmount;
+    const DISCOUNT_AMMOUNT: number = total * (discount / 100);
+    total -= DISCOUNT_AMMOUNT;
   }
 
-  const costObject: ICostArrayObject = {
+  const COST_OBJECT: ICostArrayObject = {
     price: total,
     id: id,
   };
 
-  MARKET_ITEMS_STORE.updateCostArray(costObject);
+  MARKET_ITEMS_STORE.updateCostArray(COST_OBJECT);
   return parseFloat(total.toFixed(2));
 }

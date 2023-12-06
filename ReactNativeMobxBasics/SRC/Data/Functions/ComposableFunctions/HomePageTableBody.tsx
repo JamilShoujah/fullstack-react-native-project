@@ -8,19 +8,19 @@ import {totalPriceCalc} from '../Standard Functions/PriceCalc';
 
 export const TableItemBody: React.FC<ITableItemBodyInterface> = observer(
   ({MItem}) => {
-    const InCartItem = MARKET_ITEMS_STORE.cartArrayItems.find(
+    const IN_CART_ITEMS = MARKET_ITEMS_STORE.cartArrayItems.find(
       item => item.id === MItem.id,
     );
 
     const {
-      Name: itemName,
-      Price: itemPrice,
-      DiscountPercentage: itemDiscountPercentage,
+      Name: ITEM_NAME,
+      Price: ITEM_PRICE,
+      DiscountPercentage: ITEM_DISCOUNT_PERCENTAGE,
     } = MItem;
 
-    const inCartQuantity = InCartItem?.InCartQuantity;
+    const IN_CART_QUANTITY = IN_CART_ITEMS?.InCartQuantity;
 
-    const totalPrice = totalPriceCalc(
+    const TOTAL_COST = totalPriceCalc(
       MItem.Price,
       MItem.InCartQuantity,
       MItem.DiscountPercentage,
@@ -38,23 +38,23 @@ export const TableItemBody: React.FC<ITableItemBodyInterface> = observer(
           alignItems: 'center',
         }}>
         <View style={{width: '20%'}}>
-          <Text>{itemName}</Text>
+          <Text>{ITEM_NAME}</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text>{inCartQuantity} itm</Text>
+          <Text>{IN_CART_QUANTITY} itm</Text>
         </View>
         <View
           style={{
             width: '20%',
             alignItems: 'flex-end',
           }}>
-          <Text>${itemPrice}</Text>
+          <Text>${ITEM_PRICE}</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text>{itemDiscountPercentage}%</Text>
+          <Text>{ITEM_DISCOUNT_PERCENTAGE}%</Text>
         </View>
         <View style={{width: '20%', alignItems: 'flex-end'}}>
-          <Text>${totalPrice}</Text>
+          <Text>${TOTAL_COST}</Text>
         </View>
       </View>
     );
