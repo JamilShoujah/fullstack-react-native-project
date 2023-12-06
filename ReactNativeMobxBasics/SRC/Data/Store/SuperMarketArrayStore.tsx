@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {observable, runInAction} from 'mobx';
-import {SuperMarketItems} from '../Constants/SuperMarketItems';
+import {SUPER_MARKET_ITEMS} from '../Constants/SuperMarketItems';
 import {ICostArrayObject} from '../Types/interfaces/CostArrayObject';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
 class SuperMarketArray {
-  superMarketArrayItems = observable.array<ISuperMarketItem>(SuperMarketItems);
+  superMarketArrayItems =
+    observable.array<ISuperMarketItem>(SUPER_MARKET_ITEMS);
   cartArrayItems = observable.array<ISuperMarketItem>([]);
   costArray = observable.array<ICostArrayObject>([]);
   itemCounter = observable.box(0);
@@ -29,7 +30,7 @@ class SuperMarketArray {
     return this.money.get();
   }
 
-  AddItemToCart(itemId: number) {
+  addItemToCart(itemId: number) {
     runInAction(() => {
       const item = this.superMarketArrayItems.find(item => item.id === itemId);
       if (item) {
@@ -42,7 +43,7 @@ class SuperMarketArray {
     });
   }
 
-  RemoveItemfromCart(itemId: number) {
+  removeItemfromCart(itemId: number) {
     runInAction(() => {
       const item = this.superMarketArrayItems.find(item => item.id === itemId);
       if (item) {
@@ -56,7 +57,7 @@ class SuperMarketArray {
     });
   }
 
-  CancelPurchase(itemId: number) {
+  cancelPurchase(itemId: number) {
     runInAction(() => {
       const item = this.superMarketArrayItems.find(item => item.id === itemId);
       const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
@@ -69,7 +70,7 @@ class SuperMarketArray {
     });
   }
 
-  AddtoCart(itemId: number) {
+  addtoCart(itemId: number) {
     runInAction(() => {
       const item = this.superMarketArrayItems.find(item => item.id === itemId);
       const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
@@ -98,7 +99,7 @@ class SuperMarketArray {
     });
   }
 
-  get TotalCost() {
+  get totalCost() {
     const total = this.costArray.reduce(
       (accumulator, currentObject) => accumulator + currentObject.price,
       0,
@@ -108,11 +109,11 @@ class SuperMarketArray {
 
   setTotalCost() {
     runInAction(() => {
-      this.total.set(this.TotalCost);
+      this.total.set(this.totalCost);
     });
   }
 
-  UpdateCostArray(costObj: ICostArrayObject) {
+  updateCostArray(costObj: ICostArrayObject) {
     runInAction(() => {
       const CheckId = this.costArray.find(item => item.id === costObj.id);
       if (CheckId) {
@@ -123,7 +124,7 @@ class SuperMarketArray {
     });
   }
 
-  ConfirmPurchase(cost: number) {
+  confirmPurchase(cost: number) {
     runInAction(() => {
       if (cost < this.getMoney) {
         console.log('purchase successful');
@@ -137,4 +138,4 @@ class SuperMarketArray {
   }
 }
 
-export const supermarketItemsStore = new SuperMarketArray();
+export const SuperMarketItemsStore = new SuperMarketArray();

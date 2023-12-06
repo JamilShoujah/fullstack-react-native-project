@@ -2,7 +2,7 @@ import {observable, runInAction} from 'mobx';
 import {ItemCategory} from '../Types/Enums/ItemCategory';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
-class ModalStore {
+class ModalStoreClass {
   isOpen = observable.box(false);
   marketItem = observable.box({
     Icon: '',
@@ -37,4 +37,4 @@ class ModalStore {
   }
 }
 
-export const ModalVisible = new ModalStore();
+export const ModalStore = new ModalStoreClass();

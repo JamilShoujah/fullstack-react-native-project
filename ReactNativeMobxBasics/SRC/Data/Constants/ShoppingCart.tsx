@@ -1,3 +1,3 @@
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
 
-export const ShoppingCart: ISuperMarketItem[] = [];
+export const SHOPPING_CART: ISuperMarketItem[] = [];

@@ -5,19 +5,19 @@ import React, {useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
-import {supermarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
+import {SuperMarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {autorun} from 'mobx';
 export const HomePage = observer(() => {
   useEffect(() => {
     const disposer = autorun(() => {
-      supermarketItemsStore.setTotalCost();
+      SuperMarketItemsStore.setTotalCost();
     });
 
     return () => {
       disposer();
     };
-  }, [JSON.stringify(supermarketItemsStore.cartArrayItems)]);
+  }, [JSON.stringify(SuperMarketItemsStore.cartArrayItems)]);
   return (
     <View style={{flex: 1}}>
       <View style={{flexDirection: 'row-reverse'}}>
@@ -28,7 +28,7 @@ export const HomePage = observer(() => {
             fontSize: 20,
             padding: 10,
           }}>
-          $ {supermarketItemsStore.getMoney.toFixed(2)}
+          $ {SuperMarketItemsStore.getMoney.toFixed(2)}
         </Text>
       </View>
       <View
@@ -38,7 +38,7 @@ export const HomePage = observer(() => {
           paddingHorizontal: 10,
         }}>
         <TableTopBar />
-        {MyCartItemMapFunctions(supermarketItemsStore.cartArrayItems)}
+        {MyCartItemMapFunctions(SuperMarketItemsStore.cartArrayItems)}
         <View
           style={{
             right: 0,
@@ -54,13 +54,13 @@ export const HomePage = observer(() => {
               fontWeight: '900',
               fontSize: 30,
             }}>
-            Total: ${supermarketItemsStore.getTotal.toFixed(2)}
+            Total: ${SuperMarketItemsStore.getTotal.toFixed(2)}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            supermarketItemsStore.ConfirmPurchase(
-              supermarketItemsStore.TotalCost,
+            SuperMarketItemsStore.confirmPurchase(
+              SuperMarketItemsStore.totalCost,
             );
           }}
           style={{
