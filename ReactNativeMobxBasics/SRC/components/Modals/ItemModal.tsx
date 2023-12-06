@@ -2,7 +2,7 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {Modal, View} from 'react-native';
-import {ModalStore} from '../../Data/Store/ModalStore';
+import {ModalStore} from '../../Data/Constants/VariableConstants';
 import {ModalBottom} from '../Prefabs/ModalBottom';
 import {ModalBody} from '../Prefabs/ModalItemBody';
 import {ModalTop} from '../Prefabs/ModalTop';

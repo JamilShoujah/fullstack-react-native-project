@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import {ModalStore} from '../../Data/Store/ModalStore';
+import {ModalStore} from '../../Data/Constants/VariableConstants';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {SuperMarketItemsStore} from '../../Data/Store/SuperMarketArrayStore';
 

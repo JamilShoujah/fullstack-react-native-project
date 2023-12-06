@@ -1,6 +1,7 @@
 import {observable, runInAction} from 'mobx';
 import {ItemCategory} from '../Types/Enums/ItemCategory';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
+import memoize from 'lodash/memoize';
 
 class ModalStoreClass {
   isOpen = observable.box(false);
@@ -37,4 +38,6 @@ class ModalStoreClass {
   }
 }
 
-export const ModalStore = new ModalStoreClass();
+export const getModalStore = memoize(() => {
+  return new ModalStoreClass();
+});

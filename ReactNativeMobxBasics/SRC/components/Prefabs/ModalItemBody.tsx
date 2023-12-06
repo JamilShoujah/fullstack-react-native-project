@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
 import {View, Text} from 'react-native';
-import {ModalStore} from '../../Data/Store/ModalStore';
+import {ModalStore} from '../../Data/Constants/VariableConstants';
 
 export const ModalBody = observer(() => {
   return (
