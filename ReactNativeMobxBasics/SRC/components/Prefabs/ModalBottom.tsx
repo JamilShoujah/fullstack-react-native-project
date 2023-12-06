@@ -1,8 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
-import {ModalStore} from '../../Data/Constants/VariableConstants';
-import {SuperMarketItemsStore} from '../../Data/Store/SuperMarketArrayStore';
+import {
+  MODAL_STORE,
+  MARKET_ITEMS_STORE,
+} from '../../Data/Constants/VariableConstants';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {observer} from 'mobx-react';
 
@@ -23,9 +25,7 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            SuperMarketItemsStore.removeItemfromCart(
-              ModalStore.getMarketItem.id,
-            );
+            MARKET_ITEMS_STORE.removeItemfromCart(MODAL_STORE.getMarketItem.id);
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
           <EntypoIcon name="minus" size={40} color="orangered" />
@@ -33,12 +33,12 @@ export const ModalBottom = observer(() => {
 
         <View style={{backgroundColor: 'white', borderRadius: 10, margin: 10}}>
           <Text style={{fontSize: 35, padding: 10}}>
-            {SuperMarketItemsStore.getItemCounter}
+            {MARKET_ITEMS_STORE.getItemCounter}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            SuperMarketItemsStore.addItemToCart(ModalStore.getMarketItem.id);
+            MARKET_ITEMS_STORE.addItemToCart(MODAL_STORE.getMarketItem.id);
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
           <EntypoIcon name="plus" size={40} color="green" />
@@ -51,8 +51,8 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            SuperMarketItemsStore.addtoCart(ModalStore.getMarketItem.id);
-            ModalStore.closeModal();
+            MARKET_ITEMS_STORE.addtoCart(MODAL_STORE.getMarketItem.id);
+            MODAL_STORE.closeModal();
           }}
           style={{
             backgroundColor: 'green',

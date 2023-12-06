@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
+import memoize from 'lodash/memoize';
 import {observable, runInAction} from 'mobx';
 import {SUPER_MARKET_ITEMS} from '../Constants/SuperMarketItems';
 import {ICostArrayObject} from '../Types/interfaces/CostArrayObject';
@@ -138,4 +139,6 @@ class SuperMarketArray {
   }
 }
 
-export const SuperMarketItemsStore = new SuperMarketArray();
+export const getSuperMarketItemsStore = memoize(() => {
+  return new SuperMarketArray();
+});

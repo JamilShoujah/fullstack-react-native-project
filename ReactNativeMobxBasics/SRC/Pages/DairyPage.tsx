@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
+import {MARKET_ITEMS_STORE} from '../Data/Constants/VariableConstants';
 import {SuperMarketItemsMap} from '../Data/Functions/ComposableFunctions/SuperMarketArrayMap';
-import {SuperMarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
+
 import {ItemCategory} from '../Data/Types/Enums/ItemCategory';
 
 export const DairyPage = () => {
@@ -9,7 +10,7 @@ export const DairyPage = () => {
     <View>
       <SuperMarketItemsMap
         Category={ItemCategory.Dairy}
-        ItemsArray={SuperMarketItemsStore.superMarketArrayItems}
+        ItemsArray={MARKET_ITEMS_STORE.superMarketArrayItems}
       />
     </View>
   );

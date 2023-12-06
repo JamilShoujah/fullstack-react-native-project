@@ -1,4 +1,4 @@
-import {SuperMarketItemsStore} from '../../Store/SuperMarketArrayStore';
+import {MARKET_ITEMS_STORE} from '../../Constants/VariableConstants';
 import {ICostArrayObject} from '../../Types/interfaces/CostArrayObject';
 
 export function totalPriceCalc(
@@ -18,6 +18,6 @@ export function totalPriceCalc(
     id: id,
   };
 
-  SuperMarketItemsStore.updateCostArray(costObject);
+  MARKET_ITEMS_STORE.updateCostArray(costObject);
   return parseFloat(total.toFixed(2));
 }

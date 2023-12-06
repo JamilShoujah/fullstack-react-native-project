@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
 import {View, Text} from 'react-native';
-import {ModalStore} from '../../Data/Constants/VariableConstants';
+import {MODAL_STORE} from '../../Data/Constants/VariableConstants';
 
 export const ModalBody = observer(() => {
   return (
@@ -19,7 +19,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Price: ${ModalStore.getMarketItem.Price}
+        Price: ${MODAL_STORE.getMarketItem.Price}
       </Text>
       <Text
         style={{
@@ -27,7 +27,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Discount %: {ModalStore.getMarketItem.DiscountPercentage}
+        Discount %: {MODAL_STORE.getMarketItem.DiscountPercentage}
       </Text>
       <Text
         style={{
@@ -35,7 +35,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Available: {ModalStore.getMarketItem.AvailableQuantity}
+        Available: {MODAL_STORE.getMarketItem.AvailableQuantity}
       </Text>
 
       <Text
@@ -44,7 +44,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Type: {ModalStore.getMarketItem.Category}
+        Type: {MODAL_STORE.getMarketItem.Category}
       </Text>
     </View>
   );

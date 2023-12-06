@@ -2,7 +2,7 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {Modal, View} from 'react-native';
-import {ModalStore} from '../../Data/Constants/VariableConstants';
+import {MODAL_STORE} from '../../Data/Constants/VariableConstants';
 import {ModalBottom} from '../Prefabs/ModalBottom';
 import {ModalBody} from '../Prefabs/ModalItemBody';
 import {ModalTop} from '../Prefabs/ModalTop';
@@ -12,8 +12,8 @@ export const ItemModal = observer(() => {
   return (
     <Modal
       transparent={true}
-      visible={ModalStore.getIsOpen}
-      onRequestClose={() => ModalStore.closeModal}>
+      visible={MODAL_STORE.getIsOpen}
+      onRequestClose={() => MODAL_STORE.closeModal}>
       <View
         style={{
           flex: 1,

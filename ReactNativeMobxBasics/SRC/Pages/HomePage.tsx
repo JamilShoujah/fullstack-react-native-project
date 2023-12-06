@@ -5,19 +5,20 @@ import React, {useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
-import {SuperMarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {autorun} from 'mobx';
+import {MARKET_ITEMS_STORE} from '../Data/Constants/VariableConstants';
+
 export const HomePage = observer(() => {
   useEffect(() => {
     const disposer = autorun(() => {
-      SuperMarketItemsStore.setTotalCost();
+      MARKET_ITEMS_STORE.setTotalCost();
     });
 
     return () => {
       disposer();
     };
-  }, [JSON.stringify(SuperMarketItemsStore.cartArrayItems)]);
+  }, [JSON.stringify(MARKET_ITEMS_STORE.cartArrayItems)]);
   return (
     <View style={{flex: 1}}>
       <View style={{flexDirection: 'row-reverse'}}>
@@ -28,7 +29,7 @@ export const HomePage = observer(() => {
             fontSize: 20,
             padding: 10,
           }}>
-          $ {SuperMarketItemsStore.getMoney.toFixed(2)}
+          $ {MARKET_ITEMS_STORE.getMoney.toFixed(2)}
         </Text>
       </View>
       <View
@@ -38,7 +39,7 @@ export const HomePage = observer(() => {
           paddingHorizontal: 10,
         }}>
         <TableTopBar />
-        {MyCartItemMapFunctions(SuperMarketItemsStore.cartArrayItems)}
+        {MyCartItemMapFunctions(MARKET_ITEMS_STORE.cartArrayItems)}
         <View
           style={{
             right: 0,
@@ -54,14 +55,12 @@ export const HomePage = observer(() => {
               fontWeight: '900',
               fontSize: 30,
             }}>
-            Total: ${SuperMarketItemsStore.getTotal.toFixed(2)}
+            Total: ${MARKET_ITEMS_STORE.getTotal.toFixed(2)}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            SuperMarketItemsStore.confirmPurchase(
-              SuperMarketItemsStore.totalCost,
-            );
+            MARKET_ITEMS_STORE.confirmPurchase(MARKET_ITEMS_STORE.totalCost);
           }}
           style={{
             borderStyle: 'solid',

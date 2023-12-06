@@ -2,7 +2,7 @@
 import {observer, Observer} from 'mobx-react';
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import {ModalStore} from '../../Data/Constants/VariableConstants';
+import {MODAL_STORE} from '../../Data/Constants/VariableConstants';
 import {IMarketItemDisplayInterface} from '../../Data/Types/interfaces/MarketItemDisplayInterface';
 
 export const MarketItemDisplay: React.FC<IMarketItemDisplayInterface> =
@@ -10,7 +10,7 @@ export const MarketItemDisplay: React.FC<IMarketItemDisplayInterface> =
     return (
       <TouchableOpacity
         onPress={() => {
-          ModalStore.openModal(MarketItem);
+          MODAL_STORE.openModal(MarketItem);
         }}
         style={{
           backgroundColor: 'white',
