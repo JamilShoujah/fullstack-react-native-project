@@ -9,7 +9,7 @@ export const DairyPage = () => {
   return (
     <View>
       <SuperMarketItemsMap
-        Category={ItemCategory.Dairy}
+        Category={ItemCategory.dairy}
         ItemsArray={MARKET_ITEMS_STORE.superMarketArrayItems}
       />
     </View>

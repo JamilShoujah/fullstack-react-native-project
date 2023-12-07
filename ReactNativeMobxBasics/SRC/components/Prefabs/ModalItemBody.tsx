@@ -19,7 +19,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Price: ${MODAL_STORE.getMarketItem.Price}
+        Price: ${MODAL_STORE.marketItem.get().Price}
       </Text>
       <Text
         style={{
@@ -27,7 +27,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Discount %: {MODAL_STORE.getMarketItem.DiscountPercentage}
+        Discount %: {MODAL_STORE.marketItem.get().DiscountPercentage}
       </Text>
       <Text
         style={{
@@ -35,7 +35,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Available: {MODAL_STORE.getMarketItem.AvailableQuantity}
+        Available: {MODAL_STORE.marketItem.get().AvailableQuantity}
       </Text>
 
       <Text
@@ -44,7 +44,7 @@ export const ModalBody = observer(() => {
           color: 'black',
           padding: 5,
         }}>
-        Type: {MODAL_STORE.getMarketItem.Category}
+        Type: {MODAL_STORE.marketItem.get().Category}
       </Text>
     </View>
   );

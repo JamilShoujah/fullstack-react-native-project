@@ -15,130 +15,161 @@ class SuperMarketArray {
   defaultValue = observable.box(0);
   total = observable.box(0);
   money = observable.box(1000);
-  get getItemCounter() {
-    return this.itemCounter.get();
+
+  setSuperMarketArrayItems(newItems: ISuperMarketItem[]) {
+    runInAction(() => {
+      this.superMarketArrayItems.replace(newItems);
+    });
   }
-  get getCount() {
-    return this.count.get();
+  setCartArrayItems(newItems: ISuperMarketItem) {
+    runInAction(() => {
+      this.cartArrayItems.push(newItems);
+    });
   }
-  get getDefaultValue() {
-    return this.defaultValue.get();
+
+  setCostArray(costObj: ICostArrayObject) {
+    runInAction(() => {
+      this.costArray.push(costObj);
+    });
   }
-  get getTotal() {
-    return this.total.get();
+
+  clearCostArray() {
+    runInAction(() => {
+      this.costArray.clear;
+    });
   }
-  get getMoney() {
-    return this.money.get();
+  clearCartArrayItems() {
+    runInAction(() => {
+      this.cartArrayItems.clear();
+    });
+  }
+
+  setItemCounter(newCount: number) {
+    runInAction(() => {
+      this.itemCounter.set(newCount);
+    });
+  }
+
+  setCount(newCount: number) {
+    runInAction(() => {
+      this.count.set(newCount);
+    });
+  }
+
+  setDefaultValue(newValue: number) {
+    runInAction(() => {
+      this.defaultValue.set(newValue);
+    });
+  }
+
+  setTotal(newTotal: number) {
+    runInAction(() => {
+      this.total.set(newTotal);
+    });
+  }
+
+  setMoney(newMoney: number) {
+    runInAction(() => {
+      this.money.set(newMoney);
+    });
   }
 
   addItemToCart(itemId: number) {
-    runInAction(() => {
-      const item = this.superMarketArrayItems.find(item => item.id === itemId);
-      if (item) {
-        if (item.AvailableQuantity > 0) {
-          this.itemCounter.set(this.getItemCounter + 1);
-        } else {
-          console.log('No more items');
-        }
+    const item = this.superMarketArrayItems.find(item => item.id === itemId);
+    if (item) {
+      if (item.AvailableQuantity > 0) {
+        this.setItemCounter(this.itemCounter.get() + 1);
+      } else {
+        console.log('No more items');
       }
-    });
+    }
   }
 
   removeItemfromCart(itemId: number) {
-    runInAction(() => {
-      const item = this.superMarketArrayItems.find(item => item.id === itemId);
-      if (item) {
-        if (item.InCartQuantity > 0) {
-          this.itemCounter.set(this.getItemCounter - 1);
-          this.count.set(this.getCount + 1);
-        } else {
-          console.log('No items in cart');
-        }
+    const item = this.superMarketArrayItems.find(item => item.id === itemId);
+    if (item) {
+      if (item.InCartQuantity > 0) {
+        this.setItemCounter(this.itemCounter.get() - 1);
+        this.setCount(this.count.get() + 1);
+      } else {
+        console.log('No items in cart');
       }
-    });
+    }
   }
 
   cancelPurchase(itemId: number) {
-    runInAction(() => {
-      const item = this.superMarketArrayItems.find(item => item.id === itemId);
-      const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
-      if (item) {
-        this.itemCounter.set(0);
-        if (InCartItem) {
-          item.InCartQuantity = InCartItem.InCartQuantity;
-        }
+    const item = this.superMarketArrayItems.find(item => item.id === itemId);
+    const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
+    if (item) {
+      this.setItemCounter(0);
+      if (InCartItem) {
+        item.InCartQuantity = InCartItem.InCartQuantity;
       }
-    });
+    }
   }
 
   addtoCart(itemId: number) {
-    runInAction(() => {
-      const item = this.superMarketArrayItems.find(item => item.id === itemId);
-      const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
-      if (this.cartArrayItems.length === 0) {
-        if (item) {
+    const item = this.superMarketArrayItems.find(item => item.id === itemId);
+    const InCartItem = this.cartArrayItems.find(item => item.id === itemId);
+    if (!item) {
+      return;
+    } else {
+      runInAction(() => {
+        if (this.cartArrayItems.length === 0) {
           const newItem = item;
-          newItem.InCartQuantity = this.getItemCounter;
-          this.cartArrayItems.push(newItem);
-          item.AvailableQuantity -= this.getItemCounter;
-        }
-      } else {
-        if (item) {
+          newItem.InCartQuantity = this.itemCounter.get();
+          this.setCartArrayItems(newItem);
+          item.AvailableQuantity -= this.itemCounter.get();
+        } else {
           if (InCartItem) {
-            InCartItem.InCartQuantity += this.getItemCounter;
-            item.AvailableQuantity -= this.getItemCounter;
+            InCartItem.InCartQuantity += this.itemCounter.get();
+            item.AvailableQuantity -= this.itemCounter.get();
           }
           if (!InCartItem) {
             const newItem = item;
-            newItem.InCartQuantity = this.getItemCounter;
-            this.cartArrayItems.push(newItem);
-            item.AvailableQuantity -= this.getItemCounter;
+            newItem.InCartQuantity = this.itemCounter.get();
+            this.setCartArrayItems(newItem);
+            item.AvailableQuantity -= this.itemCounter.get();
           }
         }
-      }
-      this.itemCounter.set(0);
-    });
+        this.setItemCounter(0);
+      });
+    }
   }
 
   get totalCost() {
-    const total = this.costArray.reduce(
+    const totalval = this.costArray.reduce(
       (accumulator, currentObject) => accumulator + currentObject.price,
       0,
     );
-    return total;
-  }
-
-  setTotalCost() {
-    runInAction(() => {
-      this.total.set(this.totalCost);
-    });
+    this.setTotal(totalval);
+    return totalval;
   }
 
   updateCostArray(costObj: ICostArrayObject) {
-    runInAction(() => {
-      const CheckId = this.costArray.find(item => item.id === costObj.id);
-      if (CheckId) {
-        CheckId.price = costObj.price;
-      } else {
-        this.costArray.push(costObj);
-      }
-    });
+    const CheckId = this.costArray.find(item => item.id === costObj.id);
+    if (CheckId) {
+      CheckId.price = costObj.price;
+    } else {
+      this.setCostArray(costObj);
+    }
   }
 
   confirmPurchase(cost: number) {
-    runInAction(() => {
-      if (cost < this.getMoney) {
-        console.log('purchase successful');
-        this.money.set(this.getMoney - cost);
-        this.cartArrayItems.clear();
-        this.costArray.clear();
-      } else {
-        console.log('Insufficient Funds');
-      }
-    });
+    if (cost < this.money.get()) {
+      console.log('purchase successful');
+      this.setMoney(this.money.get() - cost);
+      this.clearCartArrayItems();
+      this.clearCostArray();
+    } else {
+      console.log('Insufficient Funds');
+    }
   }
 }
 
-export const getSuperMarketItemsStore = memoize(() => {
-  return new SuperMarketArray();
-});
+export const getSuperMarketItemsStore = memoize(
+  () => {
+    return new SuperMarketArray();
+  },
+  () => 1,
+);

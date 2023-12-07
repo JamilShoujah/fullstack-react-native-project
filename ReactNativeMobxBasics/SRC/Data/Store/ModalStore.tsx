@@ -10,30 +10,39 @@ class ModalStoreClass {
     Name: '',
     Price: 0,
     id: 0,
-    Category: ItemCategory.Dairy,
+    Category: ItemCategory.dairy,
     AvailableQuantity: 0,
     InCartQuantity: 0,
     DiscountPercentage: 0,
   });
 
-  get getIsOpen() {
-    return this.isOpen.get();
+  setIsOpen(newValue: boolean) {
+    this.isOpen.set(newValue);
   }
 
-  get getMarketItem() {
-    return this.marketItem.get();
+  setMarketItem(newItem: {
+    Icon: string;
+    Name: string;
+    Price: number;
+    id: number;
+    Category: ItemCategory; // Assuming ItemCategory is an enum or similar
+    AvailableQuantity: number;
+    InCartQuantity: number;
+    DiscountPercentage: number;
+  }) {
+    this.marketItem.set(newItem);
   }
 
   openModal(item: ISuperMarketItem) {
     runInAction(() => {
-      this.marketItem.set(item);
-      this.isOpen.set(true);
+      this.setMarketItem(item);
+      this.setIsOpen(true);
     });
   }
 
   closeModal() {
     runInAction(() => {
-      this.isOpen.set(false);
+      this.setIsOpen(false);
     });
   }
 }

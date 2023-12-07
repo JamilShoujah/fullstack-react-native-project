@@ -25,7 +25,9 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.removeItemfromCart(MODAL_STORE.getMarketItem.id);
+            MARKET_ITEMS_STORE.removeItemfromCart(
+              MODAL_STORE.marketItem.get().id,
+            );
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
           <EntypoIcon name="minus" size={40} color="orangered" />
@@ -33,12 +35,12 @@ export const ModalBottom = observer(() => {
 
         <View style={{backgroundColor: 'white', borderRadius: 10, margin: 10}}>
           <Text style={{fontSize: 35, padding: 10}}>
-            {MARKET_ITEMS_STORE.getItemCounter}
+            {MARKET_ITEMS_STORE.itemCounter.get()}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.addItemToCart(MODAL_STORE.getMarketItem.id);
+            MARKET_ITEMS_STORE.addItemToCart(MODAL_STORE.marketItem.get().id);
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
           <EntypoIcon name="plus" size={40} color="green" />
@@ -51,7 +53,7 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.addtoCart(MODAL_STORE.getMarketItem.id);
+            MARKET_ITEMS_STORE.addtoCart(MODAL_STORE.marketItem.get().id);
             MODAL_STORE.closeModal();
           }}
           style={{

@@ -13,7 +13,7 @@ export const CloseButton = () => {
       style={{position: 'absolute', top: 10, right: 10}}
       onPress={() => {
         MODAL_STORE.closeModal();
-        MARKET_ITEMS_STORE.cancelPurchase(MODAL_STORE.getMarketItem.id);
+        MARKET_ITEMS_STORE.cancelPurchase(MODAL_STORE.marketItem.get().id);
       }}>
       <EntypoIcon name="cross" size={40} color="orangered" />
     </TouchableOpacity>

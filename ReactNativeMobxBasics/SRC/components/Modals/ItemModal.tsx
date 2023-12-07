@@ -12,7 +12,7 @@ export const ItemModal = observer(() => {
   return (
     <Modal
       transparent={true}
-      visible={MODAL_STORE.getIsOpen}
+      visible={MODAL_STORE.isOpen.get()}
       onRequestClose={() => MODAL_STORE.closeModal}>
       <View
         style={{

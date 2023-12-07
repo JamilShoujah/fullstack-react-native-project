@@ -1,6 +1,6 @@
 export enum ItemCategory {
-  Protein = 'Protein',
-  Fruit = 'Fruit',
-  Vegetable = 'Vegetable',
-  Dairy = 'Dairy',
+  protein = 'Protein',
+  fruit = 'Fruit',
+  vegetable = 'Vegetable',
+  dairy = 'Dairy',
 }

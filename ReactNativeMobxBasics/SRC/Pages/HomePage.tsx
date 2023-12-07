@@ -1,23 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
-import React, {useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {autorun} from 'mobx';
 import {MARKET_ITEMS_STORE} from '../Data/Constants/VariableConstants';
+import {useEffect} from 'react';
 
 export const HomePage = observer(() => {
   useEffect(() => {
-    const disposer = autorun(() => {
-      MARKET_ITEMS_STORE.setTotalCost();
-    });
-
-    return () => {
-      disposer();
-    };
+    MARKET_ITEMS_STORE.totalCost;
   }, [JSON.stringify(MARKET_ITEMS_STORE.cartArrayItems)]);
   return (
     <View style={{flex: 1}}>
@@ -29,7 +23,7 @@ export const HomePage = observer(() => {
             fontSize: 20,
             padding: 10,
           }}>
-          $ {MARKET_ITEMS_STORE.getMoney.toFixed(2)}
+          $ {MARKET_ITEMS_STORE.money.get().toFixed(2)}
         </Text>
       </View>
       <View
@@ -39,6 +33,7 @@ export const HomePage = observer(() => {
           paddingHorizontal: 10,
         }}>
         <TableTopBar />
+        {/* {MyCartItemMapFunctions(MARKET_ITEMS_STORE.cartArrayItems)} */}
         {MyCartItemMapFunctions(MARKET_ITEMS_STORE.cartArrayItems)}
         <View
           style={{
@@ -55,12 +50,13 @@ export const HomePage = observer(() => {
               fontWeight: '900',
               fontSize: 30,
             }}>
-            Total: ${MARKET_ITEMS_STORE.getTotal.toFixed(2)}
+            {/* DeezNuts */}
+            Total: ${MARKET_ITEMS_STORE.total.get().toFixed(2)}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.confirmPurchase(MARKET_ITEMS_STORE.totalCost);
+            MARKET_ITEMS_STORE.confirmPurchase(MARKET_ITEMS_STORE.total.get());
           }}
           style={{
             borderStyle: 'solid',
