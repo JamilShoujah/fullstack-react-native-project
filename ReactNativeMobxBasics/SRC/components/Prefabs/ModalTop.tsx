@@ -1,13 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 import {View, Image, Text} from 'react-native';
-import {MODAL_STORE} from '../../Data/Constants/VariableConstants';
+import {getModalStore} from '../../Data/Store/ModalStore';
 
 export const ModalTop = () => {
+  const modalStore = getModalStore();
   return (
     <View>
       <Image
-        source={{uri: MODAL_STORE.marketItem.get().Icon}}
+        source={{uri: modalStore.marketItem.get().Icon}}
         style={{
           width: 100,
           height: 100,
@@ -21,7 +22,7 @@ export const ModalTop = () => {
           textAlign: 'center',
           fontSize: 30,
         }}>
-        {MODAL_STORE.marketItem.get().Name}
+        {modalStore.marketItem.get().Name}
       </Text>
     </View>
   );

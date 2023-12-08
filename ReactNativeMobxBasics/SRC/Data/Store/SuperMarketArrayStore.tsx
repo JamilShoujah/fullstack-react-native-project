@@ -4,7 +4,6 @@ import {observable, runInAction} from 'mobx';
 import {SUPER_MARKET_ITEMS} from '../Constants/SuperMarketItems';
 import {ICostArrayObject} from '../Types/interfaces/CostArrayObject';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
-
 class SuperMarketArray {
   superMarketArrayItems =
     observable.array<ISuperMarketItem>(SUPER_MARKET_ITEMS);

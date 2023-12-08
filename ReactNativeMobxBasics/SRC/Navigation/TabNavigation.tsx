@@ -11,7 +11,7 @@ import {
   PROTEINS,
   TAB,
   VEGETABLES,
-} from '../Data/Constants/VariableConstants';
+} from '../Data/Constants/Constants';
 import {getTabBarIcon} from '../Data/Functions/Standard Functions/TabBarIcons';
 
 export const TabNavigation = () => {

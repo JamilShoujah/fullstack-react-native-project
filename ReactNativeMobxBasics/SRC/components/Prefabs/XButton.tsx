@@ -4,7 +4,7 @@ import {TouchableOpacity} from 'react-native';
 import {
   MODAL_STORE,
   MARKET_ITEMS_STORE,
-} from '../../Data/Constants/VariableConstants';
+} from '../../Data/Constants/Constants';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 export const CloseButton = () => {

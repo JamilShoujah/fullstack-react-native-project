@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
-import {
-  MODAL_STORE,
-  MARKET_ITEMS_STORE,
-} from '../../Data/Constants/VariableConstants';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {observer} from 'mobx-react';
+import {getModalStore} from '../../Data/Store/ModalStore';
+import {getSuperMarketItemsStore} from '../../Data/Store/SuperMarketArrayStore';
 
 export const ModalBottom = observer(() => {
+  const modalStore = getModalStore();
+  const marketItemsStore = getSuperMarketItemsStore();
   return (
     <View>
       <View
@@ -25,9 +25,7 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.removeItemfromCart(
-              MODAL_STORE.marketItem.get().id,
-            );
+            marketItemsStore.removeItemfromCart(modalStore.marketItem.get().id);
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
           <EntypoIcon name="minus" size={40} color="orangered" />
@@ -35,12 +33,12 @@ export const ModalBottom = observer(() => {
 
         <View style={{backgroundColor: 'white', borderRadius: 10, margin: 10}}>
           <Text style={{fontSize: 35, padding: 10}}>
-            {MARKET_ITEMS_STORE.itemCounter.get()}
+            {marketItemsStore.itemCounter.get()}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.addItemToCart(MODAL_STORE.marketItem.get().id);
+            marketItemsStore.addItemToCart(modalStore.marketItem.get().id);
           }}
           style={{backgroundColor: 'white', borderRadius: 10, padding: 5}}>
           <EntypoIcon name="plus" size={40} color="green" />
@@ -53,8 +51,8 @@ export const ModalBottom = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.addtoCart(MODAL_STORE.marketItem.get().id);
-            MODAL_STORE.closeModal();
+            marketItemsStore.addtoCart(modalStore.marketItem.get().id);
+            modalStore.closeModal();
           }}
           style={{
             backgroundColor: 'green',

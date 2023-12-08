@@ -1,15 +1,17 @@
 import React from 'react';
 import {View} from 'react-native';
-import {MARKET_ITEMS_STORE} from '../Data/Constants/VariableConstants';
 import {SuperMarketItemsMap} from '../Data/Functions/ComposableFunctions/SuperMarketArrayMap';
+import {getSuperMarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
 import {ItemCategory} from '../Data/Types/Enums/ItemCategory';
 
 export const ProteinPage = () => {
+  const marketItemsStore = getSuperMarketItemsStore();
+
   return (
     <View>
       <SuperMarketItemsMap
         Category={ItemCategory.protein}
-        ItemsArray={MARKET_ITEMS_STORE.superMarketArrayItems}
+        ItemsArray={marketItemsStore.superMarketArrayItems}
       />
     </View>
   );

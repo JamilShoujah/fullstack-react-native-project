@@ -2,13 +2,14 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {Modal, View} from 'react-native';
-import {MODAL_STORE} from '../../Data/Constants/VariableConstants';
+import {getModalStore} from '../../Data/Store/ModalStore';
 import {ModalBottom} from '../Prefabs/ModalBottom';
 import {ModalBody} from '../Prefabs/ModalItemBody';
 import {ModalTop} from '../Prefabs/ModalTop';
 import {CloseButton} from '../Prefabs/XButton';
 
 export const ItemModal = observer(() => {
+  const MODAL_STORE = getModalStore();
   return (
     <Modal
       transparent={true}

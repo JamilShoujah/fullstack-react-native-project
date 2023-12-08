@@ -1,4 +1,4 @@
-import {MARKET_ITEMS_STORE} from '../../Constants/VariableConstants';
+import {getSuperMarketItemsStore} from '../../Store/SuperMarketArrayStore';
 import {ICostArrayObject} from '../../Types/interfaces/CostArrayObject';
 
 export function totalPriceCalc(
@@ -7,17 +7,18 @@ export function totalPriceCalc(
   discount: number,
   id: number,
 ): number {
+  const marketItemsStore = getSuperMarketItemsStore();
   let total: number = price * quantity;
   if (discount !== 0) {
-    const DISCOUNT_AMMOUNT: number = total * (discount / 100);
-    total -= DISCOUNT_AMMOUNT;
+    const discountAmmount: number = total * (discount / 100);
+    total -= discountAmmount;
   }
 
-  const COST_OBJECT: ICostArrayObject = {
+  const costObject: ICostArrayObject = {
     price: total,
     id: id,
   };
 
-  MARKET_ITEMS_STORE.updateCostArray(COST_OBJECT);
+  marketItemsStore.updateCostArray(costObject);
   return parseFloat(total.toFixed(2));
 }

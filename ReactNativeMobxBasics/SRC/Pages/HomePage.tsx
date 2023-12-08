@@ -6,13 +6,14 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {MARKET_ITEMS_STORE} from '../Data/Constants/VariableConstants';
 import {useEffect} from 'react';
+import {getSuperMarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
 
 export const HomePage = observer(() => {
+  const marketItemsStore = getSuperMarketItemsStore();
   useEffect(() => {
-    MARKET_ITEMS_STORE.totalCost;
-  }, [JSON.stringify(MARKET_ITEMS_STORE.cartArrayItems)]);
+    marketItemsStore.totalCost;
+  }, [JSON.stringify(marketItemsStore.cartArrayItems)]);
   return (
     <View style={{flex: 1}}>
       <View style={{flexDirection: 'row-reverse'}}>
@@ -23,7 +24,7 @@ export const HomePage = observer(() => {
             fontSize: 20,
             padding: 10,
           }}>
-          $ {MARKET_ITEMS_STORE.money.get().toFixed(2)}
+          $ {marketItemsStore.money.get().toFixed(2)}
         </Text>
       </View>
       <View
@@ -34,7 +35,7 @@ export const HomePage = observer(() => {
         }}>
         <TableTopBar />
         {/* {MyCartItemMapFunctions(MARKET_ITEMS_STORE.cartArrayItems)} */}
-        {MyCartItemMapFunctions(MARKET_ITEMS_STORE.cartArrayItems)}
+        {MyCartItemMapFunctions(marketItemsStore.cartArrayItems)}
         <View
           style={{
             right: 0,
@@ -51,12 +52,12 @@ export const HomePage = observer(() => {
               fontSize: 30,
             }}>
             {/* DeezNuts */}
-            Total: ${MARKET_ITEMS_STORE.total.get().toFixed(2)}
+            Total: ${marketItemsStore.total.get().toFixed(2)}
           </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
-            MARKET_ITEMS_STORE.confirmPurchase(MARKET_ITEMS_STORE.total.get());
+            marketItemsStore.confirmPurchase(marketItemsStore.total.get());
           }}
           style={{
             borderStyle: 'solid',

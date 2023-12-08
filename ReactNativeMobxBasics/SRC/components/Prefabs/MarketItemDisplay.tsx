@@ -2,15 +2,18 @@
 import {observer, Observer} from 'mobx-react';
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import {MODAL_STORE} from '../../Data/Constants/VariableConstants';
+import {} from '../../Data/Constants/Constants';
+import {getModalStore} from '../../Data/Store/ModalStore';
 import {IMarketItemDisplayInterface} from '../../Data/Types/interfaces/MarketItemDisplayInterface';
 
 export const MarketItemDisplay: React.FC<IMarketItemDisplayInterface> =
   observer(({MarketItem}) => {
+    const modalStore = getModalStore();
+
     return (
       <TouchableOpacity
         onPress={() => {
-          MODAL_STORE.openModal(MarketItem);
+          modalStore.openModal(MarketItem);
         }}
         style={{
           backgroundColor: 'white',

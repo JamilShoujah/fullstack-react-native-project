@@ -4,7 +4,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 export const MODAL_STORE = getModalStore();
 export const MARKET_ITEMS_STORE = getSuperMarketItemsStore();
-
 export const TAB = createBottomTabNavigator();
 
 export const HOME: string = 'Home';

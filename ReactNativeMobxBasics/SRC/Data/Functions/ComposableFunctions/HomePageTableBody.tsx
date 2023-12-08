@@ -2,13 +2,14 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {observer} from 'mobx-react-lite';
 import {View, Text} from 'react-native';
-import {MARKET_ITEMS_STORE} from '../../Constants/VariableConstants';
+import {getSuperMarketItemsStore} from '../../Store/SuperMarketArrayStore';
 import {ITableItemBodyInterface} from '../../Types/interfaces/TableItemBodyInterface';
 import {totalPriceCalc} from '../Standard Functions/PriceCalc';
 
 export const TableItemBody: React.FC<ITableItemBodyInterface> = observer(
   ({MItem}) => {
-    const IN_CART_ITEMS = MARKET_ITEMS_STORE.cartArrayItems.find(
+    const marketItemsStore = getSuperMarketItemsStore();
+    const IN_CART_ITEMS = marketItemsStore.cartArrayItems.find(
       item => item.id === MItem.id,
     );
 
