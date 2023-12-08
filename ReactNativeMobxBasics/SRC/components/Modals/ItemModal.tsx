@@ -9,12 +9,12 @@ import {ModalTop} from '../Prefabs/ModalTop';
 import {CloseButton} from '../Prefabs/XButton';
 
 export const ItemModal = observer(() => {
-  const MODAL_STORE = getModalStore();
+  const modalStore = getModalStore();
   return (
     <Modal
       transparent={true}
-      visible={MODAL_STORE.isOpen.get()}
-      onRequestClose={() => MODAL_STORE.closeModal}>
+      visible={modalStore.isOpen.get()}
+      onRequestClose={() => modalStore.closeModal}>
       <View
         style={{
           flex: 1,

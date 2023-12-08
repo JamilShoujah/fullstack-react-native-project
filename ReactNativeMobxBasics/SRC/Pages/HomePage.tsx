@@ -11,6 +11,7 @@ import {getSuperMarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
 
 export const HomePage = observer(() => {
   const marketItemsStore = getSuperMarketItemsStore();
+
   useEffect(() => {
     marketItemsStore.totalCost;
   }, [JSON.stringify(marketItemsStore.cartArrayItems)]);

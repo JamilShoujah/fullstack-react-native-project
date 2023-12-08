@@ -9,11 +9,11 @@ import {
   FRUITS,
   HOME,
   PROTEINS,
-  TAB,
   VEGETABLES,
 } from '../Data/Constants/Constants';
 import {getTabBarIcon} from '../Data/Functions/Standard Functions/TabBarIcons';
-
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+export const TAB = createBottomTabNavigator();
 export const TabNavigation = () => {
   return (
     <TAB.Navigator
