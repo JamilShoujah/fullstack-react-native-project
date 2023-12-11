@@ -40,6 +40,11 @@ class ModalStoreClass {
     });
   }
 
+  openCheckoutModal() {
+    runInAction(() => {
+      this.setIsOpen(true);
+    });
+  }
   closeModal() {
     runInAction(() => {
       this.setIsOpen(false);

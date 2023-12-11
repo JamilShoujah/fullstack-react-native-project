@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
@@ -6,15 +5,14 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {TableTopBar} from '../Data/Functions/ComposableFunctions/HomePageTableBar';
 import {MyCartItemMapFunctions} from '../Data/Functions/ComposableFunctions/MyCartItemsMapFunction';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useEffect} from 'react';
 import {getSuperMarketItemsStore} from '../Data/Store/SuperMarketArrayStore';
+import {CheckoutModal} from '../components/Modals/CheckoutModal';
+import {getModalStore} from '../Data/Store/ModalStore';
 
 export const HomePage = observer(() => {
   const marketItemsStore = getSuperMarketItemsStore();
+  const checkoStore = getModalStore();
 
-  useEffect(() => {
-    marketItemsStore.totalCost;
-  }, [JSON.stringify(marketItemsStore.cartArrayItems)]);
   return (
     <View style={{flex: 1}}>
       <View style={{flexDirection: 'row-reverse'}}>
@@ -35,7 +33,6 @@ export const HomePage = observer(() => {
           paddingHorizontal: 10,
         }}>
         <TableTopBar />
-        {/* {MyCartItemMapFunctions(MARKET_ITEMS_STORE.cartArrayItems)} */}
         {MyCartItemMapFunctions(marketItemsStore.cartArrayItems)}
         <View
           style={{
@@ -45,20 +42,13 @@ export const HomePage = observer(() => {
             paddingHorizontal: 10,
             margin: 10,
             flexDirection: 'row-reverse',
-          }}>
-          <Text
-            style={{
-              color: 'white',
-              fontWeight: '900',
-              fontSize: 30,
-            }}>
-            {/* DeezNuts */}
-            Total: ${marketItemsStore.total.get().toFixed(2)}
-          </Text>
-        </View>
+          }}
+        />
         <TouchableOpacity
           onPress={() => {
-            marketItemsStore.confirmPurchase(marketItemsStore.total.get());
+            // marketItemsStore.confirmPurchase(marketItemsStore.total.get());
+            marketItemsStore.totalCost();
+            checkoStore.openCheckoutModal();
           }}
           style={{
             borderStyle: 'solid',
@@ -78,6 +68,7 @@ export const HomePage = observer(() => {
           />
         </TouchableOpacity>
       </View>
+      <CheckoutModal />
     </View>
   );
 });

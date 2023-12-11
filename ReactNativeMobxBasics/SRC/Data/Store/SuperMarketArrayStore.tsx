@@ -12,8 +12,8 @@ class SuperMarketArray {
   itemCounter = observable.box(0);
   count = observable.box(0);
   defaultValue = observable.box(0);
+  money = observable.box(500);
   total = observable.box(0);
-  money = observable.box(1000);
 
   setSuperMarketArrayItems(newItems: ISuperMarketItem[]) {
     runInAction(() => {
@@ -34,7 +34,7 @@ class SuperMarketArray {
 
   clearCostArray() {
     runInAction(() => {
-      this.costArray.clear;
+      this.costArray.clear();
     });
   }
   clearCartArrayItems() {
@@ -136,19 +136,20 @@ class SuperMarketArray {
     }
   }
 
-  get totalCost() {
+  totalCost() {
     const totalval = this.costArray.reduce(
       (accumulator, currentObject) => accumulator + currentObject.price,
       0,
     );
     this.setTotal(totalval);
-    return totalval;
   }
 
   updateCostArray(costObj: ICostArrayObject) {
     const CheckId = this.costArray.find(item => item.id === costObj.id);
     if (CheckId) {
-      CheckId.price = costObj.price;
+      runInAction(() => {
+        CheckId.price = costObj.price;
+      });
     } else {
       this.setCostArray(costObj);
     }
@@ -160,6 +161,7 @@ class SuperMarketArray {
       this.setMoney(this.money.get() - cost);
       this.clearCartArrayItems();
       this.clearCostArray();
+      this.setTotal(0);
     } else {
       console.log('Insufficient Funds');
     }
