@@ -71,7 +71,6 @@ export const CheckoutModalBody = () => {
       <TouchableOpacity
         onPress={() => {
           marketItemsStore.confirmPurchase(marketItemsStore.total.get());
-          marketItemsStore.totalCost();
           modalStore.closeModal();
         }}
         style={{

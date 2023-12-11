@@ -47,7 +47,6 @@ export const HomePage = observer(() => {
         <TouchableOpacity
           onPress={() => {
             // marketItemsStore.confirmPurchase(marketItemsStore.total.get());
-            marketItemsStore.totalCost();
             checkoStore.openCheckoutModal();
           }}
           style={{

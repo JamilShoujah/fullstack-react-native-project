@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import memoize from 'lodash/memoize';
-import {observable, runInAction} from 'mobx';
+import {computed, observable, runInAction} from 'mobx';
 import {SUPER_MARKET_ITEMS} from '../Constants/SuperMarketItems';
 import {ICostArrayObject} from '../Types/interfaces/CostArrayObject';
 import {ISuperMarketItem} from '../Types/interfaces/SuperMarketItem';
@@ -13,7 +13,13 @@ class SuperMarketArray {
   count = observable.box(0);
   defaultValue = observable.box(0);
   money = observable.box(500);
-  total = observable.box(0);
+  // total = observable.box(0);
+  total = computed(() => {
+    return this.costArray.reduce(
+      (accumulator, currentObject) => accumulator + currentObject.price,
+      0,
+    );
+  });
 
   setSuperMarketArrayItems(newItems: ISuperMarketItem[]) {
     runInAction(() => {
@@ -58,12 +64,6 @@ class SuperMarketArray {
   setDefaultValue(newValue: number) {
     runInAction(() => {
       this.defaultValue.set(newValue);
-    });
-  }
-
-  setTotal(newTotal: number) {
-    runInAction(() => {
-      this.total.set(newTotal);
     });
   }
 
@@ -136,14 +136,6 @@ class SuperMarketArray {
     }
   }
 
-  totalCost() {
-    const totalval = this.costArray.reduce(
-      (accumulator, currentObject) => accumulator + currentObject.price,
-      0,
-    );
-    this.setTotal(totalval);
-  }
-
   updateCostArray(costObj: ICostArrayObject) {
     const CheckId = this.costArray.find(item => item.id === costObj.id);
     if (CheckId) {
@@ -161,7 +153,6 @@ class SuperMarketArray {
       this.setMoney(this.money.get() - cost);
       this.clearCartArrayItems();
       this.clearCostArray();
-      this.setTotal(0);
     } else {
       console.log('Insufficient Funds');
     }

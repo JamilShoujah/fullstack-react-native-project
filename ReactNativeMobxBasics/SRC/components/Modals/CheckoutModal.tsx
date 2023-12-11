@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 import React from 'react';
 import {Modal, Text, View} from 'react-native';
 import {getModalStore} from '../../Data/Store/ModalStore';
-import { CheckoutModalBody } from '../Prefabs/CheckoutModalPrefab';
+import {CheckoutModalBody} from '../Prefabs/CheckoutModalPrefab';
 
 export const CheckoutModal = observer(() => {
   const modalStore = getModalStore();
