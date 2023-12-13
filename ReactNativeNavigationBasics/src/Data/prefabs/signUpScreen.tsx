@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
 import React from 'react';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import { PasswordInputField } from '../../components/passwordInputComponent';
 import {TextInputField} from '../../components/textInputComponent';
 import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
-import signUpStore, {getSignUpStore} from '../store/signUpStore';
+import {getSignUpStore} from '../store/signUpStore';
 
 export const SignUpScreen: React.FC<IPageInterface> = observer(({navigation}) => {
   const SignUpStore = getSignUpStore();
@@ -61,7 +61,10 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(({navigation}) =>
         }}>
         <Text style={{color: 'white'}}>Proceed</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity
+      onPress={()=>{
+        navigation.navigate("LogIn");
+      }}>
         <Text style={{color: 'blue'}}>already have an account?</Text>
       </TouchableOpacity>
     </View>

@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import { SignUpPage } from '../Pages/signUpPage';
 import { SignUpUserDetailsPage } from '../Pages/signUpUseDetails';
+import { LogInPage } from '../Pages/logInPage';
 const Stack = createStackNavigator();
 
 export const StackNavigation = () => {
@@ -17,6 +18,13 @@ export const StackNavigation = () => {
       <Stack.Screen
         name="Details"
         component={SignUpUserDetailsPage}
+        options={{
+          header: () => null
+        }}
+      />
+      <Stack.Screen
+        name="LogIn"
+        component={LogInPage}
         options={{
           header: () => null
         }}
