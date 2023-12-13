@@ -3,11 +3,12 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import DropdownComponent from '../../components/dropDownComponent';
 import {TextInputField} from '../../components/textInputComponent';
+import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
 import {GENDER_ARRAY} from '../constants/GenderDropdownArray';
 import {RELIGION_ARRAY} from '../constants/ReligionDropdownArray';
 import {getSignUpStore} from '../store/signUpStore';
 
-export const SignUpDetailsScreen = observer(() => {
+export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigation}) => {
   const SignUpStore = getSignUpStore();
   const firstName = SignUpStore.firstName.get();
   const lastName = SignUpStore.lastName.get();
@@ -57,6 +58,11 @@ export const SignUpDetailsScreen = observer(() => {
           margin: 5,
         }}>
         <Text style={{color: 'white'}}>Submit</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>{
+        navigation.goBack();
+      }}>
+        <Text style={{color: 'blue'}}>already have an account?</Text>
       </TouchableOpacity>
     </View>
   );

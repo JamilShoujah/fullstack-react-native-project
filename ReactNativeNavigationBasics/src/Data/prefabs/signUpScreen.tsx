@@ -4,9 +4,10 @@ import React from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import { PasswordInputField } from '../../components/passwordInputComponent';
 import {TextInputField} from '../../components/textInputComponent';
+import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
 import signUpStore, {getSignUpStore} from '../store/signUpStore';
 
-export const SignUpScreen = observer(() => {
+export const SignUpScreen: React.FC<IPageInterface> = observer(({navigation}) => {
   const SignUpStore = getSignUpStore();
 
   const email = SignUpStore.emailValue.get();
@@ -48,13 +49,15 @@ export const SignUpScreen = observer(() => {
           width: '50%',
         }}
         onPress={() => {
-          if (isSame && password !== '' && email !== '') {
-            console.log('yalla binna');
-            // nagigate to more info page
-          } else {
-            console.log('insay');
-            // return waring error
-          }
+          navigation.navigate("Details");
+          // if (isSame && password !== '' && email !== '') {
+          //   console.log('yalla binna');
+      
+          //   // nagigate to more info page
+          // } else {
+          //   console.log('insay');
+          //   // return waring error
+          // }
         }}>
         <Text style={{color: 'white'}}>Proceed</Text>
       </TouchableOpacity>
