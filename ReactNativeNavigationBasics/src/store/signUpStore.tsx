@@ -2,6 +2,7 @@ import {computed, observable, runInAction} from 'mobx';
 import { memoize } from 'lodash';
 import { EGender } from '../enums/genderEnum';
 import { EReligion } from '../enums/religionEnum';
+import {IUserInterface} from '../Interfaces/userInterface';
 
 
 class signInModel {
@@ -11,8 +12,8 @@ class signInModel {
   firstName = observable.box("");
   lastName = observable.box("");
   age = observable.box("");
-  gender = observable.box("");
-  religion = observable.box("");
+  gender = observable.box(EGender.ONEOFTHEOTHER200GENDERS);
+  religion = observable.box(EReligion.ATHEISM);
 
   passwordsAreSame = computed(()=>{
     if(this.verifyPasswordValue.get() === this.passwordValue.get()){
@@ -67,6 +68,21 @@ class signInModel {
     runInAction(()=>{
       this.religion.set(religionInput);
     });
+  }
+
+  createUserObject(){
+    const userObject: IUserInterface  = {
+      id: Date.now(),
+      email: this.emailValue.get(),
+      password: this.passwordValue.get(),
+      firstName: this.firstName.get(),
+      lastName: this.lastName.get(),
+      age: parseInt(this.age.get()),
+      gender: this.gender.get(),
+      religion: this.religion.get(),
+    };
+
+    return userObject;
   }
 }
 

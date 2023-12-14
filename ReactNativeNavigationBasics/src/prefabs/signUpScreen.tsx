@@ -2,8 +2,8 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import { PasswordInputField } from '../../components/passwordInputComponent';
-import {TextInputField} from '../../components/textInputComponent';
+import { PasswordInputField } from '../components/passwordInputComponent';
+import {TextInputField} from '../components/textInputComponent';
 import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
 import {getSignUpStore} from '../store/signUpStore';
 
@@ -63,7 +63,7 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(({navigation}) =>
       </TouchableOpacity>
       <TouchableOpacity
       onPress={()=>{
-        navigation.navigate("LogIn");
+        navigation.goBack();
       }}>
         <Text style={{color: 'blue'}}>already have an account?</Text>
       </TouchableOpacity>

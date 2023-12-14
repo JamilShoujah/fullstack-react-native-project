@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import { IPageInterface } from '../Data/ComponentInterfaces/PagesInterface';
-import { LogInScreen } from '../Data/prefabs/logInScreen';
+import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
+import { LogInScreen } from '../prefabs/logInScreen';
 
 export const LogInPage: React.FC<IPageInterface> = ({navigation}) => {
     return (

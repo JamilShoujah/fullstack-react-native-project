@@ -1,12 +1,13 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import DropdownComponent from '../../components/dropDownComponent';
-import {TextInputField} from '../../components/textInputComponent';
+import DropdownComponent from '../components/dropDownComponent';
+import {TextInputField} from '../components/textInputComponent';
 import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
 import {GENDER_ARRAY} from '../constants/GenderDropdownArray';
 import {RELIGION_ARRAY} from '../constants/ReligionDropdownArray';
 import {getSignUpStore} from '../store/signUpStore';
+import { getUserArrayStore } from '../store/userArrayStore';
 
 export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigation}) => {
   const SignUpStore = getSignUpStore();
@@ -16,6 +17,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
   const gender = SignUpStore.gender.get();
   const religion = SignUpStore.religion.get();
 
+  const UserArrayStore = getUserArrayStore();
   return (
     <View style={{flex: 1, width: '80%', padding: 10, alignItems: 'center'}}>
       <TextInputField
@@ -46,8 +48,12 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
 
       <TouchableOpacity
         onPress={() => {
+          const user = SignUpStore.createUserObject();
+          UserArrayStore.addToUserArrray(user);
+          // console.log(user);
           // console.log(gender);
           // console.log(religion);
+          navigation.navigate("Home")
         }}
         style={{
           backgroundColor: 'blue',
@@ -58,11 +64,6 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
           margin: 5,
         }}>
         <Text style={{color: 'white'}}>Submit</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{
-        navigation.goBack();
-      }}>
-        <Text style={{color: 'blue'}}>already have an account?</Text>
       </TouchableOpacity>
     </View>
   );

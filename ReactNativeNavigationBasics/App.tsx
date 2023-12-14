@@ -5,6 +5,7 @@ import {SignUpPage} from './src/Pages/signUpPage';
 import {SignUpUserDetailsPage} from './src/Pages/signUpUseDetails';
 import { StackNavigation } from './src/Navigation/StackNavigation';
 import { LogInPage } from './src/Pages/logInPage';
+import { ProfilePage } from './src/Pages/profilePage';
 
 function App(): JSX.Element {
   return (
@@ -14,6 +15,7 @@ function App(): JSX.Element {
         {/* <SignUpUserDetailsPage navigation={undefined} /> */}
         <StackNavigation />
         {/* <LogInPage navigation={undefined} /> */}
+        {/* <ProfilePage navigation={undefined} /> */}
       </SafeAreaView>
     </NavigationContainer>
   );

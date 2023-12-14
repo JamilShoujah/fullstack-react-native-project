@@ -1,6 +1,6 @@
 import React from 'react';
 import {TextInput} from 'react-native';
-import { ITextInput } from '../Data/ComponentInterfaces/textInputInterface';
+import { ITextInput } from '../ComponentInterfaces/textInputInterface';
 
 
 export const PasswordInputField: React.FC<ITextInput> = ({placeholder, value, onValueChange}) => {

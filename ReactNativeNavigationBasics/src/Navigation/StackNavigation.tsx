@@ -3,13 +3,15 @@ import {createStackNavigator} from '@react-navigation/stack';
 import { SignUpPage } from '../Pages/signUpPage';
 import { SignUpUserDetailsPage } from '../Pages/signUpUseDetails';
 import { LogInPage } from '../Pages/logInPage';
+import { ProfilePage } from '../Pages/profilePage';
+import { HomePage } from '../Pages/homePage';
 const Stack = createStackNavigator();
 
 export const StackNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='LogIn'>
       <Stack.Screen
-        name="Home"
+        name="SignUp"
         component={SignUpPage}
         options={{
           header: () => null
@@ -25,6 +27,13 @@ export const StackNavigation = () => {
       <Stack.Screen
         name="LogIn"
         component={LogInPage}
+        options={{
+          header: () => null
+        }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomePage}
         options={{
           header: () => null
         }}
