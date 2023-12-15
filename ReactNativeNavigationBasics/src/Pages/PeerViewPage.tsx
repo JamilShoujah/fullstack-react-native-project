@@ -5,15 +5,9 @@ import {getUserArrayStore} from '../store/userArrayStore';
 
 export const PeerViewPage = () => {
   return (
-    <View
-      style={{
-        backgroundColor: 'green',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 100,
-      }}>
-      <Text style={{fontWeight: '900', color: 'white'}}>
-        KING OF THE PIRATES
+    <View style={{backgroundColor: 'blue'}}>
+      <Text style={{color: 'white', fontWeight: '900', padding: 20}}>
+        Peer View
       </Text>
     </View>
   );

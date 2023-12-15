@@ -5,19 +5,19 @@ import {IUserInterface} from '../Interfaces/userInterface';
 
 class userArrayModel {
   userArray = observable.array(usersArray);
-  userId = observable.box(0);
+  userObject = observable.box({});
 
   addToUserArrray(userObject: IUserInterface) {
     runInAction(() => {
       this.userArray.push(userObject);
     });
   }
-  setUserId(userId: number) {
+
+  setUserObject(userItem: IUserInterface) {
     runInAction(() => {
-      this.userId.set(userId);
+      this.userObject.set(userItem);
     });
   }
-
 }
 
 export const getUserArrayStore = memoize(

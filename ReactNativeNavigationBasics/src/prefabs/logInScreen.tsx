@@ -6,6 +6,7 @@ import {TextInputField} from '../components/textInputComponent';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {getLogInStore} from '../store/loginStore';
 import {getUserArrayStore} from '../store/userArrayStore';
+import { loginValidation } from '../functions/loginValidation';
 
 export const LogInScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
@@ -13,7 +14,7 @@ export const LogInScreen: React.FC<IPageInterface> = observer(
     const email = logInStore.emailValue.get();
     const password = logInStore.passwordValue.get();
 
-    const UserArrayStore = getUserArrayStore();
+    // const UserArrayStore = getUserArrayStore();
     return (
       <View style={{width: '70%', alignItems: 'center', margin: 10}}>
         <TextInputField
@@ -41,19 +42,7 @@ export const LogInScreen: React.FC<IPageInterface> = observer(
             width: '50%',
           }}
           onPress={() => {
-            const user = UserArrayStore.userArray.find(
-              user => user.email === email,
-            );
-
-            if (user) {
-              if (password === user.password) {
-                navigation.navigate('Home');
-              } else {
-                Alert.alert('Warning!', 'Incorrect Password', [{text: 'OK'}]);
-              }
-            } else {
-              Alert.alert('Warning!', 'Account doesnt exist', [{text: 'OK'}]);
-            }
+            loginValidation(email, password, navigation);
           }}>
           <Text style={{color: 'white'}}>Proceed</Text>
         </TouchableOpacity>

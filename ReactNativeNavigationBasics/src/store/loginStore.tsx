@@ -1,30 +1,30 @@
-import { observable, runInAction } from "mobx";
-import { memoize } from 'lodash';
+import {observable, runInAction} from 'mobx';
+import {memoize} from 'lodash';
+import {IUserInterface} from '../Interfaces/userInterface';
 
-class loginModel{
-    emailValue = observable.box("");
-    passwordValue= observable.box("");
+class loginModel {
+  emailValue = observable.box('');
+  passwordValue = observable.box('');
 
-    setEmailValue(emailInputValue: string){
-        runInAction(()=>{
-          this.emailValue.set(emailInputValue);
-        });
-      }
-    
-      setPasswordValue(passwordInputValue: string){
-        runInAction(()=>{
-          this.passwordValue.set(passwordInputValue);
-        });
-      }
+  setEmailValue(emailInputValue: string) {
+    runInAction(() => {
+      this.emailValue.set(emailInputValue);
+    });
+  }
+
+  setPasswordValue(passwordInputValue: string) {
+    runInAction(() => {
+      this.passwordValue.set(passwordInputValue);
+    });
+  }
 }
 
 export const getLogInStore = memoize(
-    () => {
-      const logInStore = new loginModel();
-      return logInStore;
-    },
-    () => 1
-  );
-  
-  export default { getLogInStore };
-  
+  () => {
+    const logInStore = new loginModel();
+    return logInStore;
+  },
+  () => 1,
+);
+
+export default {getLogInStore};
