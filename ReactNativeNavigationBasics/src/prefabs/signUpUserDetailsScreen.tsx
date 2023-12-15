@@ -7,7 +7,6 @@ import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
 import {GENDER_ARRAY} from '../constants/GenderDropdownArray';
 import {RELIGION_ARRAY} from '../constants/ReligionDropdownArray';
 import {getSignUpStore} from '../store/signUpStore';
-import { getUserArrayStore } from '../store/userArrayStore';
 import { NumericInputField } from '../components/numericInputComponent';
 import { signUpDetailValidation } from '../functions/SignUpDetailsVerification';
 
@@ -19,24 +18,22 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
   const gender = SignUpStore.gender.get();
   const religion = SignUpStore.religion.get();
 
-  const UserArrayStore = getUserArrayStore();
-
   return (
     <View style={{flex: 1, width: '80%', padding: 10, alignItems: 'center'}}>
       <TextInputField
         placeholder={'first name'}
         value={firstName}
-        onValueChange={text => SignUpStore.setFirstName(text)}
+        onValueChange={text => SignUpStore.setFirstName(text.trim())}
       />
       <TextInputField
         placeholder={'last name'}
         value={lastName}
-        onValueChange={text => SignUpStore.setLastName(text)}
+        onValueChange={text => SignUpStore.setLastName(text.trim())}
       />
       <NumericInputField
         placeholder={'age'}
         value={age}
-        onValueChange={text => SignUpStore.setAge(text)}
+        onValueChange={text => SignUpStore.setAge(text.trim())}
       />
       <DropdownComponent
         dataArray={GENDER_ARRAY}
@@ -52,12 +49,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
 
       <TouchableOpacity
         onPress={() => {
-          const user = SignUpStore.createUserObject();
-          UserArrayStore.addToUserArrray(user);
           signUpDetailValidation(navigation);
-          
-
-          // navigation.navigate("Home")
         }}
         style={{
           backgroundColor: 'blue',

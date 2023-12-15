@@ -49,8 +49,8 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(({navigation}) =>
           width: '50%',
         }}
         onPress={() => {
-          // signUpValidation(navigation);
-          navigation.navigate('Details');
+          signUpValidation(navigation);
+          // navigation.navigate('Details');
         }}>
           
         <Text style={{color: 'white'}}>Proceed</Text>
