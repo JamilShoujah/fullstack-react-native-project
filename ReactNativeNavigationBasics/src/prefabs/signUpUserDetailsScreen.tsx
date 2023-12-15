@@ -8,6 +8,8 @@ import {GENDER_ARRAY} from '../constants/GenderDropdownArray';
 import {RELIGION_ARRAY} from '../constants/ReligionDropdownArray';
 import {getSignUpStore} from '../store/signUpStore';
 import { getUserArrayStore } from '../store/userArrayStore';
+import { NumericInputField } from '../components/numericInputComponent';
+import { signUpDetailValidation } from '../functions/SignUpDetailsVerification';
 
 export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigation}) => {
   const SignUpStore = getSignUpStore();
@@ -18,6 +20,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
   const religion = SignUpStore.religion.get();
 
   const UserArrayStore = getUserArrayStore();
+
   return (
     <View style={{flex: 1, width: '80%', padding: 10, alignItems: 'center'}}>
       <TextInputField
@@ -30,7 +33,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
         value={lastName}
         onValueChange={text => SignUpStore.setLastName(text)}
       />
-      <TextInputField
+      <NumericInputField
         placeholder={'age'}
         value={age}
         onValueChange={text => SignUpStore.setAge(text)}
@@ -38,17 +41,23 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
       <DropdownComponent
         dataArray={GENDER_ARRAY}
         dropDownValue={String(gender)}
-        onValueChange={valueGender => SignUpStore.setGender(valueGender)} type={'gender'}      />
+        onValueChange={valueGender => SignUpStore.setGender(valueGender)} type={'gender'}      
+        />
+
       <DropdownComponent
         dataArray={RELIGION_ARRAY}
         dropDownValue={String(religion)}
-        onValueChange={valueReligion => SignUpStore.setReligion(valueReligion)} type={'religion'}      />
+        onValueChange={valueReligion => SignUpStore.setReligion(valueReligion)} type={'religion'}      
+        />
 
       <TouchableOpacity
         onPress={() => {
           const user = SignUpStore.createUserObject();
           UserArrayStore.addToUserArrray(user);
-          navigation.navigate("Home")
+          signUpDetailValidation(navigation);
+          
+
+          // navigation.navigate("Home")
         }}
         style={{
           backgroundColor: 'blue',
