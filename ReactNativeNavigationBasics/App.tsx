@@ -1,21 +1,13 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {SignUpPage} from './src/Pages/signUpPage';
-import {SignUpUserDetailsPage} from './src/Pages/signUpUseDetails';
 import { StackNavigation } from './src/Navigation/StackNavigation';
-import { LogInPage } from './src/Pages/logInPage';
-import { ProfilePage } from './src/Pages/profilePage';
 
 function App(): JSX.Element {
   return (
     <NavigationContainer>
       <SafeAreaView style={{flex: 1}}>
-        {/* <SignUpPage navigation={undefined} /> */}
-        {/* <SignUpUserDetailsPage navigation={undefined} /> */}
         <StackNavigation />
-        {/* <LogInPage navigation={undefined} /> */}
-        {/* <ProfilePage navigation={undefined} /> */}
       </SafeAreaView>
     </NavigationContainer>
   );

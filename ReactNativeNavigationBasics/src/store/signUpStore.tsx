@@ -12,8 +12,8 @@ class signInModel {
   firstName = observable.box("");
   lastName = observable.box("");
   age = observable.box("");
-  gender = observable.box(EGender.ONEOFTHEOTHER200GENDERS);
-  religion = observable.box(EReligion.ATHEISM);
+  gender = observable.box(EGender.NO);
+  religion = observable.box(EReligion.NO);
 
   passwordsAreSame = computed(()=>{
     if(this.verifyPasswordValue.get() === this.passwordValue.get()){

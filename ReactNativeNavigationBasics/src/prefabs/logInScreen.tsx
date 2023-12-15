@@ -1,54 +1,69 @@
-import { observer } from 'mobx-react-lite';
+import {observer} from 'mobx-react-lite';
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import {PasswordInputField} from '../components/passwordInputComponent';
 import {TextInputField} from '../components/textInputComponent';
-import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
+import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {getLogInStore} from '../store/loginStore';
+import {getUserArrayStore} from '../store/userArrayStore';
 
-export const LogInScreen: React.FC<IPageInterface> = observer(({navigation}) => {
-  const logInStore = getLogInStore();
-  const email = logInStore.emailValue.get();
-  const password = logInStore.passwordValue.get();
-  return (
-    <View style={{width: '70%', alignItems: 'center', margin: 10}}>
-      <TextInputField
-        placeholder="email Address"
-        value={email}
-        onValueChange={text => {
-          logInStore.setEmailValue(text);
-        }}
-      />
-      <PasswordInputField
-        placeholder="password"
-        value={password}
-        onValueChange={text => {
-          logInStore.setPasswordValue(text);
-        }}
-      />
+export const LogInScreen: React.FC<IPageInterface> = observer(
+  ({navigation}) => {
+    const logInStore = getLogInStore();
+    const email = logInStore.emailValue.get();
+    const password = logInStore.passwordValue.get();
 
-      <TouchableOpacity
-        style={{
-          backgroundColor: 'blue',
-          padding: 10,
-          borderRadius: 10,
-          alignItems: 'center',
-          marginVertical: 5,
-          width: '50%',
-        }}
-        onPress={() => {
-          // console.log(email);
-          // console.log(password);
-          navigation.navigate("Home")
-        }}>
-        <Text style={{color: 'white'}}>Proceed</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-      onPress={()=>{
-        navigation.navigate("SignUp");
-      }}>
-        <Text style={{color: 'blue'}}>Don't have an account?</Text>
-      </TouchableOpacity>
-    </View>
-  );
-});
+    const UserArrayStore = getUserArrayStore();
+    return (
+      <View style={{width: '70%', alignItems: 'center', margin: 10}}>
+        <TextInputField
+          placeholder="email Address"
+          value={email}
+          onValueChange={text => {
+            logInStore.setEmailValue(text);
+          }}
+        />
+        <PasswordInputField
+          placeholder="password"
+          value={password}
+          onValueChange={text => {
+            logInStore.setPasswordValue(text);
+          }}
+        />
+
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'blue',
+            padding: 10,
+            borderRadius: 10,
+            alignItems: 'center',
+            marginVertical: 5,
+            width: '50%',
+          }}
+          onPress={() => {
+            const user = UserArrayStore.userArray.find(
+              user => user.email === email,
+            );
+
+            if (user) {
+              if (password === user.password) {
+                navigation.navigate('Home');
+              } else {
+                Alert.alert('Warning!', 'Incorrect Password', [{text: 'OK'}]);
+              }
+            } else {
+              Alert.alert('Warning!', 'Account doesnt exist', [{text: 'OK'}]);
+            }
+          }}>
+          <Text style={{color: 'white'}}>Proceed</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('SignUp');
+          }}>
+          <Text style={{color: 'blue'}}>Don't have an account?</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  },
+);

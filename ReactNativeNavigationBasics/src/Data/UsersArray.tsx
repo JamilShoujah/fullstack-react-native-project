@@ -2,7 +2,7 @@ import { EGender } from "../enums/genderEnum";
 import { EReligion } from "../enums/religionEnum";
 import { IUserInterface } from "../Interfaces/userInterface";
 
-export const userArray: IUserInterface[] = [
+export const usersArray: IUserInterface[] = [
     {
         id: 1,
         email: "deeznutz@gmail.com",

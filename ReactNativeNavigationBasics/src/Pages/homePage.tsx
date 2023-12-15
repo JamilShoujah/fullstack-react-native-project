@@ -6,10 +6,6 @@ import { LogInScreen } from '../prefabs/logInScreen';
 
 export const HomePage = () => {
     return (
-        // <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', top: 'auto'}}>
-        //     {/* <Text style={{fontWeight: 'bold', fontSize: 50}}>HOME</Text> */}
-            
-        // </View>
         <TabNavigation />
     );
 }

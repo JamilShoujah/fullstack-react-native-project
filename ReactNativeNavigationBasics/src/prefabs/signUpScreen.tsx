@@ -1,11 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View, Alert} from 'react-native';
 import { PasswordInputField } from '../components/passwordInputComponent';
 import {TextInputField} from '../components/textInputComponent';
 import { IPageInterface } from '../ComponentInterfaces/PagesInterface';
 import {getSignUpStore} from '../store/signUpStore';
+import { isValidEmail } from '../functions/EmailRegx';
 
 export const SignUpScreen: React.FC<IPageInterface> = observer(({navigation}) => {
   const SignUpStore = getSignUpStore();
@@ -49,15 +50,37 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(({navigation}) =>
           width: '50%',
         }}
         onPress={() => {
-          navigation.navigate("Details");
-          // if (isSame && password !== '' && email !== '') {
-          //   console.log('yalla binna');
-      
-          //   // nagigate to more info page
+          if(isValidEmail(email)){
+            if(password !== ''){
+              if(isSame){
+                console.log('yalla binna');
+                navigation.navigate("Details");
+              }else{
+                Alert.alert('Error', 'Passwords do not match', [{text: "OK"}]);
+              }
+
+            }else{
+              Alert.alert('Error', 'Password should not be empty', [{text: "OK"}]);
+            }
+          } else {
+            Alert.alert('Error', 'Invalid email address', [{text: "OK"}]);
+          }
+
+          // if (isSame) {
+          //   if (password !== '') {
+          //     if (isValidEmail(email)) {
+          //       console.log('yalla binna');
+          //       // navigation.navigate("Details");
+          //     } else {
+          //       Alert.alert('Error', 'Invalid email address.', [{text: "OK"}]);
+          //     }
+          //   } else {
+          //     Alert.alert('Error', 'Password cannot be empty.', [{text: "OK"}]);
+          //   }
           // } else {
-          //   console.log('insay');
-          //   // return waring error
+          //   Alert.alert('Error', 'The conditions have not been met.', [{text: "OK"}]);
           // }
+          
         }}>
         <Text style={{color: 'white'}}>Proceed</Text>
       </TouchableOpacity>

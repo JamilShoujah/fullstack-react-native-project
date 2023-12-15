@@ -38,21 +38,16 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(({navigati
       <DropdownComponent
         dataArray={GENDER_ARRAY}
         dropDownValue={String(gender)}
-        onValueChange={valueGender => SignUpStore.setGender(valueGender)}
-      />
+        onValueChange={valueGender => SignUpStore.setGender(valueGender)} type={'gender'}      />
       <DropdownComponent
         dataArray={RELIGION_ARRAY}
         dropDownValue={String(religion)}
-        onValueChange={valueReligion => SignUpStore.setReligion(valueReligion)}
-      />
+        onValueChange={valueReligion => SignUpStore.setReligion(valueReligion)} type={'religion'}      />
 
       <TouchableOpacity
         onPress={() => {
           const user = SignUpStore.createUserObject();
           UserArrayStore.addToUserArrray(user);
-          // console.log(user);
-          // console.log(gender);
-          // console.log(religion);
           navigation.navigate("Home")
         }}
         style={{

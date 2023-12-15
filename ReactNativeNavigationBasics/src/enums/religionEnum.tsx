@@ -1,4 +1,5 @@
 export enum EReligion{
+    NO = "",
     ISLAM = "Islam",
     CHRISTIANITY = "Christianity",
     JUDAISM = "Judaism",

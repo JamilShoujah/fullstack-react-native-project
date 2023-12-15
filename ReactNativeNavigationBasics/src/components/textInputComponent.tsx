@@ -14,6 +14,7 @@ export const TextInputField: React.FC<ITextInput> = ({placeholder, value, onValu
           marginVertical: 5,
           width: '100%',
         }}
+        autoCapitalize="none"
         placeholder={placeholder}
         value={value}
         onChangeText={text => {

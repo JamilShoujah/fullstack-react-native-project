@@ -5,7 +5,9 @@ import { IDropDownMenu } from '../ComponentInterfaces/dropDownInterface';
 
 const DropdownComponent: React.FC<IDropDownMenu>= observer(({dataArray,
     dropDownValue,
-    onValueChange}) => {
+    onValueChange,
+    type,
+  }) => {
   return (
     <Dropdown
       style={{
@@ -15,6 +17,8 @@ const DropdownComponent: React.FC<IDropDownMenu>= observer(({dataArray,
         paddingHorizontal: 10,
         marginVertical: 5,
       }}
+      placeholderStyle ={{color: 'silver', fontSize: 14}}
+      placeholder = {type} 
       data={dataArray}
       labelField="value"
       valueField="value"
