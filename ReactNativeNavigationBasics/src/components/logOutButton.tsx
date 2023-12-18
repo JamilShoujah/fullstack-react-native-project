@@ -10,7 +10,7 @@ import {getLogInStore} from '../store/loginStore';
 import {getUserArrayStore} from '../store/userArrayStore';
 export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
   const loginStore = getLogInStore();
-  const userArrayStore = getUserArrayStore();
+  const UserArrayStore = getUserArrayStore();
   const emptyUserObject: IUserInterface = {
     id: 0,
     email: '',
@@ -27,7 +27,7 @@ export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
         onPress={() => {
           loginStore.setEmailValue('');
           loginStore.setPasswordValue('');
-          userArrayStore.setUserObject(emptyUserObject);
+          UserArrayStore.setUserObject(emptyUserObject);
 
           navigation.navigate('LogIn');
         }}

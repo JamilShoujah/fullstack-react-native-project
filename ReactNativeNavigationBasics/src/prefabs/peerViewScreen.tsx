@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text} from 'react-native';
+import {UserArrayMinusCurrentUserMap} from '../functions/userArrayMinusCurrentUserMap';
 
 export const PeerViewScreen = () => {
   return (
@@ -16,6 +17,7 @@ export const PeerViewScreen = () => {
           Peer View
         </Text>
       </View>
+      <UserArrayMinusCurrentUserMap />
     </View>
   );
 };
