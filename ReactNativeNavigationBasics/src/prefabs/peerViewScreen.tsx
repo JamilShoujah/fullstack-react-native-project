@@ -1,7 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import {UserArrayMinusCurrentUserMap} from '../functions/userArrayMinusCurrentUserMap';
+import {ItemModal} from './userModal';
 
 export const PeerViewScreen = () => {
   return (
@@ -17,7 +19,11 @@ export const PeerViewScreen = () => {
           Peer View
         </Text>
       </View>
-      <UserArrayMinusCurrentUserMap />
+      <ScrollView style={{padding: 10}}>
+        <UserArrayMinusCurrentUserMap />
+      </ScrollView>
+
+      <ItemModal />
     </View>
   );
 };

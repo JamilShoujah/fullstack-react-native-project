@@ -6,7 +6,6 @@ import {getUserArrayStore} from '../store/userArrayStore';
 import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../components/logOutButton';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const UserArrayStore = getUserArrayStore();
@@ -56,13 +55,6 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
         <DataDisplay title={'Age'} value={age} />
         <DataDisplay title={'Gender'} value={gender} />
         <DataDisplay title={'Religion'} value={religion} />
-
-        <TouchableOpacity
-          onPress={() => {
-            console.log(UserArrayStore.userArrayMinusCurrentUser.get());
-          }}>
-          <Text>print user array test</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
