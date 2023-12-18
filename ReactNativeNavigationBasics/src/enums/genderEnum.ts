@@ -5,5 +5,5 @@ export enum EGender {
   NONBINARY = 'Non-Binary',
   ATTACKHELICOPTER = 'Attack-Helicopter',
   WALMARTBAG = 'Walmart-Bag',
-  ONEOFTHEOTHER200GENDERS = 'One of the 200+ other genders',
+  ONEOFTHEOTHER200GENDERS = 'One of the 200+ genders',
 }

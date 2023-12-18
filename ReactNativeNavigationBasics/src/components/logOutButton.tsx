@@ -22,7 +22,7 @@ export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
     religion: EReligion.NO,
   };
   return (
-    <View>
+    <View style={{position: 'absolute', left: '87%'}}>
       <TouchableOpacity
         onPress={() => {
           loginStore.setEmailValue('');
@@ -32,15 +32,11 @@ export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
           navigation.navigate('LogIn');
         }}
         style={{
-          backgroundColor: 'red',
           width: 40,
           height: 40,
           borderRadius: 20,
           alignItems: 'center',
           justifyContent: 'center',
-          position: 'relative',
-          top: '10%',
-          left: '85%',
         }}>
         <Feather name={'log-out'} size={20} color={'white'} />
       </TouchableOpacity>

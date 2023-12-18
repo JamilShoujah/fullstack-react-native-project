@@ -6,6 +6,7 @@ import {getUserArrayStore} from '../store/userArrayStore';
 import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../components/logOutButton';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const UserArrayStore = getUserArrayStore();
@@ -19,20 +20,27 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const fullName = firstName + ' ' + lastName;
   return (
     <View>
-      <View style={{backgroundColor: 'blue', alignItems: 'center'}}>
+      <View
+        style={{
+          backgroundColor: 'blue',
+          flexDirection: 'row',
+          alignItems: 'center',
+          width: '100%',
+          justifyContent: 'center',
+        }}>
         <Text
           style={{
             color: 'white',
             fontWeight: '900',
             padding: 20,
             fontSize: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
           My Profile
         </Text>
+        <LogOutButton navigation={navigation} />
       </View>
-
-      <LogOutButton navigation={navigation} />
-
       <View
         style={{
           alignItems: 'flex-start',
@@ -48,6 +56,13 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
         <DataDisplay title={'Age'} value={age} />
         <DataDisplay title={'Gender'} value={gender} />
         <DataDisplay title={'Religion'} value={religion} />
+
+        <TouchableOpacity
+          onPress={() => {
+            console.log(UserArrayStore.userArrayMinusCurrentUser.get());
+          }}>
+          <Text>print user array test</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

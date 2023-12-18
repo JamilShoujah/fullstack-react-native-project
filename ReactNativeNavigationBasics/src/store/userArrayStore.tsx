@@ -1,10 +1,11 @@
-import {observable, runInAction} from 'mobx';
+import {computed, observable, runInAction} from 'mobx';
 import {memoize} from 'lodash';
 import {usersArray} from '../Data/UsersArray';
 import {IUserInterface} from '../Interfaces/userInterface';
 
 class userArrayModel {
   userArray = observable.array(usersArray);
+  userObjectId = observable.box(0);
   userObject = observable.box({
     id: 0,
     email: '',
@@ -16,6 +17,13 @@ class userArrayModel {
     religion: '',
   });
 
+  userArrayMinusCurrentUser = computed(() => {
+    const filteredArray: IUserInterface[] = this.userArray.filter(
+      user => user.id !== this.userObjectId.get(),
+    );
+    return filteredArray;
+  });
+
   addToUserArrray(userObject: IUserInterface) {
     runInAction(() => {
       this.userArray.push(userObject);
@@ -25,6 +33,7 @@ class userArrayModel {
   setUserObject(userItem: IUserInterface) {
     runInAction(() => {
       this.userObject.set(userItem);
+      this.userObjectId.set(userItem.id);
     });
   }
 }
