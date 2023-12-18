@@ -11,21 +11,21 @@ export function signUpValidation(navigation: any) {
   let errors = [];
 
   if (!isValidEmail(email)) {
-      errors.push('Valid Email');
+    errors.push('Valid Email');
   }
   if (!password) {
-      errors.push('Password');
+    errors.push('Password');
   }
-  
+
   if (errors.length > 0) {
-      Alert.alert('Data Missing', errors.join(', '), [{text: 'OK'}]);
-      return;
+    Alert.alert('Data Missing', errors.join(', '), [{text: 'OK'}]);
+    return;
   }
 
   if (isSame) {
     navigation.navigate('Details');
-  }else{
-      Alert.alert('Warning', "Password didn't match", [{text: 'OK'}]);
-      return;
+  } else {
+    Alert.alert('Warning', "Password didn't match", [{text: 'OK'}]);
+    return;
   }
 }

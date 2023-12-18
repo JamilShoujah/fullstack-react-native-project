@@ -1,11 +1,20 @@
-import {computed, observable, runInAction} from 'mobx';
+import {observable, runInAction} from 'mobx';
 import {memoize} from 'lodash';
 import {usersArray} from '../Data/UsersArray';
 import {IUserInterface} from '../Interfaces/userInterface';
 
 class userArrayModel {
   userArray = observable.array(usersArray);
-  userObject = observable.box({});
+  userObject = observable.box({
+    id: 0,
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    age: 0,
+    gender: '',
+    religion: '',
+  });
 
   addToUserArrray(userObject: IUserInterface) {
     runInAction(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import {Alert} from 'react-native';
 import {getUserArrayStore} from '../store/userArrayStore';
 

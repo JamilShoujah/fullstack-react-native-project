@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ProfilePage} from '../Pages/profilePage';
 import {PeerViewPage} from '../Pages/PeerViewPage';
-import { getTabBarIcon } from '../functions/tabBarIcons';
+import {getTabBarIcon} from '../functions/tabBarIcons';
 
 export const TabNavigation = () => {
   const Tab = createBottomTabNavigator();

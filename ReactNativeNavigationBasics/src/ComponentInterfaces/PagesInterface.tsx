@@ -1,3 +1,3 @@
-export interface IPageInterface{
-    navigation: any;
+export interface IPageInterface {
+  navigation: any;
 }

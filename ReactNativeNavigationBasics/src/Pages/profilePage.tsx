@@ -1,8 +1,7 @@
 import React from 'react';
-import { ProfileScreen } from '../prefabs/ProfileScreen';
+import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
+import {ProfileScreen} from '../prefabs/ProfileScreen';
 
-export const ProfilePage = () => {
-  return (
-    <ProfileScreen />
-  );
+export const ProfilePage: React.FC<IPageInterface> = ({navigation}) => {
+  return <ProfileScreen navigation={navigation} />;
 };

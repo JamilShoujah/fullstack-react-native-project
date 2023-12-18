@@ -1,6 +1,5 @@
 import {observable, runInAction} from 'mobx';
 import {memoize} from 'lodash';
-import {IUserInterface} from '../Interfaces/userInterface';
 
 class loginModel {
   emailValue = observable.box('');
