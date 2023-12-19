@@ -10,31 +10,31 @@ import {signUpValidation} from '../functions/SignUpValidation';
 
 export const SignUpScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
-    const SignUpStore = getSignUpStore();
-    const email = SignUpStore.emailValue.get();
-    const password = SignUpStore.passwordValue.get();
-    const verify = SignUpStore.verifyPasswordValue.get();
+    const signUpStore = getSignUpStore();
+    const email = signUpStore.emailValue.get();
+    const password = signUpStore.passwordValue.get();
+    const verify = signUpStore.verifyPasswordValue.get();
     return (
       <View style={{width: '70%', alignItems: 'center', margin: 10}}>
         <TextInputField
           placeholder="email Address"
           value={email}
           onValueChange={text => {
-            SignUpStore.setEmailValue(text);
+            signUpStore.setEmailValue(text);
           }}
         />
         <PasswordInputField
           placeholder="password"
           value={password}
           onValueChange={text => {
-            SignUpStore.setPasswordValue(text);
+            signUpStore.setPasswordValue(text);
           }}
         />
         <PasswordInputField
           placeholder="verify password"
           value={verify}
           onValueChange={text => {
-            SignUpStore.setVerifyPasswordValue(text);
+            signUpStore.setVerifyPasswordValue(text);
           }}
         />
 

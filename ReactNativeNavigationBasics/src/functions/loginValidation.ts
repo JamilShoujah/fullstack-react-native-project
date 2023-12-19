@@ -7,13 +7,13 @@ export function loginValidation(
   password: string,
   navigation: any,
 ) {
-  const UserArrayStore = getUserArrayStore();
+  const userArrayStore = getUserArrayStore();
 
-  const user = UserArrayStore.userArray.find(user => user.email === email);
+  const user = userArrayStore.userArray.find(user => user.email === email);
 
   if (user) {
     if (password === user.password) {
-      UserArrayStore.setUserObject(user);
+      userArrayStore.setUserObject(user);
       navigation.navigate('Home');
     } else {
       Alert.alert('Warning!', 'Incorrect Password', [{text: 'OK'}]);

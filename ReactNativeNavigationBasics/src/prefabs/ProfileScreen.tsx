@@ -1,15 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text} from 'react-native';
-import {DataDisplay} from '../components/DataDisplay';
+import {DataDisplay} from '../components/dataDisplay';
 import {getUserArrayStore} from '../store/userArrayStore';
 import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../components/logOutButton';
 
 export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
-  const UserArrayStore = getUserArrayStore();
-  const userObject = UserArrayStore.userObject.get();
+  const userArrayStore = getUserArrayStore();
+  const userObject = userArrayStore.userObject.get();
   const firstName = userObject.firstName;
   const lastName = userObject.lastName;
   const email = userObject.email;

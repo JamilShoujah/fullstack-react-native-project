@@ -1,6 +1,6 @@
 import {computed, observable, runInAction} from 'mobx';
 import {memoize} from 'lodash';
-import {usersArray} from '../Data/UsersArray';
+import {usersArray} from '../constants/UsersArray';
 import {IUserInterface} from '../Interfaces/userInterface';
 
 class userArrayModel {

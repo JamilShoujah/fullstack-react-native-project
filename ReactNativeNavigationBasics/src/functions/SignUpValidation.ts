@@ -3,12 +3,12 @@ import {getSignUpStore} from '../store/signUpStore';
 import {isValidEmail} from './EmailRegx';
 import {getUserArrayStore} from '../store/userArrayStore';
 export function signUpValidation(navigation: any) {
-  const SignUpStore = getSignUpStore();
-  const UserArrayStore = getUserArrayStore();
-  const email = SignUpStore.emailValue.get();
-  const password = SignUpStore.passwordValue.get();
-  const isSame = SignUpStore.passwordsAreSame.get();
-  const array = UserArrayStore.userArray;
+  const signUpStore = getSignUpStore();
+  const userArrayStore = getUserArrayStore();
+  const email = signUpStore.emailValue.get();
+  const password = signUpStore.passwordValue.get();
+  const isSame = signUpStore.passwordsAreSame.get();
+  const array = userArrayStore.userArray;
 
   let errors = [];
 

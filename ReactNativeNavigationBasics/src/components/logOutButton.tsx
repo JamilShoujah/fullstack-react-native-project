@@ -6,11 +6,12 @@ import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {EGender} from '../enums/genderEnum';
 import {EReligion} from '../enums/religionEnum';
 import {IUserInterface} from '../Interfaces/userInterface';
-import {getLogInStore} from '../store/loginStore';
+import {getLogInStore} from '../store/login-store';
 import {getUserArrayStore} from '../store/userArrayStore';
+
 export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
   const loginStore = getLogInStore();
-  const UserArrayStore = getUserArrayStore();
+  const userArrayStore = getUserArrayStore();
   const emptyUserObject: IUserInterface = {
     id: 0,
     email: '',
@@ -27,7 +28,7 @@ export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
         onPress={() => {
           loginStore.setEmailValue('');
           loginStore.setPasswordValue('');
-          UserArrayStore.setUserObject(emptyUserObject);
+          userArrayStore.setUserObject(emptyUserObject);
 
           navigation.navigate('LogIn');
         }}

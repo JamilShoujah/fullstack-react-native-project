@@ -5,7 +5,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {PasswordInputField} from '../components/passwordInputComponent';
 import {TextInputField} from '../components/textInputComponent';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
-import {getLogInStore} from '../store/loginStore';
+import {getLogInStore} from '../store/login-store';
 import {loginValidation} from '../functions/loginValidation';
 
 export const LogInScreen: React.FC<IPageInterface> = observer(

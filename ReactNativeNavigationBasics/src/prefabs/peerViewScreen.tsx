@@ -2,7 +2,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {UserArrayMinusCurrentUserMap} from '../functions/userArrayMinusCurrentUserMap';
+import {UserArrayMinusCurrentUserMap} from '../components/userArrayMinusCurrentUserMap';
 import {ItemModal} from './userModal';
 
 export const PeerViewScreen = () => {

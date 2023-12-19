@@ -6,18 +6,18 @@ import {getModalStore} from '../store/modalStore';
 import {getUserArrayStore} from '../store/userArrayStore';
 
 export const UserArrayMinusCurrentUserMap = () => {
-  const ModalStore = getModalStore();
-  const UserArrayStore = getUserArrayStore();
+  const modalStore = getModalStore();
+  const userArrayStore = getUserArrayStore();
   const usersArrayMinusCurrentUser =
-    UserArrayStore.userArrayMinusCurrentUser.get();
+    userArrayStore.userArrayMinusCurrentUser.get();
   return (
     <View>
       {usersArrayMinusCurrentUser.map((item: IUserInterface) => (
         <View key={item.id}>
           <TouchableOpacity
             onPress={() => {
-              ModalStore.openModal();
-              ModalStore.setUserObject(item);
+              modalStore.openModal();
+              modalStore.setUserObject(item);
             }}
             style={{
               backgroundColor: 'lightsteelblue',

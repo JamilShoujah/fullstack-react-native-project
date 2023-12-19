@@ -1,7 +1,7 @@
 import {Alert} from 'react-native';
-import {IUserInterface} from '../Interfaces/userInterface';
-import {getSignUpStore} from '../store/signUpStore';
-import {getUserArrayStore} from '../store/userArrayStore';
+import {IUserInterface} from '../../Interfaces/userInterface';
+import {getSignUpStore} from '../signUpStore';
+import {getUserArrayStore} from '../userArrayStore';
 
 export function signUpDetailValidation(navigation: any) {
   const SignUpStore = getSignUpStore();

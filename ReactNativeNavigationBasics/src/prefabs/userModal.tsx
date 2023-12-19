@@ -7,8 +7,8 @@ import {CloseButton} from '../components/closeModalButton';
 import {ModalDataDisplay} from '../components/modalDataDisplay';
 
 export const ItemModal = observer(() => {
-  const ModalStore = getModalStore();
-  const item = ModalStore.item.get();
+  const modalStore = getModalStore();
+  const item = modalStore.item.get();
   const firstName = item.firstName;
   const lastName = item.lastName;
   const email = item.email;
@@ -19,8 +19,8 @@ export const ItemModal = observer(() => {
   return (
     <Modal
       transparent={true}
-      visible={ModalStore.isOpen.get()}
-      onRequestClose={() => ModalStore.closeModal}>
+      visible={modalStore.isOpen.get()}
+      onRequestClose={() => modalStore.closeModal}>
       <View
         style={{
           flex: 1,
