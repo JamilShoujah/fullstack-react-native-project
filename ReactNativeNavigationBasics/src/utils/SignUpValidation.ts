@@ -1,7 +1,7 @@
 import {Alert} from 'react-native';
-import {getSignUpStore} from '../store/signUpStore';
+import {getSignUpStore} from '../store/sign-up-store';
 import {isValidEmail} from './EmailRegx';
-import {getUserArrayStore} from '../store/userArrayStore';
+import {getUserArrayStore} from '../store/user-array-store';
 export function signUpValidation(navigation: any) {
   const signUpStore = getSignUpStore();
   const userArrayStore = getUserArrayStore();

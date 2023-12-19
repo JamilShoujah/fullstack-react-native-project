@@ -7,7 +7,7 @@ import {EGender} from '../enums/genderEnum';
 import {EReligion} from '../enums/religionEnum';
 import {IUserInterface} from '../Interfaces/userInterface';
 import {getLogInStore} from '../store/login-store';
-import {getUserArrayStore} from '../store/userArrayStore';
+import {getUserArrayStore} from '../store/user-array-store';
 
 export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
   const loginStore = getLogInStore();

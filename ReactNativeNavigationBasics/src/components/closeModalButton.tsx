@@ -2,7 +2,7 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import {getModalStore} from '../store/modalStore';
+import {getModalStore} from '../store/modal-store';
 
 export const CloseButton = () => {
   const modalStore = getModalStore();

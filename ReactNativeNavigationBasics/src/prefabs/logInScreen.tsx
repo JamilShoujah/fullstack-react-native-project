@@ -6,7 +6,7 @@ import {PasswordInputField} from '../components/passwordInputComponent';
 import {TextInputField} from '../components/textInputComponent';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {getLogInStore} from '../store/login-store';
-import {loginValidation} from '../functions/loginValidation';
+import {loginValidation} from '../utils/loginValidation';
 
 export const LogInScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {

@@ -7,9 +7,9 @@ import {TextInputField} from '../components/textInputComponent';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {GENDER_ARRAY} from '../constants/GenderDropdownArray';
 import {RELIGION_ARRAY} from '../constants/ReligionDropdownArray';
-import {getSignUpStore} from '../store/signUpStore';
+import {getSignUpStore} from '../store/sign-up-store';
 import {NumericInputField} from '../components/numericInputComponent';
-import {signUpDetailValidation} from '../store/login-store/sign-up-details-verification';
+import {signUpDetailValidation} from '../utils/sign-up-details-verification';
 
 export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {

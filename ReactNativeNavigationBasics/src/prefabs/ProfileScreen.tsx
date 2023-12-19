@@ -2,7 +2,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {DataDisplay} from '../components/dataDisplay';
-import {getUserArrayStore} from '../store/userArrayStore';
+import {getUserArrayStore} from '../store/user-array-store';
 import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../components/logOutButton';

@@ -1,8 +1,8 @@
 import {computed, observable, runInAction} from 'mobx';
 import {memoize} from 'lodash';
-import {EGender} from '../enums/genderEnum';
-import {EReligion} from '../enums/religionEnum';
-import {IUserInterface} from '../Interfaces/userInterface';
+import {EGender} from '../../enums/genderEnum';
+import {EReligion} from '../../enums/religionEnum';
+import {IUserInterface} from '../../Interfaces/userInterface';
 
 class signInModel {
   emailValue = observable.box('');

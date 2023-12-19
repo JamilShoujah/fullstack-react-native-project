@@ -2,8 +2,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {IUserInterface} from '../Interfaces/userInterface';
-import {getModalStore} from '../store/modalStore';
-import {getUserArrayStore} from '../store/userArrayStore';
+import {getModalStore} from '../store/modal-store';
+import {getUserArrayStore} from '../store/user-array-store';
 
 export const UserArrayMinusCurrentUserMap = () => {
   const modalStore = getModalStore();

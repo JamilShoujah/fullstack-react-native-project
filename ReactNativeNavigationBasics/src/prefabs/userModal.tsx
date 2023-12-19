@@ -2,7 +2,7 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {Modal, View} from 'react-native';
-import {getModalStore} from '../store/modalStore';
+import {getModalStore} from '../store/modal-store';
 import {CloseButton} from '../components/closeModalButton';
 import {ModalDataDisplay} from '../components/modalDataDisplay';
 

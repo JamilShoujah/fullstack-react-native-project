@@ -1,8 +1,8 @@
 import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
-import {IUserInterface} from '../Interfaces/userInterface';
-import {EGender} from '../enums/genderEnum';
-import {EReligion} from '../enums/religionEnum';
+import {IUserInterface} from '../../Interfaces/userInterface';
+import {EGender} from '../../enums/genderEnum';
+import {EReligion} from '../../enums/religionEnum';
 
 class ModalStoreClass {
   isOpen = observable.box(false);

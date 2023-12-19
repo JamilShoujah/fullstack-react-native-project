@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {Alert} from 'react-native';
-import {getUserArrayStore} from '../store/userArrayStore';
+import {getUserArrayStore} from '../store/user-array-store';
 
 export function loginValidation(
   email: string,

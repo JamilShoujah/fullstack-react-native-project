@@ -5,8 +5,8 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {PasswordInputField} from '../components/passwordInputComponent';
 import {TextInputField} from '../components/textInputComponent';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
-import {getSignUpStore} from '../store/signUpStore';
-import {signUpValidation} from '../functions/SignUpValidation';
+import {getSignUpStore} from '../store/sign-up-store';
+import {signUpValidation} from '../utils/SignUpValidation';
 
 export const SignUpScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
