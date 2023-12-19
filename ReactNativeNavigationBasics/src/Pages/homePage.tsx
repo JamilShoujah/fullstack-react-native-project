@@ -1,6 +1,10 @@
 import React from 'react';
-import {TabNavigation} from '../Navigation/tabNavigation';
+import {DrawerNavigation} from '../Navigation/drawer-navigation';
+// import {TabNavigation} from '../Navigation/tabNavigation';
 
 export const HomePage = () => {
-  return <TabNavigation />;
+  return (
+    // <TabNavigation />
+    <DrawerNavigation />
+  );
 };

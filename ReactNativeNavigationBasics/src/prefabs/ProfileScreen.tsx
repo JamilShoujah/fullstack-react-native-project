@@ -6,6 +6,7 @@ import {getUserArrayStore} from '../store/user-array-store';
 import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../components/logOutButton';
+import {MenuButton} from '../components/burgerMenuButton';
 
 export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const userArrayStore = getUserArrayStore();
@@ -36,8 +37,9 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          My Profile
+          Profile
         </Text>
+        <MenuButton navigation={navigation} />
         <LogOutButton navigation={navigation} />
       </View>
       <View
