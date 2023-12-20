@@ -6,6 +6,14 @@
   "email": "Email",
   "age":"Age",
   "gender": "Gender",
-  "religion": "religion",
-  "peerView": "Friends"
+  "religion": "Religion",
+  "peerView": "Friends",
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "proceed": "Continue",
+  "noAccount": "Don't have an account?",
+  "signupHere": "you can Sign Up here!",
+  "verifyPassword": "Verify Password",
+  "haveAccount": "already have an account?"
+
 }

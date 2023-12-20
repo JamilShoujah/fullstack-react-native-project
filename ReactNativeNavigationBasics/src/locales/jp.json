@@ -7,5 +7,12 @@
   "age":"年",
   "gender": "性別",
   "religion": "宗教",
-  "peerView": "友達"
+  "peerView": "友達",
+  "emailAddress": "電子メールアドレス",
+  "password": "パスワード",
+  "proceed": "続く",
+  "noAccount": "アカウントをお持ちでない場合は、",
+  "signupHere": "ここからサインアップできます!",
+  "verifyPassword": "パスワードを照合します",
+  "haveAccount": "すでにアカウントをお持ちですか"
 }

@@ -7,24 +7,30 @@ import {TextInputField} from '../components/textInputComponent';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {getLogInStore} from '../store/login-store';
 import {loginValidation} from '../utils/loginValidation';
+import {useTranslation} from 'react-i18next';
 
 export const LogInScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
     const logInStore = getLogInStore();
     const email = logInStore.emailValue.get();
     const password = logInStore.passwordValue.get();
+    const {t} = useTranslation();
+    const email_ = t('emailAddress');
+    const password_ = t('password');
+    const proceed_ = t('proceed');
+    const noAccount_ = t('noAccount');
 
     return (
       <View style={{width: '70%', alignItems: 'center', margin: 10}}>
         <TextInputField
-          placeholder="email Address"
+          placeholder={email_}
           value={email}
           onValueChange={text => {
             logInStore.setEmailValue(text);
           }}
         />
         <PasswordInputField
-          placeholder="password"
+          placeholder={password_}
           value={password}
           onValueChange={text => {
             logInStore.setPasswordValue(text);
@@ -43,13 +49,13 @@ export const LogInScreen: React.FC<IPageInterface> = observer(
           onPress={() => {
             loginValidation(email, password, navigation);
           }}>
-          <Text style={{color: 'white'}}>Proceed</Text>
+          <Text style={{color: 'white'}}>{proceed_}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('SignUp');
           }}>
-          <Text style={{color: 'blue'}}>Don't have an account?</Text>
+          <Text style={{color: 'blue'}}>{noAccount_}</Text>
         </TouchableOpacity>
       </View>
     );

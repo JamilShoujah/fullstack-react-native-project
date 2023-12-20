@@ -7,6 +7,7 @@ import {TextInputField} from '../components/textInputComponent';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {getSignUpStore} from '../store/sign-up-store';
 import {signUpValidation} from '../utils/SignUpValidation';
+import {useTranslation} from 'react-i18next';
 
 export const SignUpScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
@@ -14,24 +15,31 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(
     const email = signUpStore.emailValue.get();
     const password = signUpStore.passwordValue.get();
     const verify = signUpStore.verifyPasswordValue.get();
+    const {t} = useTranslation();
+    const email_ = t('emailAddress');
+    const password_ = t('password');
+    const verifyPassword_ = t('verifyPassword');
+    const proceed_ = t('proceed');
+    const haveAccount_ = t('haveAccount');
+
     return (
       <View style={{width: '70%', alignItems: 'center', margin: 10}}>
         <TextInputField
-          placeholder="email Address"
+          placeholder={email_}
           value={email}
           onValueChange={text => {
             signUpStore.setEmailValue(text);
           }}
         />
         <PasswordInputField
-          placeholder="password"
+          placeholder={password_}
           value={password}
           onValueChange={text => {
             signUpStore.setPasswordValue(text);
           }}
         />
         <PasswordInputField
-          placeholder="verify password"
+          placeholder={verifyPassword_}
           value={verify}
           onValueChange={text => {
             signUpStore.setVerifyPasswordValue(text);
@@ -50,13 +58,13 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(
           onPress={() => {
             signUpValidation(navigation);
           }}>
-          <Text style={{color: 'white'}}>Proceed</Text>
+          <Text style={{color: 'white'}}>{proceed_}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
           }}>
-          <Text style={{color: 'blue'}}>already have an account?</Text>
+          <Text style={{color: 'blue'}}>{haveAccount_}</Text>
         </TouchableOpacity>
       </View>
     );
