@@ -7,6 +7,7 @@ import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../components/logOutButton';
 import {MenuButton} from '../components/burgerMenuButton';
+import {useTranslation} from 'react-i18next';
 
 export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const userArrayStore = getUserArrayStore();
@@ -18,6 +19,8 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const gender = userObject.gender;
   const religion = userObject.religion;
   const fullName = firstName + ' ' + lastName;
+
+  const {t} = useTranslation();
   return (
     <View>
       <View
@@ -37,7 +40,8 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          Profile
+          {/* Profile */}
+          {t('profile')}
         </Text>
         <MenuButton navigation={navigation} />
         <LogOutButton navigation={navigation} />

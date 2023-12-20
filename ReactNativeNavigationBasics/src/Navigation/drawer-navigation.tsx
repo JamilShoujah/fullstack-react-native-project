@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable no-lone-blocks */
 import React from 'react';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItem,
-  DrawerItemList,
 } from '@react-navigation/drawer';
 import {TabNavigation} from '../Navigation/tabNavigation';
+import i18next from '../services/i18next';
 
 export const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
@@ -15,23 +14,25 @@ export const DrawerNavigation = () => {
   function CustomDrawerContent(props: any) {
     return (
       <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
         <DrawerItem
           label="English"
           onPress={() => {
-            console.log('English');
+            i18next.changeLanguage('en');
+            props.navigation.closeDrawer();
           }}
         />
         <DrawerItem
           label="Arabic"
           onPress={() => {
-            console.log('Arabic');
+            i18next.changeLanguage('ar');
+            props.navigation.closeDrawer();
           }}
         />
         <DrawerItem
           label="Japanese"
           onPress={() => {
-            console.log('Yamate Kudasai');
+            i18next.changeLanguage('jp');
+            props.navigation.closeDrawer();
           }}
         />
       </DrawerContentScrollView>

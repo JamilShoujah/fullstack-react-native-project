@@ -2,7 +2,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
-import {SignUpDetailsScreen} from '../prefabs/signUpUserDetailsScreen';
+import {SignUpDetailsScreen} from '../screens/signUpUserDetailsScreen';
 
 export const SignUpUserDetailsPage: React.FC<IPageInterface> = ({
   navigation,
