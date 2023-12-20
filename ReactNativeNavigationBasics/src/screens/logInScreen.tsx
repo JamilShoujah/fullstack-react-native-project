@@ -14,7 +14,6 @@ export const LogInScreen: React.FC<IPageInterface> = observer(
     const email = logInStore.emailValue.get();
     const password = logInStore.passwordValue.get();
 
-    // const UserArrayStore = getUserArrayStore();
     return (
       <View style={{width: '70%', alignItems: 'center', margin: 10}}>
         <TextInputField
