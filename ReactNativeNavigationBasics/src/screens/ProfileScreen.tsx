@@ -24,7 +24,6 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const profile = t('profile');
   const fullName_ = t('fullname');
   const email_ = t('email');
-  const fullname = t('fullname');
   const age_ = t('age');
   const gender_ = t('gender');
   const religion_ = t('religion');

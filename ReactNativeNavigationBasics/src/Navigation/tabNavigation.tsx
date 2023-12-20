@@ -3,26 +3,27 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ProfilePage} from '../Pages/profilePage';
 import {PeerViewPage} from '../Pages/PeerViewPage';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-function getTabBarIcon(routeName: string, color: string, size: number) {
-  let iconName;
-
-  switch (routeName) {
-    case 'Profile':
-      iconName = 'user';
-      break;
-    case 'Peer View':
-      iconName = 'users';
-      break;
-    default:
-      iconName = '';
-  }
-
-  return <Icon name={iconName} size={size} color={color} />;
-}
+import {useTranslation} from 'react-i18next';
 
 export const TabNavigation = () => {
   const Tab = createBottomTabNavigator();
+  const {t} = useTranslation();
+  const profile = t('profile');
+  const peerView = t('peerView');
+  function getTabBarIcon(routeName: string, color: string, size: number) {
+    let iconName;
+    switch (routeName) {
+      case profile:
+        iconName = 'user';
+        break;
+      case peerView:
+        iconName = 'users';
+        break;
+      default:
+        iconName = '';
+    }
+    return <Icon name={iconName} size={size} color={color} />;
+  }
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -33,14 +34,14 @@ export const TabNavigation = () => {
         tabBarInactiveTintColor: 'gray',
       })}>
       <Tab.Screen
-        name="Profile"
+        name={profile}
         component={ProfilePage}
         options={{
           header: () => null,
         }}
       />
       <Tab.Screen
-        name="Peer View"
+        name={peerView}
         component={PeerViewPage}
         options={{
           header: () => null,

@@ -6,5 +6,6 @@
   "email": "بريد إلكتروني",
   "age":"عمر",
   "gender": "جنس",
-  "religion": "دِين"
+  "religion": "دِين",
+  "peerView": "أصدقاء"
 }

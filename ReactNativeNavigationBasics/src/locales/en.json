@@ -6,5 +6,6 @@
   "email": "Email",
   "age":"Age",
   "gender": "Gender",
-  "religion": "religion"
+  "religion": "religion",
+  "peerView": "Friends"
 }
