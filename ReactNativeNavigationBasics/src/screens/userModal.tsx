@@ -5,6 +5,7 @@ import {Modal, View} from 'react-native';
 import {getModalStore} from '../store/modal-store';
 import {CloseButton} from '../components/closeModalButton';
 import {ModalDataDisplay} from '../components/modalDataDisplay';
+import {useTranslation} from 'react-i18next';
 
 export const ItemModal = observer(() => {
   const modalStore = getModalStore();
@@ -16,6 +17,13 @@ export const ItemModal = observer(() => {
   const gender = item.gender;
   const religion = item.religion;
   const fullName = firstName + ' ' + lastName;
+
+  const {t} = useTranslation();
+  const fullName_ = t('fullname');
+  const email_ = t('email');
+  const age_ = t('age');
+  const gender_ = t('gender');
+  const religion_ = t('religion');
   return (
     <Modal
       transparent={true}
@@ -46,11 +54,11 @@ export const ItemModal = observer(() => {
             width: '90%',
           }}>
           <CloseButton />
-          <ModalDataDisplay title={'Full name'} value={fullName} />
-          <ModalDataDisplay title={'Email'} value={email} />
-          <ModalDataDisplay title={'Age'} value={age} />
-          <ModalDataDisplay title={'Gender'} value={gender} />
-          <ModalDataDisplay title={'Religion'} value={religion} />
+          <ModalDataDisplay title={fullName_} value={fullName} />
+          <ModalDataDisplay title={email_} value={email} />
+          <ModalDataDisplay title={age_} value={age} />
+          <ModalDataDisplay title={gender_} value={gender} />
+          <ModalDataDisplay title={religion_} value={religion} />
         </View>
       </View>
     </Modal>
