@@ -1,5 +1,10 @@
 {
   "welcome": "welcome",
   "login": "Login",
-  "profile": "Profile"
+  "profile": "Profile",
+  "fullname": "Full name",
+  "email": "Email",
+  "age":"Age",
+  "gender": "Gender",
+  "religion": "religion"
 }

@@ -21,6 +21,14 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const fullName = firstName + ' ' + lastName;
 
   const {t} = useTranslation();
+  const profile = t('profile');
+  const fullName_ = t('fullname');
+  const email_ = t('email');
+  const fullname = t('fullname');
+  const age_ = t('age');
+  const gender_ = t('gender');
+  const religion_ = t('religion');
+
   return (
     <View>
       <View
@@ -40,8 +48,7 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          {/* Profile */}
-          {t('profile')}
+          {profile}
         </Text>
         <MenuButton navigation={navigation} />
         <LogOutButton navigation={navigation} />
@@ -56,11 +63,11 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
           <Ion name={'person-circle-outline'} size={200} />
         </View>
 
-        <DataDisplay title={'Full name'} value={fullName} />
-        <DataDisplay title={'Email'} value={email} />
-        <DataDisplay title={'Age'} value={age} />
-        <DataDisplay title={'Gender'} value={gender} />
-        <DataDisplay title={'Religion'} value={religion} />
+        <DataDisplay title={fullName_} value={fullName} />
+        <DataDisplay title={email_} value={email} />
+        <DataDisplay title={age_} value={age} />
+        <DataDisplay title={gender_} value={gender} />
+        <DataDisplay title={religion_} value={religion} />
       </View>
     </View>
   );
