@@ -1,10 +1,13 @@
-import {EReligion} from '../enums/religionEnum';
+import {EReligion, TranslateReligion} from '../enums/religionEnum';
 
 export const RELIGION_ARRAY = [
-  {value: EReligion.ATHEISM},
-  {value: EReligion.BUDDISM},
-  {value: EReligion.CHRISTIANITY},
-  {value: EReligion.HINDUISM},
-  {value: EReligion.ISLAM},
-  {value: EReligion.JUDAISM},
+  {label: TranslateReligion(EReligion.ATHEISM), value: EReligion.ATHEISM},
+  {label: TranslateReligion(EReligion.BUDDISM), value: EReligion.BUDDISM},
+  {
+    label: TranslateReligion(EReligion.CHRISTIANITY),
+    value: EReligion.CHRISTIANITY,
+  },
+  {label: TranslateReligion(EReligion.HINDUISM), value: EReligion.HINDUISM},
+  {label: TranslateReligion(EReligion.ISLAM), value: EReligion.ISLAM},
+  {label: TranslateReligion(EReligion.JUDAISM), value: EReligion.JUDAISM},
 ];
