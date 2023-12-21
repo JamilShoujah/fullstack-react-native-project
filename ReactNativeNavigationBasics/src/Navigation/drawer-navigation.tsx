@@ -7,9 +7,11 @@ import {
 } from '@react-navigation/drawer';
 import {TabNavigation} from '../Navigation/tabNavigation';
 import i18next from '../services/i18next';
+import {getLanguageStore} from '../store/right-to-left-language-store';
 
 export const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
+  const lang = getLanguageStore();
 
   function CustomDrawerContent(props: any) {
     return (
@@ -18,12 +20,14 @@ export const DrawerNavigation = () => {
           label="English"
           onPress={() => {
             i18next.changeLanguage('en');
+            lang.setIsRighttoLeft(false);
             props.navigation.closeDrawer();
           }}
         />
         <DrawerItem
           label="Arabic"
           onPress={() => {
+            lang.setIsRighttoLeft(true);
             i18next.changeLanguage('ar');
             props.navigation.closeDrawer();
           }}
@@ -31,6 +35,7 @@ export const DrawerNavigation = () => {
         <DrawerItem
           label="Japanese"
           onPress={() => {
+            lang.setIsRighttoLeft(false);
             i18next.changeLanguage('jp');
             props.navigation.closeDrawer();
           }}

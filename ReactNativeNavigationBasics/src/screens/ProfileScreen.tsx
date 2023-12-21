@@ -8,6 +8,7 @@ import {IPageInterface} from '../ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../components/logOutButton';
 import {MenuButton} from '../components/burgerMenuButton';
 import {useTranslation} from 'react-i18next';
+import {getLanguageStore} from '../store/right-to-left-language-store';
 
 export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const userArrayStore = getUserArrayStore();
@@ -27,6 +28,9 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
   const age_ = t('age');
   const gender_ = t('gender');
   const religion_ = t('religion');
+
+  const lang = getLanguageStore();
+  const isR2L = lang.isRighttoLeft.get();
 
   return (
     <View>
@@ -54,7 +58,7 @@ export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
       </View>
       <View
         style={{
-          alignItems: 'flex-start',
+          alignItems: isR2L ? 'flex-end' : 'flex-start',
           justifyContent: 'center',
           padding: 30,
         }}>

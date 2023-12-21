@@ -6,6 +6,7 @@ import {getModalStore} from '../store/modal-store';
 import {CloseButton} from '../components/closeModalButton';
 import {ModalDataDisplay} from '../components/modalDataDisplay';
 import {useTranslation} from 'react-i18next';
+import {getLanguageStore} from '../store/right-to-left-language-store';
 
 export const ItemModal = observer(() => {
   const modalStore = getModalStore();
@@ -24,6 +25,9 @@ export const ItemModal = observer(() => {
   const age_ = t('age');
   const gender_ = t('gender');
   const religion_ = t('religion');
+
+  const lang = getLanguageStore();
+  const isR2L = lang.isRighttoLeft.get();
   return (
     <Modal
       transparent={true}
@@ -54,11 +58,17 @@ export const ItemModal = observer(() => {
             width: '90%',
           }}>
           <CloseButton />
-          <ModalDataDisplay title={fullName_} value={fullName} />
-          <ModalDataDisplay title={email_} value={email} />
-          <ModalDataDisplay title={age_} value={age} />
-          <ModalDataDisplay title={gender_} value={gender} />
-          <ModalDataDisplay title={religion_} value={religion} />
+          <View
+            style={{
+              alignItems: isR2L ? 'flex-end' : 'flex-start',
+              justifyContent: 'center',
+            }}>
+            <ModalDataDisplay title={fullName_} value={fullName} />
+            <ModalDataDisplay title={email_} value={email} />
+            <ModalDataDisplay title={age_} value={age} />
+            <ModalDataDisplay title={gender_} value={gender} />
+            <ModalDataDisplay title={religion_} value={religion} />
+          </View>
         </View>
       </View>
     </Modal>

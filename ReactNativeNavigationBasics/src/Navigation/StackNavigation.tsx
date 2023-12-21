@@ -4,9 +4,11 @@ import {SignUpPage} from '../Pages/signUpPage';
 import {SignUpUserDetailsPage} from '../Pages/signUpUseDetails';
 import {LogInPage} from '../Pages/logInPage';
 import {HomePage} from '../Pages/homePage';
+import {getLanguageStore} from '../store/right-to-left-language-store';
 const Stack = createStackNavigator();
 
 export const StackNavigation = () => {
+  const lang = getLanguageStore();
   return (
     <Stack.Navigator initialRouteName="LogIn">
       <Stack.Screen
