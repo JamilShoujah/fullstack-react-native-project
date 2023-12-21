@@ -20,8 +20,16 @@
   "lastName": "الاسم الأخير",
   "male": "ذكر",
   "female": "أنثى",
-  "non-binary": "غير ثنائي",
-  "attack-helicopter": "مروحية هجومية",
-  "walmart-bag": "حقيبة وولمارت",
-  "ONEOFTHEOTHER200GENDERS": "أحد من 200 جنس"
+  "nonBinary": "غير ثنائي الجنسية",
+  "attackHelicopter": "مروحية الهجوم",
+  "walmartBag": "حقيبة وول مارت",
+  "genders": "أحد الأجناس الـ200",
+  "islam": "الإسلام",
+  "christianity": "المسيحية",
+  "judaism": "اليهودية",
+  "buddism": "البوذية",
+  "hinduism": "الهندوسية",
+  "atheism": "الإلحاد",
+  "tellUsMore": "أخبرنا المزيد عن نفسك",
+  "submit": "إرسال"
 }

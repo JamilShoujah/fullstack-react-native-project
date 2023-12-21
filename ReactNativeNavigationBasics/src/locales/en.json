@@ -20,8 +20,16 @@
   "lastName": "Last Name",
   "male": "Male",
   "female": "Female",
-  "non-binary":"Non-Binary",
-  "attack-helicopter": "Attack-Helicopter",
-  "walmart-bag" : "Walmart-Bag",
-  "200Genders": "One of the 200+ genders"
+  "nonBinary":"Non-Binary",
+  "attackHelicopter": "Attack-Helicopter",
+  "walmartBag" : "Walmart-Bag",
+  "genders": "One of the 200+ genders",
+  "islam" :"Islam",
+  "christianity": "Christianity",
+  "judaism": "Judaism",
+  "buddism": "Buddism",
+  "hinduism": "Hinduism",
+  "atheism": "Atheism",
+  "tellUsMore": "Tell us more about yourself",
+  "submit": "submit"
 }

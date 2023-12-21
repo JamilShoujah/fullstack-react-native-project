@@ -26,6 +26,8 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
     const age_ = t('age');
     const gender_ = t('gender');
     const religion_ = t('religion');
+    const submit_ = t('submit');
+    const tellUsMore_ = t('tellUsMore');
     return (
       <View style={{flex: 1, width: '80%', padding: 10, alignItems: 'center'}}>
         <TextInputField
@@ -71,7 +73,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
             width: '50%',
             margin: 5,
           }}>
-          <Text style={{color: 'white'}}>Submit</Text>
+          <Text style={{color: 'white'}}>{submit_}</Text>
         </TouchableOpacity>
       </View>
     );
