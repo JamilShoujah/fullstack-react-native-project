@@ -2,15 +2,19 @@
 import React from 'react';
 import {TextInput} from 'react-native';
 import {ITextInput} from '../ComponentInterfaces/textInputInterface';
+import {getLanguageStore} from '../store/right-to-left-language-store';
 
 export const PasswordInputField: React.FC<ITextInput> = ({
   placeholder,
   value,
   onValueChange,
 }) => {
+  const lang = getLanguageStore();
+  const isR2L = lang.isRighttoLeft.get();
   return (
     <TextInput
       style={{
+        textAlign: isR2L ? 'right' : 'left',
         borderStyle: 'solid',
         borderWidth: 1,
         padding: 10,

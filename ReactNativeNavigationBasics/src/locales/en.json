@@ -14,6 +14,14 @@
   "noAccount": "Don't have an account?",
   "signupHere": "you can Sign Up here!",
   "verifyPassword": "Verify Password",
-  "haveAccount": "already have an account?"
-
+  "haveAccount": "already have an account?",
+  "warning": "Warning!",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "male": "Male",
+  "female": "Female",
+  "non-binary":"Non-Binary",
+  "attack-helicopter": "Attack-Helicopter",
+  "walmart-bag" : "Walmart-Bag",
+  "200Genders": "One of the 200+ genders"
 }

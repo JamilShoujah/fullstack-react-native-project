@@ -14,5 +14,8 @@
   "noAccount": "アカウントをお持ちでない場合は、",
   "signupHere": "ここからサインアップできます!",
   "verifyPassword": "パスワードを照合します",
-  "haveAccount": "すでにアカウントをお持ちですか"
+  "haveAccount": "すでにアカウントをお持ちですか",
+  "warning": "警告！",
+  "firstName": "名前",
+  "lastName": "姓"
 }

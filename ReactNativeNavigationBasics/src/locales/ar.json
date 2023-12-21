@@ -12,6 +12,16 @@
   "password": "كلمة المرور",
   "proceed": "مواصلة",
   "noAccount": "ليس لديك حساب؟",
-  "signupHere": "يمكنك التسجيل هنا"
-
+  "signupHere": "يمكنك التسجيل هنا",
+  "verifyPassword": "اكد كلمة المرور",
+  "haveAccount": "هل لديك حساب؟",
+  "warning": "تحذير",
+  "firstName": "الاسم الأول",
+  "lastName": "الاسم الأخير",
+  "male": "ذكر",
+  "female": "أنثى",
+  "non-binary": "غير ثنائي",
+  "attack-helicopter": "مروحية هجومية",
+  "walmart-bag": "حقيبة وولمارت",
+  "ONEOFTHEOTHER200GENDERS": "أحد من 200 جنس"
 }

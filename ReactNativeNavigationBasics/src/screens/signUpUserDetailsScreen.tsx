@@ -10,6 +10,7 @@ import {RELIGION_ARRAY} from '../constants/ReligionDropdownArray';
 import {getSignUpStore} from '../store/sign-up-store';
 import {NumericInputField} from '../components/numericInputComponent';
 import {signUpDetailValidation} from '../utils/sign-up-details-verification';
+import {useTranslation} from 'react-i18next';
 
 export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
@@ -19,21 +20,26 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
     const age = signUpStore.age.get();
     const gender = signUpStore.gender.get();
     const religion = signUpStore.religion.get();
-
+    const {t} = useTranslation();
+    const firstName_ = t('firstName');
+    const lastName_ = t('lastName');
+    const age_ = t('age');
+    const gender_ = t('gender');
+    const religion_ = t('religion');
     return (
       <View style={{flex: 1, width: '80%', padding: 10, alignItems: 'center'}}>
         <TextInputField
-          placeholder={'first name'}
+          placeholder={firstName_}
           value={firstName}
           onValueChange={text => signUpStore.setFirstName(text.trim())}
         />
         <TextInputField
-          placeholder={'last name'}
+          placeholder={lastName_}
           value={lastName}
           onValueChange={text => signUpStore.setLastName(text.trim())}
         />
         <NumericInputField
-          placeholder={'age'}
+          placeholder={age_}
           value={age}
           onValueChange={text => signUpStore.setAge(text.trim())}
         />
@@ -41,7 +47,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
           dataArray={GENDER_ARRAY}
           dropDownValue={String(gender)}
           onValueChange={valueGender => signUpStore.setGender(valueGender)}
-          type={'gender'}
+          type={gender_}
         />
 
         <DropdownComponent
@@ -50,7 +56,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
           onValueChange={valueReligion =>
             signUpStore.setReligion(valueReligion)
           }
-          type={'religion'}
+          type={religion_}
         />
 
         <TouchableOpacity

@@ -2,12 +2,16 @@
 import React from 'react';
 import {TextInput} from 'react-native';
 import {ITextInput} from '../ComponentInterfaces/textInputInterface';
+import {getLanguageStore} from '../store/right-to-left-language-store';
 
 export const NumericInputField: React.FC<ITextInput> = ({
   placeholder,
   value,
   onValueChange,
 }) => {
+  const lang = getLanguageStore();
+  const isR2L = lang.isRighttoLeft.get();
+
   const handleTextChange = (text: string) => {
     const numericText = text.replace(/[^0-9]/g, '');
     onValueChange(numericText);
@@ -16,6 +20,7 @@ export const NumericInputField: React.FC<ITextInput> = ({
   return (
     <TextInput
       style={{
+        textAlign: isR2L ? 'right' : 'left',
         borderStyle: 'solid',
         borderWidth: 1,
         padding: 10,
