@@ -11,7 +11,7 @@ i18next.use(initReactI18next).init({
     jp: {translation: jp},
   },
   compatibilityJSON: 'v3',
-  lng: 'en',
+  lng: 'ar',
   fallbackLng: 'en',
 });
 

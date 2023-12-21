@@ -18,7 +18,7 @@ const DropdownComponent: React.FC<IDropDownMenu> = observer(
         placeholderStyle={{color: 'silver', fontSize: 14}}
         placeholder={type}
         data={dataArray}
-        labelField="label"
+        labelField="value"
         valueField="value"
         value={dropDownValue}
         onChange={item => {
