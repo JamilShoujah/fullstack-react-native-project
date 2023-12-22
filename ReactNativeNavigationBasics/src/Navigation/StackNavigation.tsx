@@ -1,14 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {SignUpPage} from '../Pages/signUpPage';
-import {SignUpUserDetailsPage} from '../Pages/signUpUseDetails';
-import {LogInPage} from '../Pages/logInPage';
-import {HomePage} from '../Pages/homePage';
-import {getLanguageStore} from '../store/right-to-left-language-store';
+import {SignUpPage} from '../pages/signUpPage';
+import {SignUpUserDetailsPage} from '../pages/signUpDetailsPage';
+import {LogInPage} from '../pages/logInPage';
+import {HomePage} from '../pages/homePage';
 const Stack = createStackNavigator();
 
 export const StackNavigation = () => {
-  const lang = getLanguageStore();
   return (
     <Stack.Navigator initialRouteName="LogIn">
       <Stack.Screen

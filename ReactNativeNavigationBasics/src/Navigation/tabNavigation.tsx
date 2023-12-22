@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ProfilePage} from '../Pages/profilePage';
-import {PeerViewPage} from '../Pages/PeerViewPage';
+import {ProfilePage} from '../pages/profilePage';
+import {PeerViewPage} from '../pages/peerViewPage';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useTranslation} from 'react-i18next';
 

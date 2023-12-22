@@ -5,9 +5,9 @@ import {
   DrawerContentScrollView,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {TabNavigation} from '../Navigation/tabNavigation';
-import i18next from '../services/i18next';
-import {getLanguageStore} from '../store/right-to-left-language-store';
+import {TabNavigation} from './tabNavigation';
+import i18next from '../shared/i18n/i18next';
+import {getLanguageStore} from '../data/stores/right-to-left-language-store';
 
 export const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
