@@ -10,9 +10,9 @@ import {RELIGION_ARRAY} from '../../../data/constants/ReligionDropdownArray';
 import {getSignUpStore} from '../../../data/stores/sign-up-store';
 import {NumericInputField} from '../../../shared/components/inputFields/numericInputComponent';
 import {signUpDetailValidation} from '../../../utils/sign-up-details-verification';
-import {useTranslation} from 'react-i18next';
 import {EGender} from '../../../data/types/enums/genderEnum';
 import {EReligion} from '../../../data/types/enums/religionEnum';
+import i18n from '../../../shared/i18n/i18n';
 
 export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
@@ -22,29 +22,22 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
     const age = signUpStore.age.get();
     const gender = signUpStore.gender.get();
     const religion = signUpStore.religion.get();
-    const {t} = useTranslation();
-    const firstName_ = t('firstName');
-    const lastName_ = t('lastName');
-    const age_ = t('age');
-    const gender_ = t('gender');
-    const religion_ = t('religion');
-    const submit_ = t('submit');
     return (
       <View style={{flex: 1, width: '80%', padding: 10, alignItems: 'center'}}>
         <TextInputField
-          placeholder={firstName_}
+          placeholder={i18n.get('FIRST_NAME')}
           value={firstName}
           onValueChange={(text: string) =>
             signUpStore.setFirstName(text.trim())
           }
         />
         <TextInputField
-          placeholder={lastName_}
+          placeholder={i18n.get('LAST_NAME')}
           value={lastName}
           onValueChange={(text: string) => signUpStore.setLastName(text.trim())}
         />
         <NumericInputField
-          placeholder={age_}
+          placeholder={i18n.get('AGE')}
           value={age}
           onValueChange={(text: string) => signUpStore.setAge(text.trim())}
         />
@@ -54,7 +47,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
           onValueChange={(valueGender: EGender) =>
             signUpStore.setGender(valueGender)
           }
-          type={gender_}
+          type={i18n.get('GENDER')}
         />
 
         <DropdownComponent
@@ -63,7 +56,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
           onValueChange={(valueReligion: EReligion) =>
             signUpStore.setReligion(valueReligion)
           }
-          type={religion_}
+          type={i18n.get('RELIGION')}
         />
 
         <TouchableOpacity
@@ -78,7 +71,7 @@ export const SignUpDetailsScreen: React.FC<IPageInterface> = observer(
             width: '50%',
             margin: 5,
           }}>
-          <Text style={{color: 'white'}}>{submit_}</Text>
+          <Text style={{color: 'white'}}>{i18n.get('SUBMIT')}</Text>
         </TouchableOpacity>
       </View>
     );

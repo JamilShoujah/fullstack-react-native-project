@@ -6,8 +6,10 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 import {TabNavigation} from './tabNavigation';
-import i18next from '../shared/i18n/i18next';
+// import i18next from '../shared/i18n/i18next';
 import {getLanguageStore} from '../data/stores/right-to-left-language-store';
+import i18n from '../shared/i18n/i18n';
+import {TLanguageEnum} from '../data/types/enums/languageEnum';
 
 export const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
@@ -19,7 +21,9 @@ export const DrawerNavigation = () => {
         <DrawerItem
           label="English"
           onPress={() => {
-            i18next.changeLanguage('en');
+            // i18next.changeLanguage('en');
+            i18n.setLanguage(TLanguageEnum.ENGLISH);
+            // console.log(i18n.language);
             lang.setIsRighttoLeft(false);
             props.navigation.closeDrawer();
           }}
@@ -28,7 +32,9 @@ export const DrawerNavigation = () => {
           label="Arabic"
           onPress={() => {
             lang.setIsRighttoLeft(true);
-            i18next.changeLanguage('ar');
+            // i18next.changeLanguage('ar');
+            i18n.setLanguage(TLanguageEnum.ARABIC);
+            // console.log(i18n.language);
             props.navigation.closeDrawer();
           }}
         />
@@ -36,7 +42,9 @@ export const DrawerNavigation = () => {
           label="Japanese"
           onPress={() => {
             lang.setIsRighttoLeft(false);
-            i18next.changeLanguage('jp');
+            // i18next.changeLanguage('jp');
+            i18n.setLanguage(TLanguageEnum.JAPANESE);
+            // console.log(i18n.language);
             props.navigation.closeDrawer();
           }}
         />

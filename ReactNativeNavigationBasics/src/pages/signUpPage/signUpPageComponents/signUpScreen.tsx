@@ -7,7 +7,8 @@ import {TextInputField} from '../../../shared/components/inputFields/textInputCo
 import {IPageInterface} from '../../../data/types/ComponentInterfaces/PagesInterface';
 import {getSignUpStore} from '../../../data/stores/sign-up-store';
 import {signUpValidation} from '../../../utils/SignUpValidation';
-import {useTranslation} from 'react-i18next';
+
+import i18n from '../../../shared/i18n/i18n';
 
 export const SignUpScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
@@ -15,31 +16,25 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(
     const email = signUpStore.emailValue.get();
     const password = signUpStore.passwordValue.get();
     const verify = signUpStore.verifyPasswordValue.get();
-    const {t} = useTranslation();
-    const email_ = t('emailAddress');
-    const password_ = t('password');
-    const verifyPassword_ = t('verifyPassword');
-    const proceed_ = t('proceed');
-    const haveAccount_ = t('haveAccount');
 
     return (
       <View style={{width: '70%', alignItems: 'center', margin: 10}}>
         <TextInputField
-          placeholder={email_}
+          placeholder={i18n.get('EMAIL')}
           value={email}
           onValueChange={(text: string) => {
             signUpStore.setEmailValue(text);
           }}
         />
         <PasswordInputField
-          placeholder={password_}
+          placeholder={i18n.get('PASSWORD')}
           value={password}
           onValueChange={(text: string) => {
             signUpStore.setPasswordValue(text);
           }}
         />
         <PasswordInputField
-          placeholder={verifyPassword_}
+          placeholder={i18n.get('VERIFY_PASSWORD')}
           value={verify}
           onValueChange={(text: string) => {
             signUpStore.setVerifyPasswordValue(text);
@@ -58,13 +53,13 @@ export const SignUpScreen: React.FC<IPageInterface> = observer(
           onPress={() => {
             signUpValidation(navigation);
           }}>
-          <Text style={{color: 'white'}}>{proceed_}</Text>
+          <Text style={{color: 'white'}}>{i18n.get('SUBMIT')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
           }}>
-          <Text style={{color: 'blue'}}>{haveAccount_}</Text>
+          <Text style={{color: 'blue'}}>{i18n.get('HAVE_ACCOUNT')}</Text>
         </TouchableOpacity>
       </View>
     );

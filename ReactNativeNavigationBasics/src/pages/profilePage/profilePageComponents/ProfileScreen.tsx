@@ -7,70 +7,61 @@ import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../../../data/types/ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../../../shared/components/buttons/logOutButton';
 import {MenuButton} from '../../../shared/components/buttons/burgerMenuButton';
-import {useTranslation} from 'react-i18next';
 import {getLanguageStore} from '../../../data/stores/right-to-left-language-store';
+import i18n from '../../../shared/i18n/i18n';
+import {observer} from 'mobx-react';
 
-export const ProfileScreen: React.FC<IPageInterface> = ({navigation}) => {
-  const userArrayStore = getUserArrayStore();
-  const userObject = userArrayStore.userObject.get();
-  const firstName = userObject.firstName;
-  const lastName = userObject.lastName;
-  const email = userObject.email;
-  const age = userObject.age;
-  const gender = userObject.gender;
-  const religion = userObject.religion;
-  const fullName = firstName + ' ' + lastName;
+export const ProfileScreen: React.FC<IPageInterface> = observer(
+  ({navigation}) => {
+    const userArrayStore = getUserArrayStore();
+    const userObject = userArrayStore.userObject.get();
+    const {email, age, gender, religion, firstName, lastName} = userObject;
+    const fullName = firstName + ' ' + lastName;
 
-  const {t} = useTranslation();
-  const profile = t('profile');
-  const fullName_ = t('fullname');
-  const email_ = t('email');
-  const age_ = t('age');
-  const gender_ = t('gender');
-  const religion_ = t('religion');
-  const lang = getLanguageStore();
-  const isR2L = lang.isRighttoLeft.get();
+    const lang = getLanguageStore();
+    const isR2L = lang.isRighttoLeft.get();
 
-  return (
-    <View>
-      <View
-        style={{
-          backgroundColor: 'blue',
-          flexDirection: 'row',
-          alignItems: 'center',
-          width: '100%',
-          justifyContent: 'center',
-        }}>
-        <Text
+    return (
+      <View>
+        <View
           style={{
-            color: 'white',
-            fontWeight: '900',
-            padding: 20,
-            fontSize: 20,
+            backgroundColor: 'blue',
+            flexDirection: 'row',
             alignItems: 'center',
+            width: '100%',
             justifyContent: 'center',
           }}>
-          {profile}
-        </Text>
-        <MenuButton navigation={navigation} />
-        <LogOutButton navigation={navigation} />
-      </View>
-      <View
-        style={{
-          alignItems: isR2L ? 'flex-end' : 'flex-start',
-          justifyContent: 'center',
-          padding: 30,
-        }}>
-        <View style={{alignItems: 'center', width: '100%'}}>
-          <Ion name={'person-circle-outline'} size={200} />
+          <Text
+            style={{
+              color: 'white',
+              fontWeight: '900',
+              padding: 20,
+              fontSize: 20,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            {i18n.get('PROFILE')}
+          </Text>
+          <MenuButton navigation={navigation} />
+          <LogOutButton navigation={navigation} />
         </View>
+        <View
+          style={{
+            alignItems: isR2L ? 'flex-end' : 'flex-start',
+            justifyContent: 'center',
+            padding: 30,
+          }}>
+          <View style={{alignItems: 'center', width: '100%'}}>
+            <Ion name={'person-circle-outline'} size={200} />
+          </View>
 
-        <DataDisplay title={fullName_} value={fullName} />
-        <DataDisplay title={email_} value={email} />
-        <DataDisplay title={age_} value={age} />
-        <DataDisplay title={gender_} value={gender} />
-        <DataDisplay title={religion_} value={religion} />
+          <DataDisplay title={i18n.get('FULL_NAME')} value={fullName} />
+          <DataDisplay title={i18n.get('EMAIL')} value={email} />
+          <DataDisplay title={i18n.get('AGE')} value={age} />
+          <DataDisplay title={i18n.get('GENDER')} value={gender} />
+          <DataDisplay title={i18n.get('RELIGION')} value={religion} />
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  },
+);

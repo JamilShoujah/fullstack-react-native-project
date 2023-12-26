@@ -76,7 +76,7 @@ export const usersArray: IUserInterface[] = [
   {
     id: 8,
     email: 'nabih@berri.com',
-    password: 'Lawla al Ha2 lakan nabiyyan',
+    password: 'Lawla al Ha2 lakana nabiyyan',
     firstName: 'Nabih',
     lastName: 'Berri  🇱🇧',
     age: 69,

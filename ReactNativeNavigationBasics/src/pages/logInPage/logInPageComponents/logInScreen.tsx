@@ -7,30 +7,25 @@ import {TextInputField} from '../../../shared/components/inputFields/textInputCo
 import {IPageInterface} from '../../../data/types/ComponentInterfaces/PagesInterface';
 import {getLogInStore} from '../../../data/stores/login-store';
 import {loginValidation} from '../../../utils/loginValidation';
-import {useTranslation} from 'react-i18next';
+import i18n from '../../../shared/i18n/i18n';
 
 export const LogInScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
     const logInStore = getLogInStore();
     const email = logInStore.emailValue.get();
     const password = logInStore.passwordValue.get();
-    const {t} = useTranslation();
-    const email_ = t('emailAddress');
-    const password_ = t('password');
-    const proceed_ = t('proceed');
-    const noAccount_ = t('noAccount');
 
     return (
       <View style={{width: '70%', alignItems: 'center', margin: 10}}>
         <TextInputField
-          placeholder={email_}
+          placeholder={i18n.get('EMAIL')}
           value={email}
           onValueChange={(text: string) => {
             logInStore.setEmailValue(text);
           }}
         />
         <PasswordInputField
-          placeholder={password_}
+          placeholder={i18n.get('PASSWORD')}
           value={password}
           onValueChange={(text: string) => {
             logInStore.setPasswordValue(text);
@@ -49,13 +44,13 @@ export const LogInScreen: React.FC<IPageInterface> = observer(
           onPress={() => {
             loginValidation(email, password, navigation);
           }}>
-          <Text style={{color: 'white'}}>{proceed_}</Text>
+          <Text style={{color: 'white'}}>{i18n.get('SUBMIT')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('SignUp');
           }}>
-          <Text style={{color: 'blue'}}>{noAccount_}</Text>
+          <Text style={{color: 'blue'}}>{i18n.get('NO_ACCOUNT')}</Text>
         </TouchableOpacity>
       </View>
     );

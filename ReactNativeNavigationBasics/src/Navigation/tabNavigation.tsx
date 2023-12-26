@@ -3,13 +3,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ProfilePage} from '../pages/profilePage';
 import {PeerViewPage} from '../pages/peerViewPage';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {useTranslation} from 'react-i18next';
+import i18n from '../shared/i18n/i18n';
 
 export const TabNavigation = () => {
   const Tab = createBottomTabNavigator();
-  const {t} = useTranslation();
-  const profile = t('profile');
-  const peerView = t('peerView');
+  const profile = i18n.get('PROFILE');
+  const peerView = i18n.get('PEER_VIEW');
   function getTabBarIcon(routeName: string, color: string, size: number) {
     let iconName;
     switch (routeName) {
