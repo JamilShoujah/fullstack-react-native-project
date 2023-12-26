@@ -5,8 +5,8 @@ import {Modal, View} from 'react-native';
 import {getModalStore} from '../../../data/stores/modal-store';
 import {CloseButton} from '../buttons/closeModalButton';
 import {ModalDataDisplay} from './userModalComponents/modalDataDisplay';
-import {useTranslation} from 'react-i18next';
 import {getLanguageStore} from '../../../data/stores/right-to-left-language-store';
+import i18n from '../../i18n/i18n';
 
 export const ItemModal = observer(() => {
   const modalStore = getModalStore();
@@ -18,13 +18,6 @@ export const ItemModal = observer(() => {
   const gender = item.gender;
   const religion = item.religion;
   const fullName = firstName + ' ' + lastName;
-
-  const {t} = useTranslation();
-  const fullName_ = t('fullname');
-  const email_ = t('email');
-  const age_ = t('age');
-  const gender_ = t('gender');
-  const religion_ = t('religion');
 
   const lang = getLanguageStore();
   const isR2L = lang.isRighttoLeft.get();
@@ -63,11 +56,11 @@ export const ItemModal = observer(() => {
               alignItems: isR2L ? 'flex-end' : 'flex-start',
               justifyContent: 'center',
             }}>
-            <ModalDataDisplay title={fullName_} value={fullName} />
-            <ModalDataDisplay title={email_} value={email} />
-            <ModalDataDisplay title={age_} value={age} />
-            <ModalDataDisplay title={gender_} value={gender} />
-            <ModalDataDisplay title={religion_} value={religion} />
+            <ModalDataDisplay title={i18n.get('FULL_NAME')} value={fullName} />
+            <ModalDataDisplay title={i18n.get('EMAIL')} value={email} />
+            <ModalDataDisplay title={i18n.get('AGE')} value={age} />
+            <ModalDataDisplay title={i18n.get('GENDER')} value={gender} />
+            <ModalDataDisplay title={i18n.get('RELIGION')} value={religion} />
           </View>
         </View>
       </View>

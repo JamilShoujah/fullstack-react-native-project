@@ -4,8 +4,10 @@ import {ProfilePage} from '../pages/profilePage';
 import {PeerViewPage} from '../pages/peerViewPage';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import i18n from '../shared/i18n/i18n';
+import {observer} from 'mobx-react';
+import {BottomTabBar} from '../shared/components/custom/TabBar';
 
-export const TabNavigation = () => {
+export const TabNavigation = observer(() => {
   const Tab = createBottomTabNavigator();
   const profile = i18n.get('PROFILE');
   const peerView = i18n.get('PEER_VIEW');
@@ -25,6 +27,7 @@ export const TabNavigation = () => {
   }
   return (
     <Tab.Navigator
+      tabBar={() => <BottomTabBar />}
       screenOptions={({route}) => ({
         tabBarIcon: ({color, size}) => {
           return getTabBarIcon(route.name, color, size);
@@ -33,14 +36,16 @@ export const TabNavigation = () => {
         tabBarInactiveTintColor: 'gray',
       })}>
       <Tab.Screen
-        name={profile}
+        name={'profile'}
+        // name={profile}
         component={ProfilePage}
         options={{
           header: () => null,
         }}
       />
       <Tab.Screen
-        name={peerView}
+        name={'peerView'}
+        // name={peerView}
         component={PeerViewPage}
         options={{
           header: () => null,
@@ -48,4 +53,4 @@ export const TabNavigation = () => {
       />
     </Tab.Navigator>
   );
-};
+});

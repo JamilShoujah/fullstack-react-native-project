@@ -14,6 +14,7 @@ import {TLanguageEnum} from '../data/types/enums/languageEnum';
 export const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
   const lang = getLanguageStore();
+  const isR2L = lang.isRighttoLeft.get();
 
   function CustomDrawerContent(props: any) {
     return (
@@ -21,9 +22,7 @@ export const DrawerNavigation = () => {
         <DrawerItem
           label="English"
           onPress={() => {
-            // i18next.changeLanguage('en');
             i18n.setLanguage(TLanguageEnum.ENGLISH);
-            // console.log(i18n.language);
             lang.setIsRighttoLeft(false);
             props.navigation.closeDrawer();
           }}
@@ -32,9 +31,7 @@ export const DrawerNavigation = () => {
           label="Arabic"
           onPress={() => {
             lang.setIsRighttoLeft(true);
-            // i18next.changeLanguage('ar');
             i18n.setLanguage(TLanguageEnum.ARABIC);
-            // console.log(i18n.language);
             props.navigation.closeDrawer();
           }}
         />
@@ -42,9 +39,7 @@ export const DrawerNavigation = () => {
           label="Japanese"
           onPress={() => {
             lang.setIsRighttoLeft(false);
-            // i18next.changeLanguage('jp');
             i18n.setLanguage(TLanguageEnum.JAPANESE);
-            // console.log(i18n.language);
             props.navigation.closeDrawer();
           }}
         />
@@ -54,6 +49,10 @@ export const DrawerNavigation = () => {
 
   return (
     <Drawer.Navigator
+      screenOptions={{
+        drawerPosition: isR2L ? 'right' : 'left',
+        drawerType: 'front',
+      }}
       drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen
         name="Language"

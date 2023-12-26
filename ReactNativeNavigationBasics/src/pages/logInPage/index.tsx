@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { observer } from 'mobx-react-lite';
+import {observer} from 'mobx-react-lite';
 import React from 'react';
 import {View, Text} from 'react-native';
 import {IPageInterface} from '../../data/types/ComponentInterfaces/PagesInterface';

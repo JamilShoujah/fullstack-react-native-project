@@ -26,7 +26,7 @@ export const ProfileScreen: React.FC<IPageInterface> = observer(
         <View
           style={{
             backgroundColor: 'blue',
-            flexDirection: 'row',
+            flexDirection: isR2L ? 'row-reverse' : 'row',
             alignItems: 'center',
             width: '100%',
             justifyContent: 'center',
