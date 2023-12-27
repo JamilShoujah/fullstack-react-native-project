@@ -8,7 +8,7 @@ export const ModalDataDisplay: React.FC<IDataDisplay> = ({title, value}) => {
   return (
     <DynamicAlignView
       containerStyle={{
-        justifyContent: 'space-around',
+        justifyContent: 'center',
       }}>
       <Text style={{fontWeight: '900'}}>{title}: </Text>
       <Text>{value}</Text>

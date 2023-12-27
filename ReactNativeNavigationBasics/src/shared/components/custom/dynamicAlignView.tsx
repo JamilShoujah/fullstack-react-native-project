@@ -14,6 +14,7 @@ export const DynamicAlignView: React.FC<IDynamicContainerProps> = ({
     <View
       style={{
         alignItems: isR2L ? 'flex-end' : 'flex-start',
+        flexDirection: isR2L ? 'row-reverse' : 'row',
         ...containerStyle,
       }}>
       {children}

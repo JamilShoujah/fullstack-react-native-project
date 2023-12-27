@@ -5,9 +5,10 @@ import {Modal, View} from 'react-native';
 import {getModalStore} from '../../../data/stores/modal-store';
 import {CloseButton} from '../buttons/closeModalButton';
 import {ModalDataDisplay} from './userModalComponents/modalDataDisplay';
-
-import {getLanguageStore} from '../../../data/stores/right-to-left-language-store';
 import i18n from '../../i18n/i18n';
+import {religionDisplay} from '../../../utils/religionDisplayFunction';
+import {genderDisplay} from '../../../utils/genderDisplayFunction';
+import {DynamicAlignView} from '../custom/dynamicAlignView';
 
 export const ItemModal = observer(() => {
   const modalStore = getModalStore();
@@ -19,9 +20,6 @@ export const ItemModal = observer(() => {
   const gender = item.gender;
   const religion = item.religion;
   const fullName = firstName + ' ' + lastName;
-
-  const lang = getLanguageStore();
-  const isR2L = lang.isRighttoLeft.get();
   return (
     <Modal
       transparent={true}
@@ -52,17 +50,23 @@ export const ItemModal = observer(() => {
             width: '90%',
           }}>
           <CloseButton />
-          <View
-            style={{
-              alignItems: isR2L ? 'flex-end' : 'flex-start',
+          <DynamicAlignView
+            containerStyle={{
+              flexDirection: 'column',
               justifyContent: 'center',
             }}>
             <ModalDataDisplay title={i18n.get('FULL_NAME')} value={fullName} />
             <ModalDataDisplay title={i18n.get('EMAIL')} value={email} />
             <ModalDataDisplay title={i18n.get('AGE')} value={age} />
-            <ModalDataDisplay title={i18n.get('GENDER')} value={gender} />
-            <ModalDataDisplay title={i18n.get('RELIGION')} value={religion} />
-          </View>
+            <ModalDataDisplay
+              title={i18n.get('GENDER')}
+              value={genderDisplay(gender)}
+            />
+            <ModalDataDisplay
+              title={i18n.get('RELIGION')}
+              value={religionDisplay(religion)}
+            />
+          </DynamicAlignView>
         </View>
       </View>
     </Modal>

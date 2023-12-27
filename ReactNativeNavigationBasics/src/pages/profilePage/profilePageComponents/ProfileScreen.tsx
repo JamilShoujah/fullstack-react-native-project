@@ -10,14 +10,14 @@ import i18n from '../../../shared/i18n/i18n';
 import {observer} from 'mobx-react';
 import {DynamicView} from '../../../shared/components/custom/dynamicView';
 import {DynamicAlignView} from '../../../shared/components/custom/dynamicAlignView';
-import {useNavigation} from '@react-navigation/native';
+import {genderDisplay} from '../../../utils/genderDisplayFunction';
+import {religionDisplay} from '../../../utils/religionDisplayFunction';
 
 export const ProfileScreen = observer(() => {
   const userArrayStore = getUserArrayStore();
   const userObject = userArrayStore.userObject.get();
   const {email, age, gender, religion, firstName, lastName} = userObject;
   const fullName = firstName + ' ' + lastName;
-  const navigation = useNavigation();
 
   return (
     <View>
@@ -39,12 +39,13 @@ export const ProfileScreen = observer(() => {
           }}>
           {i18n.get('PROFILE')}
         </Text>
-        <MenuButton navigation={navigation} />
-        <LogOutButton navigation={navigation} />
+        <MenuButton />
+        <LogOutButton />
       </DynamicView>
       <DynamicAlignView
         containerStyle={{
-          margin: 10,
+          margin: 20,
+          flexDirection: 'column',
         }}>
         <View style={{alignItems: 'center', width: '100%'}}>
           <Ion name={'person-circle-outline'} size={200} />
@@ -53,8 +54,11 @@ export const ProfileScreen = observer(() => {
         <DataDisplay title={i18n.get('FULL_NAME')} value={fullName} />
         <DataDisplay title={i18n.get('EMAIL')} value={email} />
         <DataDisplay title={i18n.get('AGE')} value={age} />
-        <DataDisplay title={i18n.get('GENDER')} value={gender} />
-        <DataDisplay title={i18n.get('RELIGION')} value={religion} />
+        <DataDisplay title={i18n.get('GENDER')} value={genderDisplay(gender)} />
+        <DataDisplay
+          title={i18n.get('RELIGION')}
+          value={religionDisplay(religion)}
+        />
       </DynamicAlignView>
     </View>
   );
