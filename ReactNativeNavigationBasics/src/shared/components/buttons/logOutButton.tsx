@@ -2,14 +2,14 @@
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import {IPageInterface} from '../../../data/types/ComponentInterfaces/PagesInterface';
 import {EGender} from '../../../data/types/enums/genderEnum';
 import {EReligion} from '../../../data/types/enums/religionEnum';
 import {IUserInterface} from '../../../data/types/Interfaces/userInterface';
 import {getLogInStore} from '../../../data/stores/login-store';
 import {getUserArrayStore} from '../../../data/stores/user-array-store';
+import {useNavigation} from '@react-navigation/native';
 
-export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
+export const LogOutButton = () => {
   const loginStore = getLogInStore();
   const userArrayStore = getUserArrayStore();
   const emptyUserObject: IUserInterface = {
@@ -22,6 +22,7 @@ export const LogOutButton: React.FC<IPageInterface> = ({navigation}) => {
     gender: EGender.NO,
     religion: EReligion.NO,
   };
+  const navigation = useNavigation();
   return (
     <View style={{position: 'absolute', left: '87%'}}>
       <TouchableOpacity

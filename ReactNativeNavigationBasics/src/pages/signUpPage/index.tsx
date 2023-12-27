@@ -2,11 +2,10 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {View, Text} from 'react-native';
-import {IPageInterface} from '../../data/types/ComponentInterfaces/PagesInterface';
 import i18n from '../../shared/i18n/i18n';
 import {SignUpScreen} from './signUpPageComponents/signUpScreen';
 
-export const SignUpPage: React.FC<IPageInterface> = observer(({navigation}) => {
+export const SignUpPage = observer(() => {
   return (
     <View
       style={{

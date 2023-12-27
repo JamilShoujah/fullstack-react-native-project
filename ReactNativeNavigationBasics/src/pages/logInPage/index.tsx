@@ -1,12 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import {observer} from 'mobx-react-lite';
 import React from 'react';
 import {View, Text} from 'react-native';
-import {IPageInterface} from '../../data/types/ComponentInterfaces/PagesInterface';
+
 import i18n from '../../shared/i18n/i18n';
 import {LogInScreen} from './logInPageComponents/logInScreen';
 
-export const LogInPage: React.FC<IPageInterface> = observer(({navigation}) => {
+export const LogInPage = observer(() => {
+  const navigation = useNavigation();
   return (
     <View
       style={{

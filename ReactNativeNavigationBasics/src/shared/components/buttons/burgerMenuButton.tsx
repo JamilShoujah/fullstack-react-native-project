@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import {IPageInterface} from '../../../data/types/ComponentInterfaces/PagesInterface';
-export const MenuButton: React.FC<IPageInterface> = ({navigation}) => {
+export const MenuButton = () => {
+  const navigation = useNavigation();
   return (
     <View style={{position: 'absolute', left: '3%'}}>
       <TouchableOpacity
