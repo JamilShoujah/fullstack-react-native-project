@@ -7,9 +7,10 @@ import Ion from 'react-native-vector-icons/Ionicons';
 import {IPageInterface} from '../../../data/types/ComponentInterfaces/PagesInterface';
 import {LogOutButton} from '../../../shared/components/buttons/logOutButton';
 import {MenuButton} from '../../../shared/components/buttons/burgerMenuButton';
-import {getLanguageStore} from '../../../data/stores/right-to-left-language-store';
 import i18n from '../../../shared/i18n/i18n';
 import {observer} from 'mobx-react';
+import {DynamicView} from '../../../shared/components/custom/dynamicView';
+import {DynamicAlignView} from '../../../shared/components/custom/dynamicAlignView';
 
 export const ProfileScreen: React.FC<IPageInterface> = observer(
   ({navigation}) => {
@@ -18,18 +19,14 @@ export const ProfileScreen: React.FC<IPageInterface> = observer(
     const {email, age, gender, religion, firstName, lastName} = userObject;
     const fullName = firstName + ' ' + lastName;
 
-    const lang = getLanguageStore();
-    const isR2L = lang.isRighttoLeft.get();
-
     return (
       <View>
-        <View
-          style={{
+        <DynamicView
+          containerStyle={{
             backgroundColor: 'blue',
-            flexDirection: isR2L ? 'row-reverse' : 'row',
             alignItems: 'center',
             width: '100%',
-            justifyContent: 'center',
+            justifyContent: 'space-around',
           }}>
           <Text
             style={{
@@ -44,12 +41,10 @@ export const ProfileScreen: React.FC<IPageInterface> = observer(
           </Text>
           <MenuButton navigation={navigation} />
           <LogOutButton navigation={navigation} />
-        </View>
-        <View
-          style={{
-            alignItems: isR2L ? 'flex-end' : 'flex-start',
-            justifyContent: 'center',
-            padding: 30,
+        </DynamicView>
+        <DynamicAlignView
+          containerStyle={{
+            margin: 10,
           }}>
           <View style={{alignItems: 'center', width: '100%'}}>
             <Ion name={'person-circle-outline'} size={200} />
@@ -60,7 +55,7 @@ export const ProfileScreen: React.FC<IPageInterface> = observer(
           <DataDisplay title={i18n.get('AGE')} value={age} />
           <DataDisplay title={i18n.get('GENDER')} value={gender} />
           <DataDisplay title={i18n.get('RELIGION')} value={religion} />
-        </View>
+        </DynamicAlignView>
       </View>
     );
   },

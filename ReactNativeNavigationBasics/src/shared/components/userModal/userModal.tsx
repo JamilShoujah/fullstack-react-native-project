@@ -5,6 +5,7 @@ import {Modal, View} from 'react-native';
 import {getModalStore} from '../../../data/stores/modal-store';
 import {CloseButton} from '../buttons/closeModalButton';
 import {ModalDataDisplay} from './userModalComponents/modalDataDisplay';
+
 import {getLanguageStore} from '../../../data/stores/right-to-left-language-store';
 import i18n from '../../i18n/i18n';
 
