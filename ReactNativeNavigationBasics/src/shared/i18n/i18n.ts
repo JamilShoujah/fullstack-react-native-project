@@ -177,6 +177,41 @@ const i18n: TI18n = {
       EN: 'Submit',
       JP: '送信',
     },
+    INCORRECT_PASSWORD: {
+      AR: 'كلمة سر خاطئة',
+      EN: 'incorrect password',
+      JP: 'パスワードが間違っています',
+    },
+    NO_ACCOUNT_FOUND: {
+      AR: 'الحساب غير موجود',
+      EN: 'Account doesnt exist',
+      JP: 'アカウントが存在しません',
+    },
+    OK: {
+      AR: 'نعم',
+      EN: 'OK',
+      JP: 'わかりました',
+    },
+    DATA_MISSING: {
+      AR: 'البيانات مفقودة',
+      EN: 'Data Missing!',
+      JP: 'データがありません',
+    },
+    INVALID_EMAIL: {
+      AR: 'عنوان البريد الإلكتروني غير صالح',
+      EN: 'Invalid Email Address',
+      JP: '無効なメールアドレス',
+    },
+    EMAIL_IN_USE: {
+      AR: 'البريد الاليكتروني قيد الاستخدام',
+      EN: 'Email already in use',
+      JP: 'すでに使用中のメール',
+    },
+    PASSWORDS_DONT_MATCH: {
+      AR: 'كلمات المرور غير متطابقة',
+      EN: 'Passwords dont match',
+      JP: 'パスワードが一致しません',
+    },
   },
 
   setLanguage(language: TLanguage) {

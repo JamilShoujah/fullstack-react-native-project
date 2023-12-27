@@ -2,6 +2,7 @@ import {Alert} from 'react-native';
 import {IUserInterface} from '../data/types/Interfaces/userInterface';
 import {getSignUpStore} from '../data/stores/sign-up-store';
 import {getUserArrayStore} from '../data/stores/user-array-store';
+import i18n from '../shared/i18n/i18n';
 
 export function signUpDetailValidation(navigation: any) {
   const SignUpStore = getSignUpStore();
@@ -15,23 +16,25 @@ export function signUpDetailValidation(navigation: any) {
   let errors = [];
 
   if (!firstName) {
-    errors.push('First name');
+    errors.push(i18n.get('FIRST_NAME'));
   }
   if (!lastName) {
-    errors.push('Last name');
+    errors.push(i18n.get('LAST_NAME'));
   }
   if (!age) {
-    errors.push('Age');
+    errors.push(i18n.get('AGE'));
   }
   if (!gender) {
-    errors.push('Gender');
+    errors.push(i18n.get('GENDER'));
   }
   if (!religion) {
-    errors.push('Religion');
+    errors.push(i18n.get('RELIGION'));
   }
 
   if (errors.length > 0) {
-    Alert.alert('Data Missing', errors.join(', '), [{text: 'OK'}]);
+    Alert.alert(i18n.get('DATA_MISSING'), errors.join(', '), [
+      {text: i18n.get('OK')},
+    ]);
     return;
   }
 

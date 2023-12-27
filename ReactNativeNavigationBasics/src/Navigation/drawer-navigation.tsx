@@ -6,7 +6,6 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 import {TabNavigation} from './tabNavigation';
-// import i18next from '../shared/i18n/i18next';
 import {getLanguageStore} from '../data/stores/right-to-left-language-store';
 import i18n from '../shared/i18n/i18n';
 import {TLanguageEnum} from '../data/types/enums/languageEnum';

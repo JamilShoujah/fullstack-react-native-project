@@ -18,7 +18,7 @@ export const SignUpPage = observer(() => {
         {i18n.get('WELCOME')}
       </Text>
       <Text>{i18n.get('SIGN_UP_HERE')}</Text>
-      <SignUpScreen navigation={navigation} />
+      <SignUpScreen />
     </View>
   );
 });
