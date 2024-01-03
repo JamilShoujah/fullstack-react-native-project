@@ -3,7 +3,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {Search} from './search';
 
-export const StudentPanel = () => {
+export const CoursePanel = () => {
   return (
     <View
       style={{
@@ -12,9 +12,9 @@ export const StudentPanel = () => {
         padding: 10,
         marginVertical: 10,
       }}>
-      <Text style={{margin: 10, fontSize: 20}}>Student</Text>
+      <Text style={{margin: 10, fontSize: 20}}>Course</Text>
       <Search
-        placeholder={'Student ID'}
+        placeholder={'Course Name'}
         value={''}
         onValueChange={(text: string) => {
           console.log(text);
@@ -24,27 +24,7 @@ export const StudentPanel = () => {
         }}
       />
       <Search
-        placeholder={'First Name'}
-        value={''}
-        onValueChange={(text: string) => {
-          console.log(text);
-        }}
-        onPress={() => {
-          console.log('hi');
-        }}
-      />
-      <Search
-        placeholder={'Last Name'}
-        value={''}
-        onValueChange={(text: string) => {
-          console.log(text);
-        }}
-        onPress={() => {
-          console.log('hi');
-        }}
-      />
-      <Search
-        placeholder={'Email Address'}
+        placeholder={'Course ID'}
         value={''}
         onValueChange={(text: string) => {
           console.log(text);

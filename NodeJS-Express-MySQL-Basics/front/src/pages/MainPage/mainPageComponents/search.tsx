@@ -5,7 +5,7 @@ import {SubmitButton} from '../../../shared/components/sumbitButtonComponent';
 import {TextInputField} from '../../../shared/components/textInputComponent';
 import {IStudentSearch} from '../../../shared/data/types/interfaces/studentSearchInterface';
 
-export const StudentSearch: React.FC<IStudentSearch> = ({
+export const Search: React.FC<IStudentSearch> = ({
   placeholder,
   value,
   onValueChange,
@@ -14,12 +14,10 @@ export const StudentSearch: React.FC<IStudentSearch> = ({
   return (
     <View
       style={{
-        backgroundColor: '#DCF2F1',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
         borderRadius: 10,
-        marginBottom: 5,
       }}>
       <TextInputField
         placeholder={placeholder}

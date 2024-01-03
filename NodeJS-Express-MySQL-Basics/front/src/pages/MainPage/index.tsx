@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text} from 'react-native';
+import {CoursePanel} from './mainPageComponents/coursePanel';
 import {StudentPanel} from './mainPageComponents/studentPanel';
 
 export const MainPage = () => {
@@ -24,6 +25,7 @@ export const MainPage = () => {
         Admin
       </Text>
       <StudentPanel />
+      <CoursePanel />
     </View>
   );
 };

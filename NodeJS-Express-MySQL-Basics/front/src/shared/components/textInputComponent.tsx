@@ -16,7 +16,7 @@ export const TextInputField: React.FC<ITextInput> = ({
         padding: 10,
         borderRadius: 5,
         width: '70%',
-        margin: 10,
+        margin: 5,
       }}
       autoCapitalize="none"
       placeholder={placeholder}
