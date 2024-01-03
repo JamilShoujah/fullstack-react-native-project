@@ -2,6 +2,6 @@
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "node16",
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   }
 }

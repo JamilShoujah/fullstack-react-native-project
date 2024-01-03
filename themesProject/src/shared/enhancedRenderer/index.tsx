@@ -4,7 +4,7 @@ import {TEt3Theme, withTheme} from '../enhancedRenderer/store/index';
 
 type TFunc = <P extends object>(
   Component: React.ComponentType<P>,
-) => React.FunctionComponent<P>;
+) => React.ComponentType<P>;
 
 const compose = (...funcs: TFunc[]) =>
   funcs.reduce(
@@ -13,8 +13,6 @@ const compose = (...funcs: TFunc[]) =>
         a(b(...args)),
     arg => arg,
   );
-
-export default compose;
 
 export type WithLiteObserver = <T extends {}>(
   component: ComponentType<T>,
