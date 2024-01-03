@@ -1,9 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
+import {observer} from 'mobx-react';
 import React from 'react';
 import {Text, View} from 'react-native';
+import getInputFieldStore from '../../../data/store/textFieldStore';
 import {Search} from './search';
 
-export const CoursePanel = () => {
+export const CoursePanel = observer(() => {
+  const textFieldStore = getInputFieldStore();
   return (
     <View
       style={{
@@ -15,24 +18,28 @@ export const CoursePanel = () => {
       <Text style={{margin: 10, fontSize: 20}}>Course</Text>
       <Search
         placeholder={'Course Name'}
-        value={''}
+        value={textFieldStore.courseName.get()}
         onValueChange={(text: string) => {
-          console.log(text);
+          textFieldStore.setCourseName(text);
         }}
         onPress={() => {
-          console.log('hi');
+          // to be implemented
+          console.log(textFieldStore.courseName.get());
+          textFieldStore.setCourseName('');
         }}
       />
       <Search
         placeholder={'Course ID'}
-        value={''}
+        value={textFieldStore.courseId.get()}
         onValueChange={(text: string) => {
-          console.log(text);
+          textFieldStore.setCourseId(text);
         }}
         onPress={() => {
-          console.log('hi');
+          // to be implemented
+          console.log(textFieldStore.courseId.get());
+          textFieldStore.setCourseId('');
         }}
       />
     </View>
   );
-};
+});

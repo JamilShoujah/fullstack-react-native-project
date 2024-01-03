@@ -1,9 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
+import {observer} from 'mobx-react';
 import React from 'react';
 import {Text, View} from 'react-native';
+import getInputFieldStore from '../../../data/store/textFieldStore';
 import {Search} from './search';
 
-export const StudentPanel = () => {
+export const StudentPanel = observer(() => {
+  const textFieldStore = getInputFieldStore();
   return (
     <View
       style={{
@@ -15,44 +18,52 @@ export const StudentPanel = () => {
       <Text style={{margin: 10, fontSize: 20}}>Student</Text>
       <Search
         placeholder={'Student ID'}
-        value={''}
+        value={textFieldStore.studentId.get()}
         onValueChange={(text: string) => {
-          console.log(text);
+          textFieldStore.setStudentId(text);
         }}
         onPress={() => {
-          console.log('hi');
+          // to be implmented
+          console.log(textFieldStore.studentId.get());
+          textFieldStore.setStudentId('');
         }}
       />
       <Search
         placeholder={'First Name'}
-        value={''}
+        value={textFieldStore.firstName.get()}
         onValueChange={(text: string) => {
-          console.log(text);
+          textFieldStore.setFirstName(text);
         }}
         onPress={() => {
-          console.log('hi');
+          // to be implemented
+          console.log(textFieldStore.firstName.get());
+          textFieldStore.setFirstName('');
         }}
       />
       <Search
         placeholder={'Last Name'}
-        value={''}
+        value={textFieldStore.lastName.get()}
         onValueChange={(text: string) => {
-          console.log(text);
+          textFieldStore.setLastName(text);
         }}
         onPress={() => {
-          console.log('hi');
+          // to be implemented
+          console.log(textFieldStore.lastName.get());
+          textFieldStore.setLastName('');
         }}
       />
       <Search
         placeholder={'Email Address'}
-        value={''}
+        value={textFieldStore.emailAddress.get()}
         onValueChange={(text: string) => {
-          console.log(text);
+          textFieldStore.setEmailAddress(text);
         }}
         onPress={() => {
-          console.log('hi');
+          // to be implemented
+          console.log(textFieldStore.emailAddress.get());
+          textFieldStore.setEmailAddress('');
         }}
       />
     </View>
   );
-};
+});
