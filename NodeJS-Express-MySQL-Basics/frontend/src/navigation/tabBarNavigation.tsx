@@ -39,7 +39,7 @@ export const TabBarNav = () => {
         }}
       />
       <Tab.Screen
-        name={'Add Grades??'}
+        name={'Add Grades'}
         component={AddGrades}
         options={{
           header: () => null,

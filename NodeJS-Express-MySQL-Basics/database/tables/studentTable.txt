@@ -1,0 +1,19 @@
+CREATE TABLE `Student` (
+  `StudentID` int NOT NULL AUTO_INCREMENT,
+  `StudentFirstName` varchar(100) NOT NULL,
+  `StudentLastName` varchar(100) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `DateOfBirth` date DEFAULT NULL,
+  `Address` varchar(255) DEFAULT NULL,
+  `Phone` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`StudentID`),
+  UNIQUE KEY `Email` (`Email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO Student (StudentFirstName, StudentLastName, Email, DateOfBirth, Address, Phone) VALUES
+('John', 'Doe', 'johndoe@example.com', '1998-05-15', '123 Main St, Anytown', '555-0101'),
+('Jane', 'Smith', 'janesmith@example.com', '2000-02-20', '456 Elm St, Sometown', '555-0202'),
+('Emily', 'Johnson', 'emilyjohnson@example.com', '1999-11-30', '789 Oak St, Thistown', '555-0303'),
+('Michael', 'Brown', 'michaelbrown@example.com', '2001-07-22', '321 Pine St, Yourtown', '555-0404'),
+('Sarah', 'Davis', 'sarahdavis@example.com', '1997-03-10', '654 Maple St, Anothertown', '555-0505');
+
