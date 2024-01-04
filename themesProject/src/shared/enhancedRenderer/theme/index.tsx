@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {getTheme} from './themeStore';
+import {getTheme} from './getTheme';
 
 const theme = getTheme().getThemeData.get();
 const myContext = React.createContext(theme);

@@ -1,19 +1,12 @@
 import {round} from 'lodash';
 import memoize from 'lodash/memoize';
 
-import {computed, observable, runInAction} from 'mobx';
+import {computed} from 'mobx';
 import {Dimensions} from 'react-native';
+import getThemeStore from '../../../stores/dark-theme-store/index';
 import {appColors} from '../../constants/colorTheme';
 
-class Et3Theme {
-  isDarktheme = observable.box(false);
-  test = observable.box(true);
-
-  switchTheme() {
-    runInAction(() => {
-      this.isDarktheme.set(!this.isDarktheme.get());
-    });
-  }
+class Theme {
   getAppUnits = computed(() => {
     const initiaHeight = Dimensions.get('screen').height;
     const initialWidth = Dimensions.get('screen').width;
@@ -36,14 +29,14 @@ class Et3Theme {
   });
 
   getThemeData = computed(() => {
-    let appTheme = this.isDarktheme.get();
+    let appTheme = getThemeStore().isDarktheme.get();
     const {unitX, unitY, childX, childY} = this.getAppUnits.get();
 
     const lightThemeColors = appColors.LIGHT;
-    const DarkThemeColors = appColors.DARK;
+    const darkThemeColors = appColors.DARK;
     let colorTheme;
     if (appTheme) {
-      colorTheme = DarkThemeColors;
+      colorTheme = darkThemeColors;
     } else {
       colorTheme = lightThemeColors;
     }
@@ -62,7 +55,7 @@ class Et3Theme {
 }
 
 export const getTheme = memoize(() => {
-  return new Et3Theme();
+  return new Theme();
 });
 
 export default getTheme;

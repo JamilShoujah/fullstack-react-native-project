@@ -2,15 +2,15 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {withLiteObserverAndTheme} from '../shared/enhancedRenderer/index';
-import getTheme from '../shared/enhancedRenderer/store/themeStore';
+import getThemeStore from '../stores/dark-theme-store/index';
 export const MainPage = withLiteObserverAndTheme(props => {
-  const themeStore = getTheme();
+  const themeStore = getThemeStore();
   const {theme} = props;
   const {colors, unitX, childX, unitY, childY, getFontSize} = theme;
   return (
     <View
       style={{
-        height: '100%',
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: colors.secondaryColor,

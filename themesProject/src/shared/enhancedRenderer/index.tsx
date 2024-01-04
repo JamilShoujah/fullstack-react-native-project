@@ -1,6 +1,6 @@
 import {observer as LiteObserver} from 'mobx-react-lite';
 import {ComponentType} from 'react';
-import {TEt3Theme, withTheme} from '../enhancedRenderer/store/index';
+import {TEt3Theme, withTheme} from './theme/index';
 
 type TFunc = <P extends object>(
   Component: React.ComponentType<P>,
