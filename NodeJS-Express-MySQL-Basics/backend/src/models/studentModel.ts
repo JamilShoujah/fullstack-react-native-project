@@ -36,6 +36,30 @@ const UserModel = {
       });
     });
   },
+
+  findByLastName: async (Name: string) => {
+    return new Promise((resolve, reject) => {
+      const query = "SELECT * FROM Student WHERE StudentLastName = ?";
+      connection.query(query, [Name], (error, result) => {
+        if (error) {
+          return reject(error);
+        }
+        resolve(result);
+      });
+    });
+  },
+
+  findByEmail: async (Email: string) => {
+    return new Promise((resolve, reject) => {
+      const query = "SELECT * FROM Student WHERE Email = ?";
+      connection.query(query, [Email], (error, result) => {
+        if (error) {
+          return reject(error);
+        }
+        resolve(result);
+      });
+    });
+  },
 };
 
 export default UserModel;

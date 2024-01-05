@@ -42,3 +42,43 @@ export const getStudentByFirstName = async (req: Request, res: Response) => {
     res.status(500).send("Error retrieving students");
   }
 };
+
+export const getStudentByLastName = async (req: Request, res: Response) => {
+  try {
+    const studentLastNameParam = req.query.LastName;
+
+    if (
+      typeof studentLastNameParam === "undefined" ||
+      studentLastNameParam === null
+    ) {
+      return res.status(400).send("LastName query parameter is required");
+    }
+
+    const studentLastName = studentLastNameParam.toString();
+    const student = await UserModel.findByLastName(studentLastName);
+    res.json(student);
+  } catch (error) {
+    console.error("Failed to retrieve students:", error);
+    res.status(500).send("Error retrieving students");
+  }
+};
+
+export const getStudentByEmailAddress = async (req: Request, res: Response) => {
+  try {
+    const studentEmailAddressParam = req.query.EmailAddress;
+
+    if (
+      typeof studentEmailAddressParam === "undefined" ||
+      studentEmailAddressParam === null
+    ) {
+      return res.status(400).send("EmailAddress query parameter is required");
+    }
+
+    const studentEmailAddress = studentEmailAddressParam.toString();
+    const student = await UserModel.findByEmail(studentEmailAddress);
+    res.json(student);
+  } catch (error) {
+    console.error("Failed to retrieve student:", error);
+    res.status(500).send("Error retrieving student");
+  }
+};
