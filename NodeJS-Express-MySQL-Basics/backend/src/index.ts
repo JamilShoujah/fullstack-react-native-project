@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
-import studentRoutes from "./routes/studentRoutes";
+import studentRoutes from "./controllers/student";
 const app = express();
 
-app.use("/api", studentRoutes);
+app.use("/api/student", studentRoutes);
 
 const PORT: number = 3000;
 
