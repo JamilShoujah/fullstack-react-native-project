@@ -1,9 +1,27 @@
-import studentModel from "../../models/studentModel";
+import { memoize } from "lodash";
+import StudentModel from "../../models/studentModel";
 
-class studentLibrary {
-  async getStudentByID(id: number) {
-    const student = await studentModel.findById(id);
+class StudentLibraryModel {
+  studentIdParams(studentId: number) {
+    return StudentModel.findById(studentId);
+  }
+
+  studentFirstNameParams(Name: string) {
+    return StudentModel.findByFirstName(Name);
+  }
+
+  studentLastNameParams(Name: string) {
+    return StudentModel.findByLastName(Name);
+  }
+
+  studentEmailParams(Email: string) {
+    return StudentModel.findByEmail(Email);
   }
 }
 
-export default studentLibrary;
+const getStudentLibrary = memoize(() => {
+  const library = new StudentLibraryModel();
+  return library;
+});
+
+export default getStudentLibrary;

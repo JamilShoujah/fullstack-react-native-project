@@ -2,55 +2,45 @@ import mysqlConnection from "../database";
 import connection from "../database";
 import { IStudentObject } from "../types/interfaces/studentObject";
 
-const StudentModel = {
+const studentModel = {
   findAll: async () => {
     const myQuery = "SELECT * FROM Student";
     return mysqlConnection.query(myQuery);
   },
+
   findById: async (id: number) => {
     const myQuery = `
       SELECT *
       FROM Student
-      WHERE StudentID = ${id}
+      WHERE StudentID = ?
       `;
-    return connection.query(myQuery);
+    return mysqlConnection.query(myQuery, [id]);
+  },
+
+  findByFirstName: async (firstName: string) => {
+    const myQuery = `
+    SELECT * 
+    FROM Student 
+    WHERE StudentFirstName = ?`;
+
+    return mysqlConnection.query(myQuery, [firstName]);
+  },
+
+  findByLastName: async (LastName: string) => {
+    const myQuery = `
+      SELECT * 
+      FROM Student 
+      WHERE StudentLastName = ?`;
+
+    return mysqlConnection.query(myQuery, [LastName]);
+  },
+
+  findByEmail: async (Email: string) => {
+    const query = "SELECT * FROM Student WHERE Email = ?";
+    return connection.query(query, [Email]);
   },
 };
-//   findByFirstName: async (Name: string) => {
-//     return new Promise((resolve, reject) => {
-//       const query = "SELECT * FROM Student WHERE StudentFirstName = ?";
-//       connection.query(query, [Name], (error, result) => {
-//         if (error) {
-//           return reject(error);
-//         }
-//         resolve(result);
-//       });
-//     });
-//   },
 
-//   findByLastName: async (Name: string) => {
-//     return new Promise((resolve, reject) => {
-//       const query = "SELECT * FROM Student WHERE StudentLastName = ?";
-//       connection.query(query, [Name], (error, result) => {
-//         if (error) {
-//           return reject(error);
-//         }
-//         resolve(result);
-//       });
-//     });
-//   },
-
-//   findByEmail: async (Email: string) => {
-//     return new Promise((resolve, reject) => {
-//       const query = "SELECT * FROM Student WHERE Email = ?";
-//       connection.query(query, [Email], (error, result) => {
-//         if (error) {
-//           return reject(error);
-//         }
-//         resolve(result);
-//       });
-//     });
-//   },
 //   // started from here
 //   addNewStudent: async (studentObject: IStudentObject) => {
 //     const {
@@ -87,4 +77,4 @@ const StudentModel = {
 //   },
 // };
 
-export default StudentModel;
+export default studentModel;

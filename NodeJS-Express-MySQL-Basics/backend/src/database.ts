@@ -1,5 +1,4 @@
 import mysql, { Connection } from "mysql2";
-import { resolve } from "path";
 
 const mysqlConnection = {
   instance: null as Connection | null,
@@ -22,11 +21,11 @@ const mysqlConnection = {
     }
     return this.instance;
   },
-  query(queryString: string): Promise<any> {
+  query(queryString: string, params?: any[]): Promise<any> {
     return new Promise((resolve, reject) => {
       try {
         const connection = this.getInstance();
-        connection.query(queryString, (err, results) => {
+        connection.query(queryString, params, (err, results) => {
           if (err) {
             reject(err);
           } else {

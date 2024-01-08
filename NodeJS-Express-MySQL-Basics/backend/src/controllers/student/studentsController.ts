@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import studentLibrary from "../../library/student-library";
+import getStudentLibrary from "../../library/student-library";
 import studentModel from "../../models/studentModel";
-import UserModel from "../../models/studentModel";
+const studentLib = getStudentLibrary();
 
 export const getAllStudents = async (req: Request, res: Response) => {
   try {
@@ -15,76 +15,48 @@ export const getAllStudents = async (req: Request, res: Response) => {
 
 export const getStudentByID = async (req: Request, res: Response) => {
   try {
-    const studentIdParam = req.query.StudentID;
-    // const studentId = Number(studentIdParam);
-    // const student = await UserModel.findById(studentId);
-    const result = studentLibrary.getStudentByID();
-    res.json(result);
+    const student = await studentLib.studentIdParams(req.body.StudentID);
+    res.json(student);
   } catch (error) {
     console.error("Failed to retrieve students:", error);
     res.status(500).send("Error retrieving students");
   }
 };
 
-// export const getStudentByFirstName = async (req: Request, res: Response) => {
-//   try {
-//     const studentFirstNameParam = req.query.FirstName;
+export const getStudentByFirstName = async (req: Request, res: Response) => {
+  try {
+    const student = await studentLib.studentFirstNameParams(
+      req.body.StudentFirstName
+    );
+    res.json(student);
+  } catch (error) {
+    console.error("Failed to retrieve students:", error);
+    res.status(500).send("Error retrieving students");
+  }
+};
 
-//     if (
-//       typeof studentFirstNameParam === "undefined" ||
-//       studentFirstNameParam === null
-//     ) {
-//       return res.status(400).send("FirstName query parameter is required");
-//     }
+export const getStudentByLastName = async (req: Request, res: Response) => {
+  try {
+    const student = await studentLib.studentLastNameParams(
+      req.body.StudentLastName
+    );
+    res.json(student);
+    console.log(req.body.StudentLastName);
+  } catch (error) {
+    console.error("Failed to retrieve students:", error);
+    res.status(500).send("Error retrieving students");
+  }
+};
 
-//     const studentName = studentFirstNameParam.toString();
-//     const student = await UserModel.findByFirstName(studentName);
-//     res.json(student);
-//   } catch (error) {
-//     console.error("Failed to retrieve students:", error);
-//     res.status(500).send("Error retrieving students");
-//   }
-// };
-
-// export const getStudentByLastName = async (req: Request, res: Response) => {
-//   try {
-//     const studentLastNameParam = req.query.LastName;
-
-//     if (
-//       typeof studentLastNameParam === "undefined" ||
-//       studentLastNameParam === null
-//     ) {
-//       return res.status(400).send("LastName query parameter is required");
-//     }
-
-//     const studentLastName = studentLastNameParam.toString();
-//     const student = await UserModel.findByLastName(studentLastName);
-//     res.json(student);
-//   } catch (error) {
-//     console.error("Failed to retrieve students:", error);
-//     res.status(500).send("Error retrieving students");
-//   }
-// };
-
-// export const getStudentByEmailAddress = async (req: Request, res: Response) => {
-//   try {
-//     const studentEmailAddressParam = req.query.EmailAddress;
-
-//     if (
-//       typeof studentEmailAddressParam === "undefined" ||
-//       studentEmailAddressParam === null
-//     ) {
-//       return res.status(400).send("EmailAddress query parameter is required");
-//     }
-
-//     const studentEmailAddress = studentEmailAddressParam.toString();
-//     const student = await UserModel.findByEmail(studentEmailAddress);
-//     res.json(student);
-//   } catch (error) {
-//     console.error("Failed to retrieve student:", error);
-//     res.status(500).send("Error retrieving student");
-//   }
-// };
+export const getStudentByEmailAddress = async (req: Request, res: Response) => {
+  try {
+    const student = await studentLib.studentEmailParams(req.body.EmailAddress);
+    res.json(student);
+  } catch (error) {
+    console.error("Failed to retrieve student:", error);
+    res.status(500).send("Error retrieving student");
+  }
+};
 
 // export const addNewStudent = async (req: Request, res: Response) => {
 //   try {
