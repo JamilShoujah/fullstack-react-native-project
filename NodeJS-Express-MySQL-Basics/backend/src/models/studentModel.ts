@@ -1,5 +1,4 @@
 import mysqlConnection from "../database";
-import connection from "../database";
 import { IStudentObject } from "../types/interfaces/studentObject";
 
 const studentModel = {
@@ -36,45 +35,43 @@ const studentModel = {
   },
 
   findByEmail: async (Email: string) => {
-    const query = "SELECT * FROM Student WHERE Email = ?";
-    return connection.query(query, [Email]);
+    const myQuery = "SELECT * FROM Student WHERE Email = ?";
+    return mysqlConnection.query(myQuery, [Email]);
+  },
+
+  // started from here
+  addNewStudent: async (studentObject: IStudentObject) => {
+    const {
+      studentFirstName,
+      studentLastName,
+      studentEmail,
+      studentDateOfBirth,
+      studentAddress,
+      studentPhone,
+    } = studentObject;
+
+    const myQuery = `
+      INSERT INTO Student 
+      (
+        StudentFirstName, 
+        StudentLastName, 
+        Email, 
+        DateOfBirth, 
+        Address, 
+        Phone
+      ) 
+      VALUES 
+      (?, ?, ?, ?, ?, ?)`;
+
+    return mysqlConnection.query(myQuery, [
+      studentFirstName,
+      studentLastName,
+      studentEmail,
+      studentDateOfBirth,
+      studentAddress,
+      studentPhone,
+    ]);
   },
 };
-
-//   // started from here
-//   addNewStudent: async (studentObject: IStudentObject) => {
-//     const {
-//       studentFirstName,
-//       studentLastName,
-//       studentEmail,
-//       studentDateOfBirth,
-//       studentAddress,
-//       studentPhone,
-//     } = studentObject;
-
-//     return new Promise((resolve, reject) => {
-//       const query =
-//         "INSERT INTO Student (StudentFirstName, StudentLastName, Email, DateOfBirth, Address, Phone) VALUES (?, ?, ?, ?, ?, ?);";
-
-//        .query(
-//         query,
-//         [
-//           studentFirstName,
-//           studentLastName,
-//           studentEmail,
-//           studentDateOfBirth,
-//           studentAddress,
-//           studentPhone,
-//         ],
-//         (error, result) => {
-//           if (error) {
-//             return reject(error);
-//           }
-//           resolve(result);
-//         }
-//       );
-//     });
-//   },
-// };
 
 export default studentModel;

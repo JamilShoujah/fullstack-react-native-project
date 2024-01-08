@@ -58,24 +58,18 @@ export const getStudentByEmailAddress = async (req: Request, res: Response) => {
   }
 };
 
-// export const addNewStudent = async (req: Request, res: Response) => {
-//   try {
-//     const studentObject = req.body;
+export const addNewStudent = async (req: Request, res: Response) => {
+  try {
+    const studentObject = req.body;
 
-//     if (!studentObject || typeof studentObject !== "object") {
-//       return res.status(400).send("Invalid student data");
-//     }
+    if (!studentObject || typeof studentObject !== "object") {
+      return res.status(400).send("Invalid student data");
+    }
 
-//     const studentEmail = studentObject.studentEmail;
-//     const existingStudent = await UserModel.findByEmail(studentEmail);
-//     if (existingStudent) {
-//       return res.status(409).send("A student with this email already exists");
-//     }
-
-//     const newStudent = await UserModel.addNewStudent(studentObject);
-//     res.status(201).json(newStudent);
-//   } catch (error) {
-//     console.error("Failed to add new student:", error);
-//     res.status(500).send("Error adding new student");
-//   }
-// };
+    const newStudent = await studentModel.addNewStudent(studentObject);
+    res.status(201).json(newStudent);
+  } catch (error) {
+    console.error("Failed to add new student:", error);
+    res.status(500).send("Error adding new student");
+  }
+};
