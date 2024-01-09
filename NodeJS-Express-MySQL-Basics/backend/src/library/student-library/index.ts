@@ -17,6 +17,14 @@ class StudentLibraryModel {
   studentEmailParams(Email: string) {
     return StudentModel.findByEmail(Email);
   }
+
+  deleteByStudentIdParams(studentId: number) {
+    return StudentModel.deleteById(studentId);
+  }
+
+  deleteByStudentEmailParams(Email: string) {
+    return StudentModel.deleteByEmail(Email);
+  }
 }
 
 const getStudentLibrary = memoize(() => {

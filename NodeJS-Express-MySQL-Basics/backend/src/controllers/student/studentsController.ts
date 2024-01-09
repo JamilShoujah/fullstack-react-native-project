@@ -60,16 +60,30 @@ export const getStudentByEmailAddress = async (req: Request, res: Response) => {
 
 export const addNewStudent = async (req: Request, res: Response) => {
   try {
-    const studentObject = req.body;
-
-    if (!studentObject || typeof studentObject !== "object") {
-      return res.status(400).send("Invalid student data");
-    }
-
-    const newStudent = await studentModel.addNewStudent(studentObject);
-    res.status(201).json(newStudent);
+    const newStudent = await studentModel.addNewStudent(req.body);
+    res.status(201).send("Student successfully added");
   } catch (error) {
     console.error("Failed to add new student:", error);
     res.status(500).send("Error adding new student");
+  }
+};
+
+export const deleteStudentByID = async (req: Request, res: Response) => {
+  try {
+    await studentLib.deleteByStudentIdParams(req.body.StudentID);
+    res.status(200).send("Student successfully deleted");
+  } catch (error) {
+    console.error("Failed to delete students:", error);
+    res.status(500).send("Failed to delete student");
+  }
+};
+
+export const deleteStudentByEmail = async (req: Request, res: Response) => {
+  try {
+    await studentLib.deleteByStudentEmailParams(req.body.EmailAddress);
+    res.status(200).send("Student successfully deleted");
+  } catch (error) {
+    console.error("Failed to delete students:", error);
+    res.status(500).send("Failed to delete student");
   }
 };

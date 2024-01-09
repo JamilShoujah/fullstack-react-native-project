@@ -1,6 +1,8 @@
 import express from "express";
 import {
   addNewStudent,
+  deleteStudentByEmail,
+  deleteStudentByID,
   getAllStudents,
   getStudentByEmailAddress,
   getStudentByFirstName,
@@ -16,5 +18,7 @@ router.post("/getStudentsByFirstName", getStudentByFirstName);
 router.post("/getStudentsByLastName", getStudentByLastName);
 router.post("/getStudentsByEmail", getStudentByEmailAddress);
 router.post("/addStudents", addNewStudent);
+router.delete("/deleteStudentById", deleteStudentByID);
+router.delete("/deleteStudentByEmailAddress", deleteStudentByEmail);
 
 export default router;

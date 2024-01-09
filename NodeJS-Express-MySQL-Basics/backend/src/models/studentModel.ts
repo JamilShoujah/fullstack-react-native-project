@@ -39,7 +39,6 @@ const studentModel = {
     return mysqlConnection.query(myQuery, [Email]);
   },
 
-  // started from here
   addNewStudent: async (studentObject: IStudentObject) => {
     const {
       studentFirstName,
@@ -71,6 +70,24 @@ const studentModel = {
       studentAddress,
       studentPhone,
     ]);
+  },
+
+  deleteById: async (id: number) => {
+    const myQuery = `
+      DELETE
+      FROM Student
+      WHERE StudentID = ?
+      `;
+    return mysqlConnection.query(myQuery, [id]);
+  },
+
+  deleteByEmail: async (Email: string) => {
+    const myQuery = `
+      DELETE 
+      FROM student 
+      WHERE Email = ?;
+      `;
+    return mysqlConnection.query(myQuery, [Email]);
   },
 };
 
