@@ -1,9 +1,13 @@
 import { memoize } from "lodash";
-import studentModel from "../../models/studentModel";
-import StudentModel from "../../models/studentModel";
+import studentModel from "../../models/student-model";
+import StudentModel from "../../models/student-model";
 import { IStudentObject } from "../../types/interfaces/studentObject";
 
 class StudentLibraryModel {
+  allStudents() {
+    return studentModel.findAll();
+  }
+
   studentIdParams(studentId: number) {
     return StudentModel.findById(studentId);
   }

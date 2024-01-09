@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import getStudentLibrary from "../../library/student-library";
-import studentModel from "../../models/studentModel";
+import studentModel from "../../models/student-model";
 const studentLib = getStudentLibrary();
 
 export const getAllStudents = async (req: Request, res: Response) => {
   try {
-    const students = await studentModel.findAll();
+    const students = await studentLib.allStudents();
     res.json(students);
   } catch (error) {
     console.error("Failed to retrieve students:", error);

@@ -1,5 +1,5 @@
-import mysqlConnection from "../database";
-import { IStudentObject } from "../types/interfaces/studentObject";
+import mysqlConnection from "../../database";
+import { IStudentObject } from "../../types/interfaces/studentObject";
 
 const studentModel = {
   findAll: async () => {
