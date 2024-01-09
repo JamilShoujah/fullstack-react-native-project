@@ -37,7 +37,7 @@ class StudentLibraryModel {
   }
 
   updateStudentParams(studentObject: IStudentObject, id: number) {
-    return studentModel.updateStudent(studentObject, id);
+    return studentModel.updateStudentById(studentObject, id);
   }
 }
 

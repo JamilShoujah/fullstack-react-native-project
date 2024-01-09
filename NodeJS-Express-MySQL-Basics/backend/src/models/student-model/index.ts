@@ -90,7 +90,10 @@ const studentModel = {
     return mysqlConnection.query(myQuery, [Email]);
   },
 
-  updateStudent: async (studentObject: IStudentObject, studentid: number) => {
+  updateStudentById: async (
+    studentObject: IStudentObject,
+    studentid: number
+  ) => {
     const {
       studentFirstName,
       studentLastName,

@@ -90,7 +90,7 @@ export const deleteStudentByEmail = async (req: Request, res: Response) => {
 
 export const updateStudent = async (req: Request, res: Response) => {
   try {
-    await studentModel.updateStudent(
+    await studentModel.updateStudentById(
       req.body.StudentObject,
       req.body.StudentID
     );
