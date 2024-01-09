@@ -1,5 +1,7 @@
 import { memoize } from "lodash";
+import studentModel from "../../models/studentModel";
 import StudentModel from "../../models/studentModel";
+import { IStudentObject } from "../../types/interfaces/studentObject";
 
 class StudentLibraryModel {
   studentIdParams(studentId: number) {
@@ -18,12 +20,20 @@ class StudentLibraryModel {
     return StudentModel.findByEmail(Email);
   }
 
+  newStudentParams(studentObject: IStudentObject) {
+    return studentModel.addNewStudent(studentObject);
+  }
+
   deleteByStudentIdParams(studentId: number) {
     return StudentModel.deleteById(studentId);
   }
 
   deleteByStudentEmailParams(Email: string) {
     return StudentModel.deleteByEmail(Email);
+  }
+
+  updateStudentParams(studentObject: IStudentObject, id: number) {
+    return studentModel.updateStudent(studentObject, id);
   }
 }
 

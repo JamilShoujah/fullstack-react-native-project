@@ -60,7 +60,7 @@ export const getStudentByEmailAddress = async (req: Request, res: Response) => {
 
 export const addNewStudent = async (req: Request, res: Response) => {
   try {
-    const newStudent = await studentModel.addNewStudent(req.body);
+    await studentLib.newStudentParams(req.body.StudentObject);
     res.status(201).send("Student successfully added");
   } catch (error) {
     console.error("Failed to add new student:", error);
@@ -85,5 +85,18 @@ export const deleteStudentByEmail = async (req: Request, res: Response) => {
   } catch (error) {
     console.error("Failed to delete students:", error);
     res.status(500).send("Failed to delete student");
+  }
+};
+
+export const updateStudent = async (req: Request, res: Response) => {
+  try {
+    await studentModel.updateStudent(
+      req.body.StudentObject,
+      req.body.StudentID
+    );
+    res.status(201).send("Student successfully updated");
+  } catch (error) {
+    console.error("Failed to updated student:", error);
+    res.status(500).send("Error updating student");
   }
 };

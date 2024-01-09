@@ -89,6 +89,39 @@ const studentModel = {
       `;
     return mysqlConnection.query(myQuery, [Email]);
   },
+
+  updateStudent: async (studentObject: IStudentObject, studentid: number) => {
+    const {
+      studentFirstName,
+      studentLastName,
+      studentEmail,
+      studentDateOfBirth,
+      studentAddress,
+      studentPhone,
+    } = studentObject;
+
+    const myQuery = `
+      UPDATE student
+      SET 
+        StudentFirstName = ?,
+        StudentLastName = ?,
+        Email = ?,
+        DateOfBirth = ?,
+        Address = ?,
+        Phone = ?
+      WHERE StudentID = ?;
+    `;
+
+    return mysqlConnection.query(myQuery, [
+      studentFirstName,
+      studentLastName,
+      studentEmail,
+      studentDateOfBirth,
+      studentAddress,
+      studentPhone,
+      studentid,
+    ]);
+  },
 };
 
 export default studentModel;
