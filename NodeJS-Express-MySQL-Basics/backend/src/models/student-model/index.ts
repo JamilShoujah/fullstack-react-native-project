@@ -3,15 +3,18 @@ import { IStudentObject } from "../../types/interfaces/studentObject";
 
 const studentModel = {
   findAll: async () => {
-    const myQuery = "SELECT * FROM Student";
+    const myQuery = `
+    SELECT * 
+    FROM student_table
+    `;
     return mysqlConnection.query(myQuery);
   },
 
   findById: async (id: number) => {
     const myQuery = `
       SELECT *
-      FROM Student
-      WHERE StudentID = ?
+      FROM student_table
+      WHERE student_id = ?
       `;
     return mysqlConnection.query(myQuery, [id]);
   },
@@ -19,8 +22,9 @@ const studentModel = {
   findByFirstName: async (firstName: string) => {
     const myQuery = `
     SELECT * 
-    FROM Student 
-    WHERE StudentFirstName = ?`;
+    FROM student_table 
+    WHERE student_first_name = ?
+    `;
 
     return mysqlConnection.query(myQuery, [firstName]);
   },
@@ -28,14 +32,19 @@ const studentModel = {
   findByLastName: async (LastName: string) => {
     const myQuery = `
       SELECT * 
-      FROM Student 
-      WHERE StudentLastName = ?`;
+      FROM student_table 
+      WHERE student_last_name = ?
+      `;
 
     return mysqlConnection.query(myQuery, [LastName]);
   },
 
   findByEmail: async (Email: string) => {
-    const myQuery = "SELECT * FROM Student WHERE Email = ?";
+    const myQuery = `
+    SELECT * 
+    FROM student_table 
+    WHERE email = ?
+    `;
     return mysqlConnection.query(myQuery, [Email]);
   },
 
@@ -50,14 +59,14 @@ const studentModel = {
     } = studentObject;
 
     const myQuery = `
-      INSERT INTO Student 
+      INSERT INTO student_table 
       (
-        StudentFirstName, 
-        StudentLastName, 
-        Email, 
-        DateOfBirth, 
-        Address, 
-        Phone
+        student_first_name, 
+        student_last_name, 
+        email, 
+        date_of_birth, 
+        address, 
+        phone
       ) 
       VALUES 
       (?, ?, ?, ?, ?, ?)`;
@@ -75,8 +84,8 @@ const studentModel = {
   deleteById: async (id: number) => {
     const myQuery = `
       DELETE
-      FROM Student
-      WHERE StudentID = ?
+      FROM student_table
+      WHERE student_id = ?
       `;
     return mysqlConnection.query(myQuery, [id]);
   },
@@ -84,8 +93,8 @@ const studentModel = {
   deleteByEmail: async (Email: string) => {
     const myQuery = `
       DELETE 
-      FROM student 
-      WHERE Email = ?;
+      FROM student_table 
+      WHERE email = ?;
       `;
     return mysqlConnection.query(myQuery, [Email]);
   },
@@ -104,15 +113,15 @@ const studentModel = {
     } = studentObject;
 
     const myQuery = `
-      UPDATE student
+      UPDATE student_table
       SET 
-        StudentFirstName = ?,
-        StudentLastName = ?,
-        Email = ?,
-        DateOfBirth = ?,
-        Address = ?,
-        Phone = ?
-      WHERE StudentID = ?;
+        student_first_name = ?,
+        student_last_name = ?,
+        email = ?,
+        date_of_birth = ?,
+        address = ?,
+        phone = ?
+      WHERE student_id = ?;
     `;
 
     return mysqlConnection.query(myQuery, [

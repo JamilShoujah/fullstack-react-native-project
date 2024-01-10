@@ -6,7 +6,7 @@ const courseModel = {
   findAll: async () => {
     const myQuery = `
     SELECT * 
-    FROM course
+    FROM course_table
     `;
     return mysqlConnection.query(myQuery);
   },
@@ -14,8 +14,8 @@ const courseModel = {
   findById: async (id: number) => {
     const myQuery = `
     SELECT * 
-    FROM course 
-    WHERE CourseID = ?
+    FROM course_table 
+    WHERE course_id = ?
     `;
 
     return mysqlConnection.query(myQuery, [id]);
@@ -23,8 +23,8 @@ const courseModel = {
   findByName: async (Name: string) => {
     const myQuery = `
     SELECT * 
-    FROM course 
-    WHERE CourseName = ?
+    FROM course_table 
+    WHERE course_name = ?
     `;
 
     return mysqlConnection.query(myQuery, [Name]);
@@ -34,10 +34,10 @@ const courseModel = {
     const { courseName, courseDescription } = courseObject;
 
     const myQuery = `
-        INSERT INTO course 
+        INSERT INTO course_table 
         (
-        CourseName, 
-        courseDescription
+        course_name, 
+        course_description
         ) 
         VALUES 
         (?, ?)
@@ -49,8 +49,8 @@ const courseModel = {
   deleteById: async (id: number) => {
     const myQuery = `
     DELETE 
-    FROM course 
-    WHERE CourseID = ?
+    FROM course_table 
+    WHERE course_id = ?
     `;
 
     return mysqlConnection.query(myQuery, [id]);
@@ -59,11 +59,11 @@ const courseModel = {
   updateCourse: async (courseObject: ICourseObject, id: number) => {
     const { courseName, courseDescription } = courseObject;
     const myQuery = `
-      UPDATE course
+      UPDATE course_table
       SET 
-        CourseName = ?,
-        courseDescription = ?
-      WHERE CourseID = ?;
+        course_name = ?,
+        course_description = ?
+      WHERE course_id = ?;
     `;
 
     return mysqlConnection.query(myQuery, [courseName, courseDescription, id]);
