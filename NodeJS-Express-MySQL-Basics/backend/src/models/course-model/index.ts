@@ -1,6 +1,5 @@
 import mysqlConnection from "../../database";
 import { ICourseObject } from "../../types/interfaces/courseObject";
-import { IStudentObject } from "../../types/interfaces/studentObject";
 
 const courseModel = {
   findAll: async () => {

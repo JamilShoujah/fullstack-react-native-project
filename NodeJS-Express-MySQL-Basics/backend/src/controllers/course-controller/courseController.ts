@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import getCourseLibrary from "../../library/course-library";
-import courseModel from "../../models/course-model";
 
 const courseLib = getCourseLibrary();
 
