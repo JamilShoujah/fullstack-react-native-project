@@ -82,6 +82,38 @@ const studentCourseModel = {
 
     return mysqlConnection.query(myQuery, [id]);
   },
+
+  registerForCourse: async (studentId: number, courseId: number) => {
+    const myQuery = `
+      INSERT INTO student_course_table 
+        (
+          student_id, 
+          course_id, grade
+        )
+      VALUES (?, ?, 'N/A');
+    `;
+
+    return mysqlConnection.query(myQuery, [studentId, courseId]);
+  },
+
+  dropStudentFromCourse: async (studentId: number, courseId: number) => {
+    const myQuery = `
+      DELETE FROM student_course_table
+      WHERE student_id = ? AND course_id = ?;
+    `;
+
+    return mysqlConnection.query(myQuery, [studentId, courseId]);
+  },
+
+  updateGrades: async (studentId: number, courseId: number, grade: string) => {
+    const myQuery = `
+      UPDATE student_course_table
+      SET grade = ?
+      WHERE student_id = ? AND course_id = ?;
+    `;
+
+    return mysqlConnection.query(myQuery, [grade, studentId, courseId]);
+  },
 };
 
 export default studentCourseModel;
