@@ -33,8 +33,8 @@ class gradesLibraryModel {
   updateStudentGrade(studentId: number, courseId: number, grade: string) {
     return studentCourseModel.updateGrades(studentId, courseId, grade);
   }
-  updateMultipleStudentGrade(gradeObject: IGradeObject) {
-    const { studentId, courseId, grade } = gradeObject;
+  updateMultipleStudentGrade(courseId: number, gradeObject: IGradeObject) {
+    const { studentId, grade } = gradeObject;
     return studentCourseModel.updateGrades(studentId, courseId, grade);
   }
 }

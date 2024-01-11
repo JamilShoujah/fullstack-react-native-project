@@ -111,7 +111,8 @@ const studentCourseModel = {
       SET grade = ?
       WHERE student_id = ? AND course_id = ?;
     `;
-
+    console.log(courseId);
+    console.log(studentId, grade);
     return mysqlConnection.query(myQuery, [grade, studentId, courseId]);
   },
 };

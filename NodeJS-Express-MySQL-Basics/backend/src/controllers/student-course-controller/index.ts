@@ -7,6 +7,7 @@ import {
   getStudentGrades,
   getStudentsByCourse,
   registerStudentToCourse,
+  updateMultipleStudentGrade,
   updateStudentGrade,
 } from "./studentCourseController";
 
@@ -20,5 +21,6 @@ router.post("/getStudentsByCourse", getStudentsByCourse);
 router.post("/registerStudentToCourse", registerStudentToCourse);
 router.delete("/dropStudentFromCourse", dropStudentFromCourse);
 router.put("/updateStudentGrade", updateStudentGrade);
+router.put("/updateMultipleStudentGrade", updateMultipleStudentGrade);
 
 export default router;

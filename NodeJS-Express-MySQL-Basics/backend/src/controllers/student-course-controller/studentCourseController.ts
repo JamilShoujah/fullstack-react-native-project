@@ -93,22 +93,27 @@ export const updateStudentGrade = async (req: Request, res: Response) => {
   }
 };
 
-// to be tested extensivley
-// based purely on my logic
-
 export const updateMultipleStudentGrade = async (
   req: Request,
   res: Response
 ) => {
   try {
     const gradeArray: IGradeObject[] = req.body.GradeArray;
-    const updateMultipleGrades = async (gradeArray: IGradeObject[]) => {
-      for (let update of gradeArray) {
-        await gradeLib.updateMultipleStudentGrade(update);
-      }
-    };
+    const courseId: number = req.body.CourseID;
+    const results = await Promise.allSettled(
+      gradeArray.map((grade) =>
+        gradeLib.updateMultipleStudentGrade(courseId, grade)
+      )
+    );
 
-    res.json(updateMultipleGrades);
+    const failedUpdates = results.filter(
+      (result) => result.status === "rejected"
+    );
+    if (failedUpdates.length) {
+      console.error("Failed updates:", failedUpdates);
+    }
+
+    res.json({ message: "Grade updates processed", details: results });
   } catch (error) {
     console.error("Failed to update grades", error);
     res.status(500).send("Error in updating grades");
