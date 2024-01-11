@@ -30,9 +30,11 @@ class gradesLibraryModel {
   dropStudentFromCourse(studentId: number, courseId: number) {
     return studentCourseModel.dropStudentFromCourse(studentId, courseId);
   }
+
   updateStudentGrade(studentId: number, courseId: number, grade: string) {
     return studentCourseModel.updateGrades(studentId, courseId, grade);
   }
+
   updateMultipleStudentGrade(courseId: number, gradeObject: IGradeObject) {
     const { studentId, grade } = gradeObject;
     return studentCourseModel.updateGrades(studentId, courseId, grade);

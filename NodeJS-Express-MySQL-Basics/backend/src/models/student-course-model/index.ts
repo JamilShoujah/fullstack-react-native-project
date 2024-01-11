@@ -88,7 +88,8 @@ const studentCourseModel = {
       INSERT INTO student_course_table 
         (
           student_id, 
-          course_id, grade
+          course_id, 
+          grade
         )
       VALUES (?, ?, 'N/A');
     `;

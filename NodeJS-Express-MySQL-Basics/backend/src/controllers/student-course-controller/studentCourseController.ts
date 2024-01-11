@@ -119,3 +119,31 @@ export const updateMultipleStudentGrade = async (
     res.status(500).send("Error in updating grades");
   }
 };
+
+export const registerMultipleStudentsToCourse = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const studentArray: number[] = req.body.StudentArray;
+    const courseId: number = req.body.CourseID;
+
+    const results = await Promise.allSettled(
+      studentArray.map((studentId) =>
+        gradeLib.registerStudentToCourse(studentId, courseId)
+      )
+    );
+
+    const failedUpdates = results.filter(
+      (result) => result.status === "rejected"
+    );
+    if (failedUpdates.length) {
+      console.error("Failed registration:", failedUpdates);
+    }
+
+    res.json({ message: "Course registration processed", details: results });
+  } catch (error) {
+    console.error("Failed to register students", error);
+    res.status(500).send("Error in registering students");
+  }
+};
