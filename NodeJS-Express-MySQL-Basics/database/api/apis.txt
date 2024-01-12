@@ -1,8 +1,0 @@
----GET API---------------------------
-http://localhost:3000/api/students
-http://localhost:3000/api/students/studentid/?StudentID=2
-http://localhost:3000/api/students/firstname?FirstName=michael
-http://localhost:3000/api/students/lastname?LastName=doe
-http://localhost:3000/api/students/emailaddress?EmailAddress=sarahdavis@example.com
-
----POST API--------------------------

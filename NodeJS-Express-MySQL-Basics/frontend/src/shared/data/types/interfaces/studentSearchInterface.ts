@@ -4,3 +4,5 @@ export interface IStudentSearch {
   onValueChange: (text: string) => void;
   onPress: () => void;
 }
+
+// export type SearchPanelPropsWithTheme = withThemeAndCustomProps<IStudentSearch>;

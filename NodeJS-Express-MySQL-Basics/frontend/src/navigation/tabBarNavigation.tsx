@@ -4,18 +4,25 @@ import {SearchPage} from '../pages/SearchPage/index';
 import {AddStudent} from '../pages/AddStudent/index';
 import {AddCourse} from '../pages/AddCourse/index';
 import {AddGrades} from '../pages/AddGrades/index';
+import {withLiteObserverAndTheme} from '../shared/enhancedRenderer/index';
 
-export const TabBarNav = () => {
+export const TabBarNav = withLiteObserverAndTheme(props => {
   const Tab = createBottomTabNavigator();
+  const {theme} = props;
+  const {colors, unitX, unitY, getFontSize} = theme;
 
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: '#7FC7D9',
-        tabBarInactiveTintColor: '#DCF2F1',
-        tabBarStyle: {backgroundColor: '#0F1035', borderTopWidth: 0},
-        tabBarLabelStyle: {marginBottom: 10, fontWeight: '900'},
-        tabBarIconStyle: {marginTop: 5},
+        tabBarActiveTintColor: colors.primaryColor,
+        tabBarInactiveTintColor: colors.secondaryColor,
+        tabBarStyle: {
+          backgroundColor: colors.backgroundColor,
+          borderTopWidth: 0,
+          height: unitY * 15,
+        },
+        tabBarLabelStyle: {marginBottom: 2 * unitY, fontWeight: '900'},
+        tabBarIconStyle: {marginTop: 2 * unitY},
       })}>
       <Tab.Screen
         name={'Search'}
@@ -47,4 +54,4 @@ export const TabBarNav = () => {
       />
     </Tab.Navigator>
   );
-};
+});

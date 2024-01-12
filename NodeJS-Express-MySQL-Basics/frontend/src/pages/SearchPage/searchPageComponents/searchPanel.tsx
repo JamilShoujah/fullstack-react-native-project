@@ -1,11 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import {View} from 'react-native';
-import {SubmitButton} from '../../../shared/components/sumbitButtonComponent';
 import {TextInputField} from '../../../shared/components/textInputComponent';
 import {IStudentSearch} from '../../../shared/data/types/interfaces/studentSearchInterface';
+import {ThemedSearchButton} from '../../../shared/components/searchButtonComponent';
 
-export const Search: React.FC<IStudentSearch> = ({
+export const SearchPanel: React.FC<IStudentSearch> = ({
   placeholder,
   value,
   onValueChange,
@@ -17,14 +18,13 @@ export const Search: React.FC<IStudentSearch> = ({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
-        borderRadius: 10,
       }}>
       <TextInputField
         placeholder={placeholder}
         value={value}
         onValueChange={onValueChange}
       />
-      <SubmitButton onPress={onPress} />
+      <ThemedSearchButton onPress={onPress} />
     </View>
   );
 };

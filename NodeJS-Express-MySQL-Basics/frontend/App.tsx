@@ -3,16 +3,22 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {TabBarNav} from './src/navigation/tabBarNavigation';
+import {getTheme} from './src/shared/enhancedRenderer/theme/getTheme';
+import {MyThemeProvider} from './src/shared/enhancedRenderer/theme/index';
 
 function App(): React.JSX.Element {
+  const myTheme = getTheme();
+  const colors = myTheme.getThemeData.get().colors;
   return (
-    <NavigationContainer>
-      <SafeAreaView
-        style={{
-          backgroundColor: '#0F1035',
-        }}></SafeAreaView>
-      <TabBarNav />
-    </NavigationContainer>
+    <MyThemeProvider themeValue={myTheme.getThemeData.get()}>
+      <NavigationContainer>
+        <SafeAreaView
+          style={{
+            backgroundColor: colors.backgroundColor,
+          }}></SafeAreaView>
+        <TabBarNav />
+      </NavigationContainer>
+    </MyThemeProvider>
   );
 }
 
