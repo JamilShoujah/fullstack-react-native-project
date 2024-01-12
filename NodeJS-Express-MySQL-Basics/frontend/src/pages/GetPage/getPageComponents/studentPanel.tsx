@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, Touchable, TouchableOpacity, View} from 'react-native';
 import getInputFieldStore from '../../../data/store/textFieldStore';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
-import {SearchPanel} from './searchPanel';
+import {SearchPanel} from '../../../shared/components/custom/searchPanel';
 
 export const StudentPanel = withLiteObserverAndTheme(props => {
   const textFieldStore = getInputFieldStore();
@@ -34,6 +34,7 @@ export const StudentPanel = withLiteObserverAndTheme(props => {
           marginVertical: childY * 3,
           paddingHorizontal: childX * 1,
           paddingVertical: childY * 1,
+          alignItems: 'center',
         }}>
         <SearchPanel
           placeholder={'Student ID'}
@@ -83,6 +84,27 @@ export const StudentPanel = withLiteObserverAndTheme(props => {
             textFieldStore.setEmailAddress('');
           }}
         />
+
+        <TouchableOpacity
+          onPress={() => {
+            console.log('printing all students');
+          }}
+          style={{
+            backgroundColor: colors.secondaryColor,
+            paddingHorizontal: childX * 3,
+            paddingVertical: childY * 2,
+            marginVertical: childY * 1,
+            borderRadius: childX * 2,
+          }}>
+          <Text
+            style={{
+              color: colors.lightText,
+              fontSize: getFontSize(6),
+              fontWeight: 'bold',
+            }}>
+            Get all
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

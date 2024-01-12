@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 
-export const AddStudent = () => {
+export const DeletePage = () => {
   return (
     <ScrollView style={{backgroundColor: '#0F1035'}}>
       <View
@@ -20,7 +20,7 @@ export const AddStudent = () => {
             fontWeight: '900',
             textAlign: 'center',
           }}>
-          Add Student
+          Add Grades
         </Text>
       </View>
     </ScrollView>

@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
-import {ISubmitButton} from '../data/types/interfaces/submitButtonInterface';
-import {TEt3Theme, withTheme} from '../enhancedRenderer/theme/index';
+import {ISubmitButton} from '../../data/types/interfaces/submitButtonInterface';
+import {TEt3Theme, withTheme} from '../../enhancedRenderer/theme/index';
 
 interface ISubmitButtonComponent extends ISubmitButton {
   theme: TEt3Theme;

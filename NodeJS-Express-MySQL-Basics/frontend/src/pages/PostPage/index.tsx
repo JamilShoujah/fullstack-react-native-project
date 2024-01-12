@@ -2,12 +2,10 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {withLiteObserverAndTheme} from '../../shared/enhancedRenderer/index';
-import {CoursePanel} from './searchPageComponents/coursePanel';
-import {StudentPanel} from './searchPageComponents/studentPanel';
 
-export const SearchPage = withLiteObserverAndTheme(props => {
+export const PostPage = withLiteObserverAndTheme(props => {
   const {theme} = props;
-  const {colors, unitX, childX, unitY, childY, getFontSize} = theme;
+  const {colors, unitX, unitY, getFontSize} = theme;
   return (
     <ScrollView style={{backgroundColor: colors.backgroundColor}}>
       <View
@@ -23,10 +21,8 @@ export const SearchPage = withLiteObserverAndTheme(props => {
             fontWeight: '900',
             textAlign: 'center',
           }}>
-          Search
+          Students
         </Text>
-        <StudentPanel />
-        <CoursePanel />
       </View>
     </ScrollView>
   );

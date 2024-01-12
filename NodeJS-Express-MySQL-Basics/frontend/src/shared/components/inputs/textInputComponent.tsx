@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {TextInput} from 'react-native';
-import {ITextInput} from '../data/types/interfaces/textInputInterface';
+import {ITextInput} from '../../data/types/interfaces/textInputInterface';
 
 export const TextInputField: React.FC<ITextInput> = ({
   placeholder,

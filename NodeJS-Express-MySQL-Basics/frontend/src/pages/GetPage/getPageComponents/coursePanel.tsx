@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import {observer} from 'mobx-react';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import getInputFieldStore from '../../../data/store/textFieldStore';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
-import {SearchPanel} from './searchPanel';
+import {SearchPanel} from '../../../shared/components/custom/searchPanel';
 
 export const CoursePanel = withLiteObserverAndTheme(props => {
   const {theme} = props;
@@ -35,6 +35,7 @@ export const CoursePanel = withLiteObserverAndTheme(props => {
           marginVertical: childY * 3,
           paddingHorizontal: childX * 1,
           paddingVertical: childY * 1,
+          alignItems: 'center',
         }}>
         <SearchPanel
           placeholder={'Course Name'}
@@ -60,6 +61,26 @@ export const CoursePanel = withLiteObserverAndTheme(props => {
             textFieldStore.setCourseId('');
           }}
         />
+        <TouchableOpacity
+          onPress={() => {
+            console.log('printing all students');
+          }}
+          style={{
+            backgroundColor: colors.secondaryColor,
+            paddingHorizontal: childX * 3,
+            paddingVertical: childY * 2,
+            marginVertical: childY * 1,
+            borderRadius: childX * 2,
+          }}>
+          <Text
+            style={{
+              color: colors.lightText,
+              fontSize: getFontSize(6),
+              fontWeight: 'bold',
+            }}>
+            Get all
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

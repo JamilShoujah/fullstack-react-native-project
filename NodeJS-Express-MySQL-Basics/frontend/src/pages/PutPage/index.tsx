@@ -2,7 +2,7 @@
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
 
-export const AddGrades = () => {
+export const PutPage = () => {
   return (
     <ScrollView style={{backgroundColor: '#0F1035'}}>
       <View
@@ -20,7 +20,7 @@ export const AddGrades = () => {
             fontWeight: '900',
             textAlign: 'center',
           }}>
-          Add Grades
+          Add Course
         </Text>
       </View>
     </ScrollView>

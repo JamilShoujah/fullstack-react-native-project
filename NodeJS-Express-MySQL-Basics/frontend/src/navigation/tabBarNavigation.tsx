@@ -1,19 +1,19 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {SearchPage} from '../pages/SearchPage/index';
-import {AddStudent} from '../pages/AddStudent/index';
-import {AddCourse} from '../pages/AddCourse/index';
-import {AddGrades} from '../pages/AddGrades/index';
+import {GetPage} from '../pages/GetPage/index';
+import {PostPage} from '../pages/PostPage/index';
+import {PutPage} from '../pages/PutPage/index';
+import {DeletePage} from '../pages/DeletePage/index';
 import {withLiteObserverAndTheme} from '../shared/enhancedRenderer/index';
 
 export const TabBarNav = withLiteObserverAndTheme(props => {
   const Tab = createBottomTabNavigator();
   const {theme} = props;
-  const {colors, unitX, unitY, getFontSize} = theme;
+  const {colors, unitY, getFontSize} = theme;
 
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={() => ({
         tabBarActiveTintColor: colors.primaryColor,
         tabBarInactiveTintColor: colors.secondaryColor,
         tabBarStyle: {
@@ -21,33 +21,37 @@ export const TabBarNav = withLiteObserverAndTheme(props => {
           borderTopWidth: 0,
           height: unitY * 15,
         },
-        tabBarLabelStyle: {marginBottom: 2 * unitY, fontWeight: '900'},
+        tabBarLabelStyle: {
+          marginBottom: 2 * unitY,
+          fontWeight: '900',
+          fontSize: getFontSize(4),
+        },
         tabBarIconStyle: {marginTop: 2 * unitY},
       })}>
       <Tab.Screen
-        name={'Search'}
-        component={SearchPage}
+        name={'GET'}
+        component={GetPage}
         options={{
           header: () => null,
         }}
       />
       <Tab.Screen
-        name={'Add Student'}
-        component={AddStudent}
+        name={'POST'}
+        component={PostPage}
         options={{
           header: () => null,
         }}
       />
       <Tab.Screen
-        name={'Add Course'}
-        component={AddCourse}
+        name={'PUT'}
+        component={PutPage}
         options={{
           header: () => null,
         }}
       />
       <Tab.Screen
-        name={'Add Grades'}
-        component={AddGrades}
+        name={'DELETE'}
+        component={DeletePage}
         options={{
           header: () => null,
         }}

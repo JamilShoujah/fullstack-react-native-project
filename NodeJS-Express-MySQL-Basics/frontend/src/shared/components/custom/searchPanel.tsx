@@ -2,9 +2,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {View} from 'react-native';
-import {TextInputField} from '../../../shared/components/textInputComponent';
-import {IStudentSearch} from '../../../shared/data/types/interfaces/studentSearchInterface';
-import {ThemedSearchButton} from '../../../shared/components/searchButtonComponent';
+import {TextInputField} from '../inputs/textInputComponent';
+import {IStudentSearch} from '../../data/types/interfaces/studentSearchInterface';
+import {ThemedSearchButton} from '../buttons/searchButtonComponent';
 
 export const SearchPanel: React.FC<IStudentSearch> = ({
   placeholder,
