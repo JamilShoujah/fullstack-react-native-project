@@ -19,11 +19,11 @@ export const GetPage = withLiteObserverAndTheme(props => {
         <Text
           style={{
             color: colors.primaryColor,
-            fontSize: getFontSize(15),
+            fontSize: getFontSize(10),
             fontWeight: '900',
             textAlign: 'center',
           }}>
-          Search
+          GET
         </Text>
         <StudentPanel />
         <CoursePanel />

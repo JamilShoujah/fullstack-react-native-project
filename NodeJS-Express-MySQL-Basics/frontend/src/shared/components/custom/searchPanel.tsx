@@ -4,7 +4,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {TextInputField} from '../inputs/textInputComponent';
 import {IStudentSearch} from '../../data/types/interfaces/studentSearchInterface';
-import {ThemedSearchButton} from '../buttons/searchButtonComponent';
+import {SearchButton} from '../buttons/searchButtonComponent';
 
 export const SearchPanel: React.FC<IStudentSearch> = ({
   placeholder,
@@ -24,7 +24,7 @@ export const SearchPanel: React.FC<IStudentSearch> = ({
         value={value}
         onValueChange={onValueChange}
       />
-      <ThemedSearchButton onPress={onPress} />
+      <SearchButton onPress={onPress} />
     </View>
   );
 };

@@ -29,3 +29,14 @@ type WithThemeAndLiteObserver = <T extends {}>(
 export const withLiteObserverAndTheme = (component => {
   return compose(withTheme, LiteObserver)(component);
 }) as WithThemeAndLiteObserver;
+
+// tokhbees from here
+
+type WithThemeAndProps = <T extends {}>(
+  component: ComponentType<T & {theme: TEt3Theme}>,
+  defaultProps?: T,
+) => ComponentType<T & {theme?: TEt3Theme}>;
+
+export const withThemeAndProps = (component => {
+  return compose(withTheme)(component);
+}) as WithThemeAndProps;

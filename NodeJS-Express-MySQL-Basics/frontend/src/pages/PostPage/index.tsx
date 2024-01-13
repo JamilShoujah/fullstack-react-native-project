@@ -2,6 +2,7 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {withLiteObserverAndTheme} from '../../shared/enhancedRenderer/index';
+import {StudentDetailsPanel} from './postPageComponents/studentDetailsPanel';
 
 export const PostPage = withLiteObserverAndTheme(props => {
   const {theme} = props;
@@ -17,12 +18,13 @@ export const PostPage = withLiteObserverAndTheme(props => {
         <Text
           style={{
             color: colors.primaryColor,
-            fontSize: getFontSize(15),
+            fontSize: getFontSize(10),
             fontWeight: '900',
             textAlign: 'center',
           }}>
-          Students
+          POST
         </Text>
+        <StudentDetailsPanel />
       </View>
     </ScrollView>
   );
