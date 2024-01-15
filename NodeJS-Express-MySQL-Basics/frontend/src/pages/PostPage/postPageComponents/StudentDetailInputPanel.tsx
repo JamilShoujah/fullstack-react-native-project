@@ -47,8 +47,6 @@ export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
             console.log(studentDetails.userObject.get());
           }}
           style={{
-            marginHorizontal: 3 * childX,
-            marginVertical: 3 * childY,
             backgroundColor: colors.secondaryColor,
             borderRadius: 2 * childX,
             width: 10 * childX,

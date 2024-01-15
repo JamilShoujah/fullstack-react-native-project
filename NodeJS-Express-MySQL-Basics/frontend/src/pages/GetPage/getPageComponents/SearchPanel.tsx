@@ -3,7 +3,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {MiniTextInputField} from '../../../shared/components/inputs/MiniTextInput';
-import {IStudentSearch} from '../../../shared/data/interfaces/studentSearchInterface';
+import {IStudentSearch} from '../../../shared/data/interfaces/student-search-interface';
 import {SearchButton} from '../../../shared/components/buttons/SearchButtonComponent';
 
 export const SearchPanel: React.FC<IStudentSearch> = ({
