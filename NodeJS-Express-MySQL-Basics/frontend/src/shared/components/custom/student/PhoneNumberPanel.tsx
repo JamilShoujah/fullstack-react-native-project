@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import getStudentDetailStore from '../../../data/store/post-page-student-store';
-import {withLiteObserverAndTheme} from '../../enhancedRenderer/index';
-import {FullTextInputField} from '../inputs/FullsizeInputText';
+import getStudentDetailStore from '../../../../data/store/post-page-student-store';
+import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
+import {FullTextInputField} from '../../inputs/FullsizeInputText';
 
 export const PhoneNumberPanel = withLiteObserverAndTheme(props => {
   const {theme} = props;

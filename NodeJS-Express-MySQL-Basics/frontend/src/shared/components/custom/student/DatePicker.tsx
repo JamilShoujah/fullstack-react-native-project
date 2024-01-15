@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import getStudentDetailStore from '../../../data/store/post-page-student-store';
-import {withLiteObserverAndTheme} from '../../enhancedRenderer/index';
-import {MicroTextInputField} from '../inputs/MicroTextInput';
+import getStudentDetailStore from '../../../../data/store/post-page-student-store';
+import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
+import {MicroTextInputField} from '../../inputs/MicroTextInput';
 
 export const DatePickerComponent = withLiteObserverAndTheme(props => {
   const {theme} = props;

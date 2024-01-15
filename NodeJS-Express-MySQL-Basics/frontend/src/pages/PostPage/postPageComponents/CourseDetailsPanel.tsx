@@ -2,21 +2,25 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
+import getCourseDetailStore from '../../../data/store/post-pafe-course-store';
 import getStudentDetailStore from '../../../data/store/post-page-student-store';
-import {AddressPanel} from '../../../shared/components/custom/AddressPanel';
-import {DatePickerComponent} from '../../../shared/components/custom/DatePicker';
-import {EmailAddressPanel} from '../../../shared/components/custom/EmailAddressPanel';
-import {FirstNamePanel} from '../../../shared/components/custom/FirstNamePanel';
-import {LastNamePanel} from '../../../shared/components/custom/LastNamePanel';
-import {PhoneNumberPanel} from '../../../shared/components/custom/PhoneNumberPanel';
+import {CourseDescriptionPanel} from '../../../shared/components/custom/course/CourseDescription';
+import {CourseNamePanel} from '../../../shared/components/custom/course/CourseNamePanel';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
 
-export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
-  const studentDetails = getStudentDetailStore();
+export const CourseDetailsPanel = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
+  const courseDetails = getCourseDetailStore();
   return (
-    <View>
+    <View
+      style={{
+        backgroundColor: colors.secondaryColor,
+        borderRadius: childX * 3,
+        paddingHorizontal: childX * 3,
+        paddingVertical: childY,
+        marginVertical: childY * 3,
+      }}>
       <Text
         style={{
           marginVertical: childY * 3,
@@ -24,7 +28,7 @@ export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
           color: colors.lightText,
           fontWeight: 'bold',
         }}>
-        Student Details
+        Course Details
       </Text>
       <View
         style={{
@@ -35,16 +39,11 @@ export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
           paddingVertical: childY * 3,
           alignItems: 'center',
         }}>
-        <FirstNamePanel />
-        <LastNamePanel />
-        <EmailAddressPanel />
-        <DatePickerComponent />
-        <AddressPanel />
-        <PhoneNumberPanel />
-
+        <CourseNamePanel />
+        <CourseDescriptionPanel />
         <TouchableOpacity
           onPress={() => {
-            console.log(studentDetails.userObject.get());
+            console.log(courseDetails.courseObject.get());
           }}
           style={{
             backgroundColor: colors.secondaryColor,
