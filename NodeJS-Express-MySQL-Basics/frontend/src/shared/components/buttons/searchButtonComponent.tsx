@@ -3,11 +3,7 @@ import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {ISubmitButton} from '../../data/types/interfaces/submitButtonInterface';
 import {withThemeAndProps} from '../../enhancedRenderer/index';
-import {TEt3Theme, withTheme} from '../../enhancedRenderer/theme/index';
-
-// interface ISubmitButtonInternal extends ISubmitButton {
-//   theme: TEt3Theme;
-// }
+import {TEt3Theme} from '../../enhancedRenderer/theme/index';
 
 const SearchButtonComponent: React.FC<ISubmitButton & {theme: TEt3Theme}> = ({
   onPress,

@@ -2,8 +2,8 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {withLiteObserverAndTheme} from '../../shared/enhancedRenderer/index';
-import {CoursePanel} from './getPageComponents/coursePanel';
-import {StudentPanel} from './getPageComponents/studentPanel';
+import {CoursePanel} from './getPageComponents/CoursePanel';
+import {StudentPanel} from './getPageComponents/StudentPanel';
 
 export const GetPage = withLiteObserverAndTheme(props => {
   const {theme} = props;

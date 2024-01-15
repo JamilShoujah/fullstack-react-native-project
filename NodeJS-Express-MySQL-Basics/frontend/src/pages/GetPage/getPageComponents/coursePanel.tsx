@@ -2,9 +2,9 @@
 import {observer} from 'mobx-react';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import getInputFieldStore from '../../../data/store/textFieldStore';
+import getInputFieldStore from '../../../data/store/get-page-store';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
-import {SearchPanel} from '../../../shared/components/custom/searchPanel';
+import {SearchPanel} from './SearchPanel';
 
 export const CoursePanel = withLiteObserverAndTheme(props => {
   const {theme} = props;

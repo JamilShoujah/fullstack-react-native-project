@@ -2,7 +2,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {TabBarNav} from './src/navigation/tabBarNavigation';
+import {TabBarNav} from './src/navigation/TabBarNavigation';
 import {getTheme} from './src/shared/enhancedRenderer/theme/getTheme';
 import {MyThemeProvider} from './src/shared/enhancedRenderer/theme/index';
 

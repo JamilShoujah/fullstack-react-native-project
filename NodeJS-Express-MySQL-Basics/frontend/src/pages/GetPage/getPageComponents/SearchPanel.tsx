@@ -2,9 +2,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {View} from 'react-native';
-import {TextInputField} from '../inputs/textInputComponent';
-import {IStudentSearch} from '../../data/types/interfaces/studentSearchInterface';
-import {SearchButton} from '../buttons/searchButtonComponent';
+import {MiniTextInputField} from '../../../shared/components/inputs/MiniTextInput';
+import {IStudentSearch} from '../../../shared/data/types/interfaces/studentSearchInterface';
+import {SearchButton} from '../../../shared/components/buttons/SearchButtonComponent';
 
 export const SearchPanel: React.FC<IStudentSearch> = ({
   placeholder,
@@ -19,7 +19,7 @@ export const SearchPanel: React.FC<IStudentSearch> = ({
         alignItems: 'center',
         justifyContent: 'space-around',
       }}>
-      <TextInputField
+      <MiniTextInputField
         placeholder={placeholder}
         value={value}
         onValueChange={onValueChange}

@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Text, Touchable, TouchableOpacity, View} from 'react-native';
-import getInputFieldStore from '../../../data/store/textFieldStore';
+import getInputFieldStore from '../../../data/store/get-page-store';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
-import {SearchPanel} from '../../../shared/components/custom/searchPanel';
+import {SearchPanel} from './SearchPanel';
 
 export const StudentPanel = withLiteObserverAndTheme(props => {
   const textFieldStore = getInputFieldStore();

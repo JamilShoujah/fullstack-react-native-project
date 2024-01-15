@@ -20,7 +20,7 @@ const TextInputFieldComponent: React.FC<ITextInput & {theme: TEt3Theme}> = ({
         borderWidth: 1,
         padding: childY * 2,
         borderRadius: 5,
-        width: 60 * childX,
+        width: 20 * childX,
         margin: 5,
         fontSize: getFontSize(5),
       }}
@@ -34,4 +34,4 @@ const TextInputFieldComponent: React.FC<ITextInput & {theme: TEt3Theme}> = ({
   );
 };
 
-export const TextInputField = withThemeAndProps(TextInputFieldComponent);
+export const MicroTextInputField = withThemeAndProps(TextInputFieldComponent);
