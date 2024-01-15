@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
-import {ISubmitButton} from '../../data/types/interfaces/submitButtonInterface';
+import {ISubmitButton} from '../../data/interfaces/submitButtonInterface';
 import {withThemeAndProps} from '../../enhancedRenderer/index';
 import {TEt3Theme} from '../../enhancedRenderer/theme/index';
 

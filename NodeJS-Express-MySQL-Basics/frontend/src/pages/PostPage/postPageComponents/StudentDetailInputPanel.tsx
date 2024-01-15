@@ -2,6 +2,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
+import getStudentDetailStore from '../../../data/store/post-page-student-store';
+import {AddressPanel} from '../../../shared/components/custom/AddressPanel';
 import {DatePickerComponent} from '../../../shared/components/custom/DatePicker';
 import {EmailAddressPanel} from '../../../shared/components/custom/EmailAddressPanel';
 import {FirstNamePanel} from '../../../shared/components/custom/FirstNamePanel';
@@ -10,6 +12,7 @@ import {PhoneNumberPanel} from '../../../shared/components/custom/PhoneNumberPan
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
 
 export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
+  const studentDetails = getStudentDetailStore();
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   return (
@@ -30,30 +33,35 @@ export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
           marginVertical: childY * 1,
           paddingHorizontal: childX * 1,
           paddingVertical: childY * 3,
+          alignItems: 'center',
         }}>
         <FirstNamePanel />
         <LastNamePanel />
         <EmailAddressPanel />
         <DatePickerComponent />
+        <AddressPanel />
         <PhoneNumberPanel />
 
         <TouchableOpacity
+          onPress={() => {
+            console.log(studentDetails.userObject.get());
+          }}
           style={{
             marginHorizontal: 3 * childX,
             marginVertical: 3 * childY,
             backgroundColor: colors.secondaryColor,
             borderRadius: 2 * childX,
+            width: 10 * childX,
+            height: 10 * childY,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
           <Text
             style={{
               color: colors.lightText,
-              paddingHorizontal: 5 * childX,
-              paddingVertical: 5 * childY,
               fontSize: getFontSize(8),
             }}>
-            Add New Student
+            +
           </Text>
         </TouchableOpacity>
       </View>

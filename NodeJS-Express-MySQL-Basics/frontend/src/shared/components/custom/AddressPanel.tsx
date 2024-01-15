@@ -4,20 +4,20 @@ import getStudentDetailStore from '../../../data/store/post-page-student-store';
 import {withLiteObserverAndTheme} from '../../enhancedRenderer/index';
 import {FullTextInputField} from '../inputs/FullsizeInputText';
 
-export const PhoneNumberPanel = withLiteObserverAndTheme(props => {
+export const AddressPanel = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {childX, getFontSize} = theme;
   const studentDetails = getStudentDetailStore();
   return (
     <View style={{width: 80 * childX}}>
       <Text style={{fontSize: getFontSize(4), paddingHorizontal: childX * 2}}>
-        Phone Number: (if available)
+        Address:
       </Text>
       <FullTextInputField
-        placeholder={'Phone Number'}
-        value={studentDetails.phoneNumber.get()}
+        placeholder={'Address'}
+        value={studentDetails.address.get()}
         onValueChange={text => {
-          studentDetails.setPhoneNumber(text);
+          studentDetails.setAddress(text);
         }}
       />
     </View>

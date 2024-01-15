@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {TextInput} from 'react-native';
-import {ITextInput} from '../../data/types/interfaces/textInputInterface';
+import {ITextInput} from '../../data/interfaces/text-input-interface';
 import {withThemeAndProps} from '../../enhancedRenderer/index';
 import {TEt3Theme} from '../../enhancedRenderer/theme/index';
 
