@@ -1,9 +1,11 @@
 import {memoize} from 'lodash';
-import {observable, runInAction} from 'mobx';
+import {computed, observable, runInAction} from 'mobx';
+import {TRegistration} from '../../shared/data/types/registration-object';
 
 export class JoinedDeatilsModel {
   studentId = observable.box('');
   courseId = observable.box('');
+  studentEmail = observable.box('');
 
   setStudentId(text: string) {
     runInAction(() => {
@@ -15,6 +17,19 @@ export class JoinedDeatilsModel {
       this.courseId.set(text);
     });
   }
+  setStudentEmail(text: string) {
+    runInAction(() => {
+      this.studentEmail.set(text);
+    });
+  }
+
+  registrationObject = computed(() => {
+    const registrationObject: TRegistration = {
+      courseId: this.courseId.get(),
+      StudentId: this.studentId.get(),
+    };
+    return registrationObject;
+  });
 }
 
 const getJoinedDetailStore = memoize(

@@ -2,13 +2,14 @@ import React from 'react';
 import {Text, View} from 'react-native';
 
 import {CourseDetailsPanel} from './CourseDetailsPanel';
+import {JoinedDetailsPanel} from './JoinedDetailsPanel';
 import {StudentDetailsPanel} from './StudentDetailsPanel';
 export const DetailsPanel = () => {
   return (
     <View>
-      {/* // these have to become modals */}
       <StudentDetailsPanel />
       <CourseDetailsPanel />
+      <JoinedDetailsPanel />
     </View>
   );
 };

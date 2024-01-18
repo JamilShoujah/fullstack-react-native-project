@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import getCourseDetailStore from '../../../../../store/course-store/course-store';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
-import {SearchButton} from '../../../buttons/SearchButtonComponent';
+import {SearchButton} from '../../../buttons/SearchButton';
 import {MiniTextInputField} from '../../../inputs/MiniTextInput';
 
 export const CourseDescriptionGetPanel = withLiteObserverAndTheme(props => {

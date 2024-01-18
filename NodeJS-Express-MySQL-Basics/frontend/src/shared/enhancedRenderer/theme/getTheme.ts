@@ -36,6 +36,7 @@ class Theme {
       darkText: '#000000',
       lightText: '#ffffff',
       modalBackground: 'rgba(0, 0, 0, 0.9)',
+      warningColor: '#CC3300',
     };
 
     return {
