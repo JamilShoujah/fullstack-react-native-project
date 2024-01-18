@@ -1,8 +1,8 @@
 import {View, Text} from 'react-native';
-import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
-import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
-import {DeleteButton} from '../../../buttons/DeleteButton';
-import {MiniTextInputField} from '../../../inputs/MiniTextInput';
+import getJoinedDetailStore from '../../../store/joined-store/joined-store';
+import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
+import {DeleteButton} from '../../../shared/components/buttons/DeleteButton';
+import {MiniTextInputField} from '../../../shared/components/inputs/MiniTextInput';
 
 export const CourseDeletePanel = withLiteObserverAndTheme(props => {
   const {theme} = props;

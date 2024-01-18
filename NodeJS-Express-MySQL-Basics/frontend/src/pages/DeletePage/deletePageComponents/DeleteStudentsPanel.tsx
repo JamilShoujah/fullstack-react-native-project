@@ -1,12 +1,9 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {DeleteButton} from '../../../shared/components/buttons/DeleteButton';
-import {CourseDeletePanel} from '../../../shared/components/custom/course/deletePage/CourseDeletePanel';
-import {StudentDeleteByEmailPanel} from '../../../shared/components/custom/course/deletePage/StudentDeleteByEmailPanel';
-import {StudentDeletePanel} from '../../../shared/components/custom/course/deletePage/StudentDeletePanel';
-import {MiniTextInputField} from '../../../shared/components/inputs/MiniTextInput';
+
+import {StudentDeleteByEmailPanel} from '../../DeletePage/deletePageCustomComponents/StudentDeleteByEmailPanel';
+import {StudentDeletePanel} from '../../DeletePage/deletePageCustomComponents/StudentDeletePanel';
 import {withThemeAndProps} from '../../../shared/enhancedRenderer/index';
-import getJoinedDetailStore from '../../../store/joined-store/joined-store';
 
 export const DeleteStudentPanel = withThemeAndProps(props => {
   const {theme} = props;
