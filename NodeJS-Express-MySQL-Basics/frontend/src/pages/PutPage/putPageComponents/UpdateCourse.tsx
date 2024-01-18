@@ -1,10 +1,9 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {StudentDeleteByEmailPanel} from '../../../shared/components/custom/student/deletePage/StudentDeleteByEmailPanel';
-import {StudentDeletePanel} from '../../../shared/components/custom/student/deletePage/StudentDeletePanel';
+import {CourseUpdateById} from '../../../shared/components/custom/course/putPage/UpdateCourse';
 import {withThemeAndProps} from '../../../shared/enhancedRenderer/index';
 
-export const DeleteStudentPanel = withThemeAndProps(props => {
+export const UpdateCoursePanel = withThemeAndProps(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
 
@@ -25,10 +24,9 @@ export const DeleteStudentPanel = withThemeAndProps(props => {
             color: colors.lightText,
             fontWeight: 'bold',
           }}>
-          Delete Student
+          Update Course
         </Text>
-        <StudentDeletePanel />
-        <StudentDeleteByEmailPanel />
+        <CourseUpdateById />
       </View>
     </View>
   );

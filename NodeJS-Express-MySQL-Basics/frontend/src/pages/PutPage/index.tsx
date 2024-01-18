@@ -2,10 +2,12 @@
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import {withLiteObserverAndTheme} from '../../shared/enhancedRenderer/index';
+import {PutPageComponent} from './putPageComponents/putPage';
 
 export const PutPage = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, unitX, unitY, getFontSize} = theme;
+
   return (
     <ScrollView style={{backgroundColor: colors.backgroundColor}}>
       <View
@@ -21,8 +23,9 @@ export const PutPage = withLiteObserverAndTheme(props => {
             fontWeight: '900',
             textAlign: 'center',
           }}>
-          PUT
+          DELETE
         </Text>
+        <PutPageComponent />
       </View>
     </ScrollView>
   );

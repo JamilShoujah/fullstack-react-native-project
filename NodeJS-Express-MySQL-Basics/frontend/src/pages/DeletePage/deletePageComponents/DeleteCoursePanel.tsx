@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {CourseDeletePanel} from '../deletePageCustomComponents/CourseDeletePanel';
+import {CourseDeletePanel} from '../../../shared/components/custom/course/deletePage/CourseDeletePanel';
 import {withThemeAndProps} from '../../../shared/enhancedRenderer/index';
 
 export const DeleteCoursePanel = withThemeAndProps(props => {

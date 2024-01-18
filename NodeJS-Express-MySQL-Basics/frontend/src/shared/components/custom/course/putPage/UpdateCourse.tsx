@@ -1,10 +1,10 @@
 import {View, Text} from 'react-native';
-import getJoinedDetailStore from '../../../store/joined-store/joined-store';
-import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer';
-import {DeleteButton} from '../../../shared/components/buttons/DeleteButton';
-import {MiniTextInputField} from '../../../shared/components/inputs/MiniTextInput';
+import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
+import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
+import {CustomButton} from '../../../buttons/CustomButton';
+import {MiniTextInputField} from '../../../inputs/MiniTextInput';
 
-export const StudentDeleteByEmailPanel = withLiteObserverAndTheme(props => {
+export const CourseUpdateById = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const joinedDetails = getJoinedDetailStore();
@@ -20,17 +20,17 @@ export const StudentDeleteByEmailPanel = withLiteObserverAndTheme(props => {
       }}>
       <View style={{width: 80 * childX}}>
         <Text style={{fontSize: getFontSize(4), paddingHorizontal: childX * 2}}>
-          Student Email:
+          course Id:
         </Text>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <MiniTextInputField
-            placeholder={'student email'}
-            value={joinedDetails.studentEmail.get()}
+            placeholder={'Course Id'}
+            value={joinedDetails.courseId.get()}
             onValueChange={text => {
-              joinedDetails.setStudentEmail(text);
+              joinedDetails.setCourseId(text);
             }}
           />
-          <DeleteButton onPress={() => {}} />
+          <CustomButton placeHolder={'upload'} onPress={() => {}} />
         </View>
       </View>
     </View>

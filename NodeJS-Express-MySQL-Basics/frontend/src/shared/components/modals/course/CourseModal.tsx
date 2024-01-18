@@ -12,7 +12,6 @@ import {GetAllButton} from '../../buttons/GetAllButton';
 export const CourseModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
-  const textFieldStore = getInputFieldStore();
   const courseModal = getGetPageModalStore();
   return (
     <Modal transparent={true} visible={courseModal.courseModalVisible.get()}>

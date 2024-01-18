@@ -1,10 +1,10 @@
 import {View, Text} from 'react-native';
-import getJoinedDetailStore from '../../../store/joined-store/joined-store';
-import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer';
-import {DeleteButton} from '../../../shared/components/buttons/DeleteButton';
-import {MiniTextInputField} from '../../../shared/components/inputs/MiniTextInput';
+import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
+import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
+import {DeleteButton} from '../../../buttons/DeleteButton';
+import {MiniTextInputField} from '../../../inputs/MiniTextInput';
 
-export const StudentDeletePanel = withLiteObserverAndTheme(props => {
+export const StudentDeleteByEmailPanel = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const joinedDetails = getJoinedDetailStore();
@@ -20,14 +20,14 @@ export const StudentDeletePanel = withLiteObserverAndTheme(props => {
       }}>
       <View style={{width: 80 * childX}}>
         <Text style={{fontSize: getFontSize(4), paddingHorizontal: childX * 2}}>
-          Student Id:
+          Student Email:
         </Text>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <MiniTextInputField
-            placeholder={'student id'}
-            value={joinedDetails.studentId.get()}
+            placeholder={'student email'}
+            value={joinedDetails.studentEmail.get()}
             onValueChange={text => {
-              joinedDetails.setStudentId(text);
+              joinedDetails.setStudentEmail(text);
             }}
           />
           <DeleteButton onPress={() => {}} />

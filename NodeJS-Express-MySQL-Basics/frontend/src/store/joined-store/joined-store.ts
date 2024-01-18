@@ -6,6 +6,7 @@ export class JoinedDeatilsModel {
   studentId = observable.box('');
   courseId = observable.box('');
   studentEmail = observable.box('');
+  grade = observable.box('');
 
   setStudentId(text: string) {
     runInAction(() => {
@@ -20,6 +21,11 @@ export class JoinedDeatilsModel {
   setStudentEmail(text: string) {
     runInAction(() => {
       this.studentEmail.set(text);
+    });
+  }
+  setGrade(text: string) {
+    runInAction(() => {
+      this.grade.set(text);
     });
   }
 
