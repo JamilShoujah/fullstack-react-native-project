@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import getCourseDetailStore from '../../../../data/store/post-pafe-course-store';
-import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
-import {FullTextInputField} from '../../inputs/FullsizeInputText';
+import getCourseDetailStore from '../../../../../store/course-store/course-store';
+import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
+import {FullTextInputField} from '../../../inputs/FullsizeInputText';
 
-export const CourseNamePanel = withLiteObserverAndTheme(props => {
+export const CourseNamePostPanel = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {childX, getFontSize} = theme;
   const courseDetails = getCourseDetailStore();

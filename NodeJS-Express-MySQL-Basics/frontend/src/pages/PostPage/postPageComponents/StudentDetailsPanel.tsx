@@ -2,13 +2,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import getStudentDetailStore from '../../../data/store/post-page-student-store';
-import {AddressPanel} from '../../../shared/components/custom/student/AddressPanel';
-import {DatePickerComponent} from '../../../shared/components/custom/student/DatePicker';
-import {EmailAddressPanel} from '../../../shared/components/custom/student/EmailAddressPanel';
-import {FirstNamePanel} from '../../../shared/components/custom/student/FirstNamePanel';
-import {LastNamePanel} from '../../../shared/components/custom/student/LastNamePanel';
-import {PhoneNumberPanel} from '../../../shared/components/custom/student/PhoneNumberPanel';
+import getStudentDetailStore from '../../../store/student-store/student-store';
+import {AddressPostPanel} from '../../../shared/components/custom/student/postPage/AddressPanel';
+import {DatePickerComponent} from '../../../shared/components/custom/student/postPage/DatePicker';
+import {EmailAddressPostPanel} from '../../../shared/components/custom/student/postPage/EmailAddressPanel';
+import {FirstNamePostPanel} from '../../../shared/components/custom/student/postPage/FirstNamePanel';
+import {LastNamePostPanel} from '../../../shared/components/custom/student/postPage/LastNamePanel';
+import {PhoneNumberPostPanel} from '../../../shared/components/custom/student/postPage/PhoneNumberPanel';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
 
 export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
@@ -42,12 +42,12 @@ export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
           paddingVertical: childY * 3,
           alignItems: 'center',
         }}>
-        <FirstNamePanel />
-        <LastNamePanel />
-        <EmailAddressPanel />
+        <FirstNamePostPanel />
+        <LastNamePostPanel />
+        <EmailAddressPostPanel />
         <DatePickerComponent />
-        <AddressPanel />
-        <PhoneNumberPanel />
+        <AddressPostPanel />
+        <PhoneNumberPostPanel />
 
         <TouchableOpacity
           onPress={() => {

@@ -12,6 +12,7 @@ export class StudentDeatilsModel {
   birthYear = observable.box('');
   phoneNumber = observable.box('');
   address = observable.box('');
+  studentId = observable.box('');
 
   birthDate = computed(() => {
     const day = this.birthDay.get();
@@ -70,6 +71,11 @@ export class StudentDeatilsModel {
   setAddress(text: string) {
     runInAction(() => {
       this.address.set(text);
+    });
+  }
+  setStudentId(text: string) {
+    runInAction(() => {
+      this.studentId.set(text);
     });
   }
 }

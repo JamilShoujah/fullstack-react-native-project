@@ -35,6 +35,7 @@ class Theme {
       secondaryLight: '#DCF2F1',
       darkText: '#000000',
       lightText: '#ffffff',
+      modalBackground: 'rgba(0, 0, 0, 0.9)',
     };
 
     return {

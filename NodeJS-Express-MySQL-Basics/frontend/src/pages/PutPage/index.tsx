@@ -1,28 +1,29 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
+import {withLiteObserverAndTheme} from '../../shared/enhancedRenderer/index';
 
-export const PutPage = () => {
+export const PutPage = withLiteObserverAndTheme(props => {
+  const {theme} = props;
+  const {colors, unitX, unitY, getFontSize} = theme;
   return (
-    <ScrollView style={{backgroundColor: '#0F1035'}}>
+    <ScrollView style={{backgroundColor: colors.backgroundColor}}>
       <View
         style={{
-          backgroundColor: '#7FC7D9',
-          padding: 20,
-          borderRadius: 10,
-          marginHorizontal: 20,
-          marginVertical: 5,
+          paddingHorizontal: unitX * 3,
+          paddingTop: unitY * 5,
+          marginHorizontal: unitX * 5,
         }}>
         <Text
           style={{
-            color: '#0F1035',
-            fontSize: 30,
+            color: colors.primaryColor,
+            fontSize: getFontSize(10),
             fontWeight: '900',
             textAlign: 'center',
           }}>
-          Add Course
+          PUT
         </Text>
       </View>
     </ScrollView>
   );
-};
+});

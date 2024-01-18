@@ -4,12 +4,12 @@ import {TCourse} from '../../shared/data/types/course-object';
 
 export class CourseDeatilsModel {
   courseName = observable.box('');
-  coursedescription = observable.box('');
+  courseDescription = observable.box('');
 
   courseObject = computed(() => {
     const courseObject: TCourse = {
       courseName: this.courseName.get(),
-      courseDescription: this.coursedescription.get(),
+      courseDescription: this.courseDescription.get(),
     };
     return courseObject;
   });
@@ -21,7 +21,7 @@ export class CourseDeatilsModel {
   }
   setCourseDescription(text: string) {
     runInAction(() => {
-      this.coursedescription.set(text);
+      this.courseDescription.set(text);
     });
   }
 }

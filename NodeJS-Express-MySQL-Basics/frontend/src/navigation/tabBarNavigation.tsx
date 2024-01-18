@@ -5,6 +5,7 @@ import {PostPage} from '../pages/PostPage/index';
 import {PutPage} from '../pages/PutPage/index';
 import {DeletePage} from '../pages/DeletePage/index';
 import {withLiteObserverAndTheme} from '../shared/enhancedRenderer/index';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 export const TabBarNav = withLiteObserverAndTheme(props => {
   const Tab = createBottomTabNavigator();
@@ -13,7 +14,29 @@ export const TabBarNav = withLiteObserverAndTheme(props => {
 
   return (
     <Tab.Navigator
-      screenOptions={() => ({
+      screenOptions={({route}) => ({
+        tabBarIcon: ({color}) => {
+          let iconName;
+          const size = unitY * 10;
+
+          switch (route.name) {
+            case 'GET':
+              iconName = 'get-app';
+              return <MaterialIcon name={iconName} size={size} color={color} />;
+            case 'POST':
+              iconName = 'upload';
+              return <MaterialIcon name={iconName} size={size} color={color} />;
+            case 'PUT':
+              iconName = 'update';
+              return <MaterialIcon name={iconName} size={size} color={color} />;
+            case 'DELETE':
+              iconName = 'delete';
+              return <MaterialIcon name={iconName} size={size} color={color} />;
+            default:
+              iconName = 'question-mark';
+              return <MaterialIcon name={iconName} size={size} color={color} />;
+          }
+        },
         tabBarActiveTintColor: colors.primaryColor,
         tabBarInactiveTintColor: colors.secondaryColor,
         tabBarStyle: {

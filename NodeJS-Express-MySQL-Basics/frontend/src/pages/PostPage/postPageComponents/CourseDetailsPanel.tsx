@@ -2,10 +2,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import getCourseDetailStore from '../../../data/store/post-pafe-course-store';
-import getStudentDetailStore from '../../../data/store/post-page-student-store';
-import {CourseDescriptionPanel} from '../../../shared/components/custom/course/CourseDescription';
-import {CourseNamePanel} from '../../../shared/components/custom/course/CourseNamePanel';
+import getCourseDetailStore from '../../../store/course-store/course-store';
+import {CourseDescriptionPostPanel} from '../../../shared/components/custom/course/postPage/CourseDescription';
+import {CourseNamePostPanel} from '../../../shared/components/custom/course/postPage/CourseName';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
 
 export const CourseDetailsPanel = withLiteObserverAndTheme(props => {
@@ -39,8 +38,8 @@ export const CourseDetailsPanel = withLiteObserverAndTheme(props => {
           paddingVertical: childY * 3,
           alignItems: 'center',
         }}>
-        <CourseNamePanel />
-        <CourseDescriptionPanel />
+        <CourseNamePostPanel />
+        <CourseDescriptionPostPanel />
         <TouchableOpacity
           onPress={() => {
             console.log(courseDetails.courseObject.get());
