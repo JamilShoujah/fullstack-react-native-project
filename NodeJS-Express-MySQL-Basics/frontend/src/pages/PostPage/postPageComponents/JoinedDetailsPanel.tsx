@@ -4,12 +4,14 @@ import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {CourseIdPostPanel} from '../../../shared/components/custom/joined/postPage/PostCourseIdPanel';
 import {StundetIdPostPanel} from '../../../shared/components/custom/joined/postPage/PostStudentIdPanel';
+import {registerStudentToCourse} from '../../../shared/data/api/postApi/joined/register-student-to-course';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
+import getJoinedDetailStore from '../../../store/joined-store/joined-store';
 
 export const JoinedDetailsPanel = withLiteObserverAndTheme(props => {
-  //   const joinedDetails = getJoinedDetailStore();
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
+  const joinedDetails = getJoinedDetailStore();
   return (
     <View
       style={{
@@ -39,24 +41,57 @@ export const JoinedDetailsPanel = withLiteObserverAndTheme(props => {
         }}>
         <StundetIdPostPanel />
         <CourseIdPostPanel />
-        <TouchableOpacity
-          onPress={() => {}}
+
+        <View
           style={{
-            backgroundColor: colors.secondaryColor,
-            borderRadius: 2 * childX,
-            width: 10 * childX,
-            height: 10 * childY,
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             alignItems: 'center',
+            flexDirection: 'row',
           }}>
-          <Text
+          <TouchableOpacity
+            onPress={() => {
+              registerStudentToCourse();
+            }}
             style={{
-              color: colors.lightText,
-              fontSize: getFontSize(8),
+              backgroundColor: colors.secondaryColor,
+              borderRadius: 2 * childX,
+              width: 10 * childX,
+              height: 10 * childY,
+              justifyContent: 'center',
+              alignItems: 'center',
             }}>
-            +
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: colors.lightText,
+                fontSize: getFontSize(8),
+              }}>
+              +
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              joinedDetails.setCourseId('');
+              joinedDetails.setStudentId('');
+            }}
+            style={{
+              backgroundColor: colors.warningColor,
+              borderRadius: 2 * childX,
+              width: 15 * childX,
+              height: 10 * childY,
+              marginHorizontal: childX * 2,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                color: colors.lightText,
+                fontSize: getFontSize(6),
+              }}>
+              clear
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

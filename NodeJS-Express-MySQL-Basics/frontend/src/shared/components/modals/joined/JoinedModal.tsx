@@ -7,11 +7,13 @@ import {CloseButton} from '../../buttons/CloseButton';
 import {CourseIdGetPanel} from '../../custom/joined/getPage/CourseIdPanel';
 import {StudentIdGetPanel} from '../../custom/joined/getPage/StudentIdPanel';
 import {fetchAllJoinedData} from '../../../data/api/getApi/joined/get-all-joined-data';
+import getJoinedDetailStore from '../../../../store/joined-store/joined-store';
 
 export const JoinedModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const joinedModalStore = getGetPageModalStore();
+  const joinedDetails = getJoinedDetailStore();
   return (
     <Modal
       transparent={true}
@@ -49,6 +51,8 @@ export const JoinedModal = withLiteObserverAndTheme(props => {
             <CloseButton
               onPress={() => {
                 joinedModalStore.changeJoinedModalVisibility(false);
+                joinedDetails.setCourseId('');
+                joinedDetails.setStudentId('');
               }}
             />
           </View>

@@ -11,11 +11,13 @@ import {StudentEmailGetPanel} from '../../custom/student/getPage/StudentEmailPan
 import {StudentIdGetPanel} from '../../custom/student/getPage/StudentIdPanel';
 import {GetAllButton} from '../../buttons/GetAllButton';
 import {fetchAllStudents} from '../../../data/api/getApi/student/get-all-students';
+import getStudentDetailStore from '../../../../store/student-store/student-store';
 
 export const StudentModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const studentModal = getGetPageModalStore();
+  const studentDetails = getStudentDetailStore();
   return (
     <Modal transparent={true} visible={studentModal.studentModalVisible.get()}>
       <View
@@ -51,6 +53,10 @@ export const StudentModal = withLiteObserverAndTheme(props => {
             <CloseButton
               onPress={() => {
                 studentModal.changeStudentModalVisibility(false);
+                studentDetails.setStudentId('');
+                studentDetails.setFirstName('');
+                studentDetails.setLastName('');
+                studentDetails.setEmailAddress('');
               }}
             />
           </View>

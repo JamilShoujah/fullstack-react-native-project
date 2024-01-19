@@ -9,11 +9,13 @@ import {CourseNameGetPanel} from '../../custom/course/getPage/CourseNamePanel';
 import {CourseIdPanel} from '../../custom/course/getPage/CourseIdPanel';
 import {GetAllButton} from '../../buttons/GetAllButton';
 import {fetchAllCourses} from '../../../data/api/getApi/course/get-all-courses';
+import getCourseDetailStore from '../../../../store/course-store/course-store';
 
 export const CourseModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const courseModal = getGetPageModalStore();
+  const courseDetails = getCourseDetailStore();
   return (
     <Modal transparent={true} visible={courseModal.courseModalVisible.get()}>
       <View
@@ -49,6 +51,8 @@ export const CourseModal = withLiteObserverAndTheme(props => {
             <CloseButton
               onPress={() => {
                 courseModal.changeCourseModalVisibility(false);
+                courseDetails.setCourseId('');
+                courseDetails.setCourseName('');
               }}
             />
           </View>

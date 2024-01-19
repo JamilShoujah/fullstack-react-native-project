@@ -10,6 +10,7 @@ import {FirstNamePostPanel} from '../../../shared/components/custom/student/post
 import {LastNamePostPanel} from '../../../shared/components/custom/student/postPage/LastNamePanel';
 import {PhoneNumberPostPanel} from '../../../shared/components/custom/student/postPage/PhoneNumberPanel';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
+import {addNewStudent} from '../../../shared/data/api/postApi/student/add-new-student';
 
 export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
   const studentDetails = getStudentDetailStore();
@@ -49,26 +50,63 @@ export const StudentDetailsPanel = withLiteObserverAndTheme(props => {
         <AddressPostPanel />
         <PhoneNumberPostPanel />
 
-        <TouchableOpacity
-          onPress={() => {
-            console.log(studentDetails.userObject.get());
-          }}
+        <View
           style={{
-            backgroundColor: colors.secondaryColor,
-            borderRadius: 2 * childX,
-            width: 10 * childX,
-            height: 10 * childY,
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             alignItems: 'center',
+            flexDirection: 'row',
           }}>
-          <Text
+          <TouchableOpacity
+            onPress={() => {
+              addNewStudent();
+            }}
             style={{
-              color: colors.lightText,
-              fontSize: getFontSize(8),
+              backgroundColor: colors.secondaryColor,
+              borderRadius: 2 * childX,
+              width: 10 * childX,
+              height: 10 * childY,
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginHorizontal: childX * 2,
             }}>
-            +
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: colors.lightText,
+                fontSize: getFontSize(8),
+              }}>
+              +
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              studentDetails.setFirstName('');
+              studentDetails.setLastName('');
+              studentDetails.setEmailAddress('');
+              studentDetails.setBirthDay('');
+              studentDetails.setBirthMonth('');
+              studentDetails.setBirthYear('');
+              studentDetails.setAddress('');
+              studentDetails.setPhoneNumber('');
+            }}
+            style={{
+              backgroundColor: colors.warningColor,
+              borderRadius: 2 * childX,
+              width: 15 * childX,
+              height: 10 * childY,
+              marginHorizontal: childX * 2,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                color: colors.lightText,
+                fontSize: getFontSize(6),
+              }}>
+              clear
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

@@ -6,6 +6,7 @@ import getCourseDetailStore from '../../../store/course-store/course-store';
 import {CourseDescriptionPostPanel} from '../../../shared/components/custom/course/postPage/CourseDescription';
 import {CourseNamePostPanel} from '../../../shared/components/custom/course/postPage/CourseName';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
+import {addNewCourse} from '../../../shared/data/api/postApi/course/add-new-course';
 
 export const CourseDetailsPanel = withLiteObserverAndTheme(props => {
   const {theme} = props;
@@ -40,26 +41,56 @@ export const CourseDetailsPanel = withLiteObserverAndTheme(props => {
         }}>
         <CourseNamePostPanel />
         <CourseDescriptionPostPanel />
-        <TouchableOpacity
-          onPress={() => {
-            console.log(courseDetails.courseObject.get());
-          }}
+        <View
           style={{
-            backgroundColor: colors.secondaryColor,
-            borderRadius: 2 * childX,
-            width: 10 * childX,
-            height: 10 * childY,
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             alignItems: 'center',
+            flexDirection: 'row',
           }}>
-          <Text
+          <TouchableOpacity
+            onPress={() => {
+              addNewCourse();
+            }}
             style={{
-              color: colors.lightText,
-              fontSize: getFontSize(8),
+              backgroundColor: colors.secondaryColor,
+              borderRadius: 2 * childX,
+              width: 10 * childX,
+              height: 10 * childY,
+              justifyContent: 'center',
+              alignItems: 'center',
             }}>
-            +
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: colors.lightText,
+                fontSize: getFontSize(8),
+              }}>
+              +
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              courseDetails.setCourseName('');
+              courseDetails.setCourseDescription('');
+            }}
+            style={{
+              backgroundColor: colors.warningColor,
+              borderRadius: 2 * childX,
+              width: 15 * childX,
+              height: 10 * childY,
+              marginHorizontal: childX * 2,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                color: colors.lightText,
+                fontSize: getFontSize(6),
+              }}>
+              clear
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
