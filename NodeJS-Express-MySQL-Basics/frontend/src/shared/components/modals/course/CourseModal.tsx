@@ -6,8 +6,9 @@ import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
 import getGetPageModalStore from '../../../../store/modal-stores/get-page-modal';
 import {CloseButton} from '../../buttons/CloseButton';
 import {CourseNameGetPanel} from '../../custom/course/getPage/CourseNamePanel';
-import {CourseDescriptionGetPanel} from '../../custom/course/getPage/CourseDescriptionPanel';
+import {CourseIdPanel} from '../../custom/course/getPage/CourseIdPanel';
 import {GetAllButton} from '../../buttons/GetAllButton';
+import {fetchAllCourses} from '../../../data/api/getApi/course/get-all-courses';
 
 export const CourseModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
@@ -62,8 +63,12 @@ export const CourseModal = withLiteObserverAndTheme(props => {
               alignItems: 'center',
             }}>
             <CourseNameGetPanel />
-            <CourseDescriptionGetPanel />
-            <GetAllButton onPress={() => {}} />
+            <CourseIdPanel />
+            <GetAllButton
+              onPress={() => {
+                fetchAllCourses();
+              }}
+            />
           </View>
         </View>
       </View>

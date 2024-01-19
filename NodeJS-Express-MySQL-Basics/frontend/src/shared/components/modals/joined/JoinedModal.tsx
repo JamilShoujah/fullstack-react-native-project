@@ -6,6 +6,7 @@ import getGetPageModalStore from '../../../../store/modal-stores/get-page-modal'
 import {CloseButton} from '../../buttons/CloseButton';
 import {CourseIdGetPanel} from '../../custom/joined/getPage/CourseIdPanel';
 import {StudentIdGetPanel} from '../../custom/joined/getPage/StudentIdPanel';
+import {fetchAllJoinedData} from '../../../data/api/getApi/joined/get-all-joined-data';
 
 export const JoinedModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
@@ -64,7 +65,7 @@ export const JoinedModal = withLiteObserverAndTheme(props => {
             <CourseIdGetPanel />
             <TouchableOpacity
               onPress={() => {
-                console.log('printing all students');
+                fetchAllJoinedData();
               }}
               style={{
                 backgroundColor: colors.secondaryColor,

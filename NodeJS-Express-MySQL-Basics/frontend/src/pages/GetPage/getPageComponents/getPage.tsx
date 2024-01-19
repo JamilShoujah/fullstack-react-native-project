@@ -71,7 +71,6 @@ export const GetPageComponent = withLiteObserverAndTheme(props => {
       <TouchableOpacity
         onPress={() => {
           getPageModalStore.changeJoinedModalVisibility(true);
-          console.log(getPageModalStore.joinedModalVisible.get());
         }}
         style={{
           marginVertical: unitY * 4,

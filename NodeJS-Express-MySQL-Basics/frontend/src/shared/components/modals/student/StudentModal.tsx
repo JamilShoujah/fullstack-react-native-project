@@ -3,7 +3,6 @@ import React from 'react';
 import {Modal, Text, TouchableOpacity, View} from 'react-native';
 import getInputFieldStore from '../../../../store/course-store/course-store';
 import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
-
 import getGetPageModalStore from '../../../../store/modal-stores/get-page-modal';
 import {CloseButton} from '../../buttons/CloseButton';
 import {StudentFirstNameGetPanel} from '../../custom/student/getPage/StudentFirstNamePanel';
@@ -11,9 +10,9 @@ import {StudentLastNameGetPanel} from '../../custom/student/getPage/StudentLastN
 import {StudentEmailGetPanel} from '../../custom/student/getPage/StudentEmailPanel';
 import {StudentIdGetPanel} from '../../custom/student/getPage/StudentIdPanel';
 import {GetAllButton} from '../../buttons/GetAllButton';
+import {fetchAllStudents} from '../../../data/api/getApi/student/get-all-students';
 
 export const StudentModal = withLiteObserverAndTheme(props => {
-  const textFieldStore = getInputFieldStore();
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const studentModal = getGetPageModalStore();
@@ -68,7 +67,11 @@ export const StudentModal = withLiteObserverAndTheme(props => {
             <StudentFirstNameGetPanel />
             <StudentLastNameGetPanel />
             <StudentEmailGetPanel />
-            <GetAllButton onPress={() => {}} />
+            <GetAllButton
+              onPress={() => {
+                fetchAllStudents();
+              }}
+            />
           </View>
         </View>
       </View>

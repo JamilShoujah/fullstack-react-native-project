@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import getStudentDetailStore from '../../../../../store/student-store/student-store';
+import {fetchStudentByEmail} from '../../../../data/api/getApi/student/get-student-by-email';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {SearchButton} from '../../../buttons/SearchButton';
 import {MiniTextInputField} from '../../../inputs/MiniTextInput';
@@ -16,13 +17,17 @@ export const StudentEmailGetPanel = withLiteObserverAndTheme(props => {
       </Text>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <MiniTextInputField
-          placeholder={'First Name'}
+          placeholder={'Email'}
           value={studentDetails.emailAddress.get()}
           onValueChange={text => {
             studentDetails.setEmailAddress(text);
           }}
         />
-        <SearchButton onPress={() => {}} />
+        <SearchButton
+          onPress={() => {
+            fetchStudentByEmail();
+          }}
+        />
       </View>
     </View>
   );

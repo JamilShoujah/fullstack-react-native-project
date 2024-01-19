@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import getStudentDetailStore from '../../../../../store/student-store/student-store';
+import {fetchStudentById} from '../../../../data/api/getApi/student/get-student-by-id';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {SearchButton} from '../../../buttons/SearchButton';
 import {MiniTextInputField} from '../../../inputs/MiniTextInput';
@@ -22,7 +23,11 @@ export const StudentIdGetPanel = withLiteObserverAndTheme(props => {
             studentDetails.setStudentId(text);
           }}
         />
-        <SearchButton onPress={() => {}} />
+        <SearchButton
+          onPress={() => {
+            fetchStudentById();
+          }}
+        />
       </View>
     </View>
   );

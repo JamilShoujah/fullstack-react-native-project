@@ -1,6 +1,8 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, View} from 'react-native';
 import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
+import {fetchCoursesByStudent} from '../../../../data/api/getApi/joined/get-student-courses';
+import {fetchGradesByStudent} from '../../../../data/api/getApi/joined/get-student-grades';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {CustomButton} from '../../../buttons/CustomButton';
 import {MediumTextInputField} from '../../../inputs/MediumSizeTextInput';
@@ -27,8 +29,18 @@ export const StudentIdGetPanel = withLiteObserverAndTheme(props => {
             studentDetails.setStudentId(text);
           }}
         />
-        <CustomButton placeHolder={'class'} onPress={() => {}} />
-        <CustomButton placeHolder={'text-increase'} onPress={() => {}} />
+        <CustomButton
+          placeHolder={'class'}
+          onPress={() => {
+            fetchCoursesByStudent();
+          }}
+        />
+        <CustomButton
+          placeHolder={'text-increase'}
+          onPress={() => {
+            fetchGradesByStudent();
+          }}
+        />
       </View>
     </View>
   );
