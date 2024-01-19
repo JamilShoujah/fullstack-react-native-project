@@ -81,22 +81,63 @@ const studentModel = {
     ]);
   },
 
+  // deleteById: async (id: number) => {
+  //   const myQuery = `
+  //     DELETE
+  //     FROM student_table
+  //     WHERE student_id = ?
+  //     `;
+  //   return mysqlConnection.query(myQuery, [id]);
+  // },
   deleteById: async (id: number) => {
-    const myQuery = `
-      DELETE
-      FROM student_table
-      WHERE student_id = ?
-      `;
-    return mysqlConnection.query(myQuery, [id]);
+    try {
+      const deleteReferencingRowsQuery = `
+            DELETE FROM student_course_table 
+            WHERE student_id = ?;
+        `;
+      await mysqlConnection.query(deleteReferencingRowsQuery, [id]);
+
+      const deleteStudentQuery = `
+            DELETE 
+            FROM student_table 
+            WHERE student_id = ?;
+        `;
+      await mysqlConnection.query(deleteStudentQuery, [id]);
+    } catch (error) {
+      throw error;
+    }
   },
 
+  // deleteByEmail: async (Email: string) => {
+  //   const myQuery = `
+  //     DELETE
+  //     FROM student_table
+  //     WHERE email = ?;
+  //     `;
+  //   return mysqlConnection.query(myQuery, [Email]);
+  // },
+
   deleteByEmail: async (Email: string) => {
-    const myQuery = `
-      DELETE 
-      FROM student_table 
-      WHERE email = ?;
-      `;
-    return mysqlConnection.query(myQuery, [Email]);
+    try {
+      const deleteReferencingRowsQuery = `
+            DELETE FROM student_course_table 
+            WHERE student_id IN (
+                SELECT student_id 
+                FROM student_table 
+                WHERE email = ?
+            );
+        `;
+      await mysqlConnection.query(deleteReferencingRowsQuery, [Email]);
+
+      const deleteStudentQuery = `
+            DELETE 
+            FROM student_table 
+            WHERE email = ?;
+        `;
+      await mysqlConnection.query(deleteStudentQuery, [Email]);
+    } catch (error) {
+      throw error;
+    }
   },
 
   updateStudentById: async (

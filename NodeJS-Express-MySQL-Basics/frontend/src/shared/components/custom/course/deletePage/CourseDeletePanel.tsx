@@ -1,5 +1,6 @@
 import {View, Text} from 'react-native';
 import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
+import {deleteCourseById} from '../../../../data/api/deleteApi/course/delete-course-by-id';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {DeleteButton} from '../../../buttons/DeleteButton';
 import {MiniTextInputField} from '../../../inputs/MiniTextInput';
@@ -30,7 +31,11 @@ export const CourseDeletePanel = withLiteObserverAndTheme(props => {
               joinedDetails.setCourseId(text);
             }}
           />
-          <DeleteButton onPress={() => {}} />
+          <DeleteButton
+            onPress={() => {
+              deleteCourseById();
+            }}
+          />
         </View>
       </View>
     </View>

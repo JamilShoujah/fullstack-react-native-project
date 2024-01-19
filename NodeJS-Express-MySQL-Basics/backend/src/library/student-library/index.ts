@@ -1,4 +1,5 @@
 import { memoize } from "lodash";
+import studentCourseModel from "../../models/student-course-model";
 import studentModel from "../../models/student-model";
 import StudentModel from "../../models/student-model";
 import { IStudentObject } from "../../types/interfaces/studentObject";

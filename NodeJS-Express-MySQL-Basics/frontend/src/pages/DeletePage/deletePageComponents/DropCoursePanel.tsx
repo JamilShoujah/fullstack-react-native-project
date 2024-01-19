@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {DeleteButton} from '../../../shared/components/buttons/DeleteButton';
 import {CourseIdPostPanel} from '../../../shared/components/custom/joined/postPage/PostCourseIdPanel';
 import {StundetIdPostPanel} from '../../../shared/components/custom/joined/postPage/PostStudentIdPanel';
+import {dropStudentfromCourse} from '../../../shared/data/api/deleteApi/joined/drop-student-from-course';
 import {withThemeAndProps} from '../../../shared/enhancedRenderer/index';
 
 export const DropCoursePanel = withThemeAndProps(props => {
@@ -39,7 +40,11 @@ export const DropCoursePanel = withThemeAndProps(props => {
           }}>
           <StundetIdPostPanel />
           <CourseIdPostPanel />
-          <DeleteButton onPress={() => {}} />
+          <DeleteButton
+            onPress={() => {
+              dropStudentfromCourse();
+            }}
+          />
         </View>
       </View>
     </View>

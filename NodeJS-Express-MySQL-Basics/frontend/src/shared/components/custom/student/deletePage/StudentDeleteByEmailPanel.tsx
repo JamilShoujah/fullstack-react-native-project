@@ -1,5 +1,6 @@
 import {View, Text} from 'react-native';
 import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
+import {deleteStudentByEmail} from '../../../../data/api/deleteApi/student/delete-student-by-email';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {DeleteButton} from '../../../buttons/DeleteButton';
 import {MiniTextInputField} from '../../../inputs/MiniTextInput';
@@ -30,7 +31,11 @@ export const StudentDeleteByEmailPanel = withLiteObserverAndTheme(props => {
               joinedDetails.setStudentEmail(text);
             }}
           />
-          <DeleteButton onPress={() => {}} />
+          <DeleteButton
+            onPress={() => {
+              deleteStudentByEmail();
+            }}
+          />
         </View>
       </View>
     </View>

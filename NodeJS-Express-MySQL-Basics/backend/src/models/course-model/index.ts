@@ -45,14 +45,33 @@ const courseModel = {
     return mysqlConnection.query(myQuery, [courseName, courseDescription]);
   },
 
-  deleteById: async (id: number) => {
-    const myQuery = `
-    DELETE 
-    FROM course_table 
-    WHERE course_id = ?
-    `;
+  // deleteById: async (id: number) => {
+  //   const myQuery = `
+  //   DELETE
+  //   FROM course_table
+  //   WHERE course_id = ?
+  //   `;
 
-    return mysqlConnection.query(myQuery, [id]);
+  //   return mysqlConnection.query(myQuery, [id]);
+  // },
+
+  deleteById: async (id: number) => {
+    try {
+      const deleteReferencingRowsQuery = `
+            DELETE FROM student_course_table 
+            WHERE course_id = ?;
+        `;
+      await mysqlConnection.query(deleteReferencingRowsQuery, [id]);
+
+      const deleteCourseQuery = `
+            DELETE 
+            FROM course_table 
+            WHERE course_id = ?;
+        `;
+      await mysqlConnection.query(deleteCourseQuery, [id]);
+    } catch (error) {
+      throw error;
+    }
   },
 
   updateCourse: async (courseObject: ICourseObject, id: number) => {
