@@ -9,6 +9,7 @@ import {CustomButton} from '../../buttons/CustomButton';
 import {CourseNamePostPanel} from '../../custom/course/postPage/CourseName';
 import {CourseDescriptionPostPanel} from '../../custom/course/postPage/CourseDescription';
 import getCourseDetailStore from '../../../../store/course-store/course-store';
+import {updateCourse} from '../../../data/api/putApi/update-course-details';
 
 export const CourseUpdateModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
@@ -66,37 +67,12 @@ export const CourseUpdateModal = withLiteObserverAndTheme(props => {
             }}>
             <CourseNamePostPanel />
             <CourseDescriptionPostPanel />
-
-            <View
-              style={{
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <TouchableOpacity
-                onPress={() => {
-                  courseDetails.setCourseName('');
-                  courseDetails.setCourseDescription('');
-                }}
-                style={{
-                  backgroundColor: colors.warningColor,
-                  borderRadius: 2 * childX,
-                  width: 15 * childX,
-                  height: 10 * childY,
-                  marginHorizontal: childX * 2,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Text
-                  style={{
-                    color: colors.lightText,
-                    fontSize: getFontSize(6),
-                  }}>
-                  clear
-                </Text>
-              </TouchableOpacity>
-              <CustomButton placeHolder={'upload'} onPress={() => {}} />
-            </View>
+            <CustomButton
+              placeHolder={'upload'}
+              onPress={() => {
+                updateCourse();
+              }}
+            />
           </View>
         </View>
       </View>

@@ -50,8 +50,6 @@ export const CourseModal = withLiteObserverAndTheme(props => {
             <CloseButton
               onPress={() => {
                 courseModal.changeCourseModalVisibility(false);
-                courseDetails.setCourseId('');
-                courseDetails.setCourseName('');
               }}
             />
           </View>

@@ -1,6 +1,8 @@
 import {View, Text} from 'react-native';
 import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
 import {getPutPageModalStore} from '../../../../../store/modal-stores/index';
+import getStudentDetailStore from '../../../../../store/student-store/student-store';
+import {fetchStudentById} from '../../../../data/api/getApi/student/get-student-by-id';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {CustomButton} from '../../../buttons/CustomButton';
 import {MiniTextInputField} from '../../../inputs/MiniTextInput';
@@ -8,8 +10,8 @@ import {MiniTextInputField} from '../../../inputs/MiniTextInput';
 export const StudentUpdateById = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
-  const joinedDetails = getJoinedDetailStore();
   const studentModal = getPutPageModalStore();
+  const studentDetails = getStudentDetailStore();
   return (
     <View
       style={{
@@ -27,15 +29,16 @@ export const StudentUpdateById = withLiteObserverAndTheme(props => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <MiniTextInputField
             placeholder={'student Id'}
-            value={joinedDetails.studentId.get()}
+            value={studentDetails.studentId.get()}
             onValueChange={text => {
-              joinedDetails.setStudentId(text);
+              studentDetails.setStudentId(text);
             }}
           />
           <CustomButton
             placeHolder={'upload'}
             onPress={() => {
               studentModal.changeStudentModalVisibility(true);
+              fetchStudentById();
             }}
           />
         </View>

@@ -1,4 +1,5 @@
 import getCourseDetailStore from '../../../../../store/course-store/course-store';
+import {handleCourseDetails} from '../../../../utils/handle-course-details';
 
 const courseData = getCourseDetailStore();
 
@@ -24,6 +25,7 @@ export const fetchCourseById = async () => {
     }
 
     const data = await response.json();
+    handleCourseDetails(data);
     console.log('Success:', data);
   } catch (error) {
     console.error('Error:', error);

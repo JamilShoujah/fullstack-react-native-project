@@ -52,10 +52,6 @@ export const StudentModal = withLiteObserverAndTheme(props => {
             <CloseButton
               onPress={() => {
                 studentModal.changeStudentModalVisibility(false);
-                studentDetails.setStudentId('');
-                studentDetails.setFirstName('');
-                studentDetails.setLastName('');
-                studentDetails.setEmailAddress('');
               }}
             />
           </View>

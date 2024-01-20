@@ -12,12 +12,12 @@ import {EmailAddressPostPanel} from '../../custom/student/postPage/EmailAddressP
 import {FirstNamePostPanel} from '../../custom/student/postPage/FirstNamePanel';
 import {LastNamePostPanel} from '../../custom/student/postPage/LastNamePanel';
 import {PhoneNumberPostPanel} from '../../custom/student/postPage/PhoneNumberPanel';
+import {updateStudent} from '../../../data/api/putApi/update-student-details';
 
 export const StudentUpdateModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const studentModal = getPutPageModalStore();
-  const studentDetails = getStudentDetailStore();
   return (
     <Modal transparent={true} visible={studentModal.studentModalVisible.get()}>
       <View
@@ -53,10 +53,6 @@ export const StudentUpdateModal = withLiteObserverAndTheme(props => {
             <CloseButton
               onPress={() => {
                 studentModal.changeStudentModalVisibility(false);
-                studentDetails.setStudentId('');
-                studentDetails.setFirstName('');
-                studentDetails.setLastName('');
-                studentDetails.setEmailAddress('');
               }}
             />
           </View>
@@ -75,43 +71,12 @@ export const StudentUpdateModal = withLiteObserverAndTheme(props => {
             <DatePickerComponent />
             <AddressPostPanel />
             <PhoneNumberPostPanel />
-
-            <View
-              style={{
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <TouchableOpacity
-                onPress={() => {
-                  studentDetails.setFirstName('');
-                  studentDetails.setLastName('');
-                  studentDetails.setEmailAddress('');
-                  studentDetails.setBirthDay('');
-                  studentDetails.setBirthMonth('');
-                  studentDetails.setBirthYear('');
-                  studentDetails.setAddress('');
-                  studentDetails.setPhoneNumber('');
-                }}
-                style={{
-                  backgroundColor: colors.warningColor,
-                  borderRadius: 2 * childX,
-                  width: 15 * childX,
-                  height: 10 * childY,
-                  marginHorizontal: childX * 2,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Text
-                  style={{
-                    color: colors.lightText,
-                    fontSize: getFontSize(6),
-                  }}>
-                  clear
-                </Text>
-              </TouchableOpacity>
-              <CustomButton placeHolder={'upload'} onPress={() => {}} />
-            </View>
+            <CustomButton
+              placeHolder={'upload'}
+              onPress={() => {
+                updateStudent();
+              }}
+            />
           </View>
         </View>
       </View>
