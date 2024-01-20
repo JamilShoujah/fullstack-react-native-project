@@ -2,18 +2,18 @@
 import React from 'react';
 import {Modal, Text, TouchableOpacity, View} from 'react-native';
 import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
-import {getGetPageModalStore} from '../../../../store/modal-stores/index';
+import {getPutPageModalStore} from '../../../../store/modal-stores/index';
 import {CloseButton} from '../../buttons/CloseButton';
-import {CourseNameGetPanel} from '../../custom/course/getPage/CourseNamePanel';
-import {CourseIdPanel} from '../../custom/course/getPage/CourseIdPanel';
-import {GetAllButton} from '../../buttons/GetAllButton';
-import {fetchAllCourses} from '../../../data/api/getApi/course/get-all-courses';
+import getStudentDetailStore from '../../../../store/student-store/student-store';
+import {CustomButton} from '../../buttons/CustomButton';
+import {CourseNamePostPanel} from '../../custom/course/postPage/CourseName';
+import {CourseDescriptionPostPanel} from '../../custom/course/postPage/CourseDescription';
 import getCourseDetailStore from '../../../../store/course-store/course-store';
 
-export const CourseModal = withLiteObserverAndTheme(props => {
+export const CourseUpdateModal = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
-  const courseModal = getGetPageModalStore();
+  const courseModal = getPutPageModalStore();
   const courseDetails = getCourseDetailStore();
   return (
     <Modal transparent={true} visible={courseModal.courseModalVisible.get()}>
@@ -45,17 +45,16 @@ export const CourseModal = withLiteObserverAndTheme(props => {
                 color: colors.lightText,
                 fontWeight: 'bold',
               }}>
-              Course
+              Student
             </Text>
             <CloseButton
               onPress={() => {
                 courseModal.changeCourseModalVisibility(false);
-                courseDetails.setCourseId('');
                 courseDetails.setCourseName('');
+                courseDetails.setCourseDescription('');
               }}
             />
           </View>
-
           <View
             style={{
               backgroundColor: colors.secondaryLight,
@@ -65,13 +64,39 @@ export const CourseModal = withLiteObserverAndTheme(props => {
               paddingVertical: childY * 1,
               alignItems: 'center',
             }}>
-            <CourseNameGetPanel />
-            <CourseIdPanel />
-            <GetAllButton
-              onPress={() => {
-                fetchAllCourses();
-              }}
-            />
+            <CourseNamePostPanel />
+            <CourseDescriptionPostPanel />
+
+            <View
+              style={{
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexDirection: 'row',
+              }}>
+              <TouchableOpacity
+                onPress={() => {
+                  courseDetails.setCourseName('');
+                  courseDetails.setCourseDescription('');
+                }}
+                style={{
+                  backgroundColor: colors.warningColor,
+                  borderRadius: 2 * childX,
+                  width: 15 * childX,
+                  height: 10 * childY,
+                  marginHorizontal: childX * 2,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text
+                  style={{
+                    color: colors.lightText,
+                    fontSize: getFontSize(6),
+                  }}>
+                  clear
+                </Text>
+              </TouchableOpacity>
+              <CustomButton placeHolder={'upload'} onPress={() => {}} />
+            </View>
           </View>
         </View>
       </View>

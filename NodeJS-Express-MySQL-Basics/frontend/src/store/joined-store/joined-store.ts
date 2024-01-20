@@ -5,6 +5,10 @@ import {TRegistration} from '../../shared/data/types/registration-object';
 export class JoinedDeatilsModel {
   studentId = observable.box('');
   courseId = observable.box('');
+  dropStudentId = observable.box('');
+  dropCourseId = observable.box('');
+  gradeStudentId = observable.box('');
+  gradeCourseId = observable.box('');
   studentEmail = observable.box('');
   grade = observable.box('');
 
@@ -16,6 +20,26 @@ export class JoinedDeatilsModel {
   setCourseId(text: string) {
     runInAction(() => {
       this.courseId.set(text);
+    });
+  }
+  setGradeStudentId(text: string) {
+    runInAction(() => {
+      this.gradeStudentId.set(text);
+    });
+  }
+  setGradeCourseId(text: string) {
+    runInAction(() => {
+      this.gradeCourseId.set(text);
+    });
+  }
+  setDropStudentId(text: string) {
+    runInAction(() => {
+      this.dropStudentId.set(text);
+    });
+  }
+  setDropCourseId(text: string) {
+    runInAction(() => {
+      this.dropCourseId.set(text);
     });
   }
   setStudentEmail(text: string) {

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
+import {StudentUpdateModal} from '../../shared/components/modals/student/UpdateStudentModal';
 import {withLiteObserverAndTheme} from '../../shared/enhancedRenderer/index';
 import {DetailsPanel} from './postPageComponents/DetailsPanel';
 

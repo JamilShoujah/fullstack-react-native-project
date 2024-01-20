@@ -1,9 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Modal, Text, TouchableOpacity, View} from 'react-native';
-import getInputFieldStore from '../../../../store/course-store/course-store';
 import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
-import getGetPageModalStore from '../../../../store/modal-stores/get-page-modal';
+import {getGetPageModalStore} from '../../../../store/modal-stores/index';
 import {CloseButton} from '../../buttons/CloseButton';
 import {StudentFirstNameGetPanel} from '../../custom/student/getPage/StudentFirstNamePanel';
 import {StudentLastNameGetPanel} from '../../custom/student/getPage/StudentLastNamePanel';

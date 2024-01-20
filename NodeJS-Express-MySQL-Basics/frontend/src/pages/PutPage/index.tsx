@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
+import {CourseUpdateModal} from '../../shared/components/modals/course/UpdateCourseModal';
+import {StudentUpdateModal} from '../../shared/components/modals/student/UpdateStudentModal';
 import {withLiteObserverAndTheme} from '../../shared/enhancedRenderer/index';
 import {PutPageComponent} from './putPageComponents/putPage';
 
@@ -26,6 +28,8 @@ export const PutPage = withLiteObserverAndTheme(props => {
           DELETE
         </Text>
         <PutPageComponent />
+        <StudentUpdateModal />
+        <CourseUpdateModal />
       </View>
     </ScrollView>
   );

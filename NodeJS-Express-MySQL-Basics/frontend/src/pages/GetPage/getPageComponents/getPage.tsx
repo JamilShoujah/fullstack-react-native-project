@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import {withLiteObserverAndTheme} from '../../../shared/enhancedRenderer/index';
-import getGetPageModalStore from '../../../store/modal-stores/get-page-modal';
+import {getGetPageModalStore} from '../../../store/modal-stores/index';
 
 export const GetPageComponent = withLiteObserverAndTheme(props => {
   const {theme} = props;

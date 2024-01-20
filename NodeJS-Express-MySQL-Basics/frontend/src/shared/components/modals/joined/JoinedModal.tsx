@@ -2,7 +2,7 @@
 import React from 'react';
 import {Modal, Text, Touchable, TouchableOpacity, View} from 'react-native';
 import {withLiteObserverAndTheme} from '../../../enhancedRenderer/index';
-import getGetPageModalStore from '../../../../store/modal-stores/get-page-modal';
+import {getGetPageModalStore} from '../../../../store/modal-stores/index';
 import {CloseButton} from '../../buttons/CloseButton';
 import {CourseIdGetPanel} from '../../custom/joined/getPage/CourseIdPanel';
 import {StudentIdGetPanel} from '../../custom/joined/getPage/StudentIdPanel';

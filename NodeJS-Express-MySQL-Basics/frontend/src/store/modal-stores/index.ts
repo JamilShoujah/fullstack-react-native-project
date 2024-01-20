@@ -1,7 +1,7 @@
 import {memoize} from 'lodash';
 import {observable, runInAction} from 'mobx';
 
-export class GetPageModal {
+export class PageModal {
   courseModalVisible = observable.box(false);
   studentModalVisible = observable.box(false);
   joinedModalVisible = observable.box(false);
@@ -23,12 +23,18 @@ export class GetPageModal {
   }
 }
 
-const getGetPageModalStore = memoize(
+export const getGetPageModalStore = memoize(
   () => {
-    const getPageModal = new GetPageModal();
+    const getPageModal = new PageModal();
     return getPageModal;
   },
   () => 1,
 );
 
-export default getGetPageModalStore;
+export const getPutPageModalStore = memoize(
+  () => {
+    const putPageModal = new PageModal();
+    return putPageModal;
+  },
+  () => 1,
+);

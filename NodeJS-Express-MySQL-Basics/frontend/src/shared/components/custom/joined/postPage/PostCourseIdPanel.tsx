@@ -16,9 +16,9 @@ export const CourseIdPostPanel = withLiteObserverAndTheme(props => {
 
       <FullTextInputField
         placeholder={'Course Id'}
-        value={courseDetails.courseId.get()}
+        value={courseDetails.dropCourseId.get()}
         onValueChange={text => {
-          courseDetails.setCourseId(text);
+          courseDetails.setDropCourseId(text);
         }}
       />
     </View>

@@ -1,5 +1,6 @@
 import {View, Text} from 'react-native';
 import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
+import {getPutPageModalStore} from '../../../../../store/modal-stores/index';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {CustomButton} from '../../../buttons/CustomButton';
 import {MiniTextInputField} from '../../../inputs/MiniTextInput';
@@ -8,6 +9,7 @@ export const CourseUpdateById = withLiteObserverAndTheme(props => {
   const {theme} = props;
   const {colors, childX, childY, getFontSize} = theme;
   const joinedDetails = getJoinedDetailStore();
+  const courseModal = getPutPageModalStore();
   return (
     <View
       style={{
@@ -30,7 +32,12 @@ export const CourseUpdateById = withLiteObserverAndTheme(props => {
               joinedDetails.setCourseId(text);
             }}
           />
-          <CustomButton placeHolder={'upload'} onPress={() => {}} />
+          <CustomButton
+            placeHolder={'upload'}
+            onPress={() => {
+              courseModal.changeCourseModalVisibility(true);
+            }}
+          />
         </View>
       </View>
     </View>

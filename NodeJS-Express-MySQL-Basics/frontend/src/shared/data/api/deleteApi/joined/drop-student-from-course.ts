@@ -12,8 +12,8 @@ export const dropStudentfromCourse = async () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          StudentID: joinedDetails.studentId.get(),
-          CourseID: joinedDetails.courseId.get(),
+          StudentID: joinedDetails.dropStudentId.get(),
+          CourseID: joinedDetails.dropCourseId.get(),
         }),
       },
     );

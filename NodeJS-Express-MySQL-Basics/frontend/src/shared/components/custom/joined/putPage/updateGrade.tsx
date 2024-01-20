@@ -1,5 +1,6 @@
 import {View, Text} from 'react-native';
 import getJoinedDetailStore from '../../../../../store/joined-store/joined-store';
+import {updateStudentCourseGrade} from '../../../../data/api/putApi/update-student-course-grade';
 import {withLiteObserverAndTheme} from '../../../../enhancedRenderer/index';
 import {CustomButton} from '../../../buttons/CustomButton';
 import {FullTextInputField} from '../../../inputs/FullsizeInputText';
@@ -23,10 +24,10 @@ export const GradeUpdate = withLiteObserverAndTheme(props => {
           Student Id:
         </Text>
         <FullTextInputField
-          placeholder={'Course Id'}
-          value={joinedDetails.studentId.get()}
+          placeholder={'Student Id'}
+          value={joinedDetails.gradeStudentId.get()}
           onValueChange={text => {
-            joinedDetails.setStudentId(text);
+            joinedDetails.setGradeStudentId(text);
           }}
         />
         <Text style={{fontSize: getFontSize(4), paddingHorizontal: childX * 2}}>
@@ -34,9 +35,9 @@ export const GradeUpdate = withLiteObserverAndTheme(props => {
         </Text>
         <FullTextInputField
           placeholder={'Course Id'}
-          value={joinedDetails.courseId.get()}
+          value={joinedDetails.gradeCourseId.get()}
           onValueChange={text => {
-            joinedDetails.setCourseId(text);
+            joinedDetails.setGradeCourseId(text);
           }}
         />
         <Text style={{fontSize: getFontSize(4), paddingHorizontal: childX * 2}}>
@@ -50,7 +51,12 @@ export const GradeUpdate = withLiteObserverAndTheme(props => {
           }}
         />
       </View>
-      <CustomButton placeHolder={'upload'} onPress={() => {}} />
+      <CustomButton
+        placeHolder={'upload'}
+        onPress={() => {
+          updateStudentCourseGrade();
+        }}
+      />
     </View>
   );
 });
