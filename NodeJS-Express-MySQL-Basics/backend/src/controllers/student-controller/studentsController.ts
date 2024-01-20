@@ -94,9 +94,9 @@ export const updateStudent = async (req: Request, res: Response) => {
       req.body.StudentObject,
       req.body.StudentID
     );
-    res.status(201).send("Student successfully updated");
+    res.status(201).json({ message: "Student successfully updated" });
   } catch (error) {
-    console.error("Failed to updated student:", error);
-    res.status(500).send("Error updating student");
+    console.error("Failed to update student:", error);
+    res.status(500).json({ error: "Error updating student" });
   }
 };
