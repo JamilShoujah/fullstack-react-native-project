@@ -1,6 +1,8 @@
 import { memoize } from "lodash";
-import studentCourseModel from "../../models/student-course-model";
+import getStudentCourseModel from "../../models/student-course-model";
 import { IGradeObject } from "../../types/interfaces/gradeObject";
+
+const studentCourseModel = getStudentCourseModel();
 
 class gradesLibraryModel {
   allGrades() {

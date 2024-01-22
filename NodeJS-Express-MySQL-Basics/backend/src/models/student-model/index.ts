@@ -1,25 +1,26 @@
+import { memoize } from "lodash";
 import mysqlConnection from "../../database";
 import { IStudentObject } from "../../types/interfaces/studentObject";
 
-const studentModel = {
-  findAll: async () => {
+class StudentModel {
+  async findAll() {
     const myQuery = `
     SELECT * 
     FROM student_table
     `;
     return mysqlConnection.query(myQuery);
-  },
+  }
 
-  findById: async (id: number) => {
+  async findById(id: number) {
     const myQuery = `
       SELECT *
       FROM student_table
       WHERE student_id = ?
       `;
     return mysqlConnection.query(myQuery, [id]);
-  },
+  }
 
-  findByFirstName: async (firstName: string) => {
+  async findByFirstName(firstName: string) {
     const myQuery = `
     SELECT * 
     FROM student_table 
@@ -27,9 +28,9 @@ const studentModel = {
     `;
 
     return mysqlConnection.query(myQuery, [firstName]);
-  },
+  }
 
-  findByLastName: async (LastName: string) => {
+  async findByLastName(LastName: string) {
     const myQuery = `
       SELECT * 
       FROM student_table 
@@ -37,18 +38,18 @@ const studentModel = {
       `;
 
     return mysqlConnection.query(myQuery, [LastName]);
-  },
+  }
 
-  findByEmail: async (Email: string) => {
+  async findByEmail(Email: string) {
     const myQuery = `
     SELECT * 
     FROM student_table 
     WHERE email = ?
     `;
     return mysqlConnection.query(myQuery, [Email]);
-  },
+  }
 
-  addNewStudent: async (studentObject: IStudentObject) => {
+  async addNewStudent(studentObject: IStudentObject) {
     const {
       studentFirstName,
       studentLastName,
@@ -79,9 +80,9 @@ const studentModel = {
       studentAddress,
       studentPhone,
     ]);
-  },
+  }
 
-  deleteById: async (id: number) => {
+  async deleteById(id: number) {
     try {
       const deleteReferencingRowsQuery = `
             DELETE FROM student_course_table 
@@ -98,9 +99,9 @@ const studentModel = {
     } catch (error) {
       throw error;
     }
-  },
+  }
 
-  deleteByEmail: async (Email: string) => {
+  async deleteByEmail(Email: string) {
     try {
       const deleteReferencingRowsQuery = `
             DELETE FROM student_course_table 
@@ -121,12 +122,9 @@ const studentModel = {
     } catch (error) {
       throw error;
     }
-  },
+  }
 
-  updateStudentById: async (
-    studentObject: IStudentObject,
-    studentid: number
-  ) => {
+  async updateStudentById(studentObject: IStudentObject, studentid: number) {
     const {
       studentFirstName,
       studentLastName,
@@ -157,7 +155,15 @@ const studentModel = {
       studentPhone,
       studentid,
     ]);
-  },
-};
+  }
+}
 
-export default studentModel;
+const getStudentModel = memoize(
+  () => {
+    const studnetModel = new StudentModel();
+    return studnetModel;
+  },
+  () => 1
+);
+
+export default getStudentModel;

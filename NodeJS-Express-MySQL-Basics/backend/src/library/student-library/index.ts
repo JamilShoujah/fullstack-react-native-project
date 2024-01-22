@@ -1,8 +1,8 @@
 import { memoize } from "lodash";
-import studentCourseModel from "../../models/student-course-model";
-import studentModel from "../../models/student-model";
-import StudentModel from "../../models/student-model";
+import getStudentModel from "../../models/student-model";
 import { IStudentObject } from "../../types/interfaces/studentObject";
+
+const studentModel = getStudentModel();
 
 class StudentLibraryModel {
   allStudents() {
@@ -10,19 +10,19 @@ class StudentLibraryModel {
   }
 
   studentIdParams(studentId: number) {
-    return StudentModel.findById(studentId);
+    return studentModel.findById(studentId);
   }
 
   studentFirstNameParams(Name: string) {
-    return StudentModel.findByFirstName(Name);
+    return studentModel.findByFirstName(Name);
   }
 
   studentLastNameParams(Name: string) {
-    return StudentModel.findByLastName(Name);
+    return studentModel.findByLastName(Name);
   }
 
   studentEmailParams(Email: string) {
-    return StudentModel.findByEmail(Email);
+    return studentModel.findByEmail(Email);
   }
 
   newStudentParams(studentObject: IStudentObject) {
@@ -30,11 +30,11 @@ class StudentLibraryModel {
   }
 
   deleteByStudentIdParams(studentId: number) {
-    return StudentModel.deleteById(studentId);
+    return studentModel.deleteById(studentId);
   }
 
   deleteByStudentEmailParams(Email: string) {
-    return StudentModel.deleteByEmail(Email);
+    return studentModel.deleteByEmail(Email);
   }
 
   updateStudentParams(studentObject: IStudentObject, id: number) {

@@ -1,7 +1,8 @@
+import { memoize } from "lodash";
 import mysqlConnection from "../../database";
 
-const studentCourseModel = {
-  getAll: async () => {
+class StudentCourseModel {
+  async getAll() {
     const myQuery = `
       SELECT 
         student_table.student_first_name, 
@@ -16,9 +17,9 @@ const studentCourseModel = {
     `;
 
     return mysqlConnection.query(myQuery);
-  },
+  }
 
-  getGradesByStudent: async (id: number) => {
+  async getGradesByStudent(id: number) {
     const myQuery = `
       SELECT 
         student_table.student_first_name, 
@@ -34,9 +35,9 @@ const studentCourseModel = {
     `;
 
     return mysqlConnection.query(myQuery, [id]);
-  },
+  }
 
-  getGradesByCourse: async (id: number) => {
+  async getGradesByCourse(id: number) {
     const myQuery = `
       SELECT 
         student_table.student_first_name, 
@@ -52,9 +53,9 @@ const studentCourseModel = {
     `;
 
     return mysqlConnection.query(myQuery, [id]);
-  },
+  }
 
-  getCoursesByStudent: async (id: number) => {
+  async getCoursesByStudent(id: number) {
     const myQuery = `
       SELECT 
         course_table.course_id, 
@@ -66,9 +67,9 @@ const studentCourseModel = {
   `;
 
     return mysqlConnection.query(myQuery, [id]);
-  },
+  }
 
-  getStudentsByCourse: async (id: number) => {
+  async getStudentsByCourse(id: number) {
     const myQuery = `
       SELECT 
         student_table.student_first_name, 
@@ -81,9 +82,9 @@ const studentCourseModel = {
   `;
 
     return mysqlConnection.query(myQuery, [id]);
-  },
+  }
 
-  registerForCourse: async (studentId: number, courseId: number) => {
+  async registerForCourse(studentId: number, courseId: number) {
     const myQuery = `
       INSERT INTO student_course_table 
         (
@@ -95,18 +96,18 @@ const studentCourseModel = {
     `;
 
     return mysqlConnection.query(myQuery, [studentId, courseId]);
-  },
+  }
 
-  dropStudentFromCourse: async (studentId: number, courseId: number) => {
+  async dropStudentFromCourse(studentId: number, courseId: number) {
     const myQuery = `
       DELETE FROM student_course_table
       WHERE student_id = ? AND course_id = ?;
     `;
 
     return mysqlConnection.query(myQuery, [studentId, courseId]);
-  },
+  }
 
-  updateGrades: async (studentId: number, courseId: number, grade: string) => {
+  async updateGrades(studentId: number, courseId: number, grade: string) {
     const myQuery = `
       UPDATE student_course_table
       SET grade = ?
@@ -115,7 +116,15 @@ const studentCourseModel = {
     console.log(courseId);
     console.log(studentId, grade);
     return mysqlConnection.query(myQuery, [grade, studentId, courseId]);
-  },
-};
+  }
+}
 
-export default studentCourseModel;
+const getStudentCourseModel = memoize(
+  () => {
+    const studnetCourseModel = new StudentCourseModel();
+    return studnetCourseModel;
+  },
+  () => 1
+);
+
+export default getStudentCourseModel;

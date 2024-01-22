@@ -1,6 +1,8 @@
 import { memoize } from "lodash";
-import courseModel from "../../models/course-model";
+import getCourseModel from "../../models/course-model";
 import { ICourseObject } from "../../types/interfaces/courseObject";
+
+const courseModel = getCourseModel();
 
 class courseLibraryModel {
   allCourses() {

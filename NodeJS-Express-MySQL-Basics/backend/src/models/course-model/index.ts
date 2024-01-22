@@ -1,25 +1,26 @@
+import { memoize } from "lodash";
 import mysqlConnection from "../../database";
 import { ICourseObject } from "../../types/interfaces/courseObject";
 
-const courseModel = {
-  findAll: async () => {
+class CourseModel {
+  async findAll() {
     const myQuery = `
     SELECT * 
     FROM course_table
     `;
     return mysqlConnection.query(myQuery);
-  },
+  }
 
-  findById: async (id: number) => {
+  async findById(id: number) {
     const myQuery = `
     SELECT * 
     FROM course_table 
     WHERE course_id = ?
     `;
-
     return mysqlConnection.query(myQuery, [id]);
-  },
-  findByName: async (Name: string) => {
+  }
+
+  async findByName(Name: string) {
     const myQuery = `
     SELECT * 
     FROM course_table 
@@ -27,9 +28,9 @@ const courseModel = {
     `;
 
     return mysqlConnection.query(myQuery, [Name]);
-  },
+  }
 
-  addNewCourse: async (courseObject: ICourseObject) => {
+  async addNewCourse(courseObject: ICourseObject) {
     const { courseName, courseDescription } = courseObject;
 
     const myQuery = `
@@ -43,9 +44,9 @@ const courseModel = {
     `;
 
     return mysqlConnection.query(myQuery, [courseName, courseDescription]);
-  },
+  }
 
-  deleteById: async (id: number) => {
+  async deleteById(id: number) {
     try {
       const deleteReferencingRowsQuery = `
             DELETE FROM student_course_table 
@@ -62,9 +63,9 @@ const courseModel = {
     } catch (error) {
       throw error;
     }
-  },
+  }
 
-  updateCourse: async (courseObject: ICourseObject, id: number) => {
+  async updateCourse(courseObject: ICourseObject, id: number) {
     const { courseName, courseDescription } = courseObject;
     const myQuery = `
       UPDATE course_table
@@ -75,7 +76,15 @@ const courseModel = {
     `;
 
     return mysqlConnection.query(myQuery, [courseName, courseDescription, id]);
-  },
-};
+  }
+}
 
-export default courseModel;
+const getCourseModel = memoize(
+  () => {
+    const courseModel = new CourseModel();
+    return courseModel;
+  },
+  () => 1
+);
+
+export default getCourseModel;
