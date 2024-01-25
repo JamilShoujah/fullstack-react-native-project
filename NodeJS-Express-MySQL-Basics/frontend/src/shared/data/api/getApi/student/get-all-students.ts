@@ -1,4 +1,7 @@
+import getStudentDataStore from '../../../../../store/student-store/student-data-store';
+
 export const fetchAllStudents = async () => {
+  const studentData = getStudentDataStore();
   try {
     const response = await fetch(
       'http://localhost:3000/api/student/getStudents',
@@ -17,6 +20,7 @@ export const fetchAllStudents = async () => {
     }
 
     const data = await response.json();
+    studentData.setAllStudents(data);
     console.log('Success:', data);
   } catch (error) {
     console.error('Error:', error);

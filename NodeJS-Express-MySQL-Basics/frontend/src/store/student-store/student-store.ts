@@ -1,7 +1,7 @@
 import {memoize} from 'lodash';
 import {computed, observable, runInAction} from 'mobx';
-import {TStudent} from '../../shared/data/types/student-object';
-import {formatNumber} from '../../shared/utils/format-numbers';
+import {TStudent} from '../../shared/data/types/student/student-object';
+import {formatNumber} from '../../shared/utils/functions/format-numbers';
 
 export class StudentDeatilsModel {
   firstName = observable.box('');

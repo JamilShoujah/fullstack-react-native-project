@@ -6,6 +6,7 @@ import {PutPage} from '../pages/PutPage/index';
 import {DeletePage} from '../pages/DeletePage/index';
 import {withLiteObserverAndTheme} from '../shared/enhancedRenderer/index';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import {DataPage} from '../pages/DataPage/index';
 
 export const TabBarNav = withLiteObserverAndTheme(props => {
   const Tab = createBottomTabNavigator();
@@ -75,6 +76,13 @@ export const TabBarNav = withLiteObserverAndTheme(props => {
       <Tab.Screen
         name={'DELETE'}
         component={DeletePage}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Tab.Screen
+        name={'DATA'}
+        component={DataPage}
         options={{
           header: () => null,
         }}

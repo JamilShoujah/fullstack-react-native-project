@@ -1,7 +1,9 @@
 import {memoize} from 'lodash';
 import {computed, observable, runInAction} from 'mobx';
-import {TStudent} from '../../shared/data/types/student-object';
-import {formatNumber} from '../../shared/utils/format-numbers';
+import {TFullStudent} from '../../shared/data/types/student/complete-student-object';
+import {TStudent} from '../../shared/data/types/student/student-object';
+import {formatNumber} from '../../shared/utils/functions/format-numbers';
+import MMKVStorage from 'react-native-mmkv-storage';
 
 export class StudentDataModel {
   firstName = observable.box('');
@@ -13,6 +15,7 @@ export class StudentDataModel {
   phoneNumber = observable.box('');
   address = observable.box('');
   studentId = observable.box('');
+  allStudents = observable.box<TFullStudent[]>([]);
 
   birthDate = computed(() => {
     const day = this.birthDay.get();
@@ -76,6 +79,12 @@ export class StudentDataModel {
   setStudentId(text: string) {
     runInAction(() => {
       this.studentId.set(text);
+    });
+  }
+
+  setAllStudents(array: TFullStudent[]) {
+    runInAction(() => {
+      this.allStudents.set(array);
     });
   }
 }

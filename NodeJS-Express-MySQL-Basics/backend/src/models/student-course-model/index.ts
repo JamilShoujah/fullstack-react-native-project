@@ -22,9 +22,8 @@ class StudentCourseModel {
   async getGradesByStudent(id: number) {
     const myQuery = `
       SELECT 
-        student_table.student_first_name, 
-        student_table.student_last_name, 
         course_table.course_name, 
+        course_table.course_id,
         student_course_table.grade
       FROM student_course_table
       JOIN student_table 
